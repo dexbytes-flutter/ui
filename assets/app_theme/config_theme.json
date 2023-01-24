@@ -1,0 +1,60 @@
+{
+  "homeBottomNavigationBar": {
+    "backgroundColor": "0xFF54321E",
+    "darkBackgroundColor": "0xFF374151",
+    "activeIconColor": "0xFFCB7642",
+    "deActiveIconColor": "0xFF9CA3AF",
+    "activeMenuTextStyle": {
+      "fontSize": 12,
+      "color": "0xFF022964"
+    },
+    "deActiveMenuTextStyle": {
+      "fontSize": 12,
+      "color": "0xFF9CA3AF"
+    },"elevation": 0.0,
+    "bottomMenuType": 0,
+    "menu_item": [
+
+      {
+        "activeIcon": "assets/images/bottom_home_icon.svg",
+        "deActiveIcon": "assets/images/bottom_home_icon.svg",
+        "label": "",
+        "backgroundColor": "0xFF54321E",
+        "menuPageId": "menu1",
+        "statusBarColors": "0xff212327"
+      },
+      {
+        "activeIcon": "assets/images/bottom_active_stats.svg",
+        "deActiveIcon":"assets/images/bottom_active_stats.svg",
+        "label": "",
+        "backgroundColor": "0xFF54321E",
+        "menuPageId": "menu2",
+        "statusBarColors": "0xff212327"
+      },
+      {
+        "activeIcon":"assets/images/bottom_menu_active_favorites_icon.svg",
+        "deActiveIcon":"assets/images/bottom_menu_deactive_favourite_icon.svg",
+        "label": "",
+        "backgroundColor": "0xFF54321E",
+        "menuPageId": "menu3",
+        "statusBarColors": "0xff212327"
+      },
+      {
+        "activeIcon": "assets/images/bottom_profile_icon.svg",
+        "deActiveIcon":"assets/images/bottom_profile_icon.svg",
+        "label": "",
+        "backgroundColor": "0xFF54321E",
+        "menuPageId": "menu4",
+        "statusBarColors": "0xff212327"
+      }
+    ]
+  },
+
+  "setting": {
+    "homeBottomNavigationBarHeight": 56,
+    "statusBarColors": "0xff212327",
+    "appBackgroundColors": ["0xFFFFFFFF"],
+    "isDisplaySideDrawer": false,
+    "isDisplayHomeSearch": false
+  }
+}
