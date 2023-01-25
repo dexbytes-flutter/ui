@@ -213,6 +213,7 @@ class AppString {
   String mobileNumberHintText = "mobileNumberHintText";
   String pleaseEnterOTP = "pleaseEnterOTP";
   String pleaseEnterCorrectOTP = "pleaseEnterCorrectOTP";
+  String searchTextFieldHintText = "searchTextFieldHintText";
 }
 
 AppString appString = AppString();

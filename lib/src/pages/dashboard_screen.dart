@@ -110,7 +110,7 @@ class _DashboardScreen extends State<DashboardScreen>
                 statusBarColor: statusBarColorsLocal,
                 appBackgroundColor:!isDarkMode? appColors.white:appColors.appBgColor6,
                 appBarHeight: -1,
-                bottomMenuHeight: 56,
+                bottomMenuHeight: 58,
                 bottomMenuView: BottomNavigatorWithStack(
                   currentTab: _currentTab,
                   onSelectTab: _selectTab,

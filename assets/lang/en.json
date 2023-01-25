@@ -126,5 +126,6 @@
   "fullNameHintText" : "Enter full name",
   "mobileNumberHintText" : "Enter mobile number",
   "pleaseEnterOTP" : "Please enter OTP",
-  "pleaseEnterCorrectOTP" : "Please enter correct OTP"
+  "pleaseEnterCorrectOTP" : "Please enter correct OTP",
+  "searchTextFieldHintText" : "Find Your Coffee..."
 }

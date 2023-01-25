@@ -21,6 +21,8 @@ class IconApps {
   String passwordIcon = 'assets/images/password_icon.svg';
   String facebookIcon = 'assets/images/facebook_icon.svg';
   String googleIcon = 'assets/images/google_icon.svg';
+  String dashboardIcon = 'assets/images/dashboard_icon.svg';
+  String searchIcon = 'assets/images/search_icon.svg';
 
   iconImage(
       {required String imageUrl,

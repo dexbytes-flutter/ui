@@ -34,7 +34,7 @@ class AppColors {
   Color primaryColor = const Color(0xFF4AA546);
 
   Color appThemeColor = const Color.fromRGBO(155, 133, 96, .1);
-  Color appThemeColor1 = const Color(0xFF54321E);
+  Color appThemeColor1 = const Color(0xFF482A17);
 
   //Status bar color
   Color appStatusBarTransColor = Color(0x00000000);

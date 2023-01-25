@@ -60,10 +60,11 @@ class _BottomNavigatorWithStackState extends State<BottomNavigatorWithStack> {
   // Color backgroundColor = Colors.white;
   Color backgroundColor = Colors.brown;
   Color activeIconColor = Colors.white;
-  Color deActiveIconColor = Colors.blueGrey.withOpacity(0.25);
-  TextStyle activeMenuTextStyle = TextStyle(fontSize: 12, color: Colors.white);
+  // Color deActiveIconColor = Colors.blueGrey.withOpacity(0.25);
+  Color deActiveIconColor = Colors.white;
+  TextStyle activeMenuTextStyle = TextStyle(fontSize: 0, color: Colors.white);
   TextStyle deActiveMenuTextStyle =
-  TextStyle(fontSize: 12, color: Colors.blueGrey.withOpacity(0.25));
+  TextStyle(fontSize: 0, color: Colors.blueGrey.withOpacity(0.25));
   double elevation = 0;
   int bottomMenuType = 0;
 
@@ -157,20 +158,21 @@ class _BottomNavigatorWithStackState extends State<BottomNavigatorWithStack> {
     return IntrinsicHeight(
       child: Material(
         elevation: 0,
-        color:!isDarkMode?appColors.bottomMenuColor1:appColors.bottomMenuColor2,
+        color:!isDarkMode?appColors.bottomMenuColor1:appColors.indicatorColor,
         child: Container(
-          color:!isDarkMode?appColors.bottomMenuColor1:appColors.bottomMenuColor2,
+          color:!isDarkMode?appColors.bottomMenuColor1:appColors.indicatorColor,
           child: BottomNavigationBar(
             items: menuItem,
             elevation: elevation,
             type: bottomMenuType == 0
                 ? BottomNavigationBarType.fixed
                 : BottomNavigationBarType.fixed,
-            backgroundColor: Colors.transparent,
+            backgroundColor: Color(0xFF482A17),
             // fixedColor: backgroundColor,
             currentIndex: selectedIndex,
-            selectedIconTheme: IconThemeData(color: activeIconColor),
-            selectedItemColor: !isDarkMode? Color(0xFF022964):Colors.white, /*activeIconColor*/
+            selectedIconTheme: IconThemeData(color: backgroundColor),
+            // selectedItemColor: !isDarkMode? Color(0xFF54321E):Colors.white, /*activeIconColor*/
+            selectedItemColor: Color(0xFF54321E), /*activeIconColor*/
             unselectedItemColor: deActiveIconColor,
             selectedLabelStyle: activeMenuTextStyle,
             unselectedLabelStyle: deActiveMenuTextStyle,
@@ -214,17 +216,17 @@ class _BottomNavigatorWithStackState extends State<BottomNavigatorWithStack> {
       int index = 0;
       menuItemTemp.map((values) {
         menuItem.add(BottomNavigationBarItem(
-          activeIcon:Container(
-            margin:  EdgeInsets.only(bottom: index ==1? 5.5:3.5,top: 3),
+          activeIcon: Container(
+            margin:  EdgeInsets.only(top: 8),
             child:   iconApps.iconImage(imageUrl: values["activeIcon"],
-                iconSize: index == 2? Size(20,22):Size(20,18),
-                imageColor: !isDarkMode?Color(0xFF022964):Colors.white),
+                iconSize: index == 2? Size(18,22):Size(24,22),
+                imageColor: !isDarkMode?Color(0xFFCB7642):Color(0xFFFFFFFF)),
           ),
           icon: Container(
-              margin: EdgeInsets.only(bottom: index ==1? 5.5:3.5,top: 2),
+              margin: EdgeInsets.only(top: 8),
               child: iconApps.iconImage(imageUrl: values["deActiveIcon"],
-                  iconSize: index == 2? Size(20,22):Size(20,18),
-                  imageColor: Color(0xFF9CA3AF)   )),
+                  iconSize: index == 2? Size(18,22):Size(24,22),
+                  imageColor: Color(0xFFFFFFFF)   )),
           label:values["label"],
         ));
         index++;
