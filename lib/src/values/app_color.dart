@@ -79,6 +79,7 @@ class AppColors {
 
   //*Application Main containers BG color ***********************************
   Color appBgColor = const Color(0xFF000000);
+  Color appBgColor1 = const Color(0xFFD5C4C7);
   Color appBgColor3 = const Color(0xFF272727);
   Color appBgColor6 = const Color(0xFF374151);
   Color appTopBgColor = const Color(0xFFFFFFFF);
@@ -147,6 +148,7 @@ class AppColors {
   Color textBorderColor = const Color(0xFFDD2E37);
 
   Color hintTextColor = const Color(0xFF9E9E9E);
+  Color textColor = const Color(0xFF59290B);
 
   //List field Color *****************************
   Color listRowBgColor = const Color(0xFFFFFFFF);

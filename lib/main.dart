@@ -23,6 +23,7 @@ import 'package:base_flutter_app/src/config/routes.dart';
 
 import 'src/pages/dashboard_screen.dart';
 import 'src/pages/sign_in_screen.dart';
+import 'src/widgets/coffee_deatail_card.dart';
 
 void main() async {
   // if you are using await in main function then add this line
@@ -295,6 +296,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
     //If profile set done by user
     // if (widget.isOneTimeProfileSetUpDone) {
     // return const SignInScreen();
+    // return const CoffeeDetailCard();
     return const DashboardScreen();
     // return const SplashScreen();
     // return const SignUpScreen();

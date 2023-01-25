@@ -23,6 +23,13 @@ class IconApps {
   String googleIcon = 'assets/images/google_icon.svg';
   String dashboardIcon = 'assets/images/dashboard_icon.svg';
   String searchIcon = 'assets/images/search_icon.svg';
+  String plusIcon = 'assets/images/plus_icon.svg';
+  String startIcon = 'assets/images/star_icon.svg';
+  String coffeeBeansIcon = 'assets/images/coffee_beans_icon.svg';
+  String milkDropIcon = 'assets/images/milk_drop.svg';
+  String milkDropIcon1 = 'assets/images/milk_drop1.svg';
+  String backArrowIcon = 'assets/images/back_arrow_icon.svg';
+  String favoriteIcon = 'assets/images/favorite_icon.svg';
 
   iconImage(
       {required String imageUrl,
