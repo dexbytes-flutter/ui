@@ -17,33 +17,31 @@ class CommonCoffeeCardList extends StatelessWidget {
     return Container(
       height: appDimens.heightFullScreen()/2.38,
       margin: EdgeInsets.only(left: 20,),
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            MainAppBloc.getDashboardContext,
-            SlideRightRoute(widget: CoffeeDetailCard()),
-          );
-        },
-        child: ListView.builder(
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          itemCount: coffeeCardList.length,
-          itemBuilder: (context, int index) {
-            return Container(
+      child: ListView.builder(
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        itemCount: coffeeCardList.length,
+        itemBuilder: (context, int index) {
+          return GestureDetector(
+            onTap: (){
+              Navigator.push(
+                MainAppBloc.getDashboardContext,
+                SlideRightRoute(
+                    widget: CoffeeDetailCard(
+                      imageUrl: coffeeCardList[index].topIconUrl,
+                      title: coffeeCardList[index].title,
+                      subTitle: coffeeCardList[index].subTitle,
+                    )
+                ),
+              );
+            },
+            child: Container(
               height: appDimens.heightFullScreen()/15,
               width: appDimens.widthFullScreen()/2.40,
               margin: EdgeInsets.only(right: 20),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
-                /*boxShadow: <BoxShadow>[
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.30),
-                      blurRadius: 5,
-                      spreadRadius: 1,
-                      offset: Offset(0, 2),
-                    ),
-                  ]*/
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -116,9 +114,9 @@ class CommonCoffeeCardList extends StatelessWidget {
                   )
                 ],
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

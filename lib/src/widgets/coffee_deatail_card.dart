@@ -11,7 +11,15 @@ import 'package:readmore/readmore.dart';
 import 'appbar/common_app_bar.dart';
 
 class CoffeeDetailCard extends StatelessWidget {
-  const CoffeeDetailCard({Key? key}) : super(key: key);
+  final String imageUrl;
+  final String title;
+  final String subTitle;
+  const CoffeeDetailCard({
+    Key? key,
+    this.imageUrl = "https://i.pinimg.com/564x/db/d4/54/dbd4547ca83892ecc86ed87ed916b109.jpg",
+    this.title = "Cappuccino",
+    this.subTitle = "With Oat Milk",
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +33,8 @@ class CoffeeDetailCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(20.0),
             child: CachedNetworkImage(
-              imageUrl:
-                  "https://thumbs.dreamstime.com/b/coffee-latte-cup-wooden-table-263161043.jpg",
+              imageUrl: imageUrl,
+                  // "https://thumbs.dreamstime.com/b/coffee-latte-cup-wooden-table-263161043.jpg",
               height: 332,
               width: 400,
               fit: BoxFit.cover,
@@ -54,7 +62,7 @@ class CoffeeDetailCard extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 20),
                         child: Text(
-                          "Cappuccino",
+                          title,
                           style: TextStyle(
                               color: appColors.white,
                               fontSize: 16,
@@ -64,7 +72,7 @@ class CoffeeDetailCard extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 20, top: 5),
                         child: Text(
-                          "With Oat Milk",
+                          subTitle,
                           style: TextStyle(
                               color: Colors.black.withOpacity(0.40),
                               // color: Colors.grey.shade500,
