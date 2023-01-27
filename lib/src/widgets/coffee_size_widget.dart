@@ -58,7 +58,7 @@ class _SizeChoiceState extends State<SizeChoice> {
     return Container(
       padding: EdgeInsets.zero,
       margin: EdgeInsets.zero,
-      height: 35,
+      height: 30,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: sizeValue.length,
@@ -82,7 +82,7 @@ class _SizeChoiceState extends State<SizeChoice> {
                     borderRadius: BorderRadius.circular(5)
                 ),
                 child: Text(sizeValue[index].text,
-                  style: TextStyle(fontSize: 13,
+                  style: TextStyle(fontSize: 12,
                       color:  selectedChoice == sizeValue[index].text ? Color(0xFFCB7642):appColors.white,
                       fontWeight: FontWeight.w500),
                 ),

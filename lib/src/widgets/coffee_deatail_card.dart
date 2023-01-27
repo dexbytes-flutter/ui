@@ -22,17 +22,12 @@ class CoffeeDetailCard extends StatelessWidget {
     Widget topImageView() {
       return Stack(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20),
-              ),
-            ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
             child: CachedNetworkImage(
               imageUrl:
-                  "https://i.pinimg.com/564x/de/da/46/deda46ce8ddc97f7a152d0871b94c649.jpg",
-              height: 280,
+                  "https://thumbs.dreamstime.com/b/coffee-latte-cup-wooden-table-263161043.jpg",
+              height: 332,
               width: 400,
               fit: BoxFit.cover,
             ),
@@ -40,8 +35,8 @@ class CoffeeDetailCard extends StatelessWidget {
           Positioned(
             bottom: 0,
             child: Container(
-              height: appDimens.heightFullScreen() / 5,
-              width: appDimens.heightFullScreen() / 1.78,
+              height: appDimens.heightFullScreen() / 5.5,
+              width: appDimens.widthFullScreen()/1.1,
               decoration: BoxDecoration(
                 color: Colors.white12.withOpacity(0.40),
                 borderRadius: BorderRadius.only(
@@ -57,43 +52,43 @@ class CoffeeDetailCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 20, top: 12),
+                        padding: const EdgeInsets.only(left: 20),
                         child: Text(
                           "Cappuccino",
                           style: TextStyle(
                               color: appColors.white,
-                              fontSize: 20,
+                              fontSize: 16,
                               fontWeight: FontWeight.w500),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 20, top: 10),
+                        padding: const EdgeInsets.only(left: 20, top: 5),
                         child: Text(
                           "With Oat Milk",
                           style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.black.withOpacity(0.40),
                               // color: Colors.grey.shade500,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400),
+                              fontSize: 12.5,
+                              fontWeight: FontWeight.w500),
                         ),
                       ),
                       Row(
                         children: [
                           Container(
-                            padding: EdgeInsets.only(left: 20, top: 15),
+                            padding: EdgeInsets.only(left: 20, top: 10),
                             child: iconApps.iconImage(
                               imageUrl: iconApps.startIcon,
-                              iconSize: Size(22, 22),
+                              iconSize: Size(20, 20),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 18, left: 15),
+                            padding: const EdgeInsets.only(top: 12, left: 15),
                             child: RichText(
                               text: TextSpan(children: [
                                 TextSpan(
                                     text: "4.5",
                                     style: TextStyle(
-                                        fontSize: 18,
+                                        fontSize: 15,
                                         fontWeight: FontWeight.w500)),
                                 WidgetSpan(
                                     child: SizedBox(
@@ -102,10 +97,10 @@ class CoffeeDetailCard extends StatelessWidget {
                                 TextSpan(
                                     text: "(6.986)",
                                     style: TextStyle(
-                                        color: Colors.white,
+                                        color: Colors.black.withOpacity(0.40),
                                         // color: Colors.grey.shade500,
                                         fontWeight: FontWeight.w400,
-                                        fontSize: 14))
+                                        fontSize: 12.5))
                               ]),
                             ),
                           )
@@ -114,11 +109,12 @@ class CoffeeDetailCard extends StatelessWidget {
                     ],
                   ),
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Padding(
+                      Container(
                         padding: const EdgeInsets.only(right: 20),
+                        margin: EdgeInsets.only(right: 10),
                         child: Row(
                           children: [
                             Container(
@@ -133,12 +129,14 @@ class CoffeeDetailCard extends StatelessWidget {
                                       iconSize: Size(20, 20),
                                       imageColor: Color(0xFFCB7642)),
                                   SizedBox(
-                                    height: 3,
+                                    height: 4,
                                   ),
                                   Text(
                                     "Coffee",
                                     style:
-                                        TextStyle(color: Colors.grey.shade500),
+                                        TextStyle(color: Colors.grey.shade500,
+                                        fontSize: 11,
+                                        ),
                                   )
                                 ],
                               ),
@@ -148,7 +146,7 @@ class CoffeeDetailCard extends StatelessWidget {
                             ),
                             Container(
                               padding: EdgeInsets.only(
-                                  left: 15, right: 15, top: 8, bottom: 8),
+                                  left: 14, right: 14, top: 8, bottom: 8),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
                                   color: appColors.appThemeColor1),
@@ -159,12 +157,14 @@ class CoffeeDetailCard extends StatelessWidget {
                                       iconSize: Size(20, 20),
                                       imageColor: Color(0xFFCB7642)),
                                   SizedBox(
-                                    height: 3,
+                                    height: 4,
                                   ),
                                   Text(
                                     "Milk",
                                     style:
-                                        TextStyle(color: Colors.grey.shade500),
+                                        TextStyle(color: Colors.grey.shade500,
+                                        fontSize: 11
+                                        ),
                                   )
                                 ],
                               ),
@@ -173,14 +173,16 @@ class CoffeeDetailCard extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.all(10),
-                        margin: EdgeInsets.only(right: 20),
+                        padding: EdgeInsets.all(10).copyWith(left: 15,right: 15),
+                        margin: EdgeInsets.only(right: 25),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
                             color: appColors.appThemeColor1),
                         child: Text(
                           "Medium Roasted",
-                          style: TextStyle(color: Colors.grey.shade500),
+                          style: TextStyle(color: Colors.grey.shade500,
+                          fontSize: 11
+                          ),
                         ),
                       )
                     ],
@@ -199,82 +201,85 @@ class CoffeeDetailCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 25, left: 15),
+            padding: const EdgeInsets.only(top: 15,),
             child: Text(
               "Description",
               style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 15,
                   fontWeight: FontWeight.w500,
                   color: appColors.textColor.withOpacity(0.80)),
             ),
           ),
           SizedBox(
-            height: 25,
+            height: 10,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 15),
-            child: ReadMoreText(
-              'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-              trimLines: 3,
-              preDataTextStyle: TextStyle(fontWeight: FontWeight.w500),
-              style: TextStyle(color: Colors.black),
-              colorClickableText: Color(0xFFCB7642),
-              trimMode: TrimMode.Line,
-              trimCollapsedText: '...Read More',
-              trimExpandedText: ' show less',
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 25, left: 15),
-            child: Text(
-              "Size",
-              style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  color: appColors.textColor.withOpacity(0.80)),
-            ),
+          ReadMoreText(
+            'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+            trimLines: 3,
+            preDataTextStyle: TextStyle(fontWeight: FontWeight.w500),
+            style: TextStyle(color: Colors.grey.shade500),
+            colorClickableText: Color(0xFFCB7642),
+            trimMode: TrimMode.Line,
+            trimCollapsedText: '...Read More',
+            trimExpandedText: ' show less',
           ),
           SizedBox(
-            height: 25,
+            height: 10,
           ),
-          Container(
-              margin: EdgeInsets.symmetric(horizontal: 16),
-              child: SizeChoice()),
-          Padding(
-            padding: const EdgeInsets.only(top: 25, left: 15),
-            child: Text(
-              "Price",
-              style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  color: appColors.textColor.withOpacity(0.80)),
-            ),
+          Text(
+            "Size",
+            style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+                color: appColors.textColor.withOpacity(0.80)),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 15, right: 15),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                RichText(
-                    text: TextSpan(children: [
-                  TextSpan(
-                      text: "\$",
-                      style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xFFCB7642))),
-                  TextSpan(
-                      text: " 4.20",
-                      style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.w500,
-                          color: appColors.textColor.withOpacity(0.80)))
-                ])),
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.only(
-                      left: 100,
-                    ),
+          SizedBox(
+            height: 10,
+          ),
+          SizeChoice(),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Price",
+                    style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                        color: appColors.textColor.withOpacity(0.80)),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Row(
+                    children: [
+                      Text("\$",
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xFFCB7642))
+                      ),
+                      Text(" 4.20",
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: appColors.textColor.withOpacity(0.80))
+                      )
+                    ],
+                  )
+                ],
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(left: 120,bottom: 10),
+                    height: 50,
+                    width: 152,
                     child: CommonButton(
                       buttonColor: Color(0xFF54321E),
                       buttonName: "Buy Now",
@@ -287,38 +292,40 @@ class CoffeeDetailCard extends StatelessWidget {
                           color: Colors.grey.shade200),
                       backCallback: () {
                         /*if(_validateFields(isButtonClicked: true)){
-                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
-                      return OtpVerificationScreen(
-                        isSignInScreen: true,
-                      );
-                    }), (route) => false);
-                  }*/
+                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
+                    return OtpVerificationScreen(
+                      isSignInScreen: true,
+                    );
+                  }), (route) => false);
+                }*/
                       },
                     ),
-                  ),
-                )
-              ],
-            ),
-          )
+                  )
+                ],
+              )
+            ],
+          ),
         ],
       );
     }
 
     return ContainerFirst(
       contextCurrentView: context,
-      isSingleChildScrollViewNeed: true,
+      isSingleChildScrollViewNeed: false,
       isFixedDeviceHeight: true,
       isOverLayAppBar: true,
-      isOverLayStatusBar: true,
       statusBarColor: appColors.appBgColor1.withOpacity(0.15),
-      appBarHeight: 65,
+      appBarHeight: 56,
       appBar: CommonAppBar(),
-      containChild: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          topImageView(),
-          bottomView(),
-        ],
+      containChild: Container(
+        margin: EdgeInsets.only(left: 20, right: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            topImageView(),
+            bottomView(),
+          ],
+        ),
       ),
     );
   }

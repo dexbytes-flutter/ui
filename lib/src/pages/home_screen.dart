@@ -6,7 +6,9 @@ import 'package:base_flutter_app/src/values/app_string.dart';
 import 'package:base_flutter_app/src/widgets/appbar/home_appbar.dart';
 import 'package:base_flutter_app/src/widgets/basic_view_container/container_first.dart';
 import 'package:base_flutter_app/src/widgets/coffee_deatail_card.dart';
+import 'package:base_flutter_app/src/widgets/common_coffee_card_list_widget.dart';
 import 'package:base_flutter_app/src/widgets/common_text_field_with_error.dart';
+import 'package:base_flutter_app/src/widgets/special_for_you_common_card.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -36,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: CommonTextFieldWithError(
         controllerT: searchTextFieldController,
         borderRadius: 12,
-        inputHeight: 50,
+        inputHeight: 45,
         errorMsgHeight: 22,
         autoFocus: false,
         errorLeftRightMargin: 0,
@@ -78,10 +80,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget coffeNameWidget() {
     return Container(
       height: appDimens.heightFullScreen()/15,
+      margin: EdgeInsets.only(left: 8),
       child: ListView.builder(
           shrinkWrap: true,
           padding: EdgeInsets.only(
-            left: 20,
           ),
           scrollDirection: Axis.horizontal,
           itemCount: coffeeNameList.length,
@@ -98,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 10),
+                          padding: const EdgeInsets.only(left: 15,right: 15),
                           child: Text(
                             "${coffeeNameList[index].title}",
                             style: TextStyle(
@@ -122,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 10),
+                          padding: const EdgeInsets.only(left: 15,right: 15),
                           child: Text(
                             "${coffeeNameList[index].title}",
                             style: TextStyle(
@@ -148,170 +150,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // Coffee list card view
   Widget coffeeCardListView() {
-    return Container(
-      height: appDimens.heightFullScreen()/2.22,
-
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-              MainAppBloc.getDashboardContext,
-            SlideRightRoute(widget: CoffeeDetailCard()),
-          );
-        },
-        child: ListView.builder(
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          itemCount: coffeeCardList.length,
-          itemBuilder: (context, int index) {
-            return Container(
-              height: appDimens.heightFullScreen()/15,
-              width: appDimens.widthFullScreen()/2.40,
-              margin: EdgeInsets.only(left: 20,),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(15),
-                /*boxShadow: <BoxShadow>[
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.30),
-                      blurRadius: 5,
-                      spreadRadius: 1,
-                      offset: Offset(0, 2),
-                    ),
-                  ]*/
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(12.0),
-                      child: CachedNetworkImage(
-                        imageUrl: coffeeCardList[index].topIconUrl,
-                        height: 150,
-                        width: 150,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20, top: 12),
-                    child: Text(
-                      coffeeCardList[index].title,
-                      style: TextStyle(
-                          color: appColors.textColor.withOpacity(0.80),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20, top: 10),
-                    child: Text(
-                      coffeeCardList[index].subTitle,
-                      style: TextStyle(
-                          color: Colors.grey.shade500,
-                          fontSize: 12.5,
-                          fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(left: 20, right: 20, top: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        RichText(
-                            text: TextSpan(children: [
-                          TextSpan(
-                            text: "\$",
-                            style: TextStyle(
-                                color: Color(0xFFCB7642),
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15),
-                          ),
-                          TextSpan(
-                              text: coffeeCardList[index].price,
-                              style: TextStyle(
-                                  color: appColors.textColor.withOpacity(0.75),
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 15))
-                        ])),
-                        Container(
-                          decoration: BoxDecoration(
-                              color: Color(0xFFCB7642),
-                              borderRadius: BorderRadius.circular(2)),
-                          child: iconApps.iconImage(
-                              imageUrl: iconApps.plusIcon,
-                              iconSize: Size(20, 20)),
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            );
-          },
-        ),
-      ),
-    );
+    return CommonCoffeeCardList();
   }
 
   // Special for you widget
   Widget specialForYouWiew() {
-    return Container(
-      height: 120,
-      width: 320,
-      margin: EdgeInsets.only(left: 20),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-        /*boxShadow: <BoxShadow>[
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.30),
-                    blurRadius: 5,
-                    spreadRadius: 1,
-                    offset: Offset(0, 2),
-                  ),
-                ]*/
-      ),
-      child: Row(
-        children: [
-          Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12.0),
-                  child: CachedNetworkImage(
-                    // imageUrl: coffeeCardList[index].topIconUrl,
-                    imageUrl:
-                        "https://i.pinimg.com/236x/be/5e/0d/be5e0d63c8543a5d3ce502bf8fc9180c.jpg",
-                    height: 100,
-                    width: 100,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              )
-            ],
-          ),
-          Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: Text(
-                  "5 Coffee Beans You \n Must Try!",
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: appColors.textColor.withOpacity(0.80),
-                      fontWeight: FontWeight.w500),
-                ),
-              )
-            ],
-          )
-        ],
-      ),
-    );
+    return SpecialForYouCard();
   }
 
   @override
@@ -332,26 +176,26 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           // Top title text
           Padding(
-            padding: const EdgeInsets.only(left: 20, top: 30),
+            padding: const EdgeInsets.only(left: 20, top: 15),
             child: Text(
               "Find the best \ncoffee for you",
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
             ),
           ),
           SizedBox(
-            height: 30,
+            height: 20,
           ),
           searchTextfield(),
           SizedBox(
-            height: 25,
+            height: 20,
           ),
           coffeNameWidget(),
           SizedBox(
-            height: 15,
+            height: 10,
           ),
           coffeeCardListView(),
           SizedBox(
-            height: 25,
+            height: 15,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 20),
@@ -364,7 +208,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           SizedBox(
-            height: 25,
+            height: 15,
           ),
           specialForYouWiew(),
           Container(
