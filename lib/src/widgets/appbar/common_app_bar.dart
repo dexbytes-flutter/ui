@@ -4,17 +4,29 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CommonAppBar extends StatelessWidget {
+  final bool isHideLeftIcon;
+  final bool isHideRightICon;
+  final bool isShowTitle;
+  final String title;
 
-  const CommonAppBar({Key? key}) : super(key: key);
+  const CommonAppBar({
+    Key? key,
+    this.isHideLeftIcon = false,
+    this.isHideRightICon = false,
+    this.isShowTitle = false,
+    this.title = ""
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 20, right: 20),
+      color: isShowTitle? Colors.white : appColors.appBgColor1.withOpacity(0.15),
+      margin: isShowTitle ? EdgeInsets.only(left: 0, right: 0) : EdgeInsets.only(left: 20, right: 20),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          isHideLeftIcon ? Container():
           GestureDetector(
             onTap: (){
               Navigator.of(context).pop();
@@ -31,6 +43,12 @@ class CommonAppBar extends StatelessWidget {
               ),
             ),
           ),
+          isShowTitle ? Align(
+            alignment: Alignment.center,
+            child: Text(this.title,
+            style: TextStyle(fontSize: 20),),
+          ) : Container(),
+          isHideRightICon? Container():
           Container(
             padding: EdgeInsets.all(10),
             margin: EdgeInsets.only(right: 10, top: 10),

@@ -15,6 +15,7 @@ class CommonCoffeeCardList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: appColors.appBgColor1.withOpacity(0.15),
       height: appDimens.heightFullScreen()/2.38,
       margin: EdgeInsets.only(left: 20,),
       child: ListView.builder(
@@ -28,7 +29,7 @@ class CommonCoffeeCardList extends StatelessWidget {
                 MainAppBloc.getDashboardContext,
                 SlideRightRoute(
                     widget: CoffeeDetailCard(
-                      imageUrl: coffeeCardList[index].topIconUrl,
+                      imageUrl: coffeeCardList[index].imageUrl,
                       title: coffeeCardList[index].title,
                       subTitle: coffeeCardList[index].subTitle,
                     )
@@ -51,7 +52,7 @@ class CommonCoffeeCardList extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: CachedNetworkImage(
-                        imageUrl: coffeeCardList[index].topIconUrl,
+                        imageUrl: coffeeCardList[index].imageUrl,
                         height: 150,
                         width: 150,
                         fit: BoxFit.cover,

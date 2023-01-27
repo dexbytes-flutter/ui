@@ -22,6 +22,7 @@ import 'package:provider/provider.dart';
 import 'package:base_flutter_app/src/config/routes.dart';
 
 import 'src/pages/dashboard_screen.dart';
+import 'src/pages/order_screen.dart';
 import 'src/pages/sign_in_screen.dart';
 import 'src/widgets/coffee_deatail_card.dart';
 
@@ -299,6 +300,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
     // return const CoffeeDetailCard();
     return const DashboardScreen();
     // return const SplashScreen();
+    // return const OrderScreen();
     // return const SignUpScreen();
     //SignInPage();
     // }

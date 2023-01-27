@@ -9,9 +9,14 @@ class SpecialForYouCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppDimens appDimens = AppDimens();
+    appDimens.appDimensFind(context: context);
+
     return Container(
-      height: 120,
-      width: 320,
+      // height: 120,
+      height: appDimens.heightFullScreen() / 5,
+      width: appDimens.widthFullScreen() / 1.12,
+      // width: 320,
       margin: EdgeInsets.only(left: 20),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -34,7 +39,7 @@ class SpecialForYouCard extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12.0),
                   child: CachedNetworkImage(
-                    // imageUrl: coffeeCardList[index].topIconUrl,
+                    // imageUrl: coffeeCardList[index].imageUrl,
                     imageUrl:
                     "https://i.pinimg.com/236x/be/5e/0d/be5e0d63c8543a5d3ce502bf8fc9180c.jpg",
                     height: 100,

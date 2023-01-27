@@ -30,6 +30,7 @@ class IconApps {
   String milkDropIcon1 = 'assets/images/milk_drop1.svg';
   String backArrowIcon = 'assets/images/back_arrow_icon.svg';
   String favoriteIcon = 'assets/images/favorite_icon.svg';
+  String closeIcon = 'assets/images/close_icon.svg';
 
   iconImage(
       {required String imageUrl,
