@@ -165,7 +165,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return ContainerFirst(
       contextCurrentView: context,
-      appBackgroundColor: appColors.appBgColor1.withOpacity(0.15),
       isSingleChildScrollViewNeed: true,
       isFixedDeviceHeight: true,
       statusBarColor: appColors.appBgColor1.withOpacity(0.15),

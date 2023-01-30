@@ -21,14 +21,7 @@ class SpecialForYouCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
-        /*boxShadow: <BoxShadow>[
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.30),
-                    blurRadius: 5,
-                    spreadRadius: 1,
-                    offset: Offset(0, 2),
-                  ),
-                ]*/
+        border: Border.all(width: 0.8,color: Colors.grey.shade200),
       ),
       child: Row(
         children: [

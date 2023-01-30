@@ -10,7 +10,7 @@ class HomeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: appColors.appBgColor1.withOpacity(0.15),
+      // color: appColors.appBgColor1.withOpacity(0.15),
       margin: EdgeInsets.only(left: 20, right: 20),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,

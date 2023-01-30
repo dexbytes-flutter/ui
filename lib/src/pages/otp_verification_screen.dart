@@ -135,7 +135,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
           buttonHeight: 48,
           buttonBorderRadius: 12,
           isBottomMarginRequired: false,
-          textStyle: TextStyle(fontSize:15, fontWeight: FontWeight.w600,color: Colors.white ),
+          textStyle: TextStyle(fontSize:16, fontWeight: FontWeight.w600,color: Colors.white ),
           backCallback: (){
             if (verificationCodeStr != '' && verificationCodeStr.trim().length == otpLength) {
               setState(() {

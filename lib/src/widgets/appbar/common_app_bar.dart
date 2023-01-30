@@ -1,5 +1,6 @@
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
+import 'package:base_flutter_app/src/widgets/like_button_icon.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -8,19 +9,21 @@ class CommonAppBar extends StatelessWidget {
   final bool isHideRightICon;
   final bool isShowTitle;
   final String title;
+  final bool isFav;
 
   const CommonAppBar({
     Key? key,
     this.isHideLeftIcon = false,
     this.isHideRightICon = false,
     this.isShowTitle = false,
-    this.title = ""
+    this.title = "",
+    this.isFav = false
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: isShowTitle? Colors.white : appColors.appBgColor1.withOpacity(0.15),
+      // color: isShowTitle? appColors.appBgColor1.withOpacity(0.15): Colors.white,
       margin: isShowTitle ? EdgeInsets.only(left: 0, right: 0) : EdgeInsets.only(left: 20, right: 20),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -46,7 +49,7 @@ class CommonAppBar extends StatelessWidget {
           isShowTitle ? Align(
             alignment: Alignment.center,
             child: Text(this.title,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),),
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),),
           ) : Container(),
           isHideRightICon? Container():
           Container(
@@ -56,10 +59,16 @@ class CommonAppBar extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 color: appColors.appBgColor1.withOpacity(0.60)
             ),
-            child: iconApps.iconImage(imageUrl: iconApps.favoriteIcon,
+            child: FavoriteButton(
+              isFavorite: isFav,
+              iconDisabledColor: appColors.black.withOpacity(0.60),
+              valueChanged: (_isFavorite) {
+                print('Is Favorite : $_isFavorite');
+              },
+            ),/*iconApps.iconImage(imageUrl: iconApps.favoriteIcon,
               iconSize: Size(22,22),
               imageColor: appColors.black.withOpacity(0.60)
-            ),
+            ),*/
           ),
         ],
       ),

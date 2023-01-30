@@ -14,11 +14,11 @@ class CommonCoffeeCardList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
-      color: appColors.appBgColor1.withOpacity(0.15),
-      height: appDimens.heightFullScreen()/2.38,
-      margin: EdgeInsets.only(left: 20,),
+      height: appDimens.heightFullScreen()/2.75,
       child: ListView.builder(
+        padding: EdgeInsets.only(left: 15,),
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemCount: coffeeCardList.length,
@@ -37,30 +37,30 @@ class CommonCoffeeCardList extends StatelessWidget {
               );
             },
             child: Container(
-              height: appDimens.heightFullScreen()/15,
-              width: appDimens.widthFullScreen()/2.40,
-              margin: EdgeInsets.only(right: 20),
+              width: 130,
+              margin: EdgeInsets.only(left:8,right: 8),
               decoration: BoxDecoration(
                 color: Colors.white,
+                border: Border.all(width: 0.8,color: Colors.grey.shade200),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(8),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: CachedNetworkImage(
                         imageUrl: coffeeCardList[index].imageUrl,
-                        height: 150,
-                        width: 150,
+                        height: 115,
+                        width: 130,
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20, top: 5),
+                    padding: const EdgeInsets.only(left: 12, top: 5),
                     child: Text(
                       coffeeCardList[index].title,
                       style: TextStyle(
@@ -70,7 +70,7 @@ class CommonCoffeeCardList extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20, top: 5),
+                    padding: const EdgeInsets.only(left: 12, top: 5),
                     child: Text(
                       coffeeCardList[index].subTitle,
                       style: TextStyle(
@@ -79,38 +79,47 @@ class CommonCoffeeCardList extends StatelessWidget {
                           fontWeight: FontWeight.w400),
                     ),
                   ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.only(left: 20, right: 20, top: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        RichText(
-                            text: TextSpan(children: [
-                              TextSpan(
-                                text: "\$",
-                                style: TextStyle(
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 12,right: 12,top: 18),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              RichText(
+                                  text: TextSpan(children: [
+                                    TextSpan(
+                                      text: "\$",
+                                      style: TextStyle(
+                                          color: Color(0xFFCB7642),
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 15),
+                                    ),
+                                    TextSpan(
+                                        text: coffeeCardList[index].price,
+                                        style: TextStyle(
+                                            color: appColors.textColor.withOpacity(0.75),
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 15))
+                                  ])),
+                            ],
+                          ) ,
+                          Row(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
                                     color: Color(0xFFCB7642),
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 15),
-                              ),
-                              TextSpan(
-                                  text: coffeeCardList[index].price,
-                                  style: TextStyle(
-                                      color: appColors.textColor.withOpacity(0.75),
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 15))
-                            ])),
-                        Container(
-                          decoration: BoxDecoration(
-                              color: Color(0xFFCB7642),
-                              borderRadius: BorderRadius.circular(2)),
-                          child: iconApps.iconImage(
-                              imageUrl: iconApps.plusIcon,
-                              iconSize: Size(20, 20)),
-                        )
-                      ],
+                                    borderRadius: BorderRadius.circular(2)),
+                                child: iconApps.iconImage(
+                                    imageUrl: iconApps.plusIcon,
+                                    iconSize: Size(20, 20)),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   )
                 ],

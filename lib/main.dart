@@ -297,8 +297,9 @@ class _MyAppState extends State<MyAppFlutterMain> {
     //If profile set done by user
     // if (widget.isOneTimeProfileSetUpDone) {
     // return const SignInScreen();
-    return const CoffeeDetailCard();
-    // return const DashboardScreen();
+    // return const CoffeeDetailCard();
+    // return const DemoCard();
+    return const DashboardScreen();
     // return const SplashScreen();
     // return const OrderScreen();
     // return const SignUpScreen();

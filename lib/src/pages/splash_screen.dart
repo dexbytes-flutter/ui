@@ -87,7 +87,7 @@ class _SplashScreenState extends State<SplashScreen>
                 Center(
                   child: AnimatedOpacity(
                     opacity: animateCafeText ? 1 : 0,
-                    duration: const Duration(seconds: 1),
+                    duration: const Duration(milliseconds: 500),
                     child: Text(
                       'C A F É',
                       style: TextStyle(fontSize: 50.0, color: appColors.appThemeColor1),

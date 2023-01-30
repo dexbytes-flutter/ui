@@ -35,12 +35,12 @@ class _OrderScreenState extends State<OrderScreen> {
               children: [
                 Text("Delivery Charges",
                 style: TextStyle(
-                  color: Colors.grey.shade500,fontSize: 13,fontWeight: FontWeight.w500
+                  color: Colors.grey.shade500,fontSize: 12.5,fontWeight: FontWeight.w500
                 ),),
                 SizedBox(width: 30,),
                 Text("\$10.00",
                 style: TextStyle(
-                  color: Colors.grey.shade500,fontSize: 13,fontWeight: FontWeight.w500
+                  color: Colors.grey.shade500,fontSize: 12.5,fontWeight: FontWeight.w500
                 ),)
               ],
             ),
@@ -50,13 +50,13 @@ class _OrderScreenState extends State<OrderScreen> {
               children: [
               Text("Subtotal",
               style: TextStyle(
-                color: Colors.grey.shade500,fontSize: 13,fontWeight: FontWeight.w500
+                color: Colors.grey.shade500,fontSize: 12.5,fontWeight: FontWeight.w500
               ),
               ),
                 SizedBox(width: 30,),
                 Text("\$26.35",
                 style: TextStyle(
-                  color: Colors.grey.shade500,fontSize: 13,fontWeight: FontWeight.w500
+                  color: Colors.grey.shade500,fontSize: 12.5,fontWeight: FontWeight.w500
                 ),)
               ],
             ),
@@ -66,13 +66,13 @@ class _OrderScreenState extends State<OrderScreen> {
               children: [
               Text("Total",
               style: TextStyle(
-                color: Colors.black, fontSize: 14,fontWeight: FontWeight.w500
+                color: Colors.black, fontSize: 13,fontWeight: FontWeight.w500
               ),
               ),
                 SizedBox(width: 30,),
                 Text("\$36.35",
                     style: TextStyle(
-                        color: Colors.black, fontSize: 14,fontWeight: FontWeight.w500
+                        color: Colors.black, fontSize: 13,fontWeight: FontWeight.w500
                     )
                 )
               ],
@@ -84,8 +84,6 @@ class _OrderScreenState extends State<OrderScreen> {
 
     return ContainerFirst(
         contextCurrentView: context,
-        appBackgroundColor: Colors.white,
-        // appBackgroundColor: appColors.appBgColor1.withOpacity(0.15),
         isSingleChildScrollViewNeed: true,
         isFixedDeviceHeight: true,
         statusBarColor: appColors.appBgColor1.withOpacity(0.15),
@@ -97,12 +95,9 @@ class _OrderScreenState extends State<OrderScreen> {
           title: "Bag",
         ),
         containChild: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            // orderCardListView(),
             OrderCardList(),
-            SizedBox(
-              height: 15,
-            ),
             SizedBox(height: 25,),
             chargesCard(),
             SizedBox(height: 25,),
@@ -116,7 +111,7 @@ class _OrderScreenState extends State<OrderScreen> {
                   buttonHeight: 50,
                   buttonBorderRadius: 12,
                   isBottomMarginRequired: false,
-                  textStyle: TextStyle(fontSize:14, fontWeight: FontWeight.w700,color: Colors.grey.shade200 ),
+                  textStyle: TextStyle(fontSize:16, fontWeight: FontWeight.w700,color: Colors.grey.shade200 ),
                   backCallback: (){
                     /*if(_validateFields(isButtonClicked: true)){
                 Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
@@ -130,9 +125,6 @@ class _OrderScreenState extends State<OrderScreen> {
               ),
             ),
             SizedBox(height: 40,),
-            Container(),
-            Container(),
-            Container()
           ],
         ),
     );

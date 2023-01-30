@@ -6,6 +6,7 @@ import 'package:base_flutter_app/src/widgets/coffee_size_widget.dart';
 import 'package:base_flutter_app/src/widgets/common_button.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/shims/dart_ui_real.dart';
 import 'package:readmore/readmore.dart';
 
 import 'appbar/common_app_bar.dart';
@@ -42,162 +43,171 @@ class CoffeeDetailCard extends StatelessWidget {
           ),
           Positioned(
             bottom: 0,
-            child: Container(
-              height: appDimens.heightFullScreen() / 5.5,
-              width: appDimens.widthFullScreen()/1.12,
-              decoration: BoxDecoration(
-                color: Colors.white12.withOpacity(0.40),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
-                ),
+            right: 0,
+            left: 0,
+            child: ClipRRect(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                child: Container(
+                  height: appDimens.heightFullScreen() / 5.5,
+                  width: appDimens.widthFullScreen()/1,
+                  decoration: BoxDecoration(
+                      color: Colors.brown.shade200.withOpacity(0.3),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: Text(
-                          title,
-                          style: TextStyle(
-                              color: appColors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20, top: 5),
-                        child: Text(
-                          subTitle,
-                          style: TextStyle(
-                              color: Colors.black.withOpacity(0.40),
-                              // color: Colors.grey.shade500,
-                              fontSize: 12.5,
-                              fontWeight: FontWeight.w500),
-                        ),
-                      ),
-                      Row(
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                            padding: EdgeInsets.only(left: 20, top: 10),
-                            child: iconApps.iconImage(
-                              imageUrl: iconApps.startIcon,
-                              iconSize: Size(20, 20),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20),
+                            child: Text(
+                              title,
+                              style: TextStyle(
+                                  color: appColors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 12, left: 15),
-                            child: RichText(
-                              text: TextSpan(children: [
-                                TextSpan(
-                                    text: "4.5",
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w500)),
-                                WidgetSpan(
-                                    child: SizedBox(
-                                  width: 5,
-                                )),
-                                TextSpan(
-                                    text: "(6.986)",
-                                    style: TextStyle(
-                                        color: Colors.black.withOpacity(0.40),
-                                        // color: Colors.grey.shade500,
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 12.5))
-                              ]),
+                            padding: const EdgeInsets.only(left: 20, top: 5),
+                            child: Text(
+                              subTitle,
+                              style: TextStyle(
+                                  color: Colors.black.withOpacity(0.40),
+                                  // color: Colors.grey.shade500,
+                                  fontSize: 12.5,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.only(left: 20, top: 10),
+                                child: iconApps.iconImage(
+                                  imageUrl: iconApps.startIcon,
+                                  iconSize: Size(20, 20),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 12, left: 15),
+                                child: RichText(
+                                  text: TextSpan(children: [
+                                    TextSpan(
+                                        text: "4.5",
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w500)),
+                                    WidgetSpan(
+                                        child: SizedBox(
+                                          width: 5,
+                                        )),
+                                    TextSpan(
+                                        text: "(6.986)",
+                                        style: TextStyle(
+                                            color: Colors.black.withOpacity(0.40),
+                                            // color: Colors.grey.shade500,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 12.5))
+                                  ]),
+                                ),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.only(right: 20),
+                            margin: EdgeInsets.only(right: 10),
+                            child: Row(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      color: appColors.appThemeColor1),
+                                  child: Column(
+                                    children: [
+                                      iconApps.iconImage(
+                                          imageUrl: iconApps.coffeeBeansIcon,
+                                          iconSize: Size(20, 20),
+                                          imageColor: Color(0xFFCB7642)),
+                                      SizedBox(
+                                        height: 4,
+                                      ),
+                                      Text(
+                                        "Coffee",
+                                        style:
+                                        TextStyle(color: Colors.grey.shade500,
+                                          fontSize: 11,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Container(
+                                  padding: EdgeInsets.only(
+                                      left: 14, right: 14, top: 8, bottom: 8),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      color: appColors.appThemeColor1),
+                                  child: Column(
+                                    children: [
+                                      iconApps.iconImage(
+                                          imageUrl: iconApps.milkDropIcon,
+                                          iconSize: Size(20, 20),
+                                          imageColor: Color(0xFFCB7642)),
+                                      SizedBox(
+                                        height: 4,
+                                      ),
+                                      Text(
+                                        "Milk",
+                                        style:
+                                        TextStyle(color: Colors.grey.shade500,
+                                            fontSize: 11
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(10).copyWith(left: 15,right: 15),
+                            margin: EdgeInsets.only(right: 25),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: appColors.appThemeColor1),
+                            child: Text(
+                              "Medium Roasted",
+                              style: TextStyle(color: Colors.grey.shade500,
+                                  fontSize: 11
+                              ),
                             ),
                           )
                         ],
                       )
                     ],
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.only(right: 20),
-                        margin: EdgeInsets.only(right: 10),
-                        child: Row(
-                          children: [
-                            Container(
-                              padding: EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: appColors.appThemeColor1),
-                              child: Column(
-                                children: [
-                                  iconApps.iconImage(
-                                      imageUrl: iconApps.coffeeBeansIcon,
-                                      iconSize: Size(20, 20),
-                                      imageColor: Color(0xFFCB7642)),
-                                  SizedBox(
-                                    height: 4,
-                                  ),
-                                  Text(
-                                    "Coffee",
-                                    style:
-                                        TextStyle(color: Colors.grey.shade500,
-                                        fontSize: 11,
-                                        ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Container(
-                              padding: EdgeInsets.only(
-                                  left: 14, right: 14, top: 8, bottom: 8),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: appColors.appThemeColor1),
-                              child: Column(
-                                children: [
-                                  iconApps.iconImage(
-                                      imageUrl: iconApps.milkDropIcon,
-                                      iconSize: Size(20, 20),
-                                      imageColor: Color(0xFFCB7642)),
-                                  SizedBox(
-                                    height: 4,
-                                  ),
-                                  Text(
-                                    "Milk",
-                                    style:
-                                        TextStyle(color: Colors.grey.shade500,
-                                        fontSize: 11
-                                        ),
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.all(10).copyWith(left: 15,right: 15),
-                        margin: EdgeInsets.only(right: 25),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            color: appColors.appThemeColor1),
-                        child: Text(
-                          "Medium Roasted",
-                          style: TextStyle(color: Colors.grey.shade500,
-                          fontSize: 11
-                          ),
-                        ),
-                      )
-                    ],
-                  )
-                ],
+                ),
               ),
-            ),
+            )
           ),
         ],
       );
@@ -295,7 +305,7 @@ class CoffeeDetailCard extends StatelessWidget {
                       buttonBorderRadius: 12,
                       isBottomMarginRequired: false,
                       textStyle: TextStyle(
-                          fontSize: 14,
+                          fontSize: 16,
                           fontWeight: FontWeight.w700,
                           color: Colors.grey.shade200),
                       backCallback: () {

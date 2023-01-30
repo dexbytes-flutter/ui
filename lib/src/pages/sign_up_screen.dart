@@ -352,7 +352,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   buttonHeight: 50,
                   buttonBorderRadius: 12,
                   isBottomMarginRequired: false,
-                  textStyle: TextStyle(fontSize:14, fontWeight: FontWeight.w700,color: Colors.grey.shade200 ),
+                  textStyle: TextStyle(fontSize:16, fontWeight: FontWeight.w700,color: Colors.grey.shade200 ),
                   backCallback: (){
                     if(_validateFields(isButtonClicked: true)){
                       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
