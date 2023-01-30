@@ -1,6 +1,9 @@
 import 'dart:convert';
 import 'package:base_flutter_app/src/all_file_import/app_screens_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
+import 'package:base_flutter_app/src/bloc/bottomNav/bottom_nav_cubit.dart';
+import 'package:base_flutter_app/src/bloc/loginBloc/login_bloc.dart';
+import 'package:base_flutter_app/src/bloc/product/product_cubit.dart';
 import 'package:base_flutter_app/src/pages/sign_up_screen.dart';
 import 'package:base_flutter_app/src/widgets/slider_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -226,6 +229,9 @@ class _MyAppState extends State<MyAppFlutterMain> {
           BlocProvider<SignInBloc>(
             create: (context) => SignInBloc(),
           ),
+          BlocProvider<ProductCubit>(create: (BuildContext context) => ProductCubit(),),
+          BlocProvider<LoginBloc>(create: (BuildContext context) => LoginBloc(),),
+          BlocProvider<BottomNavCubit>(create: (BuildContext context) => BottomNavCubit(),)
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: !ConstantC.isProduction,
