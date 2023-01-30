@@ -44,7 +44,7 @@ class CoffeeDetailCard extends StatelessWidget {
             bottom: 0,
             child: Container(
               height: appDimens.heightFullScreen() / 5.5,
-              width: appDimens.widthFullScreen()/1.1,
+              width: appDimens.widthFullScreen()/1.12,
               decoration: BoxDecoration(
                 color: Colors.white12.withOpacity(0.40),
                 borderRadius: BorderRadius.only(

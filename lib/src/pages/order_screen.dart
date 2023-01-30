@@ -98,7 +98,8 @@ class _OrderScreenState extends State<OrderScreen> {
         ),
         containChild: Column(
           children: [
-            orderCardListView(),
+            // orderCardListView(),
+            OrderCardList(),
             SizedBox(
               height: 15,
             ),
