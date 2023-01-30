@@ -20,22 +20,22 @@ final List<OrderCardModel> orderCardList = [
   OrderCardModel(
     title: "Cappuccino",
     subTitle: "With Oat Milk",
-    imageUrl: "https://i.pinimg.com/564x/db/d4/54/dbd4547ca83892ecc86ed87ed916b109.jpg",
+    imageUrl: "https://t1.gstatic.com/images?q=tbn:ANd9GcTmzXd8YKl2Gb-L3tN1RyekLuD0lSh_T-bsd4LvjYPJPAtDsOUG",
     price: "4.20",
   ),
   OrderCardModel(
     title: "Espresso",
     subTitle: "With Oat Milk",
-    imageUrl: "https://i.pinimg.com/236x/e0/0c/99/e00c996f2c5d1d77e7873eac409bd02d.jpg",
+    imageUrl: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQcLhKFqsOsGybz1Z3dBqVhtcdmjIkBhwmcyGmjjIr6_5-wJVM1",
     price: "4.20",
   ),
   OrderCardModel(
     title: "Latte",
     subTitle: "vanilla flavor",
-    imageUrl: "https://i.pinimg.com/236x/e3/83/f9/e383f9aba12fcabbffd116323690fb57.jpg",
-    price: " 4.20",
+    imageUrl: "https://i.pinimg.com/564x/1e/ab/79/1eab7906fe1621a5453bf896b17dc685.jpg",
+    price: "4.20",
   ),
-  OrderCardModel(
+  /*OrderCardModel(
     title: "Cortado",
     subTitle: "With Oat Milk",
     imageUrl: "https://i.pinimg.com/236x/64/a9/07/64a9070d8aab5c8264e019b0518c5f1b.jpg",
@@ -58,5 +58,5 @@ final List<OrderCardModel> orderCardList = [
     subTitle: "With Oat Milk",
     imageUrl: "https://i.pinimg.com/236x/96/51/51/965151beb59a8cbcac4e4c0fc2ff18ef.jpg",
     price: "4.20",
-  ),
+  ),*/
 ];

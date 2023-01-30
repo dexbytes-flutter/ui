@@ -35,12 +35,12 @@ class _OrderScreenState extends State<OrderScreen> {
               children: [
                 Text("Delivery Charges",
                 style: TextStyle(
-                  color: Colors.grey.shade500,fontSize: 13,fontWeight: FontWeight.w400
+                  color: Colors.grey.shade500,fontSize: 13,fontWeight: FontWeight.w500
                 ),),
                 SizedBox(width: 30,),
                 Text("\$10.00",
                 style: TextStyle(
-                  color: Colors.grey.shade500,fontSize: 13,fontWeight: FontWeight.w400
+                  color: Colors.grey.shade500,fontSize: 13,fontWeight: FontWeight.w500
                 ),)
               ],
             ),
@@ -50,13 +50,13 @@ class _OrderScreenState extends State<OrderScreen> {
               children: [
               Text("Subtotal",
               style: TextStyle(
-                color: Colors.grey.shade500,fontSize: 13,fontWeight: FontWeight.w400
+                color: Colors.grey.shade500,fontSize: 13,fontWeight: FontWeight.w500
               ),
               ),
                 SizedBox(width: 30,),
                 Text("\$26.35",
                 style: TextStyle(
-                  color: Colors.grey.shade500,fontSize: 13,fontWeight: FontWeight.w400
+                  color: Colors.grey.shade500,fontSize: 13,fontWeight: FontWeight.w500
                 ),)
               ],
             ),
@@ -66,13 +66,13 @@ class _OrderScreenState extends State<OrderScreen> {
               children: [
               Text("Total",
               style: TextStyle(
-                color: Colors.black, fontSize: 14,fontWeight: FontWeight.w400
+                color: Colors.black, fontSize: 14,fontWeight: FontWeight.w500
               ),
               ),
                 SizedBox(width: 30,),
                 Text("\$36.35",
                     style: TextStyle(
-                        color: Colors.black, fontSize: 14,fontWeight: FontWeight.w400
+                        color: Colors.black, fontSize: 14,fontWeight: FontWeight.w500
                     )
                 )
               ],
@@ -102,12 +102,13 @@ class _OrderScreenState extends State<OrderScreen> {
             SizedBox(
               height: 15,
             ),
+            SizedBox(height: 25,),
             chargesCard(),
-            SizedBox(height: 20,),
+            SizedBox(height: 25,),
             Align(
               alignment: Alignment.bottomCenter,
               child: Padding(
-                padding: const EdgeInsets.only(left: 20,right: 20,bottom: 20),
+                padding: const EdgeInsets.only(left: 20,right: 20,bottom: 40),
                 child: CommonButton(
                   buttonColor: appColors.appButtonColor,
                   buttonName: "Checkout",
@@ -126,7 +127,11 @@ class _OrderScreenState extends State<OrderScreen> {
                   },
                 ),
               ),
-            )
+            ),
+            SizedBox(height: 40,),
+            Container(),
+            Container(),
+            Container()
           ],
         ),
     );

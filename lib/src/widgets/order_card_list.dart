@@ -10,12 +10,15 @@ class OrderCardList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppDimens appDimens = AppDimens();
+    appDimens.appDimensFind(context: context);
+
     return  ListView.builder(
       itemCount: orderCardList.length,
       shrinkWrap: true,
       itemBuilder: (context,index){
         return Container(
-          margin: EdgeInsets.only(top: 20,left: 20, right: 20),
+          margin: EdgeInsets.only(top: 10,left: 20, right: 20),
           child: Row(
             children: [
               Column(
@@ -56,6 +59,7 @@ class OrderCardList extends StatelessWidget {
                         ),
                       ),
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(top: 40,left: 10),
@@ -67,11 +71,27 @@ class OrderCardList extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 40,left: 10),
+                            padding: const EdgeInsets.only(top: 40,left: 5),
                             child: Text(orderCardList[index].price,
                               style: TextStyle(
                                 fontSize: 14,fontWeight: FontWeight.w500,
                                 color: appColors.appThemeColor1,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 55),
+                            child: Container(
+                              padding: EdgeInsets.all(10),
+                              margin: EdgeInsets.only(left: 79),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Color(0xFFCB7642)
+                              ),
+                              child: iconApps.iconImage(
+                                  imageUrl: iconApps.closeIcon,
+                                  iconSize: Size(15, 15),
+                                  imageColor: Colors.white
                               ),
                             ),
                           )
@@ -81,25 +101,6 @@ class OrderCardList extends StatelessWidget {
                   ),
                 ],
               ),
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left:77,top: 60),
-                    child: Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Color(0xFFCB7642)
-                      ),
-                      child: iconApps.iconImage(
-                          imageUrl: iconApps.closeIcon,
-                          iconSize: Size(15, 15),
-                          imageColor: Colors.white
-                      ),
-                    ),
-                  )
-                ],
-              )
             ],
           ),
         );
