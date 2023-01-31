@@ -20,59 +20,58 @@ class _OrderScreenState extends State<OrderScreen> {
     AppDimens appDimens = AppDimens();
     appDimens.appDimensFind(context: context);
 
-    Widget orderCardListView(){
-      return OrderCardList();
-    }
-
     Widget chargesCard(){
       return Padding(
-        padding: const EdgeInsets.only(right: 20),
+        padding: const EdgeInsets.only(left: 20, right: 20),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text("Delivery Charges",
                 style: TextStyle(
-                  color: Colors.grey.shade500,fontSize: 12.5,fontWeight: FontWeight.w500
+                  color: appColors.textNormalColor1,fontSize: 12.5,fontWeight: FontWeight.w500
                 ),),
                 SizedBox(width: 30,),
                 Text("\$10.00",
                 style: TextStyle(
-                  color: Colors.grey.shade500,fontSize: 12.5,fontWeight: FontWeight.w500
+                  color: appColors.textNormalColor1,fontSize: 12.5,fontWeight: FontWeight.w500
                 ),)
               ],
             ),
             SizedBox(height: 15,),
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
               Text("Subtotal",
               style: TextStyle(
-                color: Colors.grey.shade500,fontSize: 12.5,fontWeight: FontWeight.w500
+                color: appColors.textNormalColor1,fontSize: 12.5,fontWeight: FontWeight.w500
               ),
               ),
                 SizedBox(width: 30,),
                 Text("\$26.35",
                 style: TextStyle(
-                  color: Colors.grey.shade500,fontSize: 12.5,fontWeight: FontWeight.w500
+                  color: appColors.textNormalColor1,fontSize: 12.5,fontWeight: FontWeight.w500
                 ),)
               ],
             ),
             SizedBox(height: 15,),
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
               Text("Total",
               style: TextStyle(
-                color: Colors.black, fontSize: 13,fontWeight: FontWeight.w500
+                color: appColors.textNormalColor1, fontSize: 12.5,fontWeight: FontWeight.w500
               ),
               ),
                 SizedBox(width: 30,),
                 Text("\$36.35",
                     style: TextStyle(
-                        color: Colors.black, fontSize: 13,fontWeight: FontWeight.w500
+                        color: Colors.black, fontSize: 12.5,fontWeight: FontWeight.w500
                     )
                 )
               ],
@@ -98,7 +97,6 @@ class _OrderScreenState extends State<OrderScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             OrderCardList(),
-            SizedBox(height: 25,),
             chargesCard(),
             SizedBox(height: 25,),
             Align(

@@ -27,7 +27,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int selectedCoffeeNameIndex = 0;
   TextEditingController searchTextFieldController = TextEditingController();
-  // Search field
+
+  // Search text field
   Widget searchTextfield() {
     return Container(
       padding: EdgeInsets.only(
@@ -148,15 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // Coffee list card view
-  Widget coffeeCardListView() {
-    return CommonCoffeeCardList();
-  }
 
-  // Special for you widget
-  Widget specialForYouWiew() {
-    return SpecialForYouCard();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -181,21 +174,13 @@ class _HomeScreenState extends State<HomeScreen> {
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
             ),
           ),
-          SizedBox(
-            height: 20,
-          ),
+          SizedBox(height: 20,),
           searchTextfield(),
-          SizedBox(
-            height: 20,
-          ),
+          SizedBox(height: 20,),
           coffeNameWidget(),
-          SizedBox(
-            height: 10,
-          ),
-          coffeeCardListView(),
-          SizedBox(
-            height: 15,
-          ),
+          SizedBox(height: 10,),
+          CommonCoffeeCardList(),// Coffee list card view
+          SizedBox(height: 15,),
           Padding(
             padding: const EdgeInsets.only(left: 20),
             child: Text(
@@ -206,16 +191,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   color: appColors.textColor.withOpacity(0.80)),
             ),
           ),
-          SizedBox(
-            height: 15,
-          ),
-          specialForYouWiew(),
-          Container(
-            height: 50,
-          ),
-          Container(
-            height: 50,
-          ),
+          SizedBox(height: 15,),
+          SpecialForYouCard(),// Special for you widget
+          SizedBox(height: 15,),
+          SizedBox(height: 15,),
+          SizedBox(height: 15,),
+          SizedBox(height: 15,),
+          SizedBox(height: 15,),
+          SizedBox(height: 15,),
         ],
       ),
     );

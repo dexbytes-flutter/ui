@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:base_flutter_app/src/all_file_import/app_screens_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/pages/sign_up_screen.dart';
+import 'package:base_flutter_app/src/widgets/counter_button_widget.dart';
 import 'package:base_flutter_app/src/widgets/slider_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -298,7 +299,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
     // if (widget.isOneTimeProfileSetUpDone) {
     // return const SignInScreen();
     // return const CoffeeDetailCard();
-    // return const DemoCard();
+    // return const CounterButton();
     return const DashboardScreen();
     // return const SplashScreen();
     // return const OrderScreen();

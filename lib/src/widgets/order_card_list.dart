@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../model/order_card_model.dart';
+import 'counter_button_widget.dart';
 
 class OrderCardList extends StatelessWidget {
   const OrderCardList({Key? key}) : super(key: key);
@@ -58,7 +59,7 @@ class OrderCardList extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(height: 10,),
+                          SizedBox(height: 5,),
                           Padding(
                             padding: const EdgeInsets.only(left: 10),
                             child: Text(orderCardList[index].subTitle,
@@ -70,7 +71,7 @@ class OrderCardList extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(top: 40,left: 10),
+                                padding: const EdgeInsets.only(top: 8,left: 10),
                                 child: Text("\$",
                                   style: TextStyle(
                                     fontSize: 14,fontWeight: FontWeight.w500,
@@ -79,7 +80,7 @@ class OrderCardList extends StatelessWidget {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(top: 40,left: 5),
+                                padding: const EdgeInsets.only(top: 8,left: 5),
                                 child: Text(orderCardList[index].price,
                                   style: TextStyle(
                                     fontSize: 14,fontWeight: FontWeight.w500,
@@ -88,6 +89,10 @@ class OrderCardList extends StatelessWidget {
                                 ),
                               ),
                             ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10,top: 15),
+                            child: CounterButton(),
                           )
                         ],
                       ),

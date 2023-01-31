@@ -35,9 +35,9 @@ class CoffeeDetailCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(20.0),
             child: CachedNetworkImage(
               imageUrl: imageUrl,
-                  // "https://thumbs.dreamstime.com/b/coffee-latte-cup-wooden-table-263161043.jpg",
-              height: 332,
-              width: 400,
+              height: appDimens.heightFullScreen()/1.6,
+              // width: 400,
+              width: appDimens.widthFullScreen()/1,
               fit: BoxFit.cover,
             ),
           ),
@@ -58,7 +58,8 @@ class CoffeeDetailCard extends StatelessWidget {
                   height: appDimens.heightFullScreen() / 5.5,
                   width: appDimens.widthFullScreen()/1,
                   decoration: BoxDecoration(
-                      color: Colors.brown.shade200.withOpacity(0.3),
+                      color: Colors.white.withOpacity(0.1),
+                      // color: Color(0xFFCB7642).withOpacity(0.3),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -157,9 +158,7 @@ class CoffeeDetailCard extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                SizedBox(
-                                  width: 10,
-                                ),
+                                SizedBox(width: 10,),
                                 Container(
                                   padding: EdgeInsets.only(
                                       left: 14, right: 14, top: 8, bottom: 8),
@@ -172,9 +171,7 @@ class CoffeeDetailCard extends StatelessWidget {
                                           imageUrl: iconApps.milkDropIcon,
                                           iconSize: Size(20, 20),
                                           imageColor: Color(0xFFCB7642)),
-                                      SizedBox(
-                                        height: 4,
-                                      ),
+                                      SizedBox(height: 4,),
                                       Text(
                                         "Milk",
                                         style:
@@ -277,13 +274,13 @@ class CoffeeDetailCard extends StatelessWidget {
                     children: [
                       Text("\$",
                           style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 17,
                               fontWeight: FontWeight.w600,
                               color: Color(0xFFCB7642))
                       ),
                       Text(" 4.20",
                           style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 17,
                               fontWeight: FontWeight.w600,
                               color: appColors.textColor.withOpacity(0.80))
                       )
@@ -295,7 +292,7 @@ class CoffeeDetailCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(left: 120,bottom: 10),
+                    margin: EdgeInsets.only(left: 119,bottom: 10),
                     height: 50,
                     width: 152,
                     child: CommonButton(
@@ -329,7 +326,7 @@ class CoffeeDetailCard extends StatelessWidget {
 
     return ContainerFirst(
       contextCurrentView: context,
-      isSingleChildScrollViewNeed: false,
+      isSingleChildScrollViewNeed: true,
       isFixedDeviceHeight: true,
       isOverLayAppBar: true,
       statusBarColor: appColors.appBgColor1.withOpacity(0.15),
