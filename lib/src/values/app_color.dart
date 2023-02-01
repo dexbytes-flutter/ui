@@ -85,6 +85,7 @@ class AppColors {
   Color appTopBgColor = const Color(0xFFFFFFFF);
   Color appCenterBgColor = const Color(0xFFFFFFFF);
   Color appBottomBgColor = const Color(0xFFFFFFFF);
+  Color containerBgColor = const Color(0xFF0D5981);
 
   //*  Bottom bar color ***********************************
   Color appStatusBarColor = const Color(0xFF000000);

@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:base_flutter_app/src/all_file_import/app_screens_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
+import 'package:base_flutter_app/src/pages/favorites_screen.dart';
+import 'package:base_flutter_app/src/pages/menu_screen.dart';
 import 'package:base_flutter_app/src/pages/sign_up_screen.dart';
 import 'package:base_flutter_app/src/widgets/counter_button_widget.dart';
 import 'package:base_flutter_app/src/widgets/slider_screen.dart';
@@ -301,6 +303,8 @@ class _MyAppState extends State<MyAppFlutterMain> {
     // return const CoffeeDetailCard();
     // return const CounterButton();
     return const DashboardScreen();
+    // return const FavoritesScreen();
+    // return const MenuScreen();
     // return const SplashScreen();
     // return const OrderScreen();
     // return const SignUpScreen();

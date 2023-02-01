@@ -6,6 +6,7 @@ import 'package:base_flutter_app/src/values/app_string.dart';
 import 'package:base_flutter_app/src/widgets/appbar/home_appbar.dart';
 import 'package:base_flutter_app/src/widgets/basic_view_container/container_first.dart';
 import 'package:base_flutter_app/src/widgets/coffee_deatail_card.dart';
+import 'package:base_flutter_app/src/widgets/coffee_name_horizontal_list.dart';
 import 'package:base_flutter_app/src/widgets/common_coffee_card_list_widget.dart';
 import 'package:base_flutter_app/src/widgets/common_text_field_with_error.dart';
 import 'package:base_flutter_app/src/widgets/special_for_you_common_card.dart';
@@ -82,70 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Container(
       height: appDimens.heightFullScreen()/15,
       margin: EdgeInsets.only(left: 8),
-      child: ListView.builder(
-          shrinkWrap: true,
-          padding: EdgeInsets.only(
-          ),
-          scrollDirection: Axis.horizontal,
-          itemCount: coffeeNameList.length,
-          itemBuilder: (BuildContext context, int index) {
-            return GestureDetector(
-              onTap: () {
-                setState(() {
-                  this.selectedCoffeeNameIndex = index;
-                });
-              },
-              child: selectedCoffeeNameIndex == index
-                  ? Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 15,right: 15),
-                          child: Text(
-                            "${coffeeNameList[index].title}",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                                color: Color(0xFFCB7642)),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.all(5),
-                          height: 5,
-                          width: 5,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              color: Color(0xFFCB7642)),
-                        ),
-                      ],
-                    )
-                  : Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 15,right: 15),
-                          child: Text(
-                            "${coffeeNameList[index].title}",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.grey.shade400),
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.all(5),
-                          height: 5,
-                          width: 5,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              color: Colors.transparent),
-                        ),
-                      ],
-                    ),
-            );
-          }),
+      child: CoffeeNameHorizontalList()
     );
   }
 
@@ -160,8 +98,9 @@ class _HomeScreenState extends State<HomeScreen> {
       contextCurrentView: context,
       isSingleChildScrollViewNeed: true,
       isFixedDeviceHeight: true,
-      statusBarColor: appColors.appBgColor1.withOpacity(0.15),
+      statusBarColor: Colors.white,
       appBarHeight: 56,
+      appBackgroundColor: Colors.white,
       appBar: HomeAppBar(),
       containChild: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

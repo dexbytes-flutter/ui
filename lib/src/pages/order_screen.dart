@@ -85,7 +85,6 @@ class _OrderScreenState extends State<OrderScreen> {
         contextCurrentView: context,
         isSingleChildScrollViewNeed: true,
         isFixedDeviceHeight: true,
-        statusBarColor: appColors.appBgColor1.withOpacity(0.15),
         appBarHeight: 56,
         appBar: CommonAppBar(
           isHideLeftIcon: true,
