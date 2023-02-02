@@ -25,7 +25,7 @@ final List<MenuDataModel> categoryDataList = [
               title: "Espresso",
               subTitle: "A Couple Cook",
               imageUrl: "https://cafe1820.com/wp-content/uploads/2020/03/espresso-P3VSFDV-scaled.jpg",
-              description: "espresso is a concentrated form of coffee brewed with high pressure, hot water and finely ground coffee beans. Espresso is thicker than regular coffee and has a layer of “crema” on top, which results from air bubbles mixing with the coffee’s oils.",
+              description: "Espresso is a concentrated form of coffee brewed with high pressure, hot water and finely ground coffee beans. Espresso is thicker than regular coffee and has a layer of “crema” on top, which results from air bubbles mixing with the coffee’s oils.",
               price: "3.00"
           ),
          /* MenuGridCardModel(

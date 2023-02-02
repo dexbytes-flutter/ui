@@ -41,7 +41,7 @@ class _CategoryListViewState extends State<CategoryListView> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(8),
             margin: EdgeInsets.only(left: 5),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),

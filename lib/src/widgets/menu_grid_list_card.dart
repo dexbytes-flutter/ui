@@ -3,12 +3,8 @@ import 'package:base_flutter_app/src/model/coffee_card_model.dart';
 import 'package:base_flutter_app/src/values/app_dimens.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
-import '../all_file_import/app_utils_files_link.dart';
-import '../model/menu_category_list_model.dart';
 import '../values/app_color.dart';
 import 'like_button_icon.dart';
-import 'menu_card_detail.dart';
 
 class MenuGridListCard extends StatelessWidget {
   final bool isFav;
@@ -108,7 +104,7 @@ class MenuGridListCard extends StatelessWidget {
                     children: [
                       Text("\$",
                           style: TextStyle(
-                              color: Color(0xFFCB7642),
+                              color: Colors.grey.shade500,
                               fontWeight: FontWeight.w500,
                               fontSize: 15)
                       ),

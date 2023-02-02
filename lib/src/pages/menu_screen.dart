@@ -6,6 +6,7 @@ import 'package:base_flutter_app/src/values/app_dimens.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:base_flutter_app/src/widgets/basic_view_container/container_first.dart';
 import 'package:base_flutter_app/src/widgets/category_list_view.dart';
+import 'package:base_flutter_app/src/widgets/coffee_deatail_card.dart';
 import 'package:base_flutter_app/src/widgets/coffee_name_horizontal_list.dart';
 import 'package:base_flutter_app/src/widgets/common_text_field_with_error.dart';
 import 'package:base_flutter_app/src/widgets/menu_card_detail.dart';
@@ -32,7 +33,7 @@ class _MenuScreenState extends State<MenuScreen> {
     // category list view
     Widget category() {
       return Container(
-          height: 50,
+          height: 45,
           child: ListView.builder(
             padding: EdgeInsets.only(
               left: 20,
@@ -128,7 +129,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 Navigator.push(
                   context,
                   SlideRightRoute(
-                      widget: MenuDetailCard(
+                      widget: ItemDetailCard(
                         imageUrl: gridItemList[index].imageUrl,
                         title: gridItemList[index].title,
                         subTitle: gridItemList[index].subTitle,

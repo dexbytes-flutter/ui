@@ -11,15 +11,19 @@ import 'package:readmore/readmore.dart';
 
 import 'appbar/common_app_bar.dart';
 
-class CoffeeDetailCard extends StatelessWidget {
+class ItemDetailCard extends StatelessWidget {
   final String imageUrl;
   final String title;
   final String subTitle;
-  const CoffeeDetailCard({
+  final String description;
+  final String price;
+  const ItemDetailCard({
     Key? key,
     this.imageUrl = "https://images.pexels.com/photos/2396220/pexels-photo-2396220.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     this.title = "Cappuccino",
     this.subTitle = "With Oat Milk",
+    this.description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    this.price = "4.20"
   }) : super(key: key);
 
   @override
@@ -229,7 +233,7 @@ class CoffeeDetailCard extends StatelessWidget {
             height: 10,
           ),
           ReadMoreText(
-            'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+           description,
             trimLines: 3,
             preDataTextStyle: TextStyle(fontWeight: FontWeight.w500),
             style: TextStyle(color: Colors.grey.shade500),
@@ -276,7 +280,7 @@ class CoffeeDetailCard extends StatelessWidget {
                           style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.w600,
-                              color: Color(0xFFCB7642))
+                              color: Colors.grey.shade500)
                       ),
                       Text(" 4.20",
                           style: TextStyle(

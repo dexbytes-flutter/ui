@@ -84,7 +84,7 @@ class CommonCoffeeCardList extends StatelessWidget {
                             TextSpan(
                               text: "\$",
                               style: TextStyle(
-                                  color: Color(0xFFCB7642),
+                                  color: Colors.grey.shade500,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 15),
                             ),

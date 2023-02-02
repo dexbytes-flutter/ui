@@ -122,10 +122,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.push(
                   MainAppBloc.getDashboardContext,
                   SlideRightRoute(
-                      widget: CoffeeDetailCard(
+                      widget: ItemDetailCard(
                         imageUrl: coffeeCardList[index].imageUrl,
                         title: coffeeCardList[index].title,
                         subTitle: coffeeCardList[index].subTitle,
+                        price: coffeeCardList[index].price,
+                        description: coffeeCardList[index].description,
                       )
                   ),
                 );
