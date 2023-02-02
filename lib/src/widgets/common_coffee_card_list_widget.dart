@@ -10,7 +10,17 @@ import '../all_file_import/app_values_files_link.dart';
 import '../image_res/iconApp.dart';
 
 class CommonCoffeeCardList extends StatelessWidget {
-  const CommonCoffeeCardList({Key? key}) : super(key: key);
+  final String imageUrl;
+  final String coffeeListTitle;
+  final String coffeeListSubTitle;
+  final String price;
+  const CommonCoffeeCardList({
+    Key? key,
+    this.imageUrl = "https://images.pexels.com/photos/2396220/pexels-photo-2396220.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    this.coffeeListTitle = "Cappuccino",
+    this.coffeeListSubTitle = "With Oat Milk",
+    this.price = "4.00"
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,117 +28,92 @@ class CommonCoffeeCardList extends StatelessWidget {
     appDimens.appDimensFind(context: context);
 
     return Container(
-      height: appDimens.heightFullScreen()/2.75,
-      child: ListView.builder(
-        padding: EdgeInsets.only(left: 15,),
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemCount: coffeeCardList.length,
-        itemBuilder: (context, int index) {
-          return GestureDetector(
-            onTap: (){
-              Navigator.push(
-                MainAppBloc.getDashboardContext,
-                SlideRightRoute(
-                    widget: CoffeeDetailCard(
-                      imageUrl: coffeeCardList[index].imageUrl,
-                      title: coffeeCardList[index].title,
-                      subTitle: coffeeCardList[index].subTitle,
-                    )
-                ),
-              );
-            },
-            child: Container(
-              width: 130,
-              margin: EdgeInsets.only(left:8,right: 8),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(width: 0.8,color: Colors.grey.shade200),
-                borderRadius: BorderRadius.circular(20),
+      width: 130,
+      margin: EdgeInsets.only(left:8,right: 8),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(width: 0.8,color: Colors.grey.shade200),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: CachedNetworkImage(
+                imageUrl: imageUrl,
+                height: 115,
+                width: 130,
+                fit: BoxFit.cover,
               ),
-              child: Column(
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 12, top: 5),
+            child: Text(
+              coffeeListTitle,
+              style: TextStyle(
+                  color: appColors.textColor.withOpacity(0.80),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 12, top: 5),
+            child: Text(
+              coffeeListSubTitle,
+              style: TextStyle(
+                  color: Colors.grey.shade500,
+                  fontSize: 12.5,
+                  fontWeight: FontWeight.w400),
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 12,right: 12,top: 18),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: CachedNetworkImage(
-                        imageUrl: coffeeCardList[index].imageUrl,
-                        height: 115,
-                        width: 130,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 12, top: 5),
-                    child: Text(
-                      coffeeCardList[index].title,
-                      style: TextStyle(
-                          color: appColors.textColor.withOpacity(0.80),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 12, top: 5),
-                    child: Text(
-                      coffeeCardList[index].subTitle,
-                      style: TextStyle(
-                          color: Colors.grey.shade500,
-                          fontSize: 12.5,
-                          fontWeight: FontWeight.w400),
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 12,right: 12,top: 18),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              RichText(
-                                  text: TextSpan(children: [
-                                    TextSpan(
-                                      text: "\$",
-                                      style: TextStyle(
-                                          color: Color(0xFFCB7642),
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 15),
-                                    ),
-                                    TextSpan(
-                                        text: coffeeCardList[index].price,
-                                        style: TextStyle(
-                                            color: appColors.textColor.withOpacity(0.75),
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 15))
-                                  ])),
-                            ],
-                          ) ,
-                          Row(
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: Color(0xFFCB7642),
-                                    borderRadius: BorderRadius.circular(2)),
-                                child: iconApps.iconImage(
-                                    imageUrl: iconApps.plusIcon,
-                                    iconSize: Size(20, 20)),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
+                  Row(
+                    children: [
+                      RichText(
+                          text: TextSpan(children: [
+                            TextSpan(
+                              text: "\$",
+                              style: TextStyle(
+                                  color: Color(0xFFCB7642),
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 15),
+                            ),
+                            TextSpan(
+                                text: price,
+                                style: TextStyle(
+                                    color: appColors.textColor.withOpacity(0.75),
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 15))
+                          ])),
+                    ],
+                  ) ,
+                  Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                            color: Color(0xFFCB7642),
+                            borderRadius: BorderRadius.circular(2)),
+                        child: iconApps.iconImage(
+                            imageUrl: iconApps.plusIcon,
+                            iconSize: Size(20, 20)),
+                      )
+                    ],
                   )
                 ],
               ),
             ),
-          );
-        },
+          )
+        ],
       ),
     );
   }

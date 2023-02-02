@@ -1,11 +1,14 @@
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
+import 'package:base_flutter_app/src/app_utility/animation/slide_left_route.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
+import 'package:base_flutter_app/src/model/menu_category_list_model.dart';
 import 'package:base_flutter_app/src/values/app_dimens.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:base_flutter_app/src/widgets/basic_view_container/container_first.dart';
 import 'package:base_flutter_app/src/widgets/category_list_view.dart';
 import 'package:base_flutter_app/src/widgets/coffee_name_horizontal_list.dart';
 import 'package:base_flutter_app/src/widgets/common_text_field_with_error.dart';
+import 'package:base_flutter_app/src/widgets/menu_card_detail.dart';
 import 'package:base_flutter_app/src/widgets/menu_grid_list_card.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +22,7 @@ class MenuScreen extends StatefulWidget {
 class _MenuScreenState extends State<MenuScreen> {
 
   TextEditingController searchTextFieldController = TextEditingController();
+  int selectedCategoryIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +33,29 @@ class _MenuScreenState extends State<MenuScreen> {
     Widget category() {
       return Container(
           height: 50,
-          child: CategoryListView()
+          child: ListView.builder(
+            padding: EdgeInsets.only(
+              left: 20,
+            ),
+            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+            itemCount: categoryDataList.length,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    this.selectedCategoryIndex = index;
+                  });
+                },
+                child: CategoryListView(
+                  index: index,
+                  selectedCategoryIndex: selectedCategoryIndex,
+                  imageUrl: categoryDataList[index].listIcon,
+                  categoryListTitle: categoryDataList[index].listTitle,
+                ),
+              );
+            },
+          )
       );
     }
 
@@ -88,9 +114,47 @@ class _MenuScreenState extends State<MenuScreen> {
 
     //Grid view card
     Widget gridView(){
+      List<MenuGridCardModel> gridItemList = categoryDataList[selectedCategoryIndex].gridItemList;
       return Container(
         height: appDimens.heightFullScreen(),
-        child: MenuGridListCard(),
+        child: GridView.builder(
+          padding: EdgeInsets.only(left: 10,bottom: 30),
+          shrinkWrap: true,
+          physics: ClampingScrollPhysics(),
+          itemCount: gridItemList.length,
+          itemBuilder: (context,index){
+            return GestureDetector(
+              onTap: (){
+                Navigator.push(
+                  context,
+                  SlideRightRoute(
+                      widget: MenuDetailCard(
+                        imageUrl: gridItemList[index].imageUrl,
+                        title: gridItemList[index].title,
+                        subTitle: gridItemList[index].subTitle,
+                        description: gridItemList[index].description,
+                        price: gridItemList[index].price,
+                      )
+                  ),
+                );
+              },
+              child: MenuGridListCard(
+                imageUrl: gridItemList[index].imageUrl,
+                menuGridItemTitle: gridItemList[index].title,
+                menuGridItemSubtitle: gridItemList[index].subTitle,
+                price: gridItemList[index].price,
+                isFav: false,
+              ),
+            );
+          },
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 2.0,
+              mainAxisSpacing: 15.0,
+              mainAxisExtent: 230
+          ),
+
+        ),
       );
     }
 

@@ -26,6 +26,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   int selectedCoffeeNameIndex = 0;
   TextEditingController searchTextFieldController = TextEditingController();
 
@@ -79,14 +80,67 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   // Coffee name list view
-  Widget coffeNameWidget() {
+  Widget coffeeNameWidget() {
     return Container(
       height: appDimens.heightFullScreen()/15,
       margin: EdgeInsets.only(left: 8),
-      child: CoffeeNameHorizontalList()
+      child: ListView.builder(
+          shrinkWrap: true,
+          padding: EdgeInsets.only(
+          ),
+          scrollDirection: Axis.horizontal,
+          itemCount: coffeeNameList.length,
+          itemBuilder: (BuildContext context, int index) {
+            return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    this.selectedCoffeeNameIndex = index;
+                  });
+                },
+                child: CoffeeNameHorizontalList(
+                  selectedCoffeeNameIndex: selectedCoffeeNameIndex,
+                  coffeeListTitle: coffeeNameList[index].title,
+                  index: index,
+                ),
+            );
+          })
     );
   }
 
+  //Coffee card list
+  Widget coffeeCardListView(){
+    return Container(
+        height: appDimens.heightFullScreen()/2.75,
+        child: ListView.builder(
+          padding: EdgeInsets.only(left: 15,),
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          itemCount: coffeeCardList.length,
+          itemBuilder: (context, int index) {
+            return GestureDetector(
+              onTap: (){
+                Navigator.push(
+                  MainAppBloc.getDashboardContext,
+                  SlideRightRoute(
+                      widget: CoffeeDetailCard(
+                        imageUrl: coffeeCardList[index].imageUrl,
+                        title: coffeeCardList[index].title,
+                        subTitle: coffeeCardList[index].subTitle,
+                      )
+                  ),
+                );
+              },
+              child: CommonCoffeeCardList(
+                imageUrl: coffeeCardList[index].imageUrl,
+                coffeeListTitle: coffeeCardList[index].title,
+                coffeeListSubTitle: coffeeCardList[index].subTitle,
+                price: coffeeCardList[index].price,
+              ),
+            );
+          },
+        )
+    );
+  }
 
 
   @override
@@ -116,9 +170,9 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(height: 20,),
           searchTextField(),
           SizedBox(height: 20,),
-          coffeNameWidget(),
+          coffeeNameWidget(),
           SizedBox(height: 10,),
-          CommonCoffeeCardList(),// Coffee list card view
+          coffeeCardListView(),// Coffee list card view
           SizedBox(height: 15,),
           Padding(
             padding: const EdgeInsets.only(left: 20),

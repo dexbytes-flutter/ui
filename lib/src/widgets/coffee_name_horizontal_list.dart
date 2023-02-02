@@ -3,8 +3,14 @@ import 'package:base_flutter_app/src/model/coffee_model.dart';
 import 'package:flutter/material.dart';
 
 class CoffeeNameHorizontalList extends StatefulWidget {
+  final String coffeeListTitle;
+  final int index;
+  final selectedCoffeeNameIndex;
   const CoffeeNameHorizontalList({
     Key? key,
+    this.coffeeListTitle = "Cappuccino",
+    this.index = 0,
+    this.selectedCoffeeNameIndex = 0
   }) : super(key: key);
 
   @override
@@ -13,49 +19,34 @@ class CoffeeNameHorizontalList extends StatefulWidget {
 
 class _CoffeeNameHorizontalListState extends State<CoffeeNameHorizontalList> {
 
-  int selectedCoffeeNameIndex = 0;
 
   @override
   Widget build(BuildContext context) {
 
-    return ListView.builder(
-        shrinkWrap: true,
-        padding: EdgeInsets.only(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 15,right: 15),
+          child: Text(
+            widget.coffeeListTitle,
+            style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: widget.selectedCoffeeNameIndex == widget.index? Color(0xFFCB7642) : Colors.grey.shade400),
+          ),
         ),
-        scrollDirection: Axis.horizontal,
-        itemCount: coffeeNameList.length,
-        itemBuilder: (BuildContext context, int index) {
-          return GestureDetector(
-            onTap: () {
-              setState(() {
-                this.selectedCoffeeNameIndex = index;
-              });
-            },
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 15,right: 15),
-                  child: Text(
-                    "${coffeeNameList[index].title}",
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: selectedCoffeeNameIndex == index? Color(0xFFCB7642) : Colors.grey.shade400),
-                  ),
-                ),
-               Container(
-                  margin: EdgeInsets.all(5),
-                  height: 5,
-                  width: 5,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: selectedCoffeeNameIndex == index? Color(0xFFCB7642) : appColors.white),
-                ),
-              ],
-            )
-          );
-        });
+        Container(
+          margin: EdgeInsets.all(5),
+          height: 5,
+          width: 5,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: widget.selectedCoffeeNameIndex == widget.index? Color(0xFFCB7642) : appColors.white),
+        ),
+      ],
+    );
+
   }
 }
