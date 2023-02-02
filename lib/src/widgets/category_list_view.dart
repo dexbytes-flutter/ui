@@ -47,7 +47,6 @@ class _CategoryListViewState extends State<CategoryListView> {
                 borderRadius: BorderRadius.circular(50),
                 color: appColors.white),
             child: iconApps.iconImage(
-              // imageUrl: iconApps.hotDrinksIcon,
               imageUrl: widget.imageUrl,
               iconSize: Size(20, 20),
               imageColor: widget.selectedCategoryIndex == widget.index

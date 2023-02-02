@@ -7,9 +7,7 @@ import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:base_flutter_app/src/widgets/basic_view_container/container_first.dart';
 import 'package:base_flutter_app/src/widgets/category_list_view.dart';
 import 'package:base_flutter_app/src/widgets/coffee_deatail_card.dart';
-import 'package:base_flutter_app/src/widgets/coffee_name_horizontal_list.dart';
 import 'package:base_flutter_app/src/widgets/common_text_field_with_error.dart';
-import 'package:base_flutter_app/src/widgets/menu_card_detail.dart';
 import 'package:base_flutter_app/src/widgets/menu_grid_list_card.dart';
 import 'package:flutter/material.dart';
 
@@ -117,7 +115,7 @@ class _MenuScreenState extends State<MenuScreen> {
     Widget gridView(){
       List<MenuGridCardModel> gridItemList = categoryDataList[selectedCategoryIndex].gridItemList;
       return Container(
-        height: appDimens.heightFullScreen(),
+        // height: appDimens.heightFullScreen(),
         child: GridView.builder(
           padding: EdgeInsets.only(left: 10,bottom: 30),
           shrinkWrap: true,
@@ -161,7 +159,7 @@ class _MenuScreenState extends State<MenuScreen> {
 
     return ContainerFirst(
       contextCurrentView: context,
-      isSingleChildScrollViewNeed: false,
+      isSingleChildScrollViewNeed: true,
       isFixedDeviceHeight: true,
       statusBarColor: Colors.white,
       appBarHeight: 56,
