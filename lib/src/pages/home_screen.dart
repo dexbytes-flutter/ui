@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
   TextEditingController searchTextFieldController = TextEditingController();
 
   // Search text field
-  Widget searchTextfield() {
+  Widget searchTextField() {
     return Container(
       padding: EdgeInsets.only(
         left: 20,
@@ -114,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           SizedBox(height: 20,),
-          searchTextfield(),
+          searchTextField(),
           SizedBox(height: 20,),
           coffeNameWidget(),
           SizedBox(height: 10,),

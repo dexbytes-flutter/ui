@@ -86,6 +86,7 @@ class AppColors {
   Color appCenterBgColor = const Color(0xFFFFFFFF);
   Color appBottomBgColor = const Color(0xFFFFFFFF);
   Color containerBgColor = const Color(0xFF0D5981);
+  Color containerBgColor1 = const Color(0xFFDEE9EF);
 
   //*  Bottom bar color ***********************************
   Color appStatusBarColor = const Color(0xFF000000);
@@ -117,6 +118,8 @@ class AppColors {
 
   //Card bg color ************************************
   Color cardBgColor = const Color(0xFFFFFFFF);
+  Color imageBgColor = const Color(0xFFBDBDBD);
+
 
   //Edit field Color *********************************
   Color editTextColor = const Color(0xFF2c3134);

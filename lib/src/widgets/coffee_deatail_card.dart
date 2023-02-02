@@ -17,7 +17,7 @@ class CoffeeDetailCard extends StatelessWidget {
   final String subTitle;
   const CoffeeDetailCard({
     Key? key,
-    this.imageUrl = "https://i.pinimg.com/564x/db/d4/54/dbd4547ca83892ecc86ed87ed916b109.jpg",
+    this.imageUrl = "https://images.pexels.com/photos/2396220/pexels-photo-2396220.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     this.title = "Cappuccino",
     this.subTitle = "With Oat Milk",
   }) : super(key: key);

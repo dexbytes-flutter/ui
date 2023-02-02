@@ -65,10 +65,7 @@ class CommonAppBar extends StatelessWidget {
               valueChanged: (_isFavorite) {
                 print('Is Favorite : $_isFavorite');
               },
-            ),/*iconApps.iconImage(imageUrl: iconApps.favoriteIcon,
-              iconSize: Size(22,22),
-              imageColor: appColors.black.withOpacity(0.60)
-            ),*/
+            ),
           ),
         ],
       ),

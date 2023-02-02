@@ -28,7 +28,7 @@ class _FavoriteScreenCardState extends State<FavoriteScreenCard> {
     appDimens.appDimensFind(context: context);
 
     return Container(
-      height: appDimens.heightFullScreen() / 5,
+      height: appDimens.heightFullScreen() / 6.2,
       width: appDimens.widthFullScreen() / 1.12,
       margin: EdgeInsets.only(left: 20),
       decoration: BoxDecoration(
@@ -40,17 +40,14 @@ class _FavoriteScreenCardState extends State<FavoriteScreenCard> {
         children: [
           Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12.0),
-                  child: CachedNetworkImage(
-                    // imageUrl: coffeeCardList[index].imageUrl,
-                    imageUrl: widget.imageUrl,
-                    height: 100,
-                    width: 100,
-                    fit: BoxFit.cover,
-                  ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(12.0),
+                child: CachedNetworkImage(
+                  // imageUrl: coffeeCardList[index].imageUrl,
+                  imageUrl: widget.imageUrl,
+                  height: 100,
+                  width: 100,
+                  fit: BoxFit.cover,
                 ),
               ),
             ],
@@ -60,7 +57,7 @@ class _FavoriteScreenCardState extends State<FavoriteScreenCard> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
-                padding:  EdgeInsets.only(top: 10),
+                padding:  EdgeInsets.only(top: 10,left: 10),
                 child: Text(
                   widget.title,
                   style: TextStyle(
@@ -69,8 +66,8 @@ class _FavoriteScreenCardState extends State<FavoriteScreenCard> {
                       fontWeight: FontWeight.w500),
                 ),
               ),
-             Padding(
-                padding: EdgeInsets.only(top: 5),
+              Padding(
+                padding: EdgeInsets.only(top: 5,left: 10),
                 child: Text(
                   widget.subTitle,
                   style: TextStyle(
@@ -84,7 +81,7 @@ class _FavoriteScreenCardState extends State<FavoriteScreenCard> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.only(top: 15,left: 10),
                     child: RichText(
                         text: TextSpan(children: [
                           TextSpan(

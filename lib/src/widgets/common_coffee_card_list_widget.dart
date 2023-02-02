@@ -14,6 +14,8 @@ class CommonCoffeeCardList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AppDimens appDimens = AppDimens();
+    appDimens.appDimensFind(context: context);
 
     return Container(
       height: appDimens.heightFullScreen()/2.75,

@@ -15,13 +15,14 @@ class OrderCardList extends StatelessWidget {
     appDimens.appDimensFind(context: context);
 
     return  ListView.builder(
-      physics: NeverScrollableScrollPhysics(),
+      physics: ClampingScrollPhysics(),
       itemCount: orderCardList.length,
       shrinkWrap: true,
       itemBuilder: (context,index){
         return Stack(
           children: [
             Container(
+              height: appDimens.heightFullScreen()/5.7,
               margin: EdgeInsets.only(left: 25, right: 25,bottom: 25),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
@@ -39,8 +40,8 @@ class OrderCardList extends StatelessWidget {
                         ),
                         child: CachedNetworkImage(
                           imageUrl: orderCardList[index].imageUrl,
-                          height: 135,
-                          width: 100,
+                          height: 110,
+                          width: 80,
                           fit: BoxFit.fill,
                         ),
                       )
@@ -90,10 +91,6 @@ class OrderCardList extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10,top: 15),
-                            child: CounterButton(),
-                          )
                         ],
                       ),
                     ],
@@ -105,17 +102,22 @@ class OrderCardList extends StatelessWidget {
               bottom: 45,right: 10,
               child: Container(
                 padding: EdgeInsets.all(10),
-                margin: EdgeInsets.only(left: 79),
+                margin: EdgeInsets.only(left: 77),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                     color: Color(0xFFCB7642)
                 ),
                 child: iconApps.iconImage(
                     imageUrl: iconApps.closeIcon,
-                    iconSize: Size(15, 15),
+                    iconSize: Size(10, 10),
                     imageColor: Colors.white
                 ),
               ),
+            ),
+            Positioned(
+              left: 118,
+              bottom: 27,
+              child: CounterButton(),
             )
           ],
         );

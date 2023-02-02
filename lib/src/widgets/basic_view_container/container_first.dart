@@ -26,7 +26,7 @@ class ContainerFirst extends StatelessWidget {
     required this.containChild,
     this.bottomBarSafeAreaColor,
     this.appBackgroundColor = Colors.white,
-    this.statusBarColor = const Color(0xFF397DE3),
+    this.statusBarColor = const Color(0xFFFFFFFF),
     this.isFixedDeviceHeight = true,
     this.isOverLayStatusBar = false,
     this.isListScrollingNeed = false,

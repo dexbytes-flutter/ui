@@ -302,9 +302,9 @@ class _MyAppState extends State<MyAppFlutterMain> {
     // return const SignInScreen();
     // return const CoffeeDetailCard();
     // return const CounterButton();
-    return const DashboardScreen();
+    // return const DashboardScreen();
     // return const FavoritesScreen();
-    // return const MenuScreen();
+    return const MenuScreen();
     // return const SplashScreen();
     // return const OrderScreen();
     // return const SignUpScreen();

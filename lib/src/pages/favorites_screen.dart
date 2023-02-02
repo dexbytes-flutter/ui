@@ -38,39 +38,6 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         containChild: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-           /* Container(
-              height: appDimens.heightFullScreen()/6,
-              width: appDimens.widthFullScreen()/1,
-              padding: EdgeInsets.only(
-                  top: appDimens.heightFullScreen()/14,
-                left: 15
-              ),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(25),
-                    topRight: Radius.circular(25),
-                    bottomLeft: Radius.circular(15),
-                    bottomRight: Radius.circular(15)
-                  ),
-                  color: appColors.containerBgColor
-              ),
-              child: Text("Favorites",
-                style: TextStyle(fontWeight: FontWeight.w500,fontSize: 18,
-                color: appColors.white
-                ),
-              ),
-            ),*/
-            SizedBox(height: 20,),
-            Align(
-                alignment: Alignment.topRight,
-                child: Padding(
-                  padding: EdgeInsets.only(right: 20),
-                    child: Text("4 Items",
-                      style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400,
-                      color: appColors.textColor.withOpacity(0.80),
-                      ),
-                    ))
-            ),
             ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
@@ -108,17 +75,6 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                   ],
                 );
               },
-            ),
-            Align(
-                alignment: Alignment.bottomRight,
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 20),
-                  child: Text("Edit",
-                      style: TextStyle(fontSize: 16,fontWeight: FontWeight.w400,
-                        color: appColors.appButtonBgColor,
-                      )
-                  ),
-                )
             ),
             SizedBox(height: 20,),
             SizedBox(height: 20,),

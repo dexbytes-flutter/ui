@@ -15,27 +15,27 @@ class FavoriteCardModel{
 
 final List<FavoriteCardModel> favoriteCardList = [
   FavoriteCardModel(
-    title: "Espresso",
-    subTitle: "Blue Ridge Blend",
-    imageUrl: "https://t1.gstatic.com/images?q=tbn:ANd9GcTmzXd8YKl2Gb-L3tN1RyekLuD0lSh_T-bsd4LvjYPJPAtDsOUG",
-    price: "4.20",
+    title: "Coromol Macchioto",
+    subTitle: "Large, Oat milk",
+    imageUrl: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTA_jecMwjbjbOEk1u8SpSRVOabXCIXfXqfPVEhEPOYU0KXQL0S",
+    price: "6.70",
   ),
   FavoriteCardModel(
-    title: "Espresso",
-    subTitle: "Blue Ridge Blend",
-    imageUrl: "https://t1.gstatic.com/images?q=tbn:ANd9GcTmzXd8YKl2Gb-L3tN1RyekLuD0lSh_T-bsd4LvjYPJPAtDsOUG",
-    price: "4.20",
+    title: "Caffe Mocha",
+    subTitle: "Large Almond milk",
+    imageUrl: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSVDLtCbQxSpZqHA5fTw2QZj9XhMWQuOUspri4FVgjO_MqLcrc0",
+    price: "7.00",
   ),
   FavoriteCardModel(
-    title: "Espresso",
+    title: "Traditional Cappuccino",
     subTitle: "Blue Ridge Blend",
-    imageUrl: "https://t1.gstatic.com/images?q=tbn:ANd9GcTmzXd8YKl2Gb-L3tN1RyekLuD0lSh_T-bsd4LvjYPJPAtDsOUG",
-    price: "4.20",
+    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1drxUsZfkhE1hBXjeQuGfpl1fuiA4uS6oyWbuBHcbmzNz_A_Z",
+    price: "3.00",
   ),
   FavoriteCardModel(
-    title: "Espresso",
-    subTitle: "Blue Ridge Blend",
-    imageUrl: "https://t1.gstatic.com/images?q=tbn:ANd9GcTmzXd8YKl2Gb-L3tN1RyekLuD0lSh_T-bsd4LvjYPJPAtDsOUG",
-    price: "4.20",
+    title: "Cinnamon Roll",
+    subTitle: "",
+    imageUrl: "https://i.pinimg.com/564x/4e/1e/a2/4e1ea24a47498997ed3f600e37ed8912.jpg",
+    price: "3.50",
   ),
 ];

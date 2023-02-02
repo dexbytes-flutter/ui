@@ -32,12 +32,12 @@ class _OrderScreenState extends State<OrderScreen> {
               children: [
                 Text("Delivery Charges",
                 style: TextStyle(
-                  color: appColors.textNormalColor1,fontSize: 12.5,fontWeight: FontWeight.w500
+                  color: appColors.textNormalColor1,fontSize: 15,fontWeight: FontWeight.w500
                 ),),
                 SizedBox(width: 30,),
                 Text("\$10.00",
                 style: TextStyle(
-                  color: appColors.textNormalColor1,fontSize: 12.5,fontWeight: FontWeight.w500
+                  color: appColors.textNormalColor1,fontSize: 15,fontWeight: FontWeight.w500
                 ),)
               ],
             ),
@@ -48,13 +48,13 @@ class _OrderScreenState extends State<OrderScreen> {
               children: [
               Text("Subtotal",
               style: TextStyle(
-                color: appColors.textNormalColor1,fontSize: 12.5,fontWeight: FontWeight.w500
+                color: appColors.textNormalColor1,fontSize: 15,fontWeight: FontWeight.w500
               ),
               ),
                 SizedBox(width: 30,),
                 Text("\$26.35",
                 style: TextStyle(
-                  color: appColors.textNormalColor1,fontSize: 12.5,fontWeight: FontWeight.w500
+                  color: appColors.textNormalColor1,fontSize: 15,fontWeight: FontWeight.w500
                 ),)
               ],
             ),
@@ -65,13 +65,13 @@ class _OrderScreenState extends State<OrderScreen> {
               children: [
               Text("Total",
               style: TextStyle(
-                color: appColors.textNormalColor1, fontSize: 12.5,fontWeight: FontWeight.w500
+                color: appColors.textNormalColor1, fontSize: 15,fontWeight: FontWeight.w500
               ),
               ),
                 SizedBox(width: 30,),
                 Text("\$36.35",
                     style: TextStyle(
-                        color: Colors.black, fontSize: 12.5,fontWeight: FontWeight.w500
+                        color: Colors.black, fontSize: 15,fontWeight: FontWeight.w500
                     )
                 )
               ],
@@ -96,6 +96,7 @@ class _OrderScreenState extends State<OrderScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             OrderCardList(),
+            SizedBox(height: 10,),
             chargesCard(),
             SizedBox(height: 25,),
             Align(
@@ -121,7 +122,7 @@ class _OrderScreenState extends State<OrderScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 40,),
+            SizedBox(height: 30,),
           ],
         ),
     );
