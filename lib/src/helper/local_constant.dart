@@ -19,6 +19,17 @@ const userProfileImageC = 'user_profile_image';
 const userAutoLoginDetails =
     'user_auto_login_details'; //In this we will store logged in user details
 
+// Onboarding screen const
+
+const String POPPINS = "Poppins";
+const String OPEN_SANS = "OpenSans";
+const String SKIP = "Skip";
+const String NEXT = "Next";
+const String SLIDER_HEADING_1 = "Easy Exchange!";
+const String SLIDER_HEADING_2 = "Easy to Use!";
+const String SLIDER_HEADING_3 = "Connect with Others";
+const String SLIDER_DESC = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultricies, erat vitae porta consequat.";
+
 const isNotFirstTime = 'is_not_first_time';
 const userProfileImageThumbnailC = 'user_profile_image_thumbnail';
 

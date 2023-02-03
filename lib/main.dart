@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:base_flutter_app/src/all_file_import/app_screens_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
+import 'package:base_flutter_app/src/pages/landing_page.dart';
 import 'package:base_flutter_app/src/pages/sign_up_screen.dart';
 import 'package:base_flutter_app/src/widgets/slider_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -257,7 +258,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
             return supportedLocales.first;
           },
           home:
-              !widget.isLoggedIn ? loginOptionScreen() : anotherLandingScreen(),
+              !widget.isLoggedIn ? onBoardingScreens() : anotherLandingScreen(),
           //Routes File
           routes: Routes.route(),
           onGenerateRoute: (settings) => Routes.onGenerateRoute(settings),
@@ -266,6 +267,9 @@ class _MyAppState extends State<MyAppFlutterMain> {
   }
 
   mainLandingScreen() {}
+  onBoardingScreens(){
+    return LandingPage();
+  }
 
   //Redirect to login screen in case user not loggedIn
   loginOptionScreen() {

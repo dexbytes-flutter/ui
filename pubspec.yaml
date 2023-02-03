@@ -93,6 +93,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/images/slider/
     - assets/lang/
     - assets/app_theme/
 
