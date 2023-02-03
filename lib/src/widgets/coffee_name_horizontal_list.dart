@@ -32,7 +32,7 @@ class _CoffeeNameHorizontalListState extends State<CoffeeNameHorizontalList> {
           child: Text(
             widget.coffeeListTitle,
             style: TextStyle(
-                fontSize: 16,
+                fontSize: 15,
                 fontWeight: FontWeight.w500,
                 color: widget.selectedCoffeeNameIndex == widget.index? Color(0xFFCB7642) : Colors.grey.shade400),
           ),

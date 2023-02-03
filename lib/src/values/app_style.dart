@@ -485,6 +485,20 @@ class AppStyle {
           fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
           fontWeight: fontWeight != null ? fontWeight : appFonts.semiBold600,
           fontStyle: isItalic ? FontStyle.italic : FontStyle.normal);
+
+  TextStyle favCardPriceTitleStyle(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+          color: texColor != null ? texColor : appColors.textNormalColor1,
+          fontSize: fontSize != null ? fontSize : 14,
+          fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+          fontWeight: fontWeight != null ? fontWeight : appFonts.medium500,
+          fontStyle: isItalic ? FontStyle.italic : FontStyle.normal);
+
 }
 
 AppStyle appStyles = AppStyle();

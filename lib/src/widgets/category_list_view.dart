@@ -48,7 +48,7 @@ class _CategoryListViewState extends State<CategoryListView> {
                 color: appColors.white),
             child: iconApps.iconImage(
               imageUrl: widget.imageUrl,
-              iconSize: Size(20, 20),
+              iconSize: Size(18, 18),
               imageColor: widget.selectedCategoryIndex == widget.index
                   ? appColors.appButtonBgColor
                   : appColors.containerBgColor1,
@@ -61,7 +61,7 @@ class _CategoryListViewState extends State<CategoryListView> {
                widget.categoryListTitle,
                 softWrap: true,
                 style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 15,
                     fontWeight: FontWeight.w500,
                     color: widget.selectedCategoryIndex == widget.index
                         ? appColors.white

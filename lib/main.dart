@@ -2,7 +2,9 @@ import 'dart:convert';
 import 'package:base_flutter_app/src/all_file_import/app_screens_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/pages/favorites_screen.dart';
+import 'package:base_flutter_app/src/pages/home_screen.dart';
 import 'package:base_flutter_app/src/pages/menu_screen.dart';
+import 'package:base_flutter_app/src/pages/otp_verification_screen.dart';
 import 'package:base_flutter_app/src/pages/sign_up_screen.dart';
 import 'package:base_flutter_app/src/widgets/counter_button_widget.dart';
 import 'package:base_flutter_app/src/widgets/slider_screen.dart';
@@ -27,7 +29,7 @@ import 'package:base_flutter_app/src/config/routes.dart';
 import 'src/pages/dashboard_screen.dart';
 import 'src/pages/order_screen.dart';
 import 'src/pages/sign_in_screen.dart';
-import 'src/widgets/coffee_deatail_card.dart';
+import 'src/widgets/item_deatail_card.dart';
 
 void main() async {
   // if you are using await in main function then add this line
@@ -274,11 +276,11 @@ class _MyAppState extends State<MyAppFlutterMain> {
 
   //Redirect to login screen in case user not loggedIn
   loginOptionScreen() {
-    return /*!widget.isOneTimeProfileSetUpDone
-        ? CreateAccount()
-        : */
-        //SignUpPage
-        Column(
+    return !widget.isOneTimeProfileSetUpDone
+        ? DashboardScreen()
+        : SplashScreen();
+
+        /*Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SliderScreen(
@@ -289,7 +291,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
               imageHeight: 70,
             ),
           ],
-        );
+        );*/
   }
 
   //Redirect to another screen if already loggedIn
@@ -299,15 +301,17 @@ class _MyAppState extends State<MyAppFlutterMain> {
 
     //If profile set done by user
     // if (widget.isOneTimeProfileSetUpDone) {
-    // return const SignInScreen();
+    return const SignInScreen();
     // return const ItemDetailCard();
     // return const CounterButton();
-    // return const DashboardScreen();
+    // return const HomeScreen();
     // return const FavoritesScreen();
-    return const MenuScreen();
+    // return const MenuScreen();
+    // return const DashboardScreen();
     // return const SplashScreen();
     // return const OrderScreen();
     // return const SignUpScreen();
+    // return const ItemDetailCard();
     //SignInPage();
     // }
     //If set up not done by user than redirect to selected screen

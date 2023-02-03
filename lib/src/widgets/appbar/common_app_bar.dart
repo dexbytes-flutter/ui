@@ -10,6 +10,7 @@ class CommonAppBar extends StatelessWidget {
   final bool isShowTitle;
   final String title;
   final bool isFav;
+  final EdgeInsetsGeometry? margin;
 
   const CommonAppBar({
     Key? key,
@@ -17,14 +18,16 @@ class CommonAppBar extends StatelessWidget {
     this.isHideRightICon = false,
     this.isShowTitle = false,
     this.title = "",
-    this.isFav = false
+    this.isFav = false,
+    this.margin
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       // color: isShowTitle? appColors.appBgColor1.withOpacity(0.15): Colors.white,
-      margin: isShowTitle ? EdgeInsets.only(left: 0, right: 0) : EdgeInsets.only(left: 20, right: 20),
+      // margin: isShowTitle ? EdgeInsets.only(left: 0, right: 0) : EdgeInsets.only(left: 20, right: 20),
+      margin: margin ?? EdgeInsets.only(left: 0, right: 0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

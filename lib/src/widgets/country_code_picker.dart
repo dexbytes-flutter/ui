@@ -43,6 +43,7 @@ class CountryPicker extends StatelessWidget {
             ),
           ),
           CountryCodePicker(
+            enabled: false,
             searchDecoration: InputDecoration(
                 contentPadding:  EdgeInsets.all(10),
                 prefixIcon: Icon(Icons.search,color: Colors.grey,),

@@ -28,7 +28,7 @@ final List<MenuDataModel> categoryDataList = [
               description: "Espresso is a concentrated form of coffee brewed with high pressure, hot water and finely ground coffee beans. Espresso is thicker than regular coffee and has a layer of “crema” on top, which results from air bubbles mixing with the coffee’s oils.",
               price: "3.00"
           ),
-         /* MenuGridCardModel(
+          MenuGridCardModel(
               title: "Traditional",
               subTitle: "Cappuccino",
               imageUrl: "https://images.pexels.com/photos/2396220/pexels-photo-2396220.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -69,7 +69,7 @@ final List<MenuDataModel> categoryDataList = [
               imageUrl: "https://mommakesdinner.com/wp-content/uploads/2022/11/Toasted-white-chocolate-mocha.jpg",
               description: "A smooth blend of white chocolate, steamed milk and espresso, generously topped with whipped cream, our white chocolate mocha is a tall glass of creamy deliciousness.",
               price: "4.20"
-          ),*/
+          ),
         ]
       ),
       MenuDataModel(

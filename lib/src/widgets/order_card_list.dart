@@ -22,7 +22,6 @@ class OrderCardList extends StatelessWidget {
         return Stack(
           children: [
             Container(
-              height: appDimens.heightFullScreen()/5.7,
               margin: EdgeInsets.only(left: 25, right: 25,bottom: 25),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
@@ -30,70 +29,60 @@ class OrderCardList extends StatelessWidget {
                 border: Border.all(width: 0.8,color: Colors.grey.shade200),
               ),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Column(
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            bottomLeft: Radius.circular(20)
-                        ),
-                        child: CachedNetworkImage(
-                          imageUrl: orderCardList[index].imageUrl,
-                          height: 110,
-                          width: 80,
-                          fit: BoxFit.fill,
-                        ),
-                      )
-                    ],
+                  ClipRRect(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        bottomLeft: Radius.circular(20)
+                    ),
+                    child: CachedNetworkImage(
+                      imageUrl: orderCardList[index].imageUrl,
+                      height: 100,
+                      width: 80,
+                      fit: BoxFit.fill,
+                    ),
                   ),
-                  Column(
-                    children: [
-                      Column(
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10.0),
-                            child: Text(orderCardList[index].title,
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.w600
-                              ),
+                          Text(orderCardList[index].title,
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w600,
+                              color: appColors.textColor.withOpacity(0.80)
                             ),
                           ),
                           SizedBox(height: 5,),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10),
-                            child: Text(orderCardList[index].subTitle,
-                              style: TextStyle( fontSize: 12.5,color: Colors.grey.shade500,
-                                  fontWeight: FontWeight.w400),
-                            ),
+                          Text(orderCardList[index].subTitle,
+                            softWrap: true,
+                            maxLines: 1,
+                            style: TextStyle( fontSize: 12.5,color: Colors.grey.shade500,
+                                fontWeight: FontWeight.w400),
                           ),
+                          SizedBox(height: 8,),
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 8,left: 10),
-                                child: Text("\$",
-                                  style: TextStyle(
-                                    fontSize: 14,fontWeight: FontWeight.w500,
-                                    color: Color(0xFFCB7642),
-                                  ),
+                              Text("\$",
+                                style: TextStyle(
+                                  fontSize: 14,fontWeight: FontWeight.w500,
+                                  color: appColors.textColorBlack,
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 8,left: 5),
-                                child: Text(orderCardList[index].price,
-                                  style: TextStyle(
-                                    fontSize: 14,fontWeight: FontWeight.w500,
-                                    color: appColors.appThemeColor1,
-                                  ),
+                              Text(orderCardList[index].price,
+                                style: TextStyle(
+                                  fontSize: 14,fontWeight: FontWeight.w500,
+                                  color: appColors.textColorBlack,
                                 ),
                               ),
                             ],
                           ),
                         ],
                       ),
-                    ],
+                    ),
                   ),
                 ],
               ),
@@ -115,8 +104,8 @@ class OrderCardList extends StatelessWidget {
               ),
             ),
             Positioned(
-              left: 118,
-              bottom: 27,
+              left: 115,
+              bottom: 32,
               child: CounterButton(),
             )
           ],

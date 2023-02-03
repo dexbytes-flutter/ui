@@ -4,8 +4,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class HomeAppBar extends StatelessWidget {
-
-  const HomeAppBar({Key? key}) : super(key: key);
+  final callbackFunction;
+  HomeAppBar({
+    Key? key,
+    this.callbackFunction
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +19,19 @@ class HomeAppBar extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              color: Colors.brown.withOpacity(0.30)
-            ),
-            child: iconApps.iconImage(imageUrl: iconApps.dashboardIcon,
-              iconSize: Size(20,20),
+          GestureDetector(
+            onTap: (){
+              this.callbackFunction?.call();
+            },
+            child: Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Colors.brown.withOpacity(0.30)
+              ),
+              child: iconApps.iconImage(imageUrl: iconApps.dashboardIcon,
+                iconSize: Size(20,20),
+              ),
             ),
           ),
           ClipRRect(

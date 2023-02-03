@@ -2,10 +2,11 @@ import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart'
 import 'package:base_flutter_app/src/bloc/main_app_bloc/main_app_bloc.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
 import 'package:base_flutter_app/src/model/coffee_model.dart';
+import 'package:base_flutter_app/src/pages/menu_screen.dart';
 import 'package:base_flutter_app/src/values/app_string.dart';
 import 'package:base_flutter_app/src/widgets/appbar/home_appbar.dart';
 import 'package:base_flutter_app/src/widgets/basic_view_container/container_first.dart';
-import 'package:base_flutter_app/src/widgets/coffee_deatail_card.dart';
+import 'package:base_flutter_app/src/widgets/item_deatail_card.dart';
 import 'package:base_flutter_app/src/widgets/coffee_name_horizontal_list.dart';
 import 'package:base_flutter_app/src/widgets/common_coffee_card_list_widget.dart';
 import 'package:base_flutter_app/src/widgets/common_text_field_with_error.dart';
@@ -120,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
             return GestureDetector(
               onTap: (){
                 Navigator.push(
-                  MainAppBloc.getDashboardContext,
+                  MainAppBloc.getDashboardContext!,
                   SlideRightRoute(
                       widget: ItemDetailCard(
                         imageUrl: coffeeCardList[index].imageUrl,
@@ -157,7 +158,16 @@ class _HomeScreenState extends State<HomeScreen> {
       statusBarColor: Colors.white,
       appBarHeight: 56,
       appBackgroundColor: Colors.white,
-      appBar: HomeAppBar(),
+      appBar: HomeAppBar(
+        callbackFunction: (){
+          Navigator.push(
+            MainAppBloc.getDashboardContext,
+            SlideRightRoute(
+                widget: MenuScreen()
+            ),
+          );
+        },
+      ),
       containChild: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -166,7 +176,7 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.only(left: 20, top: 15),
             child: Text(
               "Find the best \ncoffee for you",
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.w500),
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
             ),
           ),
           SizedBox(height: 20,),
@@ -181,7 +191,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Text(
               "Special for you",
               style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 16,
                   fontWeight: FontWeight.w500,
                   color: appColors.textColor.withOpacity(0.80)),
             ),

@@ -45,6 +45,7 @@ class ItemDetailCard extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
+          CommonAppBar(),
           Positioned(
             bottom: 0,
             right: 0,
@@ -78,7 +79,7 @@ class ItemDetailCard extends StatelessWidget {
                               title,
                               style: TextStyle(
                                   color: appColors.white,
-                                  fontSize: 16,
+                                  fontSize: 15,
                                   fontWeight: FontWeight.w500),
                             ),
                           ),
@@ -334,8 +335,7 @@ class ItemDetailCard extends StatelessWidget {
       isFixedDeviceHeight: true,
       isOverLayAppBar: true,
       statusBarColor: appColors.appBgColor1.withOpacity(0.15),
-      appBarHeight: 56,
-      appBar: CommonAppBar(),
+      appBarHeight: -1,
       containChild: Container(
         margin: EdgeInsets.only(left: 20, right: 20),
         child: Column(

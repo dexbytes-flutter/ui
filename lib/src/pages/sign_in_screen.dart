@@ -104,30 +104,6 @@ class _SignInScreenState extends State<SignInScreen> {
       }
     }
 
-    //Check password field
-    checkPassword(value, fieldName, {onchange = false}) {
-      if (Validation().isNotEmpty(value.trim())) {
-        setState(() {
-          if (Validation().validatePassword(value.trim())) {
-            errorMessages[fieldName] = '';
-          } else {
-            if (!onchange) {
-              errorMessages[fieldName] = appString.trans(context, appString.enterCorrectPassword);
-              // errorMessages[fieldName] = "Please correct enter password";
-            }
-          }
-        });
-      } else {
-        setState(() {
-          if (!onchange) {
-            if (fieldName == 'name') {
-              errorMessages[fieldName] = appString.trans(context, appString.enterPassword1);
-              // errorMessages[fieldName] = "Please enter password";
-            }
-          }
-        });
-      }
-    }
 
     // Validate fields
     bool _validateFields({isButtonClicked = false}) {
@@ -148,39 +124,10 @@ class _SignInScreenState extends State<SignInScreen> {
           }
         });
         return false;
-      } else if (controllers['password']?.text == null ||
-          controllers['password']?.text == '') {
-        setState(() {
-          if (isButtonClicked) {
-            errorMessages['password'] = appString.trans(context, appString.pleaseEnterPassword);
-            // errorMessages['password'] = "Please enter name";
-          }
-        });
-        return false;
-      } else if (!Validation().validatePassword(controllers['password']?.text ?? "")) {
-        setState(() {
-          if (isButtonClicked) {
-            errorMessages['password'] = appString.trans(context, appString.enterPassword);
-            // errorMessages['password'] = "Please enter name";
-          }
-        });
-        return false;
       } else {
         return true;
       }
     }
-
-    Widget visibilityOffIcon = Icon(
-      Icons.visibility_off,
-      color: Colors.grey.shade300,
-      size: 25,
-    );
-
-    Widget visibilityOnIcon = Icon(
-      Icons.visibility,
-      color:  Colors.grey.shade300,
-      size: 25,
-    );
 
     // Background Image widget
     Widget backgroundImage() {
@@ -279,11 +226,11 @@ class _SignInScreenState extends State<SignInScreen> {
                     initialSelection: countryCode,
                     onChanged: (value){
                       print("$value");
-                      countryCode = value.dialCode!;
+                      // countryCode = value.dialCode!;
                     },
                     onInit: (value){
                       print("$value");
-                      countryCode = value!.dialCode!;
+                      // countryCode = value!.dialCode!;
                     },
                   ),
                   contentPadding: EdgeInsets.only(left: 25),
@@ -293,79 +240,6 @@ class _SignInScreenState extends State<SignInScreen> {
                   onEndEditing: (value) {
                     checkMobileNumber(value, fieldName: 'phone');
                     FocusScope.of(context).requestFocus(FocusNode());
-                  },
-                ),
-              ),
-
-              // Password field
-              Container(
-                padding: EdgeInsets.only(
-                  left: 20,right: 20,
-                ),
-                width: MediaQuery.of(context).size.width,
-                child: CommonTextFieldWithError(
-                  focusNode: focusNodes['password'],
-                  isShowBottomErrorMsg: true,
-                  errorMessages: errorMessages['password']?.toString()??'',
-                  controllerT: controllers['password'],
-                  borderRadius: 12,
-                  inputHeight: 50,
-                  errorMsgHeight: 22,
-                  autoFocus: false,
-                  errorLeftRightMargin: 0,
-                  maxCharLength: 16,
-                  capitalization: CapitalizationText.sentences,
-                  cursorColor: Colors.grey,
-                  enabledBorderColor: Colors.brown.shade400.withOpacity(0.7),
-                  focusedBorderColor: Colors.brown.shade400.withOpacity(0.7),
-                  backgroundColor: Colors.brown.shade400.withOpacity(0.7),
-                  textInputAction: TextInputAction.done,
-                  borderStyle: BorderStyle.none,
-                  inputKeyboardType: InputKeyboardTypeWithError.email,
-                  obscureText: hideNewPassword,
-                  hintText: appString.trans(context, appString.password),
-                  errorStyle: appStyles.errorStyle(fontSize: 10),
-                  errorMessageStyle:appStyles.errorStyle(fontSize: 9),
-                  placeHolderTextWidget: Padding(
-                    padding: const EdgeInsets.only(bottom: 5,left: 2),
-                    child: Text("Password",
-                      style: TextStyle(
-                        fontSize: 14, fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  hintStyle: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.grey.shade200,
-                  ),
-                  textStyle: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black,
-                  ),
-                  contentPadding: EdgeInsets.only(left: 15,right: 15),
-                  inputFieldSuffixIcon: Padding(
-                    padding: EdgeInsets.only(right: 12,),
-                    child: IconButton(
-                      icon:
-                      hideNewPassword ? visibilityOffIcon : visibilityOnIcon,
-                      onPressed: togglePasswordVisibility1,
-                    ),
-                  ),
-                  inputFieldPrefixIcon: Container(
-                    margin: EdgeInsets.all(15),
-                    child: iconApps.iconImage(
-                        imageUrl: iconApps.passwordIcon,
-                        iconSize: Size(20, 20),
-                        imageColor: Colors.grey.shade300),
-                  ),
-                  onTextChange: (value) {
-                    checkPassword(value, 'password', onchange: false, );
-                  },
-                  onEndEditing: (value) {
-                    checkPassword(value, 'password', onchange: false, );
-                    FocusScope.of(context).requestFocus(new FocusNode());
                   },
                 ),
               ),
@@ -437,11 +311,13 @@ class _SignInScreenState extends State<SignInScreen> {
                   textStyle: TextStyle(fontSize:16, fontWeight: FontWeight.w700,color: Colors.grey.shade200 ),
                   backCallback: (){
                     if(_validateFields(isButtonClicked: true)){
-                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
-                        return OtpVerificationScreen(
-                          isSignInScreen: true,
+                        Navigator.push(
+                          context,
+                          SlideRightRoute(
+                              widget: OtpVerificationScreen(
+                                isSignInScreen: true,
+                              )),
                         );
-                      }), (route) => false);
                     }
                   },
                 ),

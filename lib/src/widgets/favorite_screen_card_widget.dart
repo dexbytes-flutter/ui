@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../all_file_import/app_values_files_link.dart';
+import '../image_res/iconApp.dart';
 
 class FavoriteScreenCard extends StatefulWidget {
   final String imageUrl;
@@ -27,84 +28,75 @@ class _FavoriteScreenCardState extends State<FavoriteScreenCard> {
     AppDimens appDimens = AppDimens();
     appDimens.appDimensFind(context: context);
 
-    return Container(
-      height: appDimens.heightFullScreen() / 6.2,
-      width: appDimens.widthFullScreen() / 1.12,
-      margin: EdgeInsets.only(left: 20),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
-        border: Border.all(width: 0.8,color: Colors.grey.shade200),
-      ),
-      child: Row(
-        children: [
-          Column(
+    return Stack(
+      alignment: Alignment.bottomRight,
+      children: [
+        Container(
+          margin: EdgeInsets.only(left: 20,right: 20,top: 6,bottom: 6),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(width: 0.8,color: Colors.grey.shade200),
+          ),
+          child: Row(
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(12.0),
                 child: CachedNetworkImage(
                   // imageUrl: coffeeCardList[index].imageUrl,
                   imageUrl: widget.imageUrl,
-                  height: 100,
-                  width: 100,
+                  height: 85,
+                  width: 90,
                   fit: BoxFit.cover,
                 ),
               ),
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
               Padding(
-                padding:  EdgeInsets.only(top: 10,left: 10),
-                child: Text(
-                  widget.title,
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: appColors.textColor.withOpacity(0.80),
-                      fontWeight: FontWeight.w500),
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.title,
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: appColors.textColor.withOpacity(0.80),
+                          fontWeight: FontWeight.w500),
+                    ),
+                    SizedBox(height: 5,),
+                    Text(
+                      widget.subTitle,
+                      style: TextStyle(
+                          fontSize: 12.5,
+                          color: Colors.grey.shade500,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    SizedBox(height: 8,),
+                    Text(
+                       "₹450",
+                      style: appStyles.favCardPriceTitleStyle()
+                    ),
+                  ],
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 5,left: 10),
-                child: Text(
-                  widget.subTitle,
-                  style: TextStyle(
-                      fontSize: 12.5,
-                      color: Colors.grey.shade500,
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: 15,left: 10),
-                    child: RichText(
-                        text: TextSpan(children: [
-                          TextSpan(
-                            text: "\$",
-                            style: TextStyle(
-                                color: Color(0xFFCB7642),
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15),
-                          ),
-                          TextSpan(
-                              text: widget.price,
-                              style: TextStyle(
-                                  color: appColors.textColor.withOpacity(0.75),
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 15))
-                        ])),
-                  ),
-                ],
               )
             ],
-          )
-        ],
-      ),
+          ),
+        ),
+        Container(
+          margin: EdgeInsets.only(right: 20),
+          padding: EdgeInsets.all(8).copyWith(left: 15,right: 15),
+          decoration: BoxDecoration(
+              color: Color(0xFFCB7642),
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                  bottomRight: Radius.circular(15)
+              )
+          ),
+          child: iconApps.iconImage(
+              imageUrl: iconApps.plusIcon,
+              iconSize: Size(20, 20)),
+        ),
+      ],
     );
   }
 }

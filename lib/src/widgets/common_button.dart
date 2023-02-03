@@ -17,7 +17,7 @@ class CommonButton extends StatefulWidget {
         this.buttonName,
         this.buttonBorderColor = Colors.transparent,
         this.buttonBorderWidth = 0,
-        this.buttonHeight = -1,
+        this.buttonHeight = 48,
         this.buttonWidth = -1,
         this.textStyle,
         this.isDisable = false,
@@ -37,7 +37,7 @@ class _CommonButtonState extends State<CommonButton> {
   Widget build(BuildContext context) {
     bool bottomViewPadding = isSafeAreaRequired(context: context);
 
-    Color buttonColor = widget.buttonColor ?? appColors.buttonBgColor;
+    Color buttonColor = widget.buttonColor ?? appColors.appButtonColor;
     return  Material(
         color: widget.isDisable ? buttonColor.withOpacity(0.4) : buttonColor,
         borderRadius: BorderRadius.circular(widget.buttonBorderRadius),

@@ -25,7 +25,7 @@ final List<OrderCardModel> orderCardList = [
   ),
   OrderCardModel(
     title: "Espresso",
-    subTitle: "Perfectly baked, hearty and full \nof flavour.",
+    subTitle: "Perfectly baked",
     imageUrl: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQcLhKFqsOsGybz1Z3dBqVhtcdmjIkBhwmcyGmjjIr6_5-wJVM1",
     price: "4.20",
   ),

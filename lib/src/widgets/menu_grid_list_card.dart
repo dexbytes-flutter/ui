@@ -82,7 +82,7 @@ class MenuGridListCard extends StatelessWidget {
                   menuGridItemTitle,
                   style: TextStyle(
                       color: appColors.textColor.withOpacity(0.80),
-                      fontSize: 16,
+                      fontSize: 15,
                       fontWeight: FontWeight.w500),
                 ),
               ),

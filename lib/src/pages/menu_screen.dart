@@ -6,7 +6,7 @@ import 'package:base_flutter_app/src/values/app_dimens.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:base_flutter_app/src/widgets/basic_view_container/container_first.dart';
 import 'package:base_flutter_app/src/widgets/category_list_view.dart';
-import 'package:base_flutter_app/src/widgets/coffee_deatail_card.dart';
+import 'package:base_flutter_app/src/widgets/item_deatail_card.dart';
 import 'package:base_flutter_app/src/widgets/common_text_field_with_error.dart';
 import 'package:base_flutter_app/src/widgets/menu_grid_list_card.dart';
 import 'package:flutter/material.dart';

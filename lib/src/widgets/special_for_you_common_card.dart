@@ -58,7 +58,7 @@ class SpecialForYouCard extends StatelessWidget {
                 padding:  EdgeInsets.only(top: 10),
                 child: Text( "5 Coffee Beans You \n Must Try!",
                   style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 15,
                       color: appColors.textColor.withOpacity(0.80),
                       fontWeight: FontWeight.w500),
                 ),

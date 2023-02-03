@@ -38,7 +38,7 @@ class _CounterButtonState extends State<CounterButton> {
 
     return Center(
         child: Container(
-          padding: EdgeInsets.all(5),
+          padding: EdgeInsets.all(4),
           width: appDimens.widthFullScreen()/3.5,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),

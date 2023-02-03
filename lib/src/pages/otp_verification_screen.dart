@@ -4,6 +4,7 @@ import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart'
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/helper/local_constant.dart';
 import 'package:base_flutter_app/src/helper/shared_preferencesFile.dart';
+import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:base_flutter_app/src/widgets/pin_code_fields.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -130,7 +131,6 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
       return Container(
         margin: EdgeInsets.only(left: 20,right: 20,bottom: 15),
         child: CommonButton(
-          buttonColor: appColors.appButtonColor,
           buttonName: "SUBMIT",
           buttonHeight: 48,
           buttonBorderRadius: 12,
@@ -140,7 +140,6 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
             if (verificationCodeStr != '' && verificationCodeStr.trim().length == otpLength) {
               setState(() {
                 errorMessage = '';
-                SharedPreferencesFile().saveBool(isUserLoggedInC, true);
                 if(isSignInScreen){
                   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
                     return DashboardScreen();
@@ -292,11 +291,13 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     return ContainerFirst(
       contextCurrentView: context,
       isOverLayAppBar: true,
-      isOverLayStatusBar: true,
       isSingleChildScrollViewNeed: false,
       isFixedDeviceHeight: true,
-      appBarHeight: -1,
-      appBar: Container(),
+      appBarHeight: 56,
+      appBar: CommonAppBar(
+        isHideLeftIcon: false,
+        isHideRightICon: true,
+      ),
       containChild: Container(
         height: size.height,
         width: size.height,
