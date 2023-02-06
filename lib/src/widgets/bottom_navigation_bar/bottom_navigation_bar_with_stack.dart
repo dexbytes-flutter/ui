@@ -4,7 +4,7 @@ import 'package:base_flutter_app/src/image_res/iconApp.dart';
 import 'package:base_flutter_app/src/pages/favorites_screen.dart';
 import 'package:base_flutter_app/src/pages/home_screen.dart';
 import 'package:base_flutter_app/src/pages/notification_screen.dart';
-import 'package:base_flutter_app/src/pages/order_screen.dart';
+import 'package:base_flutter_app/src/pages/bag_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';

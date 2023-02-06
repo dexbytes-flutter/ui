@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:base_flutter_app/src/all_file_import/app_screens_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
+import 'package:base_flutter_app/src/pages/coffee_profile_screen.dart';
 import 'package:base_flutter_app/src/pages/favorites_screen.dart';
 import 'package:base_flutter_app/src/pages/home_screen.dart';
 import 'package:base_flutter_app/src/pages/menu_screen.dart';
@@ -27,7 +28,7 @@ import 'package:provider/provider.dart';
 import 'package:base_flutter_app/src/config/routes.dart';
 
 import 'src/pages/dashboard_screen.dart';
-import 'src/pages/order_screen.dart';
+import 'src/pages/bag_screen.dart';
 import 'src/pages/sign_in_screen.dart';
 import 'src/widgets/item_deatail_card.dart';
 
@@ -276,22 +277,14 @@ class _MyAppState extends State<MyAppFlutterMain> {
 
   //Redirect to login screen in case user not loggedIn
   loginOptionScreen() {
-    return !widget.isOneTimeProfileSetUpDone
-        ? DashboardScreen()
-        : SplashScreen();
+    // return  ProfileScreen();
+    // return  SplashScreen();
+    // return  DashboardScreen();
+    return  MenuScreen();
 
-        /*Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SliderScreen(
-              urlImages: ["https://images.wallpapersden.com/image/download/landscape-pixel-art_bGhnaGeUmZqaraWkpJRmbmdlrWZlbWU.jpg",
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNEegapBEz-TgsTk0wdHwoERShihEq2cyWWSsTtxP5LGVhrWG-jUhY2FteEwnKin-9EmE&usqp=CAU",
-              "https://www.marketing91.com/wp-content/uploads/2019/05/Features-of-advertising-1.jpg",
-              "https://www.wallpaperup.com/uploads/wallpapers/2019/06/27/1328160/888061e927e72ea9b44968a1a829d57c-700.jpg"],
-              imageHeight: 70,
-            ),
-          ],
-        );*/
+    /*!widget.isOneTimeProfileSetUpDone
+        ? ProfileScreen()
+        : SplashScreen();*/
   }
 
   //Redirect to another screen if already loggedIn

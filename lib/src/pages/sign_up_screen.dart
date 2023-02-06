@@ -6,6 +6,7 @@ import 'package:base_flutter_app/src/image_res/iconApp.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+import '../all_file_import/app_utils_files_link.dart';
 import '../app_utility/validation.dart';
 import '../widgets/country_code_picker.dart';
 import 'otp_verification_screen.dart';
@@ -355,11 +356,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   textStyle: TextStyle(fontSize:16, fontWeight: FontWeight.w700,color: Colors.grey.shade200 ),
                   backCallback: (){
                     if(_validateFields(isButtonClicked: true)){
-                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
+                      Navigator.push(
+                        context,
+                        SlideRightRoute(
+                            widget: OtpVerificationScreen(
+                              isSignInScreen: this.isSignInScreen,
+                            )
+                        ),
+                      );
+                      /*Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
                         return OtpVerificationScreen(
                           isSignInScreen: this.isSignInScreen,
                         );
-                      }), (route) => false);
+                      }), (route) => false);*/
                     }
                   },
                 ),
@@ -368,6 +377,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
           )
       );
     }
+
+
     return ContainerFirst(
       appBarHeight: -1,
       isOverLayStatusBar: true,

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:lottie/lottie.dart';
 
+import '../all_file_import/app_utils_files_link.dart';
 import '../all_file_import/app_widget_files_link.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -87,7 +88,7 @@ class _SplashScreenState extends State<SplashScreen>
                 Center(
                   child: AnimatedOpacity(
                     opacity: animateCafeText ? 1 : 0,
-                    duration: const Duration(milliseconds: 500),
+                    duration: const Duration(seconds: 1),
                     child: Text(
                       'C A F É',
                       style: TextStyle(fontSize: 50.0, color: appColors.appThemeColor1),
@@ -135,10 +136,15 @@ class _BottomPart extends StatelessWidget {
                 isBottomMarginRequired: false,
                 textStyle: TextStyle(fontSize:16, fontWeight: FontWeight.w700,color: Colors.grey.shade200 ),
                 backCallback: (){
-
-                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
+                  Navigator.push(
+                    context,
+                    SlideRightRoute(
+                        widget: SignInScreen()
+                    ),
+                  );
+                /*    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
                       return SignInScreen();
-                    }), (route) => false);
+                    }), (route) => false);*/
 
                 },
               ),
@@ -158,9 +164,15 @@ class _BottomPart extends StatelessWidget {
                 isBottomMarginRequired: false,
                 textStyle: TextStyle(fontSize:16, fontWeight: FontWeight.w700,color: appColors.appThemeColor1),
                 backCallback: (){
-                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
+                  Navigator.push(
+                    context,
+                    SlideRightRoute(
+                        widget: SignUpScreen()
+                    ),
+                  );
+                  /*Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
                     return SignUpScreen();
-                  }), (route) => false);
+                  }), (route) => false);*/
                 },
               ),
             ),

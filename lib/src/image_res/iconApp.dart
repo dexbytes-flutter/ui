@@ -31,6 +31,9 @@ class IconApps {
   String backArrowIcon = 'assets/images/back_arrow_icon.svg';
   String favoriteIcon = 'assets/images/favorite_icon.svg';
   String closeIcon = 'assets/images/close_icon.svg';
+  String editIcon = 'assets/images/pencil.svg';
+  String orderIcon = 'assets/images/order_icon.svg';
+  String rightArrow1 = 'assets/images/right_arrow1.svg';
 
   iconImage(
       {required String imageUrl,

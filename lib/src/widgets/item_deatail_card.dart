@@ -64,71 +64,73 @@ class ItemDetailCard extends StatelessWidget {
                   width: appDimens.widthFullScreen()/1,
                   decoration: BoxDecoration(
                       color: Colors.white.withOpacity(0.1),
-                      // color: Color(0xFFCB7642).withOpacity(0.3),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20),
-                            child: Text(
-                              title,
-                              style: TextStyle(
-                                  color: appColors.white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 20, top: 5),
-                            child: Text(
-                              subTitle,
-                              style: TextStyle(
-                                  color: Colors.black.withOpacity(0.40),
-                                  // color: Colors.grey.shade500,
-                                  fontSize: 12.5,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Container(
-                                padding: EdgeInsets.only(left: 20, top: 10),
-                                child: iconApps.iconImage(
-                                  imageUrl: iconApps.startIcon,
-                                  iconSize: Size(20, 20),
-                                ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 20),
+                              child: Text(
+                                title,
+                                softWrap: true,
+                                style: TextStyle(
+                                    color: appColors.white,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 12, left: 15),
-                                child: RichText(
-                                  text: TextSpan(children: [
-                                    TextSpan(
-                                        text: "4.5",
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.w500)),
-                                    WidgetSpan(
-                                        child: SizedBox(
-                                          width: 5,
-                                        )),
-                                    TextSpan(
-                                        text: "(6.986)",
-                                        style: TextStyle(
-                                            color: Colors.black.withOpacity(0.40),
-                                            // color: Colors.grey.shade500,
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 12.5))
-                                  ]),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 20, top: 5),
+                              child: Text(
+                                subTitle,
+                                style: TextStyle(
+                                    color: Colors.black.withOpacity(0.40),
+                                    // color: Colors.grey.shade500,
+                                    fontSize: 12.5,
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.only(left: 20, top: 10),
+                                  child: iconApps.iconImage(
+                                    imageUrl: iconApps.startIcon,
+                                    iconSize: Size(20, 20),
+                                  ),
                                 ),
-                              )
-                            ],
-                          )
-                        ],
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 12, left: 15),
+                                  child: RichText(
+                                    text: TextSpan(children: [
+                                      TextSpan(
+                                          text: "4.5",
+                                          style: TextStyle(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w500)),
+                                      WidgetSpan(
+                                          child: SizedBox(
+                                            width: 5,
+                                          )),
+                                      TextSpan(
+                                          text: "(6.986)",
+                                          style: TextStyle(
+                                              color: Colors.black.withOpacity(0.40),
+                                              // color: Colors.grey.shade500,
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: 12.5))
+                                    ]),
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.center,

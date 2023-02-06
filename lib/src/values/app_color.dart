@@ -82,11 +82,11 @@ class AppColors {
   Color appBgColor1 = const Color(0xFFF8F2F2);
   Color appBgColor3 = const Color(0xFF272727);
   Color appBgColor6 = const Color(0xFF374151);
-  Color appTopBgColor = const Color(0xFFFFFFFF);
+  Color containerBgColor = const Color(0xFFFFFFFF);
   Color appCenterBgColor = const Color(0xFFFFFFFF);
   Color appBottomBgColor = const Color(0xFFFFFFFF);
-  Color containerBgColor = const Color(0xFF0D5981);
   Color containerBgColor1 = const Color(0xFFE4E4EA);
+  Color containerBgColor2 = const Color(0xfff5f2f1);
 
   //*  Bottom bar color ***********************************
   Color appStatusBarColor = const Color(0xFF000000);
@@ -150,7 +150,8 @@ class AppColors {
   Color textHeadingColor = const Color(0xFF2c3134);
 
   Color textDisabledColor = const Color(0xFFCCCCCC);
-  Color textIconColor = const Color(0xFF000000);
+  Color iconColor = const Color(0xFF000000);
+  Color iconColor1 = const Color(0xFF000000);
   Color textBorderColor = const Color(0xFFDD2E37);
 
   Color hintTextColor = const Color(0xFF9E9E9E);
@@ -175,7 +176,8 @@ class AppColors {
   Color chatSelfTextColor = const Color(0xFF696969);
 
   Color circleColor = const Color(0xFF003071);
-  Color iconColor = const Color(0xFF726344);
+  Color iconColor2 = const Color(0xFFBDBDBD);
+  Color iconColor3 = const Color(0xFF59290B);
   Color BoxBtextorderColor = const Color(0xFFE5E5E5);
 
   Color datetimeColor = const Color(0xFF4AA546);

@@ -75,7 +75,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
             textStyle: TextStyle(fontSize:16, fontWeight: FontWeight.w600,color: Colors.white ),
             backCallback: (){
               // mainAppBloc.add(LogOutEvent(context: context));
-              SharedPreferencesFile().saveBool(isUserLoggedInC, false);
+              // SharedPreferencesFile().saveBool(isUserLoggedInC, false);
               Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
                 return SignInScreen();
               }), (route) => false);

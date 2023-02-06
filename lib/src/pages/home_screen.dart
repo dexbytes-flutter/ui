@@ -155,9 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
       contextCurrentView: context,
       isSingleChildScrollViewNeed: true,
       isFixedDeviceHeight: true,
-      statusBarColor: Colors.white,
       appBarHeight: 56,
-      appBackgroundColor: Colors.white,
       appBar: HomeAppBar(
         callbackFunction: (){
           Navigator.push(
