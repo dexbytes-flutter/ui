@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:base_flutter_app/src/pages/sign_in_screen.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import '../helper/local_constant.dart';
 import '../model/slider.dart';
@@ -35,6 +37,7 @@ class _SliderLayoutViewState extends State<SliderLayoutView> {
   }
 
   _onPageChanged(int index) {
+    debugPrint(index.toString());
     setState(() {
       _currentPage = index;
     });
@@ -63,30 +66,42 @@ class _SliderLayoutViewState extends State<SliderLayoutView> {
                   alignment: Alignment.bottomRight,
                   child: Padding(
                     padding: EdgeInsets.only(right: 15.0, bottom: 15.0),
-                    child: Text(
-                      NEXT,
-                      style: TextStyle(
-                        fontFamily: OPEN_SANS,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14.0,
+                    child: InkWell(
+                      onTap: (){
+                        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                            SignInScreen()), (Route<dynamic> route) => false);
+                      },
+                      child: Text(
+                        SKIP,
+                        style: TextStyle(
+                          fontFamily: OPEN_SANS,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14.0,
+                        ),
                       ),
                     ),
                   ),
                 ),
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 15.0, bottom: 15.0),
-                    child: Text(
-                      SKIP,
-                      style: TextStyle(
-                        fontFamily: OPEN_SANS,
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14.0,
-                      ),
-                    ),
-                  ),
-                ),
+                // Align(
+                //   alignment: Alignment.bottomLeft,
+                //   child: Padding(
+                //     padding: EdgeInsets.only(left: 15.0, bottom: 15.0),
+                //     child: InkWell(
+                //       onTap: (){
+                //         Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                //             SignInScreen()), (Route<dynamic> route) => false);
+                //       },
+                //       child: Text(
+                //         SKIP,
+                //         style: TextStyle(
+                //           fontFamily: OPEN_SANS,
+                //           fontWeight: FontWeight.w600,
+                //           fontSize: 14.0,
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // ),
                 Container(
                   alignment: AlignmentDirectional.bottomCenter,
                   margin: EdgeInsets.only(bottom: 20.0),

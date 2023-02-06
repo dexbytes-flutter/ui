@@ -28,7 +28,9 @@ const String NEXT = "Next";
 const String SLIDER_HEADING_1 = "Easy Exchange!";
 const String SLIDER_HEADING_2 = "Easy to Use!";
 const String SLIDER_HEADING_3 = "Connect with Others";
-const String SLIDER_DESC = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultricies, erat vitae porta consequat.";
+const String SLIDER_DESC_1 = "Step-by-step cooking\nrecipes";
+const String SLIDER_DESC_2 = "Discover new tasty\n recipes everyday";
+const String SLIDER_DESC_3 = "Publish your own\nsecret recipes";
 
 const isNotFirstTime = 'is_not_first_time';
 const userProfileImageThumbnailC = 'user_profile_image_thumbnail';

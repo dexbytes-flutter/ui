@@ -41,7 +41,7 @@ class SlideItem extends StatelessWidget {
               sliderArrayList[index].sliderSubHeading,
               style: TextStyle(
                 fontFamily: OPEN_SANS,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w700,
                 letterSpacing: 1.5,
                 fontSize: 12.5,
               ),
