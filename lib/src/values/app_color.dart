@@ -137,6 +137,7 @@ class AppColors {
   Color textBgColor = const Color(0xFFFFFFFF);
   Color textNormalColor = const Color(0xFFFFFFFF);
   Color textNormalColor1 = const Color(0xFF000000);
+  Color textColorBlue = const Color(0xFF2196F3);
   Color textNormalColor2 = const Color(0xFF27AE60);
   Color textFiledColor = const Color(0xff828588);
   Color textNormalColor3 = const Color(0xFFC4C4C4);

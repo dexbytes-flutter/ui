@@ -102,15 +102,15 @@ class MenuGridListCard extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text("\$",
+                      Text("₹",
                           style: TextStyle(
-                              color: Colors.grey.shade500,
+                              color: appColors.textNormalColor1,
                               fontWeight: FontWeight.w500,
                               fontSize: 15)
                       ),
                       Text(price,
                         style: TextStyle(
-                            color: appColors.textColor.withOpacity(0.75),
+                            color: appColors.textNormalColor1,
                             fontWeight: FontWeight.w500,
                             fontSize: 15),),
                     ],

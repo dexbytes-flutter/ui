@@ -34,6 +34,11 @@ class IconApps {
   String editIcon = 'assets/images/pencil.svg';
   String orderIcon = 'assets/images/order_icon.svg';
   String rightArrow1 = 'assets/images/right_arrow1.svg';
+  String locationIcon = 'assets/images/location_icon.svg';
+  String clockIcon = 'assets/images/clock_icon.svg';
+  String calendarIcon = 'assets/images/calendar_icon.svg';
+  String appleIcon = 'assets/images/apple_icon.svg';
+  String visaIcon = 'assets/images/visa_icon.svg';
 
   iconImage(
       {required String imageUrl,

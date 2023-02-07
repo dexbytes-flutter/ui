@@ -82,16 +82,16 @@ class CommonCoffeeCardList extends StatelessWidget {
                       RichText(
                           text: TextSpan(children: [
                             TextSpan(
-                              text: "\$",
+                              text: "₹",
                               style: TextStyle(
-                                  color: Colors.grey.shade500,
+                                  color: appColors.textNormalColor1,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 15),
                             ),
                             TextSpan(
                                 text: price,
                                 style: TextStyle(
-                                    color: appColors.textColor.withOpacity(0.75),
+                                    color: appColors.textNormalColor1,
                                     fontWeight: FontWeight.w500,
                                     fontSize: 15))
                           ])),

@@ -64,24 +64,6 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             favoriteCards(),
-            SizedBox(height: 15,),
-        Container(
-            margin: EdgeInsets.only(left: 20,right: 20,bottom: 15),
-            child: CommonButton(
-            buttonName: "Log out",
-            buttonHeight: 48,
-            buttonBorderRadius: 12,
-            isBottomMarginRequired: false,
-            textStyle: TextStyle(fontSize:16, fontWeight: FontWeight.w600,color: Colors.white ),
-            backCallback: (){
-              // mainAppBloc.add(LogOutEvent(context: context));
-              // SharedPreferencesFile().saveBool(isUserLoggedInC, false);
-              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
-                return SignInScreen();
-              }), (route) => false);
-            }
-    )
-        )
           ],
         )
     );

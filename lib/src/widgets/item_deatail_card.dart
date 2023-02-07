@@ -279,17 +279,17 @@ class ItemDetailCard extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Text("\$",
+                      Text("₹",
                           style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.w600,
-                              color: Colors.grey.shade500)
+                              color: appColors.textNormalColor1)
                       ),
                       Text(" 4.20",
                           style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.w600,
-                              color: appColors.textColor.withOpacity(0.80))
+                              color: appColors.textNormalColor1)
                       )
                     ],
                   )

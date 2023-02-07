@@ -214,6 +214,8 @@ class AppString {
   String pleaseEnterOTP = "pleaseEnterOTP";
   String pleaseEnterCorrectOTP = "pleaseEnterCorrectOTP";
   String searchTextFieldHintText = "searchTextFieldHintText";
+  String writeToUsText = "writeToUsText";
+
 }
 
 AppString appString = AppString();

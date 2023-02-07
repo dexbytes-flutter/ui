@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 
 import '../all_file_import/app_utils_files_link.dart';
 import '../model/coffee_card_model.dart';
+import 'coffee_profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   final int selectedCoffeeNameIndex;
@@ -83,7 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
   // Coffee name list view
   Widget coffeeNameWidget() {
     return Container(
-      height: appDimens.heightFullScreen()/15,
+      height: 45,
       margin: EdgeInsets.only(left: 8),
       child: ListView.builder(
           shrinkWrap: true,
@@ -111,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
   //Coffee card list
   Widget coffeeCardListView(){
     return Container(
-        height: appDimens.heightFullScreen()/2.75,
+        height: 230,
         child: ListView.builder(
           padding: EdgeInsets.only(left: 15,),
           shrinkWrap: true,
@@ -162,6 +163,16 @@ class _HomeScreenState extends State<HomeScreen> {
             MainAppBloc.getDashboardContext,
             SlideRightRoute(
                 widget: MenuScreen()
+            ),
+          );
+        },
+        profileCallBack: (){
+          Navigator.push(
+            MainAppBloc.getDashboardContext,
+            SlideRightRoute(
+                widget: ProfileScreen(
+
+                )
             ),
           );
         },

@@ -5,9 +5,11 @@ import 'package:flutter/material.dart';
 
 class HomeAppBar extends StatelessWidget {
   final callbackFunction;
+  final profileCallBack;
   HomeAppBar({
     Key? key,
-    this.callbackFunction
+    this.callbackFunction,
+    this.profileCallBack
   }) : super(key: key);
 
   @override
@@ -34,13 +36,18 @@ class HomeAppBar extends StatelessWidget {
               ),
             ),
           ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12.0),
-            child:  CachedNetworkImage(
-              imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-zsO-WB5sqXt2_4XGhgNqeecBwQ2dm2dTFcV4NBR0hBIK9nlKRuIz8HUwEo-eEteJBm4&usqp=CAU",
-              height: 40,
-              width: 40,
-              fit: BoxFit.cover,
+          GestureDetector(
+            onTap: (){
+              this.profileCallBack?.call();
+            },
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(12.0),
+              child:  CachedNetworkImage(
+                imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-zsO-WB5sqXt2_4XGhgNqeecBwQ2dm2dTFcV4NBR0hBIK9nlKRuIz8HUwEo-eEteJBm4&usqp=CAU",
+                height: 40,
+                width: 40,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ],

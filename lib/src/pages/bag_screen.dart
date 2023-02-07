@@ -35,7 +35,7 @@ class _OrderScreenState extends State<OrderScreen> {
                   color: appColors.textNormalColor1,fontSize: 15,fontWeight: FontWeight.w500
                 ),),
                 SizedBox(width: 30,),
-                Text("\$10.00",
+                Text("₹10.00",
                 style: TextStyle(
                   color: appColors.textNormalColor1,fontSize: 15,fontWeight: FontWeight.w500
                 ),)
@@ -52,7 +52,7 @@ class _OrderScreenState extends State<OrderScreen> {
               ),
               ),
                 SizedBox(width: 30,),
-                Text("\$26.35",
+                Text("₹26.35",
                 style: TextStyle(
                   color: appColors.textNormalColor1,fontSize: 15,fontWeight: FontWeight.w500
                 ),)
@@ -69,7 +69,7 @@ class _OrderScreenState extends State<OrderScreen> {
               ),
               ),
                 SizedBox(width: 30,),
-                Text("\$36.35",
+                Text("₹36.35",
                     style: TextStyle(
                         color: Colors.black, fontSize: 15,fontWeight: FontWeight.w500
                     )

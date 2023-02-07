@@ -66,7 +66,7 @@ class OrderCardList extends StatelessWidget {
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              Text("\$",
+                              Text("₹",
                                 style: TextStyle(
                                   fontSize: 14,fontWeight: FontWeight.w500,
                                   color: appColors.textColorBlack,

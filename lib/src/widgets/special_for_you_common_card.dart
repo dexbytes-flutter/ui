@@ -23,9 +23,8 @@ class SpecialForYouCard extends StatelessWidget {
     appDimens.appDimensFind(context: context);
 
     return Container(
-      height: appDimens.heightFullScreen() / 5,
-      width: appDimens.widthFullScreen() / 1.12,
-      margin: EdgeInsets.only(left: 20),
+      padding: EdgeInsets.all(5),
+      margin: EdgeInsets.only(left: 20,right: 20),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
@@ -82,16 +81,16 @@ class SpecialForYouCard extends StatelessWidget {
                     child: RichText(
                         text: TextSpan(children: [
                           TextSpan(
-                            text: "\$",
+                            text: "₹",
                             style: TextStyle(
-                                color: Colors.grey.shade500,
+                                color: appColors.textNormalColor1,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 15),
                           ),
                           TextSpan(
                              text: " 4.20",
                               style: TextStyle(
-                                  color: appColors.textColor.withOpacity(0.75),
+                                  color: appColors.textNormalColor1,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 15))
                         ])),

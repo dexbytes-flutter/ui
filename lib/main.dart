@@ -1,14 +1,6 @@
 import 'dart:convert';
 import 'package:base_flutter_app/src/all_file_import/app_screens_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
-import 'package:base_flutter_app/src/pages/coffee_profile_screen.dart';
-import 'package:base_flutter_app/src/pages/favorites_screen.dart';
-import 'package:base_flutter_app/src/pages/home_screen.dart';
-import 'package:base_flutter_app/src/pages/menu_screen.dart';
-import 'package:base_flutter_app/src/pages/otp_verification_screen.dart';
-import 'package:base_flutter_app/src/pages/sign_up_screen.dart';
-import 'package:base_flutter_app/src/widgets/counter_button_widget.dart';
-import 'package:base_flutter_app/src/widgets/slider_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
@@ -30,7 +22,12 @@ import 'package:base_flutter_app/src/config/routes.dart';
 import 'src/pages/dashboard_screen.dart';
 import 'src/pages/bag_screen.dart';
 import 'src/pages/sign_in_screen.dart';
+import 'src/widgets/appbar/appbar_with_left_icon_title.dart';
 import 'src/widgets/item_deatail_card.dart';
+import 'src/widgets/payment_methods_card.dart';
+import 'src/widgets/profile_my_orders_tile.dart';
+import 'src/widgets/profile_tile_notification.dart';
+import 'src/widgets/write_to_us.dart';
 
 void main() async {
   // if you are using await in main function then add this line
@@ -279,8 +276,13 @@ class _MyAppState extends State<MyAppFlutterMain> {
   loginOptionScreen() {
     // return  ProfileScreen();
     // return  SplashScreen();
-    // return  DashboardScreen();
-    return  MenuScreen();
+    // return  ActualOrder();
+    // return  MyOrdersProfileTile();
+    return  ProfileTileNotification();
+    // return  CommonAppBarWithLeftIconTitle();
+    // return  PaymentMethodsCard();
+    // return  WriteToUs();
+    // return  HomeScreen();
 
     /*!widget.isOneTimeProfileSetUpDone
         ? ProfileScreen()
@@ -294,17 +296,8 @@ class _MyAppState extends State<MyAppFlutterMain> {
 
     //If profile set done by user
     // if (widget.isOneTimeProfileSetUpDone) {
-    return const SignInScreen();
-    // return const ItemDetailCard();
-    // return const CounterButton();
-    // return const HomeScreen();
-    // return const FavoritesScreen();
-    // return const MenuScreen();
-    // return const DashboardScreen();
-    // return const SplashScreen();
-    // return const OrderScreen();
-    // return const SignUpScreen();
-    // return const ItemDetailCard();
+    // return const SignInScreen();
+    return const DashboardScreen();
     //SignInPage();
     // }
     //If set up not done by user than redirect to selected screen
