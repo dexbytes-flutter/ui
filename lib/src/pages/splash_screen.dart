@@ -90,7 +90,7 @@ class _SplashScreenState extends State<SplashScreen>
                     opacity: animateCafeText ? 1 : 0,
                     duration: const Duration(seconds: 1),
                     child: Text(
-                      'C A F É',
+                      appString.trans(context, appString.cafeText),
                       style: TextStyle(fontSize: 50.0, color: appColors.appThemeColor1),
                     ),
                   ),
@@ -130,7 +130,7 @@ class _BottomPart extends StatelessWidget {
               ),
               child: CommonButton(
                 buttonColor: Colors.green,
-                buttonName: "Sign In",
+                buttonName: appString.trans(context, appString.signInButtonText),
                 buttonHeight: 50,
                 buttonBorderRadius: 12,
                 isBottomMarginRequired: false,
@@ -158,7 +158,7 @@ class _BottomPart extends StatelessWidget {
               ),
               child: CommonButton(
                 buttonColor: Colors.white,
-                buttonName: "Join Us",
+                buttonName: appString.trans(context, appString.joinUsText),
                 buttonHeight: 50,
                 buttonBorderRadius: 12,
                 isBottomMarginRequired: false,

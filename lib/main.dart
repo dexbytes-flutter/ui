@@ -278,16 +278,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
 
   //Redirect to login screen in case user not loggedIn
   loginOptionScreen() {
-    // return  ProfileScreen();
-    return  DashboardScreen();
-    // return  ActualOrder();
-    // return  MyOrdersProfileTile();
-    // return  ProfileTileNotification();
-    // return  CommonAppBarWithLeftIconTitle();
-    // return  PaymentMethodsCard();
-    // return  WriteToUs();
-    // return  HomeScreen();
-
+    return  SignInScreen();
     /*!widget.isOneTimeProfileSetUpDone
         ? ProfileScreen()
         : SplashScreen();*/
@@ -296,18 +287,6 @@ class _MyAppState extends State<MyAppFlutterMain> {
   //Redirect to another screen if already loggedIn
   anotherLandingScreen() {
     //Redirect to tutorial screen if not finished
-    // return StartOneToOneChatScreen();
-
-    //If profile set done by user
-    // if (widget.isOneTimeProfileSetUpDone) {
-    // return const ProfileScreen();
-    // return const SignInScreen();
     return const DashboardScreen();
-    //SignInPage();
-    // }
-    //If set up not done by user than redirect to selected screen
-    /*if (widget.isTutorialSeen &&
-        widget.loggedInUserDetails != null &&
-        widget.loggedInUserDetails!.trim().isNotEmpty) {}*/
   }
 }

@@ -215,6 +215,46 @@ class AppString {
   String pleaseEnterCorrectOTP = "pleaseEnterCorrectOTP";
   String searchTextFieldHintText = "searchTextFieldHintText";
   String writeToUsText = "writeToUsText";
+  String bagAppBarTitle = "bagAppBarTitle";
+  String checkoutButtonTitle = "checkoutButtonTitle";
+  String deliveryChargesText = "deliveryChargesText";
+  String subtotalText = "subtotalText";
+  String totalText = "totalText";
+  String favoritesAppBarTitle = "favoritesAppBarTitle";
+  String findBestCoffeeText = "findBestCoffeeText";
+  String specialForYouTitle = "specialForYouTitle";
+  String nameTitleText = "nameTitleText";
+  String phoneNumberTitleText = "phoneNumberTitleText";
+  String actualTabBarText = "actualTabBarText";
+  String pastTabBarText = "pastTabBarText";
+  String myOderAppBarTitle = "myOderAppBarTitle";
+  String paymentMethodAppBarTitle = "paymentMethodAppBarTitle";
+  String applePayText = "applePayText";
+  String payText = "payText";
+  String cardText = "cardText";
+  String notificationAppBarTitle = "notificationAppBarTitle";
+  String aboutUsAppBarTitle = "aboutUsAppBarTitle";
+  String cafeText = "cafeText";
+  String signInButtonText = "signInButtonText";
+  String joinUsText = "joinUsText";
+  String doNotHaveAccountText = "doNotHaveAccountText";
+  String doneText = "doneText";
+  String welcomeText = "welcomeText";
+  String signUpForFavoriteCoffeeText = "signUpForFavoriteCoffeeText";
+  String mobileNumberText = "mobileNumberText";
+  String fullNameText = "fullNameText";
+  String signUpButtonText = "signUpButtonText";
+  String haveAnAccountText = "haveAnAccountText";
+  String submitButtonText = "submitButtonText";
+  String resendText = "resendText";
+  String resendCodeInText = "resendCodeInText";
+  String menuText = "menuText";
+  String categoryTitleText = "categoryTitleText";
+  String enterOtpText = "enterOtpText";
+  String otpInstructionText = "otpInstructionText";
+  String googleText = "googleText";
+  String facebookText = "facebookText";
+
 
 }
 

@@ -524,7 +524,31 @@ class AppStyle {
         fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
         fontWeight: fontWeight != null ? fontWeight : appFonts.medium500,
       );
+  TextStyle textFieldText(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+        color: texColor != null ? texColor : appColors.textNormalColor1,
+        fontSize: fontSize != null ? fontSize : 15,
+        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont2,
+        fontWeight: fontWeight != null ? fontWeight : FontWeight.w500,
+      );
 
+  TextStyle textFieldHintText(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+        color: texColor != null ? texColor : Colors.grey.shade200,
+        fontSize: fontSize != null ? fontSize : 14,
+        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont2,
+        fontWeight: fontWeight != null ? fontWeight : FontWeight.w400,
+      );
 }
 
 AppStyle appStyles = AppStyle();

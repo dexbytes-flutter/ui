@@ -95,10 +95,11 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
           ),
           Positioned(
             left: 5,
-            top: 15,
-            child: CommonAppBar(
-              isHideLeftIcon: false,
-              isHideRightICon: true,
+            child: SafeArea(
+              child: CommonAppBar(
+                isHideLeftIcon: false,
+                isHideRightICon: true,
+              ),
             ),
           )
         ],
@@ -115,7 +116,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Enter OTP",
+              Text(appString.trans(context, appString.enterOtpText),
                 style: TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w700,
@@ -126,7 +127,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               SizedBox(
                 height: 10,
               ),
-              Text("Enter 4 digit verification code sent to your registered mobile number.",
+              Text(appString.trans(context, appString.otpInstructionText),
                 style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w400,
@@ -143,7 +144,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
       return Container(
         margin: EdgeInsets.only(left: 20,right: 20,bottom: 15),
         child: CommonButton(
-          buttonName: "SUBMIT",
+          buttonName: appString.trans(context, appString.submitButtonText),
           buttonHeight: 48,
           buttonBorderRadius: 12,
           isBottomMarginRequired: false,
@@ -153,8 +154,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               setState(() {
                 errorMessage = '';
                 if(isSignInScreen){
-
-                  // sharedPreferencesFile.saveBool(isUserLoggedInC, false);
+                  sharedPreferencesFile.saveBool(isUserLoggedInC, true);
                   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
                     return DashboardScreen();
                   }), (route) => false);
@@ -188,12 +188,23 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               enableResend ? _resendCode : null;
             },
             child: Center(
-              child: Text(
-                enableResend ? "Resend Code" : "Resend Code in 00:$secondsRemaining",
+              child: enableResend ? Text(
+                 appString.trans(context, appString.resendText),
                 style: TextStyle(
                     fontSize: 15,color: Color(0xff828588),
                     fontWeight: FontWeight.w500),
-              ),
+              ): Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                Text(appString.trans(context, appString.resendCodeInText), style: TextStyle(
+                    fontSize: 15,color: Color(0xff828588),
+                    fontWeight: FontWeight.w500),),
+                Text("$secondsRemaining",
+                style: TextStyle(
+                    fontSize: 15,color: Color(0xff828588),
+                    fontWeight: FontWeight.w500),
+                )
+              ],),
             ),
           ),
         ),
@@ -338,7 +349,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
           left: 0.0,
           child: InputDoneView(
             onPressCallback: onPressCallback,
-            buttonName: "Done",
+            buttonName: appString.trans(context, appString.doneText),
           ));
     });
 

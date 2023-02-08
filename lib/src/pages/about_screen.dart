@@ -9,16 +9,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../all_file_import/app_providers_files_link.dart';
 import '../model/about_us_data_model.dart';
+import '../widgets/appbar/common_app_bar_new.dart';
 import '../widgets/common_expansion_tile_widget.dart';
 
 class AboutUs extends StatefulWidget {
-  final String userName;
-  final String profileImgUrl;
   final Function(dynamic)? onImageCallBack;
 
   const AboutUs({ Key ?key,
-    this.userName = "Mohit Panchal",
-    this.profileImgUrl = "https://static.toiimg.com/thumb/msid-86203836,imgsize-29194,width-800,height-600,resizemode-75/86203836.jpg",
     this.onImageCallBack
   }) : super(key: key);
 
@@ -49,15 +46,12 @@ class _AboutUsState extends State<AboutUs> {
       isSingleChildScrollViewNeed: true,
       isFixedDeviceHeight: true,
       reverse: false,
-      appBarHeight: 50,
-      appBar: Container(
-          color: Colors.white,
-          child: CommonAppBarWithLeftIconTitle(
-            title: "About Us",
-          )
+      appBarHeight: 56,
+      appBar: CommonAppBarNew(
+        isHideRightICon: true,
+        title: appString.trans(context, appString.aboutUsAppBarTitle),
       ),
       containChild: Container(
-        color: Color(0xffFAFCFF),
         child: Stack(
           children: [
             Column(
@@ -76,7 +70,6 @@ class _AboutUsState extends State<AboutUs> {
 
   Widget blackIconTiles(){
     return Container(
-      color: Colors.white,
       height: MediaQuery.of(context).size.height,
       child: Column(
         children: [

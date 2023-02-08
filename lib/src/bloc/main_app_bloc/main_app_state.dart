@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'package:base_flutter_app/src/app_utility/app_navigator/app_navigator.dart';
 import 'package:base_flutter_app/src/model/signin_model.dart';
+import 'package:base_flutter_app/src/widgets/alerts/error_alert.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:base_flutter_app/src/all_file_import/app_utils_files_link.dart';
@@ -79,4 +81,39 @@ class HomeBottomNavigationBarTapedState extends MainAppState {
   }
   @override
   String toString() => 'ProductAdded { todos: $getMainAppStateModel }';
+}
+
+class LogOutUserState extends MainAppState {
+  BuildContext? context;
+  LogOutUserState({this.context}) {
+    logOutUser();
+  }
+}
+
+//Show log out error
+class LogOutErrorState extends MainAppState {
+  LogOutErrorState(
+      {required BuildContext context,
+        String? errorMessage,
+        String? phone,
+        int? code,
+        okCallBack}) {
+    ErrorAlert(
+        context: context,
+        message: errorMessage,
+        callBackYes: (mContext) {
+          if (okCallBack != null) {
+            okCallBack();
+          }
+          else {
+            appNavigator.popBackStack(mContext);
+
+            /* else if(){
+
+            }*/
+          }
+          // appNavigator.popBackStack(context);
+          // appNavigator.launchVerificationCodePage(context, userEmail: emailId);
+        });
+  }
 }

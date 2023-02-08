@@ -164,7 +164,7 @@ class _MenuScreenState extends State<MenuScreen> {
       appBarHeight: 56,
       appBar: CommonAppBar(
         isShowTitle: true,
-        title: "Menu",
+        title: appString.trans(context, appString.menuText),
         isHideRightICon: true,
         isHideLeftIcon: true,
       ),
@@ -177,7 +177,7 @@ class _MenuScreenState extends State<MenuScreen> {
           Padding(
             padding: const EdgeInsets.only(left: 20),
             child: Text(
-              "Categories",
+              appString.trans(context, appString.categoryTitleText),
               style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w500,

@@ -23,8 +23,9 @@ class CommonAppBarWithLeftIconTitle extends StatelessWidget implements Preferred
   // TODO: implement preferredSize
   Size get preferredSize => const Size(
       double.maxFinite,
-      80,
+      60,
   );
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,82 +35,31 @@ class CommonAppBarWithLeftIconTitle extends StatelessWidget implements Preferred
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: 30,
-          vertical: 35/20
+          horizontal: 15,
+          vertical: 15/10
         ),
         child: Stack(
           children: [
-            Positioned.fill(
-                child: titleWidget == null? Center(child: Text(title,
-                style: TextStyle(fontWeight: FontWeight.bold,
-                fontSize: 18, color: Colors.black)))
-          : Center(child: titleWidget!),
-            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                leading?? Transform.translate(
-                    offset: const Offset(-14, 0),
-                  child: GestureDetector(
-                    onTap: (){
-                      Navigator.of(context).pop();
-                    },
-                    child: iconApps.iconImage(imageUrl: iconApps.backArrowIcon,
-                      iconSize: Size(20,20),
-                    ),
-                  ),
-                ),
-                if(showActionIcon)
-                  Transform.translate(
-                      offset: const Offset(10,0),
-                    child: InkWell(
-                      onTap: (){
-
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Icon(
-                          Icons.menu
-                        ),
-                      ),
-                    ),
-                  )
-              ],
-            )
-          ],
-        ),
-      )
-      /*Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              GestureDetector(
-                onTap: (){
-                  Navigator.of(context).pop();
-                },
-                child: Container(
-                  padding: EdgeInsets.all(10),
-                  margin: EdgeInsets.only(left: 10,top: 3),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: appColors.appBgColor1.withOpacity(0.60)
-                  ),
+                leading ?? GestureDetector(
+                  onTap: (){
+                    Navigator.of(context).pop();
+                  },
                   child: iconApps.iconImage(imageUrl: iconApps.backArrowIcon,
                     iconSize: Size(20,20),
                   ),
                 ),
-              ),
-            ],
-          ),
-          Center(
-            child: Text("hjjkjhkjhkhkhl",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),),
-          ),
-        ],
-      ),*/
+              ],
+            ),
+           Center(child: Text(title,
+            style: TextStyle(fontWeight: FontWeight.bold,
+            fontSize: 18, color: Colors.black))),
+          ],
+        ),
+      )
     );
   }
 }

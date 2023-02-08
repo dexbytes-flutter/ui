@@ -30,7 +30,7 @@ class _OrderScreenState extends State<OrderScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Delivery Charges",
+                Text(appString.trans(context, appString.deliveryChargesText),
                 style: TextStyle(
                   color: appColors.textNormalColor1,fontSize: 15,fontWeight: FontWeight.w500
                 ),),
@@ -46,7 +46,7 @@ class _OrderScreenState extends State<OrderScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-              Text("Subtotal",
+              Text(appString.trans(context, appString.subtotalText),
               style: TextStyle(
                 color: appColors.textNormalColor1,fontSize: 15,fontWeight: FontWeight.w500
               ),
@@ -63,7 +63,7 @@ class _OrderScreenState extends State<OrderScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-              Text("Total",
+              Text(appString.trans(context, appString.totalText),
               style: TextStyle(
                 color: appColors.textNormalColor1, fontSize: 15,fontWeight: FontWeight.w500
               ),
@@ -90,7 +90,7 @@ class _OrderScreenState extends State<OrderScreen> {
           isHideLeftIcon: true,
           isHideRightICon: true,
           isShowTitle: true,
-          title: "Bag",
+          title: appString.trans(context, appString.bagAppBarTitle),
         ),
         containChild: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -105,7 +105,7 @@ class _OrderScreenState extends State<OrderScreen> {
                 padding: const EdgeInsets.only(left: 20,right: 20,bottom: 40),
                 child: CommonButton(
                   buttonColor: appColors.appButtonColor,
-                  buttonName: "Checkout",
+                  buttonName: appString.trans(context, appString.checkoutButtonTitle),
                   buttonHeight: 50,
                   buttonBorderRadius: 12,
                   isBottomMarginRequired: false,

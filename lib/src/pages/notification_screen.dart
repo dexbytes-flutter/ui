@@ -1,3 +1,6 @@
+import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
+import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
+import 'package:base_flutter_app/src/widgets/appbar/common_app_bar_new.dart';
 import 'package:flutter/material.dart';
 
 class NotificationScreen extends StatefulWidget {
@@ -10,8 +13,15 @@ class NotificationScreen extends StatefulWidget {
 class _NotificationScreenState extends State<NotificationScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(child: Text("Notification screen"),),
+    return ContainerFirst(
+      contextCurrentView: context,
+      appBarHeight: 56,
+      appBar: CommonAppBarNew(
+        isHideRightICon: true,
+        title: appString.trans(context, appString.notificationAppBarTitle),
+      ),
+      containChild: Center(
+        child: Text("Notification screen"),),
     );
   }
 }

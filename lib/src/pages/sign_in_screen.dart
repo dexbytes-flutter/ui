@@ -205,17 +205,9 @@ class _SignInScreenState extends State<SignInScreen> {
                   backgroundColor: Colors.brown.shade400.withOpacity(0.7),
                   borderStyle: BorderStyle.none,
                   inputKeyboardType: InputKeyboardTypeWithError.number,
-                  hintText: "Mobile number",
-                  hintStyle: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.grey.shade200,
-                  ),
-                  textStyle: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black,
-                  ),
+                  hintText: appString.trans(context, appString.mobileNumberText),
+                  hintStyle: appStyles.textFieldHintText(),
+                  textStyle: appStyles.textFieldText(),
                   inputFieldPrefixIcon: CountryPicker(
                     padding: EdgeInsets.only(
                         left: MediaQuery.of(context).size.width / 4.6,
@@ -266,7 +258,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               iconSize: Size(20, 20),
                               imageColor: Colors.grey.shade300),
                           SizedBox(width: 5,),
-                          Text("Google",style: TextStyle(color: Colors.grey.shade200),)
+                          Text(appString.trans(context, appString.googleText),style: TextStyle(color: Colors.grey.shade200),)
                         ],
                       ),
                     ),
@@ -287,7 +279,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               imageUrl: iconApps.facebookIcon,
                               iconSize: Size(25, 25),
                               imageColor: Colors.grey.shade300),
-                          Text("Facebook", style: TextStyle(color: Colors.grey.shade200),)
+                          Text(appString.trans(context, appString.facebookText), style: TextStyle(color: Colors.grey.shade200),)
                         ],
                       ),
                     ),
@@ -304,7 +296,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
                 child: CommonButton(
                   buttonColor: Color(0xFF54321E),
-                  buttonName: "Log In",
+                  buttonName: appString.trans(context, appString.signInButtonText),
                   buttonHeight: 50,
                   buttonBorderRadius: 12,
                   isBottomMarginRequired: false,
@@ -322,33 +314,11 @@ class _SignInScreenState extends State<SignInScreen> {
                   },
                 ),
               ),
-
-              // Forgot password text
-              Container(
-                  margin: EdgeInsets.only(top: 20),
-                  child: Center(
-                    child: GestureDetector(
-                      onTap: (){
-                      /*  Navigator.push(
-                          context,
-                          SlideRightRoute(
-                              widget: SignUpScreen()),
-                        );*/
-                      },
-                      child: RichText(
-                        text: TextSpan(
-                            text: "Forgot Password?",
-                            style: TextStyle(color: Color(0xFF54321E).withOpacity(0.8), fontSize: 14,fontWeight: FontWeight.w600
-                            ),
-                        ),
-                      ),
-                    ),
-                  )
-              )
             ],
           )
       );
     }
+
     return ContainerFirst(
       appBarHeight: -1,
       isOverLayStatusBar: true,
@@ -377,12 +347,12 @@ class _SignInScreenState extends State<SignInScreen> {
                 },
                 child: RichText(
                   text: TextSpan(
-                      text: "Don't have an account?",
+                      text: appString.trans(context, appString.doNotHaveAccountText),
                       style: TextStyle(color: Color(0xFF54321E).withOpacity(0.8), fontSize: 13,fontWeight: FontWeight.w600
                       ),
                       children: <TextSpan>[
                         TextSpan(
-                          text: " Join us",
+                          text: appString.trans(context, appString.joinUsText),
                           style: TextStyle(color: Color(0xFF54321E), fontSize: 13.5, fontWeight: FontWeight.w900),
                         )
                       ]
@@ -411,7 +381,7 @@ class _SignInScreenState extends State<SignInScreen> {
           left: 0.0,
           child: InputDoneView(
             onPressCallback: onPressCallback,
-            buttonName: "Done",
+            buttonName: appString.trans(context, appString.doneText),
           ));
     });
 

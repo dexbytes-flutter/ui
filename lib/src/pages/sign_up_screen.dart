@@ -195,8 +195,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("Welcome", style: TextStyle(fontSize: 30,fontWeight: FontWeight.w600),),
-            Text("Sign up for your favorite coffee", style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400),)
+            Text(appString.trans(context, appString.welcomeText), style: TextStyle(fontSize: 30,fontWeight: FontWeight.w600),),
+            Text(appString.trans(context, appString.signUpForFavoriteCoffeeText), style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400),)
           ],
         ),
       );
@@ -220,7 +220,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 child: CommonTextFieldWithError(
                   placeHolderTextWidget: Padding(
                     padding: const EdgeInsets.only(bottom: 5,left: 2),
-                    child: Text("Mobile Number",
+                    child: Text(appString.trans(context, appString.mobileNumberText),
                       style: TextStyle(
                         fontSize: 14, fontWeight: FontWeight.bold,
                       ),
@@ -313,7 +313,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   errorMessageStyle:appStyles.errorStyle(fontSize: 9),
                   placeHolderTextWidget: Padding(
                     padding: const EdgeInsets.only(bottom: 5,left: 2),
-                    child: Text("Full Name",
+                    child: Text(appString.trans(context, appString.fullNameText),
                       style: TextStyle(
                         fontSize: 14, fontWeight: FontWeight.bold,
                       ),
@@ -349,7 +349,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 child: CommonButton(
                   buttonColor: appColors.appButtonColor,
-                  buttonName: "Sign Up",
+                  buttonName: appString.trans(context, appString.signUpButtonText),
                   buttonHeight: 50,
                   buttonBorderRadius: 12,
                   isBottomMarginRequired: false,
@@ -403,12 +403,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 },
                 child: RichText(
                   text: TextSpan(
-                      text: "Have an account?",
+                      text: appString.trans(context, appString.haveAnAccountText),
                       style: TextStyle(color: Color(0xFF54321E).withOpacity(0.8), fontSize: 13,fontWeight: FontWeight.w600
                       ),
                       children: <TextSpan>[
                         TextSpan(
-                          text: " Sign In",
+                          text: appString.trans(context, appString.signInTitle),
                           style: TextStyle(color: Color(0xFF54321E), fontSize: 13.5, fontWeight: FontWeight.w900),
                         )
                       ]
@@ -437,7 +437,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           left: 0.0,
           child: InputDoneView(
             onPressCallback: onPressCallback,
-            buttonName: "Done",
+            buttonName: appString.trans(context, appString.doneText),
           ));
     });
 

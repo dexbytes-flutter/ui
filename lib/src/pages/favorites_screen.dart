@@ -1,8 +1,6 @@
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
-import 'package:base_flutter_app/src/image_res/iconApp.dart';
 import 'package:base_flutter_app/src/model/favorite_card_model.dart';
-import 'package:base_flutter_app/src/pages/sign_in_screen.dart';
 import 'package:base_flutter_app/src/values/app_dimens.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:base_flutter_app/src/widgets/basic_view_container/container_first.dart';
@@ -10,8 +8,6 @@ import 'package:base_flutter_app/src/widgets/favorite_screen_card_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../all_file_import/app_providers_files_link.dart';
-import '../all_file_import/app_utils_files_link.dart';
-import '../helper/local_constant.dart';
 
 class FavoritesScreen extends StatefulWidget {
   const FavoritesScreen({Key? key}) : super(key: key);
@@ -56,7 +52,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         appBarHeight: 56,
         appBar: CommonAppBar(
           isShowTitle: true,
-          title: "Favorites",
+          title: appString.trans(context, appString.favoritesAppBarTitle),
           isHideRightICon: true,
           isHideLeftIcon: true,
         ),

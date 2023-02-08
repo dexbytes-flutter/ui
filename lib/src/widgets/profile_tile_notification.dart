@@ -1,5 +1,7 @@
+import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/model/notification_list_card_profile_tile_model.dart';
+import 'package:base_flutter_app/src/widgets/appbar/common_app_bar_new.dart';
 import 'package:base_flutter_app/src/widgets/notification_list_card_profile_tile.dart';
 import 'package:flutter/material.dart';
 
@@ -26,9 +28,10 @@ class ProfileTileNotification extends StatelessWidget {
     }
     return ContainerFirst(
         contextCurrentView: context,
-        appBarHeight: 48,
-        appBar: CommonAppBarWithLeftIconTitle(
-        title: "Notifications",
+        appBarHeight: 56,
+        appBar: CommonAppBarNew(
+          isHideRightICon: true,
+          title: appString.trans(context, appString.notificationAppBarTitle),
         ),
         containChild: Column(
           children: [

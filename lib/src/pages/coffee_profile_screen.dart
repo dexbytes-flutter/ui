@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 
 import '../all_file_import/app_widget_files_link.dart';
 import '../widgets/appbar/common_app_bar.dart';
+import '../widgets/appbar/common_app_bar_new.dart';
 import 'about_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -65,9 +66,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
             context: context,
             msg: appString.trans(context, appString.logoutConfirmation),
             callback: (contextTemp) async {
-              // mainAppBloc.add(LogOutEvent(context: context));
               sharedPreferencesFile.clearAll();
-              sharedPreferencesFile.saveBool(isUserLoggedInC, true);
+              sharedPreferencesFile.saveBool(isUserLoggedInC, false);
               Navigator.pushAndRemoveUntil(MainAppBloc.getDashboardContext, MaterialPageRoute(builder: (BuildContext context){
                 return SignInScreen();
               }), (route) => false);
@@ -95,7 +95,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Name",
+                    Text(appString.trans(context, appString.nameTitleText),
                     style: TextStyle(
                       color: appColors.textColor, fontSize: 13, fontWeight: FontWeight.w500,
                     ),
@@ -116,7 +116,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ],
             ),
             SizedBox(height: 10,),
-            Text("Phone number",
+            Text(appString.trans(context, appString.phoneNumberTitleText),
             style: TextStyle(
               color: appColors.textColor, fontSize: 13, fontWeight: FontWeight.w500,
             ),
@@ -157,8 +157,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         contextCurrentView: context,
         isSingleChildScrollViewNeed: true,
         isFixedDeviceHeight: true,
-        appBarHeight: 48,
-        appBar: CommonAppBarWithLeftIconTitle(
+        appBarHeight: 56,
+        appBar: CommonAppBarNew(
+          isHideRightICon: true,
           title: "Profile",
         ),
         containChild: Column(

@@ -2,6 +2,7 @@ import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart'
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
+import 'package:base_flutter_app/src/widgets/appbar/common_app_bar_new.dart';
 import 'package:base_flutter_app/src/widgets/tab_bar_view_common.dart';
 import 'package:flutter/material.dart';
 
@@ -51,14 +52,14 @@ class _MyOrdersProfileTileState extends State<MyOrdersProfileTile> with TickerPr
           Tab(
             child: Align(
               alignment: Alignment.center,
-              child: Text("Actual", textAlign: TextAlign.center,
+              child: Text(appString.trans(context, appString.actualTabBarText), textAlign: TextAlign.center,
               ),
             ),
           ),
           Tab(
             child: Align(
               alignment: Alignment.center,
-              child: Text("Past"),
+              child: Text(appString.trans(context, appString.pastTabBarText)),
             ),),
         ],
         labelColor: appColors.white,
@@ -91,10 +92,11 @@ class _MyOrdersProfileTileState extends State<MyOrdersProfileTile> with TickerPr
 
     return ContainerFirst(
         contextCurrentView: context,
-        appBarHeight: 48,
+        appBarHeight: 56,
         isSingleChildScrollViewNeed: false,
-        appBar: CommonAppBarWithLeftIconTitle(
-          title: "My orders",
+        appBar: CommonAppBarNew(
+          isHideRightICon: true,
+          title: appString.trans(context, appString.myOderAppBarTitle),
         ),
         containChild: Column(
           mainAxisSize: MainAxisSize.min,

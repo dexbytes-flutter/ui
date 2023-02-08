@@ -1,3 +1,6 @@
+import 'package:base_flutter_app/src/api_calling/app_api_function.dart';
+import 'package:base_flutter_app/src/api_calling/response_wrapper.dart';
+import 'package:base_flutter_app/src/widgets/loading_widget/loading_widget_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:base_flutter_app/src/all_file_import/app_utils_files_link.dart';
@@ -29,19 +32,29 @@ class MainAppBloc extends Bloc<MainAppEvent, MainAppState> {
           tapedBottomBarPageId: event.tapedBottomBarPageId,
           statusBarColor: event.statusBarColor);
     } else if (event is LogOutEvent) {
-      loadingWidget.startLoadingPopUp(event.context);
-      /*await sharedPreferencesFile.saveBool(isUserLoggedInC, false);
-      await sharedPreferencesFile.saveStr(loggedInUserApiResponse, "");
-      await sharedPreferencesFile.saveStr(profileSetUpStepLocal, "");*/
-      await sharedPreferencesFile.clearAll();
-      await sharedPreferencesFile.saveBool(isIsTutorialSeenC, true);
-      // yield LogOutUserState();
-      loadingWidget.endLoadingPopUp(event.context);
-      // Navigator.pushAndRemoveUntil(
-      //     event.context,
-      //     SlideRightRoute(widget: SignInPage()),
-      //     ModalRoute.withName("signInPage"));
-    } else if (event is UpdateLoggedInUserDetailsEvent) {
+      yield LogOutUserState();
+      try {
+        try {
+          LoadingWidget2.startLoadingWidget(event.context);
+        } catch (e) {
+          print(e);
+        }
+
+        ResponseWrapper response = await apiRequest.logOutUser(context: event.context, userDetails: {}
+        );
+
+        try {
+          LoadingWidget2.endLoadingWidget(event.context);
+        } catch (e) {
+          print(e);
+        }
+      } catch (e) {
+        print(e);
+        yield LogOutErrorState(
+            context: event.context, errorMessage: "Something went wrong");
+      }
+    }
+    else if (event is UpdateLoggedInUserDetailsEvent) {
       yield UserLoggedInDetailState(
           loggedInUserDetails: event.loggedInUserDetails);
     } else if (event is ProfileSetUpStepUpdateEvent) {

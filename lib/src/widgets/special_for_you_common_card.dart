@@ -39,8 +39,7 @@ class SpecialForYouCard extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12.0),
                   child: CachedNetworkImage(
-                    // imageUrl: coffeeCardList[index].imageUrl,
-                   imageUrl:  "https://i.pinimg.com/236x/be/5e/0d/be5e0d63c8543a5d3ce502bf8fc9180c.jpg",
+                    imageUrl: imageUrl,
                     height: 100,
                     width: 100,
                     fit: BoxFit.cover,
@@ -55,7 +54,7 @@ class SpecialForYouCard extends StatelessWidget {
             children: [
               Padding(
                 padding:  EdgeInsets.only(top: 10),
-                child: Text( "5 Coffee Beans You \n Must Try!",
+                child: Text( title,
                   style: TextStyle(
                       fontSize: 15,
                       color: appColors.textColor.withOpacity(0.80),
@@ -88,7 +87,7 @@ class SpecialForYouCard extends StatelessWidget {
                                 fontSize: 15),
                           ),
                           TextSpan(
-                             text: " 4.20",
+                             text: price,
                               style: TextStyle(
                                   color: appColors.textNormalColor1,
                                   fontWeight: FontWeight.w500,

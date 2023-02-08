@@ -41,6 +41,7 @@ class AppColors {
   //Loader Color ********************************
   Color loaderColor = const Color(0xFFF8BC15);
   Color loaderBgColor = const Color(0xFFFFFFFF);
+  Color loaderColor2 = const Color(0xFF397DE3);
 
   //AppBar color start
   Color appBarLetIconColor = const Color(0xFFFFFFFF);

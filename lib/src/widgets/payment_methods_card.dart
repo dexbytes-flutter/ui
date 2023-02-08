@@ -1,6 +1,8 @@
+import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
+import 'package:base_flutter_app/src/widgets/appbar/common_app_bar_new.dart';
 import 'package:flutter/material.dart';
 
 import 'appbar/appbar_with_left_icon_title.dart';
@@ -18,9 +20,10 @@ class _PaymentMethodsCardState extends State<PaymentMethodsCard> {
 
     return ContainerFirst(
       contextCurrentView: context,
-      appBarHeight: 48,
-      appBar: CommonAppBarWithLeftIconTitle(
-        title:"Payment Method",
+      appBarHeight: 56,
+      appBar: CommonAppBarNew(
+        isHideRightICon: true,
+        title: appString.trans(context, appString.paymentMethodAppBarTitle),
       ),
       containChild: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -45,7 +48,7 @@ class _PaymentMethodsCardState extends State<PaymentMethodsCard> {
                       iconSize: Size(20, 20)
                     ),
                     SizedBox(width: 5,),
-                    Text("Pay")
+                    Text(appString.trans(context, appString.payText))
                   ],
                 )
               ],
@@ -61,7 +64,7 @@ class _PaymentMethodsCardState extends State<PaymentMethodsCard> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text("Card"),
+                Text(appString.trans(context, appString.cardText)),
                 Row(
                   children: [
                     iconApps.iconImage(
@@ -69,7 +72,7 @@ class _PaymentMethodsCardState extends State<PaymentMethodsCard> {
                       iconSize: Size(30, 30)
                     ),
                     SizedBox(width: 5,),
-                    Text("--4596")
+                    Text("-- 4596")
                   ],
                 )
               ],

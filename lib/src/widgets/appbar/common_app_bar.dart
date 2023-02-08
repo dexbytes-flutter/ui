@@ -49,10 +49,12 @@ class CommonAppBar extends StatelessWidget {
               ),
             ),
           ),
-          isShowTitle ? Align(
-            alignment: Alignment.center,
-            child: Text(this.title,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),),
+          isShowTitle ? Center(
+            child: Align(
+              alignment: Alignment.center,
+              child: Text(this.title,
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),),
+            ),
           ) : Container(),
           isHideRightICon? Container():
           Container(

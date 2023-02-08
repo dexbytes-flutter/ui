@@ -398,6 +398,26 @@ class ApiRequest implements ApiCall {
   }
 
   @override
+  Future logOutUser({context,userDetails}) async {
+    try {
+      if (userDetails != null) {
+        await token(isFirstTime: false);
+        //encode Map to JSON
+        var response = await apiRequestMain!.apiRequestGet(
+            url: logoutApiC,  isLoader: false,);
+        return response;
+      } else {
+        //errorPopUp(context: context);
+        return null;
+      }
+    } catch (e) {
+      print(e);
+
+      return null;
+    }
+  }
+
+  @override
   Future getAboutUsGet({context}) async {
     try {
       var response = await apiRequestMain!

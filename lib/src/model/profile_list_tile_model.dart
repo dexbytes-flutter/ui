@@ -22,7 +22,7 @@ final List<ProfileListTileModel> profileItemListTile = [
   ),
   ProfileListTileModel(
     profileListTileIcon: "assets/images/write_us.svg",
-    profileListTileTitle: "Write to Us",
+    profileListTileTitle: "About Us",
   ),
   ProfileListTileModel(
     profileListTileIcon: "assets/images/logout_icon.svg",

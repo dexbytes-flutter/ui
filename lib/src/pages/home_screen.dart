@@ -2,6 +2,7 @@ import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart'
 import 'package:base_flutter_app/src/bloc/main_app_bloc/main_app_bloc.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
 import 'package:base_flutter_app/src/model/coffee_model.dart';
+import 'package:base_flutter_app/src/model/special_for_you_model.dart';
 import 'package:base_flutter_app/src/pages/menu_screen.dart';
 import 'package:base_flutter_app/src/values/app_string.dart';
 import 'package:base_flutter_app/src/widgets/appbar/home_appbar.dart';
@@ -146,6 +147,23 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  //Special for you card list
+  Widget specialForYouView(){
+    return ListView.builder(
+        shrinkWrap: true,
+        padding: EdgeInsets.zero,
+        physics: ClampingScrollPhysics(),
+        itemCount: specialForYouDataList.length,
+        itemBuilder: (contex,index){
+          return SpecialForYouCard(
+            imageUrl: specialForYouDataList[index].imageUrl,
+            title: specialForYouDataList[index].title,
+            subTitle: specialForYouDataList[index].subTitle,
+            price: specialForYouDataList[index].price,
+          );
+        },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -182,7 +200,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Padding(
             padding: const EdgeInsets.only(left: 20, top: 15),
             child: Text(
-              "Find the best \ncoffee for you",
+              appString.trans(context, appString.findBestCoffeeText),
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
             ),
           ),
@@ -196,7 +214,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Padding(
             padding: const EdgeInsets.only(left: 20),
             child: Text(
-              "Special for you",
+              appString.trans(context, appString.specialForYouTitle),
               style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
@@ -204,7 +222,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           SizedBox(height: 15,),
-          SpecialForYouCard(),// Special for you widget
+          specialForYouView(),// Special for you widget
           SizedBox(height: 15,),
           SizedBox(height: 15,),
           SizedBox(height: 15,),
