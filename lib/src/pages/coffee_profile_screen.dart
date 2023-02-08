@@ -1,9 +1,12 @@
 import 'package:base_flutter_app/src/all_file_import/app_providers_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_utils_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
+import 'package:base_flutter_app/src/helper/local_constant.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
 import 'package:base_flutter_app/src/model/profile_list_tile_model.dart';
 import 'package:base_flutter_app/src/pages/sign_in_screen.dart';
+import 'package:base_flutter_app/src/widgets/alerts/exit_conformation_alert.dart';
+import 'package:base_flutter_app/src/widgets/appbar/appbar_with_left_icon_title.dart';
 import 'package:base_flutter_app/src/widgets/payment_methods_card.dart';
 import 'package:base_flutter_app/src/widgets/profile_list_tile.dart';
 import 'package:base_flutter_app/src/widgets/profile_my_orders_tile.dart';
@@ -13,6 +16,7 @@ import 'package:flutter/material.dart';
 
 import '../all_file_import/app_widget_files_link.dart';
 import '../widgets/appbar/common_app_bar.dart';
+import 'about_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -52,38 +56,32 @@ class _ProfileScreenState extends State<ProfileScreen> {
         Navigator.push(
           MainAppBloc.getDashboardContext,
           SlideRightRoute(
-              widget: WriteToUs()
+              widget: AboutUs()
           ),
         );
 
       }else if(index == 4){
-        Navigator.push(
-          MainAppBloc.getDashboardContext,
-          SlideRightRoute(
-              widget: SignInScreen()),
-        );
-      }/*else if(index == "LogOut"){
         ExitConformationAlert(
             context: context,
             msg: appString.trans(context, appString.logoutConfirmation),
             callback: (contextTemp) async {
-              mainAppBloc.add(LogOutEvent(context: context));
-              await sharedPreferencesFile.clearAll();
-              await sharedPreferencesFile.saveBool(isUserLoggedInC, false);
+              // mainAppBloc.add(LogOutEvent(context: context));
+              sharedPreferencesFile.clearAll();
+              sharedPreferencesFile.saveBool(isUserLoggedInC, true);
               Navigator.pushAndRemoveUntil(MainAppBloc.getDashboardContext, MaterialPageRoute(builder: (BuildContext context){
                 return SignInScreen();
               }), (route) => false);
             }, noCallback: (contextTemp){
           Navigator.pop(contextTemp);
         });
-      }*/
+      }
     }
 
     // Top profile detail view
     Widget profileDetailCard(){
       return Container(
         padding: EdgeInsets.all(20),
-        margin: EdgeInsets.only(left: 20,right: 20),
+        margin: EdgeInsets.only(left: 20,right: 20,top: 15),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           color: appColors.containerBgColor
@@ -159,11 +157,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         contextCurrentView: context,
         isSingleChildScrollViewNeed: true,
         isFixedDeviceHeight: true,
-        appBarHeight: 56,
-        appBar: CommonAppBar(
-          isHideLeftIcon: true,
-          isHideRightICon: true,
-          isShowTitle: true,
+        appBarHeight: 48,
+        appBar: CommonAppBarWithLeftIconTitle(
           title: "Profile",
         ),
         containChild: Column(

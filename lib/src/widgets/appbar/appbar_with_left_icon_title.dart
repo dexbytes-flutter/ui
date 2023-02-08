@@ -57,17 +57,7 @@ class CommonAppBarWithLeftIconTitle extends StatelessWidget implements Preferred
                     },
                     child: iconApps.iconImage(imageUrl: iconApps.backArrowIcon,
                       iconSize: Size(20,20),
-                    ),/*Container(
-                      // padding: EdgeInsets.all(10),
-                      // margin: EdgeInsets.only(left: 10,top: 3),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: appColors.grey
-                      ),
-                      child: iconApps.iconImage(imageUrl: iconApps.backArrowIcon,
-                        iconSize: Size(20,20),
-                      ),
-                    )*/
+                    ),
                   ),
                 ),
                 if(showActionIcon)

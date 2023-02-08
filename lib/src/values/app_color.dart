@@ -157,6 +157,7 @@ class AppColors {
 
   Color hintTextColor = const Color(0xFF9E9E9E);
   Color textColor = const Color(0xFF59290B);
+  Color textColorRed = const Color(0xFFF44336);
   Color textColorBlack = const Color(0xFF000000);
 
   //List field Color *****************************

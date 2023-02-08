@@ -29,8 +29,8 @@ class MenuGridListCard extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          width: 160,
-          margin: EdgeInsets.only(right:10,),
+          width: 156,
+          // margin: EdgeInsets.only(right:10,),
           decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(width: 0.8,color: Colors.grey.shade200),
@@ -42,7 +42,7 @@ class MenuGridListCard extends StatelessWidget {
               Stack(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8).copyWith(left: 11),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: CachedNetworkImage(
@@ -57,7 +57,7 @@ class MenuGridListCard extends StatelessWidget {
                     right: 7.9,
                     bottom: 7.9,
                     child: Container(
-                      padding: EdgeInsets.all(10),
+                      padding: EdgeInsets.all(11),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           color: appColors.appButtonBgColor
@@ -121,8 +121,8 @@ class MenuGridListCard extends StatelessWidget {
           ),
         ),
         Positioned(
-          bottom: 0,
-          right: 15,
+          bottom: 1,
+          right: 16.5,
           child: Container(
             padding: EdgeInsets.all(10).copyWith(left: 20,right: 20),
             decoration: BoxDecoration(

@@ -34,6 +34,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
     Widget favoriteCards(){
       return ListView.builder(
         shrinkWrap: true,
+        padding: EdgeInsets.zero,
         physics: NeverScrollableScrollPhysics(),
         itemCount: favoriteCardList.length,
         itemBuilder: (context,index){

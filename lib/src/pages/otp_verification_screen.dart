@@ -77,19 +77,31 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     MainAppBloc mainAppBloc = MainAppBloc();
 
     _topView() {
-      return ShaderMask(
-        shaderCallback: (bound) =>LinearGradient(
-          colors: [Colors.black.withOpacity(0.3),Colors.black.withOpacity(0.3)],
-          begin:Alignment.topRight,
-          end: Alignment.bottomRight,
-        ).createShader(bound),
-        blendMode: BlendMode.darken,
-        child: CachedNetworkImage(
-          height: MediaQuery.of(context).size.height/2.0,
-          width: MediaQuery.of(context).size.width,
-          imageUrl: "https://previews.123rf.com/images/gtsudio/gtsudio1501/gtsudio150100181/35411146-latte-art-close-up-of-a-beautiful-cup-of-hot-coffee-on-coffee-bean-background.jpg",
-          fit:BoxFit.cover,
-        ),
+      return Stack(
+        children: [
+          ShaderMask(
+            shaderCallback: (bound) =>LinearGradient(
+              colors: [Colors.black.withOpacity(0.3),Colors.black.withOpacity(0.3)],
+              begin:Alignment.topRight,
+              end: Alignment.bottomRight,
+            ).createShader(bound),
+            blendMode: BlendMode.darken,
+            child: CachedNetworkImage(
+              height: MediaQuery.of(context).size.height/2.0,
+              width: MediaQuery.of(context).size.width,
+              imageUrl: "https://previews.123rf.com/images/gtsudio/gtsudio1501/gtsudio150100181/35411146-latte-art-close-up-of-a-beautiful-cup-of-hot-coffee-on-coffee-bean-background.jpg",
+              fit:BoxFit.cover,
+            ),
+          ),
+          Positioned(
+            left: 5,
+            top: 15,
+            child: CommonAppBar(
+              isHideLeftIcon: false,
+              isHideRightICon: true,
+            ),
+          )
+        ],
       );
     }
 
@@ -141,6 +153,8 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               setState(() {
                 errorMessage = '';
                 if(isSignInScreen){
+
+                  // sharedPreferencesFile.saveBool(isUserLoggedInC, false);
                   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
                     return DashboardScreen();
                   }), (route) => false);
@@ -293,11 +307,8 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
       isOverLayAppBar: true,
       isSingleChildScrollViewNeed: false,
       isFixedDeviceHeight: true,
-      appBarHeight: 56,
-      appBar: CommonAppBar(
-        isHideLeftIcon: false,
-        isHideRightICon: true,
-      ),
+      isOverLayStatusBar: true,
+      appBarHeight: -1,
       containChild: Container(
         height: size.height,
         width: size.height,

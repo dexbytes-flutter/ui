@@ -63,18 +63,6 @@ final List<MyOrderCardModel> actualOrderList = [
     orderDate: "14.12.2022",
     orderTime: "10:15",
   ),
-  MyOrderCardModel(
-    orderNumber: "118",
-    numberOfItems: "2",
-    orderStatus: "Preparing",
-    orderTrackId: "13,7",
-    locationIcon: "assets/images/location_icon.svg",
-    calendarIcon: "assets/images/calendar_icon.svg",
-    clockIcon: "assets/images/clock_icon.svg",
-    address: "Independence Ave.,14",
-    orderDate: "14.12.2022",
-    orderTime: "10:15",
-  ),
 
 ];
 
@@ -105,18 +93,6 @@ final List<MyOrderCardModel> pastOrderList = [
   ),
   MyOrderCardModel(
     orderNumber: "230",
-    numberOfItems: "3",
-    orderStatus: "Received",
-    orderTrackId: "24,5",
-    locationIcon: "assets/images/location_icon.svg",
-    calendarIcon: "assets/images/calendar_icon.svg",
-    clockIcon: "assets/images/clock_icon.svg",
-    address: "Independence Ave.,14",
-    orderDate: "08.12.2022",
-    orderTime: "10:15",
-  ),
-  MyOrderCardModel(
-    orderNumber: "231",
     numberOfItems: "3",
     orderStatus: "Received",
     orderTrackId: "24,5",

@@ -128,5 +128,6 @@
   "pleaseEnterOTP" : "Please enter OTP",
   "pleaseEnterCorrectOTP" : "Please enter correct OTP",
   "searchTextFieldHintText" : "Find Your Coffee...",
-  "writeToUsText" : "Do you have any ideas, suggestions \nor comments that you would like \nto share? Or maybe there is a question? \nWrite to us."
+  "writeToUsText" : "Do you have any ideas, suggestions \nor comments that you would like \nto share? Or maybe there is a question? \nWrite to us.",
+  "logoutConfirmation" : "Are you sure you want to logout"
 }

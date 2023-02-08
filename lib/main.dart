@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:base_flutter_app/src/all_file_import/app_screens_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
+import 'package:base_flutter_app/src/pages/favorites_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
@@ -19,8 +20,11 @@ import 'package:base_flutter_app/src/helper/shared_preferencesFile.dart';
 import 'package:provider/provider.dart';
 import 'package:base_flutter_app/src/config/routes.dart';
 
+import 'src/pages/coffee_profile_screen.dart';
 import 'src/pages/dashboard_screen.dart';
 import 'src/pages/bag_screen.dart';
+import 'src/pages/home_screen.dart';
+import 'src/pages/menu_screen.dart';
 import 'src/pages/sign_in_screen.dart';
 import 'src/widgets/appbar/appbar_with_left_icon_title.dart';
 import 'src/widgets/item_deatail_card.dart';
@@ -275,10 +279,10 @@ class _MyAppState extends State<MyAppFlutterMain> {
   //Redirect to login screen in case user not loggedIn
   loginOptionScreen() {
     // return  ProfileScreen();
-    // return  SplashScreen();
+    return  DashboardScreen();
     // return  ActualOrder();
     // return  MyOrdersProfileTile();
-    return  ProfileTileNotification();
+    // return  ProfileTileNotification();
     // return  CommonAppBarWithLeftIconTitle();
     // return  PaymentMethodsCard();
     // return  WriteToUs();
@@ -296,6 +300,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
 
     //If profile set done by user
     // if (widget.isOneTimeProfileSetUpDone) {
+    // return const ProfileScreen();
     // return const SignInScreen();
     return const DashboardScreen();
     //SignInPage();

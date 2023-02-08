@@ -41,11 +41,12 @@ class ProfileListTile extends StatelessWidget {
                   iconApps.iconImage(
                     imageUrl: profileListTileIcon,
                     iconSize: Size(20,20),
-                    imageColor: appColors.iconColor3
+                    imageColor: index == 4 ? appColors.textColorRed : appColors.iconColor3
                   ),
                   SizedBox(width: 10,),
                   Text(profileListTileTitle,
-                  style: TextStyle( color: appColors.textNormalColor1, fontSize: 15, fontWeight: FontWeight.w500,),
+                  style: TextStyle( color: index == 4 ? appColors.textColorRed: appColors.textNormalColor1,
+                    fontSize: 15, fontWeight: FontWeight.w500,),
                   )
                 ],
               ),

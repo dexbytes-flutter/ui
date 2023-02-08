@@ -43,7 +43,7 @@ class _CoffeeNameHorizontalListState extends State<CoffeeNameHorizontalList> {
           width: 5,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
-              color: widget.selectedCoffeeNameIndex == widget.index? Color(0xFFCB7642) : appColors.white),
+              color: widget.selectedCoffeeNameIndex == widget.index? Color(0xFFCB7642) : Colors.transparent),
         ),
       ],
     );

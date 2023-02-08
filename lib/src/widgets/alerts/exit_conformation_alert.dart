@@ -36,6 +36,7 @@ class ExitConformationAlert {
                   borderRadius: new BorderRadius.all(new Radius.circular(20.0)),
                 ),
                 child: ListView(
+                  physics: ClampingScrollPhysics(),
                   shrinkWrap: true,
                   children: [
                     Padding(
@@ -107,7 +108,7 @@ class ExitConformationAlert {
                                     borderRadius: BorderRadius.all(
                                       Radius.circular(20),
                                     ),
-                                    color: AppColors().buttonBgColor),
+                                    color: AppColors().appButtonColor),
                                 alignment: Alignment.center,
                                 child: Padding(
                                   padding: EdgeInsets.all(10),
@@ -140,7 +141,7 @@ class ExitConformationAlert {
                                     borderRadius: BorderRadius.all(
                                       Radius.circular(20),
                                     ),
-                                    color: AppColors().buttonBgColor),
+                                    color: AppColors().appButtonColor),
                                 alignment: Alignment.center,
                                 child: Padding(
                                   padding: EdgeInsets.all(10),

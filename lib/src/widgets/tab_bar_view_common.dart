@@ -81,7 +81,7 @@ class _ActualOrderState extends State<ActualOrder> {
               children: [
                 Text(widget.selectedIndex == 1 ? "${pastOrderList[widget.selectedIndex].numberOfItems} items": "${actualOrderList[widget.selectedIndex].numberOfItems} items",
                   style: TextStyle(fontWeight: FontWeight.w400,fontSize: 15,
-                    color: Colors.grey.shade500,
+                    color: appColors.textColorBlue,
                     decoration: TextDecoration.underline,
                     decorationStyle: TextDecorationStyle.dashed,
                   ),

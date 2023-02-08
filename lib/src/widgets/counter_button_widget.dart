@@ -22,7 +22,7 @@ class _CounterButtonState extends State<CounterButton> {
 
     void _incrementCounter() {
       setState(() {
-        if (initialQuantity >= 1) {
+        if (initialQuantity >= 1 && initialQuantity < 10) {
           initialQuantity++;
         }
       });

@@ -170,9 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Navigator.push(
             MainAppBloc.getDashboardContext,
             SlideRightRoute(
-                widget: ProfileScreen(
-
-                )
+                widget: ProfileScreen()
             ),
           );
         },

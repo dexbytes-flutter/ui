@@ -104,7 +104,7 @@ class AppString {
   String buttonGallery = "Media";
   String buttonCamera = "Photo";
   //Alert message
-  String logoutConfirmation = "Are you sure you want to logout";
+  String logoutConfirmation = "logoutConfirmation";
   String deletePostMessage = "Are you sure to delete this post?";
   String deleteGroupChannelMessage =
       "Are you sure to delete this Group Channel?";

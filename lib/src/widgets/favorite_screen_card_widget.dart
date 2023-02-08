@@ -82,19 +82,22 @@ class _FavoriteScreenCardState extends State<FavoriteScreenCard> {
             ],
           ),
         ),
-        Container(
-          margin: EdgeInsets.only(right: 20),
-          padding: EdgeInsets.all(8).copyWith(left: 15,right: 15),
-          decoration: BoxDecoration(
-              color: Color(0xFFCB7642),
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(15),
-                  bottomRight: Radius.circular(15)
-              )
+        Positioned(
+          bottom: 6,
+          child: Container(
+            margin: EdgeInsets.only(right: 20),
+            padding: EdgeInsets.all(8).copyWith(left: 15,right: 15),
+            decoration: BoxDecoration(
+                color: Color(0xFFCB7642),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    bottomRight: Radius.circular(15)
+                )
+            ),
+            child: iconApps.iconImage(
+                imageUrl: iconApps.plusIcon,
+                iconSize: Size(20, 20)),
           ),
-          child: iconApps.iconImage(
-              imageUrl: iconApps.plusIcon,
-              iconSize: Size(20, 20)),
         ),
       ],
     );

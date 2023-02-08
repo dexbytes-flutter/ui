@@ -116,7 +116,7 @@ class _MenuScreenState extends State<MenuScreen> {
       List<MenuGridCardModel> gridItemList = categoryDataList[selectedCategoryIndex].gridItemList;
       return Container(
         child: GridView.builder(
-          padding: EdgeInsets.only(left: 10,bottom: 30),
+          padding: EdgeInsets.only(left: 15,bottom: 30,),
           shrinkWrap: true,
           physics: ClampingScrollPhysics(),
           itemCount: gridItemList.length,
