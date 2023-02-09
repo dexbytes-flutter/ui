@@ -195,8 +195,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(appString.trans(context, appString.welcomeText), style: TextStyle(fontSize: 30,fontWeight: FontWeight.w600),),
-            Text(appString.trans(context, appString.signUpForFavoriteCoffeeText), style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400),)
+            Text(appString.trans(context, appString.welcomeText),
+              style: appStyles.homeMenuTopTitleTextStyle(fontSize: 30,fontWeight: FontWeight.w600),),
+            Text(appString.trans(context, appString.signUpForFavoriteCoffeeText),
+              style: appStyles.homeMenuTopTitleTextStyle(fontSize: 14,fontWeight: FontWeight.w400),)
           ],
         ),
       );
@@ -319,16 +321,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                   ),
-                  hintStyle: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.grey.shade200,
-                  ),
-                  textStyle: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black,
-                  ),
+                  hintStyle: appStyles.textFieldHintTextStyle(),
+                  textStyle: appStyles.textFieldTextStyle(),
                   contentPadding: EdgeInsets.only(left: 15,right: 15),
                   onTextChange: (value) {
                     checkFullName(value, 'name', onchange: false, );
@@ -353,7 +347,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   buttonHeight: 50,
                   buttonBorderRadius: 12,
                   isBottomMarginRequired: false,
-                  textStyle: TextStyle(fontSize:16, fontWeight: FontWeight.w700,color: Colors.grey.shade200 ),
+                  textStyle: appStyles.commonButtonTitleTextTextStyle(),
                   backCallback: (){
                     if(_validateFields(isButtonClicked: true)){
                       Navigator.push(
@@ -421,6 +415,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       ),
     );
   }
+
   onPressCallback() {
     removeOverlay();
     FocusScope.of(context).requestFocus(new FocusNode());

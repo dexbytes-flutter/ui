@@ -113,7 +113,7 @@ class AppColors {
   Color borderColor = const Color(0xFF575757);
   Color appButtonColor = const Color(0xFF54321E);
   Color appButtonBgColor = const Color(0xFFCB7642);
-
+  Color textNormalColor8 = const Color(0xff828588);
 
 
 

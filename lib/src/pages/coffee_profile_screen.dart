@@ -18,6 +18,7 @@ import '../all_file_import/app_widget_files_link.dart';
 import '../widgets/appbar/common_app_bar.dart';
 import '../widgets/appbar/common_app_bar_new.dart';
 import 'about_screen.dart';
+import 'faq_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -57,7 +58,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         Navigator.push(
           MainAppBloc.getDashboardContext,
           SlideRightRoute(
-              widget: AboutUs()
+              widget: FaqScreen()
           ),
         );
 
@@ -96,15 +97,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(appString.trans(context, appString.nameTitleText),
-                    style: TextStyle(
-                      color: appColors.textColor, fontSize: 13, fontWeight: FontWeight.w500,
+                    style: appStyles.commonCardTitleTextStyle(
+                      fontSize: 12.5
                     ),
                     ),
                     SizedBox(height: 5,),
                     Text("Kate",
-                    style: TextStyle(
-                        color: appColors.textNormalColor1,fontWeight: FontWeight.w500,
-                        fontSize: 15
+                      // appColors.textNormalColor1
+                    style: appStyles.commonCardTitleTextStyle(
+                      texColor:  appColors.textNormalColor1
                     ),
                     )
                   ],
@@ -117,15 +118,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             SizedBox(height: 10,),
             Text(appString.trans(context, appString.phoneNumberTitleText),
-            style: TextStyle(
-              color: appColors.textColor, fontSize: 13, fontWeight: FontWeight.w500,
+            style: appStyles.commonCardTitleTextStyle(
+                fontSize: 12.5
             ),
             ),
             SizedBox(height: 5,),
             Text("+375 (44) 768-15-93",
-            style: TextStyle(
-              color: appColors.textNormalColor1,fontWeight: FontWeight.w500,
-              fontSize: 15
+            style: appStyles.commonCardTitleTextStyle(
+                texColor:  appColors.textNormalColor1
             ),
             )
           ],
@@ -160,7 +160,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         appBarHeight: 56,
         appBar: CommonAppBarNew(
           isHideRightICon: true,
-          title: "Profile",
+          title: appString.trans(context, appString.profileAppBarText),
         ),
         containChild: Column(
           children: [

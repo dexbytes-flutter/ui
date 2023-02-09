@@ -11,6 +11,8 @@ import 'package:base_flutter_app/src/widgets/common_text_field_with_error.dart';
 import 'package:base_flutter_app/src/widgets/menu_grid_list_card.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/appbar/common_app_bar_new.dart';
+
 class MenuScreen extends StatefulWidget {
   const MenuScreen({Key? key}) : super(key: key);
 
@@ -82,17 +84,9 @@ class _MenuScreenState extends State<MenuScreen> {
           textInputAction: TextInputAction.done,
           borderStyle: BorderStyle.none,
           inputKeyboardType: InputKeyboardTypeWithError.text,
-          hintText: appString.trans(context, appString.searchTextFieldHintText),
-          hintStyle: TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w400,
-            color: Colors.grey.shade200,
-          ),
-          textStyle: TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.w500,
-            color: Colors.black,
-          ),
+          hintText: appString.trans(context, appString.searchTextFieldHintText1),
+          hintStyle: appStyles.textFieldHintTextStyle(),
+          textStyle: appStyles.textFieldTextStyle(),
           inputFieldSuffixIcon: Container(
             padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
@@ -141,7 +135,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 menuGridItemTitle: gridItemList[index].title,
                 menuGridItemSubtitle: gridItemList[index].subTitle,
                 price: gridItemList[index].price,
-                isFav: false,
+                isFav: gridItemList[index].isFav,
               ),
             );
           },
@@ -162,11 +156,10 @@ class _MenuScreenState extends State<MenuScreen> {
       isFixedDeviceHeight: true,
       statusBarColor: Colors.white,
       appBarHeight: 56,
-      appBar: CommonAppBar(
+      appBar: CommonAppBarNew(
         isShowTitle: true,
-        title: appString.trans(context, appString.menuText),
         isHideRightICon: true,
-        isHideLeftIcon: true,
+        title: appString.trans(context, appString.menuText),
       ),
       appBackgroundColor: Colors.white,
       containChild: Column(
@@ -178,10 +171,7 @@ class _MenuScreenState extends State<MenuScreen> {
             padding: const EdgeInsets.only(left: 20),
             child: Text(
               appString.trans(context, appString.categoryTitleText),
-              style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  color: appColors.textColor.withOpacity(0.80)),
+              style: appStyles.titleTextStyle1(),
             ),
           ),
           SizedBox(height: 15,),

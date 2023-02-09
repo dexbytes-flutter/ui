@@ -59,7 +59,9 @@ class _CounterButtonState extends State<CounterButton> {
               SizedBox(width: 15,),
               Text(
                 "$initialQuantity",
-                style: TextStyle(color: Colors.white, fontSize: 16),
+                style: appStyles.titleTextStyle1(
+                  texColor: appColors.white
+                ),
               ),
               SizedBox(width: 15,),
               InkWell(

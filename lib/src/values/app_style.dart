@@ -493,10 +493,10 @@ class AppStyle {
         fontWeight,
         bool isItalic = false}) =>
       TextStyle(
-        color: texColor != null ? texColor : appColors.textNormalColor1,
-        fontSize: fontSize != null ? fontSize : 20,
+        color: texColor != null ? texColor : appColors.textColor.withOpacity(0.80),
+        fontSize: fontSize != null ? fontSize : 16,
         fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont2,
-        fontWeight: fontWeight != null ? fontWeight : appFonts.semiBold600,
+        fontWeight: fontWeight != null ? fontWeight : FontWeight.w500,
       );
 
   TextStyle favCardPriceTitleStyle(
@@ -524,7 +524,7 @@ class AppStyle {
         fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
         fontWeight: fontWeight != null ? fontWeight : appFonts.medium500,
       );
-  TextStyle textFieldText(
+  TextStyle textFieldTextStyle(
       {Color? texColor,
         double? fontSize,
         fontFamily,
@@ -537,7 +537,7 @@ class AppStyle {
         fontWeight: fontWeight != null ? fontWeight : FontWeight.w500,
       );
 
-  TextStyle textFieldHintText(
+  TextStyle textFieldHintTextStyle(
       {Color? texColor,
         double? fontSize,
         fontFamily,
@@ -548,6 +548,90 @@ class AppStyle {
         fontSize: fontSize != null ? fontSize : 14,
         fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont2,
         fontWeight: fontWeight != null ? fontWeight : FontWeight.w400,
+      );
+  TextStyle noRequestDataFoundSubTitleTextStyle(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+        color: texColor != null ? texColor : appColors.textNormalColor8,
+        fontSize: fontSize != null ? fontSize :  16,
+        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontWeight: fontWeight != null ? fontWeight : appFonts.medium500,
+      );
+  TextStyle homeMenuTopTitleTextStyle(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+        color: texColor != null ? texColor : appColors.textNormalColor1,
+        fontSize: fontSize != null ? fontSize : 22,
+        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont2,
+        fontWeight: fontWeight != null ? fontWeight : FontWeight.w500,
+      );
+  TextStyle commonCardTitleTextStyle(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+        color: texColor != null ? texColor : appColors.textColor.withOpacity(0.80),
+        fontSize: fontSize != null ? fontSize : 15,
+        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont2,
+        fontWeight: fontWeight != null ? fontWeight : FontWeight.w500,
+      );
+  TextStyle commonCardSubTitleTextStyle(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+        color: texColor != null ? texColor : Colors.grey.shade500,
+        fontSize: fontSize != null ? fontSize : 12.5,
+        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont2,
+        fontWeight: fontWeight != null ? fontWeight : FontWeight.w400,
+      );
+  TextStyle commonSubTitleTextStyle(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+        color: texColor != null ? texColor : Colors.grey.shade500,
+        fontSize: fontSize != null ? fontSize : 11,
+        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont2,
+        fontWeight: fontWeight != null ? fontWeight : FontWeight.w400,
+      );
+  TextStyle commonButtonTitleTextTextStyle(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+        color: texColor != null ? texColor : appColors.white,
+        fontSize: fontSize != null ? fontSize : 16,
+        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont2,
+        fontWeight: fontWeight != null ? fontWeight : FontWeight.w700,
+      );
+  TextStyle commonAppBarTitleTextStyle(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+        color: texColor != null ? texColor : appColors.textNormalColor1,
+        fontSize: fontSize != null ? fontSize : 18,
+        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont2,
+        fontWeight: fontWeight != null ? fontWeight : FontWeight.w500,
       );
 }
 

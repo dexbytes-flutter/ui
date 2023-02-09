@@ -168,5 +168,16 @@
   "enterOtpText" : "Enter OTP",
   "otpInstructionText" : "Enter 4 digit verification code sent to your registered mobile number.",
   "googleText" : "Google",
-  "facebookText" : "Facebook"
+  "facebookText" : "Facebook",
+  "signInToContinue" : "Sign in to continue",
+  "faq" : "FAQ",
+  "searchTextFieldHintText1" : "Search",
+  "descriptionTitleText":"Description",
+  "readMoreText" : "...Read More",
+  "showlessText" : "show less",
+  "sizeText" : "Size",
+  "priceText" : "Price",
+  "rupeeSignText":"₹",
+  "buyNowButtonText" : "Buy Now",
+  "profileAppBarText" : "Profile"
 }

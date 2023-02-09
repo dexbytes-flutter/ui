@@ -53,7 +53,7 @@ class CommonAppBar extends StatelessWidget {
             child: Align(
               alignment: Alignment.center,
               child: Text(this.title,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),),
+              style: appStyles.commonAppBarTitleTextStyle()),
             ),
           ) : Container(),
           isHideRightICon? Container():

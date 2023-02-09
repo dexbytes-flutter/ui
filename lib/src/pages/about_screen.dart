@@ -13,10 +13,7 @@ import '../widgets/appbar/common_app_bar_new.dart';
 import '../widgets/common_expansion_tile_widget.dart';
 
 class AboutUs extends StatefulWidget {
-  final Function(dynamic)? onImageCallBack;
-
   const AboutUs({ Key ?key,
-    this.onImageCallBack
   }) : super(key: key);
 
   @override

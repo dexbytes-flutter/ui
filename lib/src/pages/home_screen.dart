@@ -58,16 +58,8 @@ class _HomeScreenState extends State<HomeScreen> {
         borderStyle: BorderStyle.none,
         inputKeyboardType: InputKeyboardTypeWithError.text,
         hintText: appString.trans(context, appString.searchTextFieldHintText),
-        hintStyle: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w400,
-          color: Colors.grey.shade200,
-        ),
-        textStyle: TextStyle(
-          fontSize: 15,
-          fontWeight: FontWeight.w500,
-          color: Colors.black,
-        ),
+        hintStyle: appStyles.textFieldHintTextStyle(),
+        textStyle: appStyles.textFieldTextStyle(),
         inputFieldPrefixIcon: Container(
           margin: EdgeInsets.all(15),
           child: iconApps.iconImage(
@@ -201,7 +193,7 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.only(left: 20, top: 15),
             child: Text(
               appString.trans(context, appString.findBestCoffeeText),
-              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
+              style: appStyles.homeMenuTopTitleTextStyle(),
             ),
           ),
           SizedBox(height: 20,),
@@ -215,10 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.only(left: 20),
             child: Text(
               appString.trans(context, appString.specialForYouTitle),
-              style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  color: appColors.textColor.withOpacity(0.80)),
+              style: appStyles.titleTextStyle1(),
             ),
           ),
           SizedBox(height: 15,),

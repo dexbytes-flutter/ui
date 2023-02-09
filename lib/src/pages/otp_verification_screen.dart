@@ -117,22 +117,14 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(appString.trans(context, appString.enterOtpText),
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xff000A14),
-                ),
+                style: appStyles.homeMenuTopTitleTextStyle(fontSize: 22,fontWeight: FontWeight.w700),
                 textAlign: TextAlign.start,
               ),
               SizedBox(
                 height: 10,
               ),
               Text(appString.trans(context, appString.otpInstructionText),
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w400,
-                  color: Color(0xff828588),
-                ),
+                style: appStyles.commonCardTitleTextStyle(texColor: Colors.grey.shade500),
                 textAlign: TextAlign.start,
               )
             ],
@@ -145,10 +137,10 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
         margin: EdgeInsets.only(left: 20,right: 20,bottom: 15),
         child: CommonButton(
           buttonName: appString.trans(context, appString.submitButtonText),
-          buttonHeight: 48,
+          buttonHeight: 50,
           buttonBorderRadius: 12,
           isBottomMarginRequired: false,
-          textStyle: TextStyle(fontSize:16, fontWeight: FontWeight.w600,color: Colors.white ),
+          textStyle: appStyles.commonButtonTitleTextTextStyle(),
           backCallback: (){
             if (verificationCodeStr != '' && verificationCodeStr.trim().length == otpLength) {
               setState(() {
@@ -190,19 +182,13 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
             child: Center(
               child: enableResend ? Text(
                  appString.trans(context, appString.resendText),
-                style: TextStyle(
-                    fontSize: 15,color: Color(0xff828588),
-                    fontWeight: FontWeight.w500),
+                style: appStyles.commonCardTitleTextStyle(texColor: Colors.grey.shade500),
               ): Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                Text(appString.trans(context, appString.resendCodeInText), style: TextStyle(
-                    fontSize: 15,color: Color(0xff828588),
-                    fontWeight: FontWeight.w500),),
+                Text(appString.trans(context, appString.resendCodeInText), style: appStyles.commonCardTitleTextStyle(texColor: Colors.grey.shade500),),
                 Text("$secondsRemaining",
-                style: TextStyle(
-                    fontSize: 15,color: Color(0xff828588),
-                    fontWeight: FontWeight.w500),
+                style: appStyles.commonCardTitleTextStyle(texColor: Colors.grey.shade500),
                 )
               ],),
             ),

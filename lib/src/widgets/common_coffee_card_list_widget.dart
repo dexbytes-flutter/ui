@@ -54,20 +54,14 @@ class CommonCoffeeCardList extends StatelessWidget {
             padding: const EdgeInsets.only(left: 12, top: 5),
             child: Text(
               coffeeListTitle,
-              style: TextStyle(
-                  color: appColors.textColor.withOpacity(0.80),
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500),
+              style: appStyles.commonCardTitleTextStyle(),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 12, top: 5),
             child: Text(
               coffeeListSubTitle,
-              style: TextStyle(
-                  color: Colors.grey.shade500,
-                  fontSize: 12.5,
-                  fontWeight: FontWeight.w400),
+              style: appStyles.commonCardSubTitleTextStyle(),
             ),
           ),
           Expanded(
@@ -82,18 +76,16 @@ class CommonCoffeeCardList extends StatelessWidget {
                       RichText(
                           text: TextSpan(children: [
                             TextSpan(
-                              text: "₹",
-                              style: TextStyle(
-                                  color: appColors.textNormalColor1,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 15),
+                              text: appString.trans(context, appString.rupeeSignText),
+                              style: appStyles.commonCardTitleTextStyle(
+                              texColor: appColors.textNormalColor1
+                              )
                             ),
                             TextSpan(
                                 text: price,
-                                style: TextStyle(
-                                    color: appColors.textNormalColor1,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 15))
+                                style: appStyles.commonCardTitleTextStyle(
+                                    texColor: appColors.textNormalColor1
+                                ))
                           ])),
                     ],
                   ) ,

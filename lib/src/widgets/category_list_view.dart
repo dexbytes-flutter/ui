@@ -60,12 +60,9 @@ class _CategoryListViewState extends State<CategoryListView> {
               child: Text(
                widget.categoryListTitle,
                 softWrap: true,
-                style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500,
-                    color: widget.selectedCategoryIndex == widget.index
-                        ? appColors.white
-                        : Colors.grey.shade400),
+                style: appStyles.commonCardTitleTextStyle(
+                  texColor: widget.selectedCategoryIndex == widget.index ? appColors.white : Colors.grey.shade400
+                ),
               ),
             ),
           )

@@ -31,14 +31,10 @@ class _OrderScreenState extends State<OrderScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(appString.trans(context, appString.deliveryChargesText),
-                style: TextStyle(
-                  color: appColors.textNormalColor1,fontSize: 15,fontWeight: FontWeight.w500
-                ),),
+                style: appStyles.commonCardTitleTextStyle(texColor: appColors.textNormalColor1),),
                 SizedBox(width: 30,),
                 Text("₹10.00",
-                style: TextStyle(
-                  color: appColors.textNormalColor1,fontSize: 15,fontWeight: FontWeight.w500
-                ),)
+                style: appStyles.commonCardTitleTextStyle(texColor: appColors.textNormalColor1),)
               ],
             ),
             SizedBox(height: 15,),
@@ -47,15 +43,11 @@ class _OrderScreenState extends State<OrderScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
               Text(appString.trans(context, appString.subtotalText),
-              style: TextStyle(
-                color: appColors.textNormalColor1,fontSize: 15,fontWeight: FontWeight.w500
-              ),
+              style: appStyles.commonCardTitleTextStyle(texColor: appColors.textNormalColor1),
               ),
                 SizedBox(width: 30,),
                 Text("₹26.35",
-                style: TextStyle(
-                  color: appColors.textNormalColor1,fontSize: 15,fontWeight: FontWeight.w500
-                ),)
+                style: appStyles.commonCardTitleTextStyle(texColor: appColors.textNormalColor1),)
               ],
             ),
             SizedBox(height: 15,),
@@ -64,15 +56,11 @@ class _OrderScreenState extends State<OrderScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
               Text(appString.trans(context, appString.totalText),
-              style: TextStyle(
-                color: appColors.textNormalColor1, fontSize: 15,fontWeight: FontWeight.w500
-              ),
+              style: appStyles.commonCardTitleTextStyle(texColor: appColors.textNormalColor1),
               ),
                 SizedBox(width: 30,),
                 Text("₹36.35",
-                    style: TextStyle(
-                        color: Colors.black, fontSize: 15,fontWeight: FontWeight.w500
-                    )
+                    style: appStyles.commonCardTitleTextStyle(texColor: appColors.textNormalColor1)
                 )
               ],
             )
@@ -109,7 +97,7 @@ class _OrderScreenState extends State<OrderScreen> {
                   buttonHeight: 50,
                   buttonBorderRadius: 12,
                   isBottomMarginRequired: false,
-                  textStyle: TextStyle(fontSize:16, fontWeight: FontWeight.w700,color: Colors.grey.shade200 ),
+                  textStyle: appStyles.commonButtonTitleTextTextStyle(),
                   backCallback: (){
                     /*if(_validateFields(isButtonClicked: true)){
                 Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){

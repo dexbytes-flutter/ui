@@ -17,13 +17,15 @@ class ItemDetailCard extends StatelessWidget {
   final String subTitle;
   final String description;
   final String price;
+  final bool isFav;
   const ItemDetailCard({
     Key? key,
     this.imageUrl = "https://images.pexels.com/photos/2396220/pexels-photo-2396220.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     this.title = "Cappuccino",
     this.subTitle = "With Oat Milk",
     this.description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    this.price = "4.20"
+    this.price = "4.20",
+    this.isFav = false,
   }) : super(key: key);
 
   @override
@@ -79,21 +81,18 @@ class ItemDetailCard extends StatelessWidget {
                               child: Text(
                                 title,
                                 softWrap: true,
-                                style: TextStyle(
-                                    color: appColors.white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w500),
+                                style: appStyles.commonCardTitleTextStyle(
+                                    texColor: appColors.white
+                                ),
                               ),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 20, top: 5),
                               child: Text(
                                 subTitle,
-                                style: TextStyle(
-                                    color: Colors.black.withOpacity(0.40),
-                                    // color: Colors.grey.shade500,
-                                    fontSize: 12.5,
-                                    fontWeight: FontWeight.w500),
+                                style: appStyles.commonCardSubTitleTextStyle(
+                                texColor: Colors.black.withOpacity(0.40)
+                                ),
                               ),
                             ),
                             Row(
@@ -111,20 +110,20 @@ class ItemDetailCard extends StatelessWidget {
                                     text: TextSpan(children: [
                                       TextSpan(
                                           text: "4.5",
-                                          style: TextStyle(
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w500)),
+                                          style: appStyles.coffeCardTitleStyle(
+                                            texColor: appColors.white
+                                          )
+                                      ),
                                       WidgetSpan(
                                           child: SizedBox(
                                             width: 5,
                                           )),
                                       TextSpan(
                                           text: "(6.986)",
-                                          style: TextStyle(
-                                              color: Colors.black.withOpacity(0.40),
-                                              // color: Colors.grey.shade500,
-                                              fontWeight: FontWeight.w400,
-                                              fontSize: 12.5))
+                                          style: appStyles.commonCardSubTitleTextStyle(
+                                            texColor: Colors.black.withOpacity(0.40)
+                                          )
+                                      )
                                     ]),
                                   ),
                                 )
@@ -158,10 +157,7 @@ class ItemDetailCard extends StatelessWidget {
                                       ),
                                       Text(
                                         "Coffee",
-                                        style:
-                                        TextStyle(color: Colors.grey.shade500,
-                                          fontSize: 11,
-                                        ),
+                                        style: appStyles.commonSubTitleTextStyle()
                                       )
                                     ],
                                   ),
@@ -182,10 +178,7 @@ class ItemDetailCard extends StatelessWidget {
                                       SizedBox(height: 4,),
                                       Text(
                                         "Milk",
-                                        style:
-                                        TextStyle(color: Colors.grey.shade500,
-                                            fontSize: 11
-                                        ),
+                                        style: appStyles.commonSubTitleTextStyle(),
                                       )
                                     ],
                                   ),
@@ -201,9 +194,7 @@ class ItemDetailCard extends StatelessWidget {
                                 color: appColors.appThemeColor1),
                             child: Text(
                               "Medium Roasted",
-                              style: TextStyle(color: Colors.grey.shade500,
-                                  fontSize: 11
-                              ),
+                              style: appStyles.commonSubTitleTextStyle(),
                             ),
                           )
                         ],
@@ -226,12 +217,8 @@ class ItemDetailCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 15,),
             child: Text(
-              "Description",
-              style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                  color: appColors.textColor.withOpacity(0.80)),
-            ),
+              appString.trans(context, appString.descriptionTitleText),
+              style: appStyles.commonCardTitleTextStyle(),)
           ),
           SizedBox(
             height: 10,
@@ -239,22 +226,19 @@ class ItemDetailCard extends StatelessWidget {
           ReadMoreText(
            description,
             trimLines: 3,
-            preDataTextStyle: TextStyle(fontWeight: FontWeight.w500),
-            style: TextStyle(color: Colors.grey.shade500),
-            colorClickableText: Color(0xFFCB7642),
+            preDataTextStyle: appStyles.commonCardSubTitleTextStyle(),
+            style: appStyles.commonCardSubTitleTextStyle(),
+            colorClickableText: appColors.appButtonBgColor,
             trimMode: TrimMode.Line,
-            trimCollapsedText: '...Read More',
-            trimExpandedText: ' show less',
+            trimCollapsedText: appString.trans(context, appString.readMoreText),
+            trimExpandedText: appString.trans(context, appString.showlessText),
           ),
           SizedBox(
             height: 10,
           ),
           Text(
-            "Size",
-            style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w500,
-                color: appColors.textColor.withOpacity(0.80)),
+            appString.trans(context, appString.sizeText),
+            style: appStyles.commonCardTitleTextStyle(),
           ),
           SizedBox(
             height: 10,
@@ -269,28 +253,23 @@ class ItemDetailCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Price",
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500,
-                        color: appColors.textColor.withOpacity(0.80)),
+                    appString.trans(context, appString.priceText),
+                    style: appStyles.commonCardTitleTextStyle(),
                   ),
                   SizedBox(
                     height: 5,
                   ),
                   Row(
                     children: [
-                      Text("₹",
-                          style: TextStyle(
-                              fontSize: 17,
-                              fontWeight: FontWeight.w600,
-                              color: appColors.textNormalColor1)
+                      Text(appString.trans(context, appString.rupeeSignText),
+                          style: appStyles.commonCardTitleTextStyle(
+                              fontSize: 17,texColor: appColors.textNormalColor1
+                          )
                       ),
-                      Text(" 4.20",
-                          style: TextStyle(
-                              fontSize: 17,
-                              fontWeight: FontWeight.w600,
-                              color: appColors.textNormalColor1)
+                      Text(price,
+                          style: appStyles.commonCardTitleTextStyle(
+                              fontSize: 17,texColor: appColors.textNormalColor1
+                          )
                       )
                     ],
                   )
@@ -305,14 +284,11 @@ class ItemDetailCard extends StatelessWidget {
                     width: 152,
                     child: CommonButton(
                       buttonColor: Color(0xFF54321E),
-                      buttonName: "Buy Now",
+                      buttonName: appString.trans(context, appString.buyNowButtonText),
                       buttonHeight: 50,
                       buttonBorderRadius: 12,
                       isBottomMarginRequired: false,
-                      textStyle: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.grey.shade200),
+                      textStyle: appStyles.commonButtonTitleTextTextStyle(),
                       backCallback: () {
                         /*if(_validateFields(isButtonClicked: true)){
                   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){

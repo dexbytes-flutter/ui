@@ -4,17 +4,19 @@ import 'package:base_flutter_app/src/values/app_dimens.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../values/app_color.dart';
+import '../values/app_string.dart';
+import '../values/app_style.dart';
 import 'like_button_icon.dart';
 
 class MenuGridListCard extends StatelessWidget {
-  final bool isFav;
+  final bool? isFav;
   final String imageUrl;
   final String menuGridItemTitle;
   final String menuGridItemSubtitle;
   final String price;
   const MenuGridListCard({
     Key? key,
-    this.isFav = false,
+    this.isFav,
     this.imageUrl = "https://emilylaurae.com/wp-content/uploads/2022/10/Caramel-macchiato-4.jpg",
     this.menuGridItemTitle = "Caramel",
     this.menuGridItemSubtitle = "Macchiato",
@@ -80,20 +82,14 @@ class MenuGridListCard extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 12, top: 5),
                 child: Text(
                   menuGridItemTitle,
-                  style: TextStyle(
-                      color: appColors.textColor.withOpacity(0.80),
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500),
+                  style: appStyles.commonCardTitleTextStyle(),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 12, top: 5),
                 child: Text(
                  menuGridItemSubtitle,
-                  style: TextStyle(
-                      color: Colors.grey.shade500,
-                      fontSize: 12.5,
-                      fontWeight: FontWeight.w400),
+                  style: appStyles.commonCardSubTitleTextStyle(),
                 ),
               ),
               Expanded(
@@ -102,17 +98,14 @@ class MenuGridListCard extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text("₹",
+                      Text(appString.trans(context, appString.rupeeSignText),
                           style: TextStyle(
                               color: appColors.textNormalColor1,
                               fontWeight: FontWeight.w500,
                               fontSize: 15)
                       ),
                       Text(price,
-                        style: TextStyle(
-                            color: appColors.textNormalColor1,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 15),),
+                        style: appStyles.commonCardTitleTextStyle(),),
                     ],
                   ),
                 ),

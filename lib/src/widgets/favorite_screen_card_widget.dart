@@ -58,23 +58,17 @@ class _FavoriteScreenCardState extends State<FavoriteScreenCard> {
                   children: [
                     Text(
                       widget.title,
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: appColors.textColor.withOpacity(0.80),
-                          fontWeight: FontWeight.w500),
+                      style: appStyles.commonCardTitleTextStyle(),
                     ),
                     SizedBox(height: 5,),
                     Text(
                       widget.subTitle,
-                      style: TextStyle(
-                          fontSize: 12.5,
-                          color: Colors.grey.shade500,
-                          fontWeight: FontWeight.w500),
+                      style: appStyles.commonCardSubTitleTextStyle(),
                     ),
                     SizedBox(height: 8,),
                     Text(
                        "₹450",
-                      style: appStyles.favCardPriceTitleStyle()
+                      style: appStyles.commonCardTitleTextStyle(texColor: appColors.textNormalColor1)
                     ),
                   ],
                 ),

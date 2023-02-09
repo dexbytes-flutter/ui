@@ -45,8 +45,7 @@ class ProfileListTile extends StatelessWidget {
                   ),
                   SizedBox(width: 10,),
                   Text(profileListTileTitle,
-                  style: TextStyle( color: index == 4 ? appColors.textColorRed: appColors.textNormalColor1,
-                    fontSize: 15, fontWeight: FontWeight.w500,),
+                  style: appStyles.commonCardTitleTextStyle(texColor: index == 4 ? appColors.textColorRed: appColors.textNormalColor1),
                   )
                 ],
               ),

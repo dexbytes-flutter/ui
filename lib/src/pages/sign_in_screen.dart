@@ -156,8 +156,10 @@ class _SignInScreenState extends State<SignInScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("Welcome", style: TextStyle(fontSize: 30,fontWeight: FontWeight.w600),),
-            Text("Sign in to continue", style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400),)
+            Text(appString.trans(context, appString.welcomeText),
+              style: appStyles.homeMenuTopTitleTextStyle(fontSize: 30)),
+            Text(appString.trans(context, appString.signInToContinue),
+              style: appStyles.commonCardSubTitleTextStyle(texColor: appColors.textNormalColor1),)
           ],
         ),
       );
@@ -181,7 +183,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 child: CommonTextFieldWithError(
                   placeHolderTextWidget: Padding(
                     padding: const EdgeInsets.only(bottom: 5,left: 2),
-                    child: Text("Mobile Number",
+                    child: Text(appString.trans(context, appString.mobileNumberText),
                       style: TextStyle(
                         fontSize: 14, fontWeight: FontWeight.bold,
                       ),
@@ -206,8 +208,8 @@ class _SignInScreenState extends State<SignInScreen> {
                   borderStyle: BorderStyle.none,
                   inputKeyboardType: InputKeyboardTypeWithError.number,
                   hintText: appString.trans(context, appString.mobileNumberText),
-                  hintStyle: appStyles.textFieldHintText(),
-                  textStyle: appStyles.textFieldText(),
+                  hintStyle: appStyles.textFieldHintTextStyle(),
+                  textStyle: appStyles.textFieldTextStyle(),
                   inputFieldPrefixIcon: CountryPicker(
                     padding: EdgeInsets.only(
                         left: MediaQuery.of(context).size.width / 4.6,
@@ -258,7 +260,8 @@ class _SignInScreenState extends State<SignInScreen> {
                               iconSize: Size(20, 20),
                               imageColor: Colors.grey.shade300),
                           SizedBox(width: 5,),
-                          Text(appString.trans(context, appString.googleText),style: TextStyle(color: Colors.grey.shade200),)
+                          Text(appString.trans(context, appString.googleText),
+                            style: appStyles.textFieldHintTextStyle(),)
                         ],
                       ),
                     ),
@@ -279,7 +282,8 @@ class _SignInScreenState extends State<SignInScreen> {
                               imageUrl: iconApps.facebookIcon,
                               iconSize: Size(25, 25),
                               imageColor: Colors.grey.shade300),
-                          Text(appString.trans(context, appString.facebookText), style: TextStyle(color: Colors.grey.shade200),)
+                          Text(appString.trans(context, appString.facebookText),
+                            style: appStyles.textFieldHintTextStyle(),)
                         ],
                       ),
                     ),
@@ -300,7 +304,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   buttonHeight: 50,
                   buttonBorderRadius: 12,
                   isBottomMarginRequired: false,
-                  textStyle: TextStyle(fontSize:16, fontWeight: FontWeight.w700,color: Colors.grey.shade200 ),
+                  textStyle: appStyles.commonButtonTitleTextTextStyle(),
                   backCallback: (){
                     if(_validateFields(isButtonClicked: true)){
                         Navigator.push(
@@ -348,12 +352,12 @@ class _SignInScreenState extends State<SignInScreen> {
                 child: RichText(
                   text: TextSpan(
                       text: appString.trans(context, appString.doNotHaveAccountText),
-                      style: TextStyle(color: Color(0xFF54321E).withOpacity(0.8), fontSize: 13,fontWeight: FontWeight.w600
+                      style: appStyles.commonCardTitleTextStyle(fontSize: 13,fontWeight: FontWeight.w600
                       ),
                       children: <TextSpan>[
                         TextSpan(
                           text: appString.trans(context, appString.joinUsText),
-                          style: TextStyle(color: Color(0xFF54321E), fontSize: 13.5, fontWeight: FontWeight.w900),
+                          style: appStyles.commonCardTitleTextStyle(fontSize: 13.5,fontWeight: FontWeight.w900),
                         )
                       ]
                   ),

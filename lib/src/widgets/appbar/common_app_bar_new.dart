@@ -1,3 +1,4 @@
+import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
 import 'package:flutter/material.dart';
 
@@ -37,7 +38,7 @@ class CommonAppBarNew extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children:[
                   Text(title,
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),)
+                  style: appStyles.commonAppBarTitleTextStyle())
                 ]
             ),
             isHideRightICon? Container() :

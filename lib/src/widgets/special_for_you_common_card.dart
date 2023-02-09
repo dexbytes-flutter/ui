@@ -24,7 +24,7 @@ class SpecialForYouCard extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.all(5),
-      margin: EdgeInsets.only(left: 20,right: 20),
+      margin: EdgeInsets.only(left: 20,right: 20,bottom: 15),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
@@ -55,20 +55,14 @@ class SpecialForYouCard extends StatelessWidget {
               Padding(
                 padding:  EdgeInsets.only(top: 10),
                 child: Text( title,
-                  style: TextStyle(
-                      fontSize: 15,
-                      color: appColors.textColor.withOpacity(0.80),
-                      fontWeight: FontWeight.w500),
+                  style: appStyles.commonCardTitleTextStyle(),
                 ),
               ),
                 Padding(
                 padding: EdgeInsets.only(top: 10),
                 child: Text(
                  this.subTitle,
-                  style: TextStyle(
-                      fontSize: 12.5,
-                      color: Colors.grey.shade500,
-                      fontWeight: FontWeight.w500),
+                  style: appStyles.commonCardSubTitleTextStyle(),
                 ),
               ),
               Row(
@@ -80,7 +74,7 @@ class SpecialForYouCard extends StatelessWidget {
                     child: RichText(
                         text: TextSpan(children: [
                           TextSpan(
-                            text: "₹",
+                            text: appString.trans(context, appString.rupeeSignText),
                             style: TextStyle(
                                 color: appColors.textNormalColor1,
                                 fontWeight: FontWeight.w500,
@@ -88,10 +82,7 @@ class SpecialForYouCard extends StatelessWidget {
                           ),
                           TextSpan(
                              text: price,
-                              style: TextStyle(
-                                  color: appColors.textNormalColor1,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 15))
+                              style: appStyles.commonCardTitleTextStyle())
                         ])),
                   ),
                  Container(

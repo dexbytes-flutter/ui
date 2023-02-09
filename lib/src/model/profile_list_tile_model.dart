@@ -21,8 +21,8 @@ final List<ProfileListTileModel> profileItemListTile = [
     profileListTileTitle: "Notifications",
   ),
   ProfileListTileModel(
-    profileListTileIcon: "assets/images/write_us.svg",
-    profileListTileTitle: "About Us",
+    profileListTileIcon: "assets/images/faq_icon.svg",
+    profileListTileTitle: "FAQ",
   ),
   ProfileListTileModel(
     profileListTileIcon: "assets/images/logout_icon.svg",

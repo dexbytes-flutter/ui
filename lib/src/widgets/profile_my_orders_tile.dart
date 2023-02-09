@@ -38,6 +38,8 @@ class _MyOrdersProfileTileState extends State<MyOrdersProfileTile> with TickerPr
 
   @override
   Widget build(BuildContext context) {
+    AppDimens appDimens = AppDimens();
+    appDimens.appDimensFind(context: context);
 
     //Tab bar
     Widget tabBarView(){
@@ -79,7 +81,8 @@ class _MyOrdersProfileTileState extends State<MyOrdersProfileTile> with TickerPr
     Widget actualTabCard(){
       return ListView.builder(
         shrinkWrap: true,
-        padding: const EdgeInsets.only(top: 20,bottom: 140),
+        padding: EdgeInsets.only(top: 20,
+            bottom: appDimens.heightFullScreen()/4),
         itemCount: actualOrderList.length,
         itemBuilder: (contex, index){
           return ActualOrder(

@@ -1,12 +1,10 @@
 import 'dart:async';
-import 'dart:io';
 import 'package:base_flutter_app/src/pages/sign_in_screen.dart';
 import 'package:base_flutter_app/src/pages/sign_up_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:lottie/lottie.dart';
-
 import '../all_file_import/app_utils_files_link.dart';
 import '../all_file_import/app_widget_files_link.dart';
 
@@ -134,7 +132,7 @@ class _BottomPart extends StatelessWidget {
                 buttonHeight: 50,
                 buttonBorderRadius: 12,
                 isBottomMarginRequired: false,
-                textStyle: TextStyle(fontSize:16, fontWeight: FontWeight.w700,color: Colors.grey.shade200 ),
+                textStyle: appStyles.commonButtonTitleTextTextStyle(),
                 backCallback: (){
                   Navigator.push(
                     context,
@@ -162,7 +160,7 @@ class _BottomPart extends StatelessWidget {
                 buttonHeight: 50,
                 buttonBorderRadius: 12,
                 isBottomMarginRequired: false,
-                textStyle: TextStyle(fontSize:16, fontWeight: FontWeight.w700,color: appColors.appThemeColor1),
+                textStyle: appStyles.commonButtonTitleTextTextStyle(),
                 backCallback: (){
                   Navigator.push(
                     context,
@@ -176,41 +174,6 @@ class _BottomPart extends StatelessWidget {
                 },
               ),
             ),
-           /* const Text(
-              'Find The Best Coffee for You',
-              style: TextStyle(
-                  fontSize: 27.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
-            ),
-            const SizedBox(height: 30.0),
-            Text(
-              'Lorem ipsum dolor sit amet, adipiscing elit. '
-                  'Nullam pulvinar dolor sed enim eleifend efficitur.',
-              style: TextStyle(
-                fontSize: 15.0,
-                color: Colors.white.withOpacity(0.8),
-                height: 1.5,
-              ),
-            ),
-            const SizedBox(height: 50.0),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Container(
-                height: 85.0,
-                width: 85.0,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white, width: 2.0),
-                ),
-                child: const Icon(
-                  Icons.chevron_right,
-                  size: 50.0,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            const SizedBox(height: 50.0),*/
           ],
         ),
       ),

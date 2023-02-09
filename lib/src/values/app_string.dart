@@ -254,6 +254,18 @@ class AppString {
   String otpInstructionText = "otpInstructionText";
   String googleText = "googleText";
   String facebookText = "facebookText";
+  String signInToContinue = "signInToContinue";
+  String faq = "faq";
+  String searchTextFieldHintText1 = "searchTextFieldHintText1";
+  String coffeeText = "coffeeText";
+  String descriptionTitleText = "descriptionTitleText";
+  String readMoreText = "readMoreText";
+  String showlessText = "showlessText";
+  String sizeText = "sizeText";
+  String priceText = "priceText";
+  String rupeeSignText = "rupeeSignText";
+  String buyNowButtonText = "buyNowButtonText";
+  String profileAppBarText = "profileAppBarText";
 
 
 }

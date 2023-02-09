@@ -18,6 +18,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
       appBarHeight: 56,
       appBar: CommonAppBarNew(
         isHideRightICon: true,
+        isHideLeftIcon: true,
         title: appString.trans(context, appString.notificationAppBarTitle),
       ),
       containChild: Center(

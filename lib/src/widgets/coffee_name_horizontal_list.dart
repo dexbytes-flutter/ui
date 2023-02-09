@@ -31,10 +31,8 @@ class _CoffeeNameHorizontalListState extends State<CoffeeNameHorizontalList> {
           padding: const EdgeInsets.only(left: 15,right: 15),
           child: Text(
             widget.coffeeListTitle,
-            style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w500,
-                color: widget.selectedCoffeeNameIndex == widget.index? Color(0xFFCB7642) : Colors.grey.shade400),
+            style: appStyles.commonCardTitleTextStyle(
+            texColor: widget.selectedCoffeeNameIndex == widget.index? Color(0xFFCB7642) : Colors.grey.shade400)
           ),
         ),
         Container(

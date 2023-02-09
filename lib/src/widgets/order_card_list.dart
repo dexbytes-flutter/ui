@@ -50,32 +50,26 @@ class OrderCardList extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(orderCardList[index].title,
-                          style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w600,
-                            color: appColors.textColor.withOpacity(0.80)
-                          ),
+                          style: appStyles.commonCardTitleTextStyle(),
                         ),
                         SizedBox(height: 5,),
                         Text(orderCardList[index].subTitle,
                           softWrap: true,
                           maxLines: 1,
-                          style: TextStyle( fontSize: 12.5,color: Colors.grey.shade500,
-                              fontWeight: FontWeight.w400),
+                          style: appStyles.commonCardSubTitleTextStyle(),
                         ),
                         SizedBox(height: 20,),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            Text("₹",
-                              style: TextStyle(
-                                fontSize: 14,fontWeight: FontWeight.w500,
-                                color: appColors.textColorBlack,
+                            Text(appString.trans(context, appString.rupeeSignText),
+                              style: appStyles.commonCardTitleTextStyle(
+                                texColor: appColors.textNormalColor1
                               ),
                             ),
                             Text(orderCardList[index].price,
-                              style: TextStyle(
-                                fontSize: 14,fontWeight: FontWeight.w500,
-                                color: appColors.textColorBlack,
+                              style: appStyles.commonCardTitleTextStyle(
+                                  texColor: appColors.textNormalColor1
                               ),
                             ),
                           ],
