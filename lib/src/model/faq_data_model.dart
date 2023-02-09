@@ -45,5 +45,4 @@ final List<FaqDataModel> faqDrawerlist = [
 
         '\n 3.Enter details requested and create a return request',
   ),
-
 ];

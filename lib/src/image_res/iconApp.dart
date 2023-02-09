@@ -39,6 +39,7 @@ class IconApps {
   String calendarIcon = 'assets/images/calendar_icon.svg';
   String appleIcon = 'assets/images/apple_icon.svg';
   String visaIcon = 'assets/images/visa_icon.svg';
+  String downArrowIcon = 'assets/images/down_arrow_icon.svg';
 
   iconImage(
       {required String imageUrl,

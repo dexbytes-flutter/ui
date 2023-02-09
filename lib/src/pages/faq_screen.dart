@@ -74,7 +74,7 @@ class _FaqScreenState extends State<FaqScreen> {
       shrinkWrap: true,
       physics: ClampingScrollPhysics(),
       itemCount: faqDrawerlist.length,
-      itemBuilder: (context, int index) {
+      itemBuilder: (context, index) {
         String title = faqDrawerlist[index].title ?? "";
         String descriptions = faqDrawerlist[index].descriptions ?? "";
         bool selected = selectedIndex == index;
@@ -108,7 +108,6 @@ class _FaqScreenState extends State<FaqScreen> {
                 onCardClickCallBack: (z){
                   setState(() {
                     selectedIndex = z?index:-1;
-
                     print("$index");
                     descriptions.isEmpty?Fluttertoast.showToast(
                       msg: "Tapped on $title",

@@ -25,6 +25,7 @@ import 'src/pages/dashboard_screen.dart';
 import 'src/pages/bag_screen.dart';
 import 'src/pages/home_screen.dart';
 import 'src/pages/menu_screen.dart';
+import 'src/pages/notification_screen.dart';
 import 'src/pages/sign_in_screen.dart';
 import 'src/widgets/appbar/appbar_with_left_icon_title.dart';
 import 'src/widgets/item_deatail_card.dart';
@@ -287,6 +288,6 @@ class _MyAppState extends State<MyAppFlutterMain> {
   //Redirect to another screen if already loggedIn
   anotherLandingScreen() {
     //Redirect to tutorial screen if not finished
-    return const DashboardScreen();
+    return const NotificationScreen();
   }
 }

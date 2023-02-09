@@ -5,7 +5,9 @@ import 'expansion_tile_widget.dart';
 class FaqExpansionTileWidget extends StatefulWidget {
   final void Function(bool)? onCardClickCallBack;
   final String? title;
+  final String? subTitle;
   final TextStyle? titleTextStyle;
+  final TextStyle? subTitleTextStyle;
   final Widget? trailingIcon;
   final List<Widget> children;
   final bool initiallyExpanded;
@@ -14,9 +16,11 @@ class FaqExpansionTileWidget extends StatefulWidget {
   const FaqExpansionTileWidget({Key? key,
     this.onCardClickCallBack,
     this.title,
+    this.subTitle,
     this.trailingIcon,
     this.children = const [],
     this.titleTextStyle,
+    this.subTitleTextStyle,
     this.initiallyExpanded = false,
 
 
@@ -44,6 +48,9 @@ class _FaqExpansionTileWidgetState extends State<FaqExpansionTileWidget> {
         // leading: Icon(cdm.icon,color: Colors.white),
         title: Text("${widget.title}",
           style: widget.titleTextStyle ?? appStyles.aboutTitleTextStyle(),
+        ),
+        subtitle: Text("${widget.subTitle}",
+          style: widget.subTitleTextStyle ?? appStyles.aboutTitleTextStyle(),
         ),
         trailing: widget.trailingIcon,
         children: widget.children
