@@ -40,6 +40,7 @@ class IconApps {
   String appleIcon = 'assets/images/apple_icon.svg';
   String visaIcon = 'assets/images/visa_icon.svg';
   String downArrowIcon = 'assets/images/down_arrow_icon.svg';
+  String arrowLeft = 'assets/images/arrow_left.svg';
 
   iconImage(
       {required String imageUrl,

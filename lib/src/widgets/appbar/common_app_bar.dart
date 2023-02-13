@@ -36,6 +36,7 @@ class CommonAppBar extends StatelessWidget {
           GestureDetector(
             onTap: (){
               Navigator.of(context).pop();
+              FocusScope.of(context).unfocus();
             },
             child: Container(
               padding: EdgeInsets.all(10),

@@ -29,8 +29,10 @@ class ProfileTileNotification extends StatelessWidget {
     return ContainerFirst(
         contextCurrentView: context,
         appBarHeight: 56,
+        statusBarColor: appColors.appThemeColor1,
         appBar: CommonAppBarNew(
           isHideRightICon: true,
+          appBarColor: appColors.appThemeColor1,
           title: appString.trans(context, appString.notificationAppBarTitle),
         ),
         containChild: Column(

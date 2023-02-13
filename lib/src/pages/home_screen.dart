@@ -33,6 +33,19 @@ class _HomeScreenState extends State<HomeScreen> {
   int selectedCoffeeNameIndex = 0;
   TextEditingController searchTextFieldController = TextEditingController();
 
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    searchTextFieldController.dispose();
+  }
+
   // Search text field
   Widget searchTextField() {
     return Container(
@@ -68,8 +81,12 @@ class _HomeScreenState extends State<HomeScreen> {
               imageColor: Colors.grey.shade200),
         ),
         contentPadding: EdgeInsets.only(left: 15, right: 15),
-        onTextChange: (value) {},
-        onEndEditing: (value) {},
+        onTextChange: (value) {
+          FocusScope.of(context).unfocus();
+        },
+        onEndEditing: (value) {
+          FocusScope.of(context).unfocus();
+        },
       ),
     );
   }

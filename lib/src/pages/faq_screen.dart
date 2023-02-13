@@ -42,12 +42,14 @@ class _FaqScreenState extends State<FaqScreen> {
   Widget build(BuildContext context) {
     return ContainerFirst(
       contextCurrentView: context,
+      statusBarColor: appColors.appThemeColor1,
       isSingleChildScrollViewNeed: true,
       isFixedDeviceHeight: true,
       reverse: false,
       appBarHeight: 56,
       appBar: CommonAppBarNew(
         isHideRightICon: true,
+        appBarColor: appColors.appThemeColor1,
         title: appString.trans(context, appString.faq),
       ),
       containChild: Container(

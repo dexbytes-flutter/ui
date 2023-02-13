@@ -9,14 +9,14 @@ import '../values/app_style.dart';
 import 'like_button_icon.dart';
 
 class MenuGridListCard extends StatelessWidget {
-  final bool? isFav;
+  final bool isFav;
   final String imageUrl;
   final String menuGridItemTitle;
   final String menuGridItemSubtitle;
   final String price;
   const MenuGridListCard({
     Key? key,
-    this.isFav,
+    this.isFav = false,
     this.imageUrl = "https://emilylaurae.com/wp-content/uploads/2022/10/Caramel-macchiato-4.jpg",
     this.menuGridItemTitle = "Caramel",
     this.menuGridItemSubtitle = "Macchiato",

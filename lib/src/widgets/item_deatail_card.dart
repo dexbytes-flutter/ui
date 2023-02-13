@@ -48,7 +48,9 @@ class ItemDetailCard extends StatelessWidget {
             ),
           ),
           Positioned(
-              child: CommonAppBar()),
+              child: CommonAppBar(
+
+              )),
           Positioned(
             bottom: 0,
             right: 0,

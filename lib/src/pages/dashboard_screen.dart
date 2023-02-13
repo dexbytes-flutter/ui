@@ -21,7 +21,7 @@ class _DashboardScreen extends State<DashboardScreen>
     with TickerProviderStateMixin {
   _DashboardScreen();
 
-  Color statusBarColors = Color(0xff212327);
+  Color statusBarColors = Color(0xff000000);
   // GlobalKey<ScaffoldState>? scaffoldKey;
 
   GlobalKey<ScaffoldState> globalScaffoldKey = GlobalKey();

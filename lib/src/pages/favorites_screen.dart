@@ -2,7 +2,7 @@ import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart'
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/model/favorite_card_model.dart';
 import 'package:base_flutter_app/src/values/app_dimens.dart';
-import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
+import 'package:base_flutter_app/src/widgets/appbar/common_app_bar_new.dart';
 import 'package:base_flutter_app/src/widgets/basic_view_container/container_first.dart';
 import 'package:base_flutter_app/src/widgets/favorite_screen_card_widget.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +30,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
     Widget favoriteCards(){
       return ListView.builder(
         shrinkWrap: true,
-        padding: EdgeInsets.zero,
+        padding: EdgeInsets.only(top: 10),
         physics: NeverScrollableScrollPhysics(),
         itemCount: favoriteCardList.length,
         itemBuilder: (context,index){
@@ -48,15 +48,15 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
         contextCurrentView: context,
         isSingleChildScrollViewNeed: true,
         isFixedDeviceHeight: true,
-        statusBarColor: Colors.white,
+        statusBarColor: appColors.appThemeColor1,
         appBarHeight: 56,
-        appBar: CommonAppBar(
-          isShowTitle: true,
-          title: appString.trans(context, appString.favoritesAppBarTitle),
+        // title: appString.trans(context, appString.favoritesAppBarTitle),
+        appBar: CommonAppBarNew(
+          appBarColor: appColors.appThemeColor1,
           isHideRightICon: true,
           isHideLeftIcon: true,
+          title: appString.trans(context, appString.favoritesAppBarTitle),
         ),
-        appBackgroundColor: Colors.white,
         containChild: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

@@ -96,9 +96,11 @@ class _MyOrdersProfileTileState extends State<MyOrdersProfileTile> with TickerPr
     return ContainerFirst(
         contextCurrentView: context,
         appBarHeight: 56,
+        statusBarColor: appColors.appThemeColor1,
         isSingleChildScrollViewNeed: false,
         appBar: CommonAppBarNew(
           isHideRightICon: true,
+          appBarColor: appColors.appThemeColor1,
           title: appString.trans(context, appString.myOderAppBarTitle),
         ),
         containChild: Column(

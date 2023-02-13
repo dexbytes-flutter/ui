@@ -7,29 +7,41 @@ class CommonAppBarNew extends StatelessWidget {
   final bool isHideRightICon;
   final bool isShowTitle;
   final String title;
+  final Color? appBarColor;
+  final EdgeInsetsGeometry? leftIconMargin;
   const CommonAppBarNew({
     Key? key,
     this.isHideLeftIcon = false,
     this.isHideRightICon = false,
     this.isShowTitle = false,
     this.title = "",
+    this.appBarColor,
+    this.leftIconMargin
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
-    return SafeArea(
+    return Scaffold(
+      backgroundColor: appBarColor??appColors.white,
+      body: Container(
+        margin: EdgeInsets.only(top: 15),
         child: Stack(
           children: [
             isHideLeftIcon ? Container() :
             Positioned(
-              left: 15,
+              left: 20,
                 child: GestureDetector(
                   onTap: (){
                     Navigator.of(context).pop();
+                    FocusScope.of(context).unfocus();
                   },
-                  child: iconApps.iconImage(imageUrl: iconApps.backArrowIcon,
-                    iconSize: Size(20,20),
+                  child: Container(
+                    // margin: leftIconMargin ?? EdgeInsets.symmetric(horizontal: 10),
+                    child: iconApps.iconImage(imageUrl: iconApps.arrowLeft,
+                        iconSize: Size(28,28),
+                        imageColor: appColors.appBarTextColor
+                    ),
                   ),
                 )
             ),
@@ -38,7 +50,9 @@ class CommonAppBarNew extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children:[
                   Text(title,
-                  style: appStyles.commonAppBarTitleTextStyle())
+                  style: appStyles.commonAppBarTitleTextStyle(
+                    texColor: appColors.appBarTextColor
+                  ))
                 ]
             ),
             isHideRightICon? Container() :
@@ -54,7 +68,8 @@ class CommonAppBarNew extends StatelessWidget {
               ),
             ),
           ],
-        )
+        ),
+      ),
     );
   }
 }

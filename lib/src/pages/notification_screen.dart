@@ -66,7 +66,6 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 ),
               ),
               child: FaqExpansionTileWidget(
-                margin: EdgeInsets.only(top: 15,),
                 key: Key(index.toString()), //attention
                 initiallyExpanded : index == selectedIndex, //attenti
                 // onCardClickCallBack: ((newState) {
@@ -168,9 +167,11 @@ class _NotificationScreenState extends State<NotificationScreen> {
     return ContainerFirst(
         contextCurrentView: context,
         appBarHeight: 56,
+        statusBarColor: appColors.appThemeColor1,
         appBar: CommonAppBarNew(
           isHideRightICon: true,
           isHideLeftIcon: true,
+          appBarColor: appColors.appThemeColor1,
           title: appString.trans(context, appString.notificationAppBarTitle),
         ),
         containChild: Column(
@@ -179,7 +180,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
             TitleText(
               text: "Today",
               textStyle: appStyles.homeMenuTopTitleTextStyle(),
-              margin: EdgeInsets.only(left: 15,right: 15),
+              margin: EdgeInsets.only(left: 15,right: 15,top: 15),
             ),
             expansibleMessageContainer(),
             SizedBox(height: 15,),

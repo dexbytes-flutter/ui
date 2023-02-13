@@ -155,11 +155,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
     
     return ContainerFirst(
         contextCurrentView: context,
+        statusBarColor: appColors.appThemeColor1,
         isSingleChildScrollViewNeed: true,
         isFixedDeviceHeight: true,
         appBarHeight: 56,
         appBar: CommonAppBarNew(
           isHideRightICon: true,
+          appBarColor: appColors.appThemeColor1,
           title: appString.trans(context, appString.profileAppBarText),
         ),
         containChild: Column(

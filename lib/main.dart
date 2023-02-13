@@ -288,6 +288,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
   //Redirect to another screen if already loggedIn
   anotherLandingScreen() {
     //Redirect to tutorial screen if not finished
-    return const NotificationScreen();
+    // return const NotificationScreen();
+    return const DashboardScreen();
   }
 }

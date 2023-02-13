@@ -1,7 +1,7 @@
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
-import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
+import 'package:base_flutter_app/src/widgets/appbar/common_app_bar_new.dart';
 import 'package:base_flutter_app/src/widgets/order_card_list.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -74,10 +74,11 @@ class _OrderScreenState extends State<OrderScreen> {
         isSingleChildScrollViewNeed: true,
         isFixedDeviceHeight: true,
         appBarHeight: 56,
-        appBar: CommonAppBar(
+        statusBarColor: appColors.appThemeColor1,
+        appBar: CommonAppBarNew(
+          appBarColor: appColors.appThemeColor1,
           isHideLeftIcon: true,
           isHideRightICon: true,
-          isShowTitle: true,
           title: appString.trans(context, appString.bagAppBarTitle),
         ),
         containChild: Column(

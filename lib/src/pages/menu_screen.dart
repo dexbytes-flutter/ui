@@ -63,6 +63,7 @@ class _MenuScreenState extends State<MenuScreen> {
     // Search text field
     Widget searchTextField() {
       return Container(
+        margin: EdgeInsets.only(top: 15),
         padding: EdgeInsets.only(
           left: 20,
           right: 20,
@@ -126,6 +127,7 @@ class _MenuScreenState extends State<MenuScreen> {
                         subTitle: gridItemList[index].subTitle,
                         description: gridItemList[index].description,
                         price: gridItemList[index].price,
+                        isFav: gridItemList[index].isLiked,
                       )
                   ),
                 );
@@ -135,7 +137,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 menuGridItemTitle: gridItemList[index].title,
                 menuGridItemSubtitle: gridItemList[index].subTitle,
                 price: gridItemList[index].price,
-                isFav: gridItemList[index].isFav,
+                isFav: gridItemList[index].isLiked,
               ),
             );
           },
@@ -154,11 +156,12 @@ class _MenuScreenState extends State<MenuScreen> {
       contextCurrentView: context,
       isSingleChildScrollViewNeed: true,
       isFixedDeviceHeight: true,
-      statusBarColor: Colors.white,
+      statusBarColor: appColors.appThemeColor1,
       appBarHeight: 56,
       appBar: CommonAppBarNew(
         isShowTitle: true,
         isHideRightICon: true,
+        appBarColor: appColors.appThemeColor1,
         title: appString.trans(context, appString.menuText),
       ),
       appBackgroundColor: Colors.white,

@@ -15,7 +15,7 @@ class OrderCardList extends StatelessWidget {
     appDimens.appDimensFind(context: context);
 
     return  ListView.builder(
-      padding: EdgeInsets.zero,
+      padding: EdgeInsets.only(top: 15),
       physics: ClampingScrollPhysics(),
       itemCount: orderCardList.length,
       shrinkWrap: true,
