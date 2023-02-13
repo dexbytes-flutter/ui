@@ -5,16 +5,16 @@ import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar_new.dart';
 import 'package:flutter/material.dart';
 
-import 'appbar/appbar_with_left_icon_title.dart';
+import '../widgets/appbar/appbar_with_left_icon_title.dart';
 
-class PaymentMethodsCard extends StatefulWidget {
-  const PaymentMethodsCard({Key? key}) : super(key: key);
+class PaymentMethodScreen extends StatefulWidget {
+  const PaymentMethodScreen({Key? key}) : super(key: key);
 
   @override
-  State<PaymentMethodsCard> createState() => _PaymentMethodsCardState();
+  State<PaymentMethodScreen> createState() => _PaymentMethodScreenState();
 }
 
-class _PaymentMethodsCardState extends State<PaymentMethodsCard> {
+class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
   @override
   Widget build(BuildContext context) {
 

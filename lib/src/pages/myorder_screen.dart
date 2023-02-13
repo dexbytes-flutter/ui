@@ -7,16 +7,16 @@ import 'package:base_flutter_app/src/widgets/tab_bar_view_common.dart';
 import 'package:flutter/material.dart';
 
 import '../model/my_orders_card_model.dart';
-import 'appbar/appbar_with_left_icon_title.dart';
+import '../widgets/appbar/appbar_with_left_icon_title.dart';
 
-class MyOrdersProfileTile extends StatefulWidget {
-  const MyOrdersProfileTile({Key? key}) : super(key: key);
+class MyOrderScreen extends StatefulWidget {
+  const MyOrderScreen({Key? key}) : super(key: key);
 
   @override
-  State<MyOrdersProfileTile> createState() => _MyOrdersProfileTileState();
+  State<MyOrderScreen> createState() => _MyOrderScreenState();
 }
 
-class _MyOrdersProfileTileState extends State<MyOrdersProfileTile> with TickerProviderStateMixin{
+class _MyOrderScreenState extends State<MyOrderScreen> with TickerProviderStateMixin{
 
   TabController? tabController;
   int selectedTab = 0;

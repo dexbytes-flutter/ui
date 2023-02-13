@@ -24,6 +24,7 @@ class _MenuScreenState extends State<MenuScreen> {
 
   TextEditingController searchTextFieldController = TextEditingController();
   int selectedCategoryIndex = 0;
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,41 @@ class _MenuScreenState extends State<MenuScreen> {
     Widget category() {
       return Container(
           height: 45,
-          child: ListView.builder(
+          child: /*ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              padding: const EdgeInsets.symmetric(horizontal: 0),
+              scrollDirection: Axis.horizontal,
+              itemCount: 2,
+              itemBuilder: (context, index) {
+                return ChoiceChip(
+                  padding: const EdgeInsets.only(top: 0,bottom: 0,left: 0,right: 0),
+                  labelPadding:const EdgeInsets.only(top: 0,bottom: 0,left: 0,right: 0),
+                  elevation: 0,
+                  pressElevation: 0,
+                  label: Container(
+                    width: appDimens.widthFullScreen()/2.25,
+                    alignment: Alignment.center,
+                    child: Text("Full Day",style: TextStyle(color: selectedIndex == index?appColors.appButtonBgColor:appColors.imageBgColor),),
+                  ),
+                  shape:  RoundedRectangleBorder(
+                    borderRadius:  index == 0
+                        ? const BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10))
+                        :const BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
+                  ),
+                  backgroundColor:Colors.transparent,
+                  selectedColor: appColors.appButtonBgColor,
+                  selected: selectedIndex == index,
+                  onSelected: (selected) {
+                    setState(() {
+                      selectedIndex =  index;
+                    });
+                  },
+
+                );
+              })*/
+
+          ListView.builder(
             padding: EdgeInsets.only(
               left: 20,
             ),

@@ -7,10 +7,10 @@ import 'package:base_flutter_app/src/model/profile_list_tile_model.dart';
 import 'package:base_flutter_app/src/pages/sign_in_screen.dart';
 import 'package:base_flutter_app/src/widgets/alerts/exit_conformation_alert.dart';
 import 'package:base_flutter_app/src/widgets/appbar/appbar_with_left_icon_title.dart';
-import 'package:base_flutter_app/src/widgets/payment_methods_card.dart';
+import 'package:base_flutter_app/src/pages/payment_methods_card.dart';
 import 'package:base_flutter_app/src/widgets/profile_list_tile.dart';
-import 'package:base_flutter_app/src/widgets/profile_my_orders_tile.dart';
-import 'package:base_flutter_app/src/widgets/profile_tile_notification.dart';
+import 'package:base_flutter_app/src/pages/myorder_screen.dart';
+import 'package:base_flutter_app/src/pages/profile_tile_notification_screen.dart';
 import 'package:base_flutter_app/src/widgets/write_to_us.dart';
 import 'package:flutter/material.dart';
 
@@ -40,19 +40,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
         Navigator.push(
           MainAppBloc.getDashboardContext,
           SlideRightRoute(
-              widget: MyOrdersProfileTile()),
+              widget: MyOrderScreen()),
         );
       }else if(index == 1){
         Navigator.push(
           MainAppBloc.getDashboardContext,
           SlideRightRoute(
-              widget: PaymentMethodsCard()),
+              widget: PaymentMethodScreen()),
         );
       }else if(index == 2){
         Navigator.push(
           MainAppBloc.getDashboardContext,
           SlideRightRoute(
-              widget: ProfileTileNotification()),
+              widget: ProfileTileNotificationScreen()),
         );
       }else if(index == 3){
         Navigator.push(

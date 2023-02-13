@@ -1,4 +1,4 @@
-package com.dexbytes.base_flutter_app
+package com.dexbytes.coffee_app
 
 import io.flutter.embedding.android.FlutterActivity
 

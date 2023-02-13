@@ -29,9 +29,9 @@ import 'src/pages/notification_screen.dart';
 import 'src/pages/sign_in_screen.dart';
 import 'src/widgets/appbar/appbar_with_left_icon_title.dart';
 import 'src/widgets/item_deatail_card.dart';
-import 'src/widgets/payment_methods_card.dart';
-import 'src/widgets/profile_my_orders_tile.dart';
-import 'src/widgets/profile_tile_notification.dart';
+import 'src/pages/payment_methods_card.dart';
+import 'src/pages/myorder_screen.dart';
+import 'src/pages/profile_tile_notification_screen.dart';
 import 'src/widgets/write_to_us.dart';
 
 void main() async {
