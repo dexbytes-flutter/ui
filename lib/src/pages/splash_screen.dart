@@ -160,7 +160,9 @@ class _BottomPart extends StatelessWidget {
                 buttonHeight: 50,
                 buttonBorderRadius: 12,
                 isBottomMarginRequired: false,
-                textStyle: appStyles.commonButtonTitleTextTextStyle(),
+                textStyle: appStyles.commonButtonTitleTextTextStyle(
+                  texColor: appColors.textNormalColor1
+                ),
                 backCallback: (){
                   Navigator.push(
                     context,

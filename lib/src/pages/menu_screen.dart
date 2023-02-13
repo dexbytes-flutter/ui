@@ -36,11 +36,11 @@ class _MenuScreenState extends State<MenuScreen> {
       return Container(
           height: 45,
           child: /*ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
+              physics: const ClampingScrollPhysics(),
               shrinkWrap: true,
-              padding: const EdgeInsets.symmetric(horizontal: 0),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               scrollDirection: Axis.horizontal,
-              itemCount: 2,
+              itemCount: categoryDataList.length,
               itemBuilder: (context, index) {
                 return ChoiceChip(
                   padding: const EdgeInsets.only(top: 0,bottom: 0,left: 0,right: 0),
@@ -48,16 +48,49 @@ class _MenuScreenState extends State<MenuScreen> {
                   elevation: 0,
                   pressElevation: 0,
                   label: Container(
-                    width: appDimens.widthFullScreen()/2.25,
-                    alignment: Alignment.center,
-                    child: Text("Full Day",style: TextStyle(color: selectedIndex == index?appColors.appButtonBgColor:appColors.imageBgColor),),
+                    height: 65,
+                    margin: EdgeInsets.only(right: 15),
+                    width: appDimens.widthFullScreen() / 2.4,
+                    decoration: BoxDecoration(
+                      color: selectedIndex == index
+                          ? appColors.appButtonBgColor
+                          : appColors.containerBgColor1,
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(8),
+                          margin: EdgeInsets.only(left: 5),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              color: appColors.white),
+                          child: iconApps.iconImage(
+                            imageUrl: categoryDataList[index].listIcon,
+                            iconSize: Size(18, 18),
+                            imageColor: selectedIndex == index
+                                ? appColors.appButtonBgColor
+                                : appColors.containerBgColor1,
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: Text(
+                              categoryDataList[index].listTitle,
+                              softWrap: true,
+                              style: appStyles.commonCardTitleTextStyle(
+                                  texColor: selectedIndex == index ? appColors.white : Colors.grey.shade400
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                  shape:  RoundedRectangleBorder(
-                    borderRadius:  index == 0
-                        ? const BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10))
-                        :const BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10)),
-                  ),
-                  backgroundColor:Colors.transparent,
+                  backgroundColor:appColors.containerBgColor1,
                   selectedColor: appColors.appButtonBgColor,
                   selected: selectedIndex == index,
                   onSelected: (selected) {
