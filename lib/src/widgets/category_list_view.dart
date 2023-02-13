@@ -28,8 +28,6 @@ class _CategoryListViewState extends State<CategoryListView> {
     appDimens.appDimensFind(context: context);
 
     return Container(
-      margin: EdgeInsets.only(right: 15),
-      width: appDimens.widthFullScreen() / 2.4,
       decoration: BoxDecoration(
         color: widget.selectedCategoryIndex == widget.index
             ? appColors.appButtonBgColor

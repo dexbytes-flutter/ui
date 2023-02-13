@@ -70,6 +70,7 @@ class _MenuScreenState extends State<MenuScreen> {
               })*/
 
           ListView.builder(
+            physics: ClampingScrollPhysics(),
             padding: EdgeInsets.only(
               left: 20,
             ),
@@ -83,11 +84,15 @@ class _MenuScreenState extends State<MenuScreen> {
                     this.selectedCategoryIndex = index;
                   });
                 },
-                child: CategoryListView(
-                  index: index,
-                  selectedCategoryIndex: selectedCategoryIndex,
-                  imageUrl: categoryDataList[index].listIcon,
-                  categoryListTitle: categoryDataList[index].listTitle,
+                child: Container(
+                  margin: EdgeInsets.only(right: 15),
+                  width: appDimens.widthFullScreen() / 2.4,
+                  child: CategoryListView(
+                    index: index,
+                    selectedCategoryIndex: selectedCategoryIndex,
+                    imageUrl: categoryDataList[index].listIcon,
+                    categoryListTitle: categoryDataList[index].listTitle,
+                  ),
                 ),
               );
             },
