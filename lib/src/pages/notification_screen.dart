@@ -29,6 +29,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
       return ListView.builder(
         key: Key('builder ${selectedIndex.toString()}'),
         shrinkWrap: true,
+        padding: EdgeInsets.zero,
         physics: ClampingScrollPhysics(),
         itemCount: notificationInfoList.length,
         itemBuilder: (context,index){
@@ -38,33 +39,34 @@ class _NotificationScreenState extends State<NotificationScreen> {
           bool selected = selectedIndex == index;
 
           return Container(
-            padding: EdgeInsets.all(10),
-            margin: EdgeInsets.only(left: 15,right: 15,top: 15),
-            decoration: selected? BoxDecoration(
+              padding: EdgeInsets.all(10),
+              margin: EdgeInsets.only(left: 15,right: 15,top: 15),
+              decoration: selected? BoxDecoration(
+                  color: appColors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                      color: Colors.grey.shade500.withOpacity(0.20),
+                      width: 2
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.shade200,
+                      blurRadius: 5,
+                      spreadRadius: 8,
+                      offset: Offset(0.0,3),
+                    )
+                  ]
+              ):
+              BoxDecoration(
                 color: appColors.white,
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(
                     color: Colors.grey.shade500.withOpacity(0.20),
                     width: 2
                 ),
-                boxShadow: [
-                  BoxShadow(
-                      color: Colors.grey.shade200,
-                      blurRadius: 5,
-                      spreadRadius: 8,
-                      offset: Offset(0.0,3),
-                  )
-                ]
-            ):
-            BoxDecoration(
-              color: appColors.white,
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                    color: Colors.grey.shade500.withOpacity(0.20),
-                    width: 2
-                ),
-            ),
-            child: FaqExpansionTileWidget(
+              ),
+              child: FaqExpansionTileWidget(
+                margin: EdgeInsets.only(top: 15,),
                 key: Key(index.toString()), //attention
                 initiallyExpanded : index == selectedIndex, //attenti
                 // onCardClickCallBack: ((newState) {
@@ -86,20 +88,20 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 title: title,
                 subTitle: selected? "": notificationTime,
                 subTitleTextStyle: appStyles.commonCardTitleTextStyle(
-                  fontSize: 15,texColor: appColors.textColor.withOpacity(0.40)),
+                    fontSize: 15,texColor: appColors.textColor.withOpacity(0.40)),
                 titleTextStyle: appStyles.commonCardTitleTextStyle(
                   texColor: appColors.textNormalColor1.withOpacity(0.65),
                 ),
                 trailingIcon: descriptions.isEmpty || selected
-                    ? Padding(padding: EdgeInsets.only(top: 15),
-                       child: iconApps.iconImage(imageUrl: iconApps.downArrowIcon,
-                        iconSize: Size(25, 25),imageColor: appColors.appButtonBgColor),)
-                    : Padding(padding: EdgeInsets.only(bottom: 20),
-                  child: iconApps.iconImage(imageUrl: iconApps.rightArrow1,
-                      iconSize: Size(25, 25),imageColor: appColors.appButtonBgColor
-                  ),
+                    ? Padding(
+                  padding: EdgeInsets.only(bottom: 30),
+                  child: iconApps.iconImage(imageUrl: iconApps.downArrowIcon,
+                      iconSize: Size(25, 25),imageColor: appColors.appButtonBgColor),
+                )
+                    : iconApps.iconImage(imageUrl: iconApps.rightArrow1,
+                    iconSize: Size(25, 25),imageColor: appColors.appButtonBgColor
                 ),
-               /*:
+                /*:
                 selected?iconApps.iconImage(imageUrl: iconApps.downArrowIcon,
                     iconSize: Size(25, 25),imageColor: appColors.appButtonBgColor
                 ):iconApps.iconImage(imageUrl: iconApps.rightArrow1,
@@ -114,18 +116,18 @@ class _NotificationScreenState extends State<NotificationScreen> {
                       textAlign: TextAlign.start,
                     ),
                   ),
-                  selected? Container(
+                  descriptions.isNotEmpty? Container(
                     padding: EdgeInsets.all(15).copyWith(top: 10,bottom: 15),
                     child: Align(
-                      alignment: Alignment.centerLeft,
+                        alignment: Alignment.centerLeft,
                         child: Text(notificationTime,
                           style: appStyles.commonCardTitleTextStyle(
-                            fontSize: 14,texColor: appColors.textColor.withOpacity(0.40)
+                              fontSize: 14,texColor: appColors.textColor.withOpacity(0.40)
                           ),
                         )),
                   ):Text("")
                 ],
-            )
+              )
             /*Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -164,32 +166,33 @@ class _NotificationScreenState extends State<NotificationScreen> {
     }
 
     return ContainerFirst(
-      contextCurrentView: context,
-      appBarHeight: 56,
-      appBar: CommonAppBarNew(
-        isHideRightICon: true,
-        isHideLeftIcon: true,
-        title: appString.trans(context, appString.notificationAppBarTitle),
-      ),
-      containChild: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          TitleText(
-            text: "Today",
+        contextCurrentView: context,
+        appBarHeight: 56,
+        appBar: CommonAppBarNew(
+          isHideRightICon: true,
+          isHideLeftIcon: true,
+          title: appString.trans(context, appString.notificationAppBarTitle),
+        ),
+        containChild: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TitleText(
+              text: "Today",
               textStyle: appStyles.homeMenuTopTitleTextStyle(),
-            margin: EdgeInsets.only(left: 15,right: 15),
-          ),
-          expansibleMessageContainer(),
-          SizedBox(height: 15,),
-          TitleText(
-            text: "Yesterday",
-            textStyle: appStyles.homeMenuTopTitleTextStyle(),
-            margin: EdgeInsets.only(left: 15,right: 15),
-          ),
-        ],
-      )
+              margin: EdgeInsets.only(left: 15,right: 15),
+            ),
+            expansibleMessageContainer(),
+            SizedBox(height: 15,),
+            TitleText(
+              text: "Yesterday",
+              textStyle: appStyles.homeMenuTopTitleTextStyle(),
+              margin: EdgeInsets.only(left: 15,right: 15),
+            ),
+          ],
+        )
     );
   }
+
   void expandOrShrinkDrawer(){
     setState(() {
       isExpanded = !isExpanded;

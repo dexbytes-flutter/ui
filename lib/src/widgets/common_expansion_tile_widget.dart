@@ -11,17 +11,20 @@ class FaqExpansionTileWidget extends StatefulWidget {
   final Widget? trailingIcon;
   final List<Widget> children;
   final bool initiallyExpanded;
-
+  final EdgeInsetsGeometry? margin;
+  final EdgeInsetsGeometry? padding;
 
   const FaqExpansionTileWidget({Key? key,
     this.onCardClickCallBack,
     this.title,
-    this.subTitle,
+    this.subTitle = "",
     this.trailingIcon,
     this.children = const [],
     this.titleTextStyle,
     this.subTitleTextStyle,
     this.initiallyExpanded = false,
+    this.margin,
+    this.padding,
 
 
   }) : super(key: key);
@@ -52,7 +55,10 @@ class _FaqExpansionTileWidgetState extends State<FaqExpansionTileWidget> {
         subtitle: Text("${widget.subTitle}",
           style: widget.subTitleTextStyle ?? appStyles.aboutTitleTextStyle(),
         ),
-        trailing: widget.trailingIcon,
+        trailing: Padding(
+          padding: widget.padding ?? EdgeInsets.zero,
+          child: widget.trailingIcon,
+        ),
         children: widget.children
     );
   }
