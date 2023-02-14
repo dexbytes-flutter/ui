@@ -34,7 +34,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
         itemCount: notificationInfoList.length,
         itemBuilder: (context,index){
           String title = notificationInfoList[index].title ?? "";
-          String notificationTime = notificationInfoList[index].notificationTime ?? "";
+          String notificationTime = notificationInfoList[index].notificationTime??"";
           String descriptions = notificationInfoList[index].descriptions ?? "";
           bool selected = selectedIndex == index;
 
@@ -67,7 +67,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
               ),
               child: FaqExpansionTileWidget(
                 isSubtitle: true,
-                titlePadding: EdgeInsets.only(top: 10),
+                titlePadding: EdgeInsets.only(bottom: 10),
                 key: Key(index.toString()), //attention
                 initiallyExpanded : index == selectedIndex, //attenti
                 // onCardClickCallBack: ((newState) {
@@ -102,12 +102,6 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     : iconApps.iconImage(imageUrl: iconApps.rightArrow1,
                     iconSize: Size(30, 30),imageColor: appColors.appButtonBgColor
                 ),
-                /*:
-                selected?iconApps.iconImage(imageUrl: iconApps.downArrowIcon,
-                    iconSize: Size(25, 25),imageColor: appColors.appButtonBgColor
-                ):iconApps.iconImage(imageUrl: iconApps.rightArrow1,
-                    iconSize: Size(25, 25),imageColor: appColors.appButtonBgColor
-                ),*/
                 children: [
                   Container(
                     padding: EdgeInsets.all(15).copyWith(top: 0,bottom: 15),

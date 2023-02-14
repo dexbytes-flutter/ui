@@ -5,8 +5,6 @@ import 'package:base_flutter_app/src/widgets/appbar/common_app_bar_new.dart';
 import 'package:base_flutter_app/src/widgets/notification_list_card_profile_tile.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/appbar/appbar_with_left_icon_title.dart';
-
 class ProfileTileNotificationScreen extends StatelessWidget {
   const ProfileTileNotificationScreen({Key? key}) : super(key: key);
 

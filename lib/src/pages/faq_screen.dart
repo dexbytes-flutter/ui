@@ -2,7 +2,6 @@ import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart'
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar_new.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 import '../model/faq_data_model.dart';
 import '../widgets/common_expansion_tile_widget.dart';

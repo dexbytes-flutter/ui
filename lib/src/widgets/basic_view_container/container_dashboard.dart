@@ -1,6 +1,5 @@
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 class ContainerDashboard extends StatelessWidget {
   final Color appBackgroundColor;

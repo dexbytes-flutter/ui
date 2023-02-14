@@ -1,8 +1,3 @@
-import 'package:base_flutter_app/src/all_file_import/app_utils_files_link.dart';
-import 'package:base_flutter_app/src/bloc/main_app_bloc/main_app_bloc.dart';
-import 'package:base_flutter_app/src/model/coffee_card_model.dart';
-import 'package:base_flutter_app/src/values/app_dimens.dart';
-import 'package:base_flutter_app/src/widgets/item_deatail_card.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 

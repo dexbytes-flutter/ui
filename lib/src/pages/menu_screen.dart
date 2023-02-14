@@ -2,8 +2,6 @@ import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart'
 import 'package:base_flutter_app/src/app_utility/animation/slide_left_route.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
 import 'package:base_flutter_app/src/model/menu_category_list_model.dart';
-import 'package:base_flutter_app/src/values/app_dimens.dart';
-import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:base_flutter_app/src/widgets/basic_view_container/container_first.dart';
 import 'package:base_flutter_app/src/widgets/category_list_view.dart';
 import 'package:base_flutter_app/src/widgets/item_deatail_card.dart';

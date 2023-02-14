@@ -2,7 +2,6 @@ import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart'
 import 'package:base_flutter_app/src/app_utility/project_util.dart';
 import 'package:base_flutter_app/src/bloc/main_app_bloc/main_app_bloc.dart';
 import 'package:base_flutter_app/src/bloc/main_app_bloc/main_app_state.dart';
-import 'package:base_flutter_app/src/values/app_dimens.dart';
 import 'package:base_flutter_app/src/widgets/basic_view_container/container_dashboard.dart';
 import 'package:base_flutter_app/src/widgets/bottom_navigation_bar/bottom_navigation_bar_with_stack.dart';
 import 'package:flutter/material.dart';

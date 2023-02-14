@@ -48,17 +48,17 @@ class _FaqExpansionTileWidgetState extends State<FaqExpansionTileWidget> {
               widget.onCardClickCallBack?.call(z);
             },
             // leading: Icon(cdm.icon,color: Colors.white),
-            title: Text(
-              "${widget.title}",
-              style: widget.titleTextStyle ?? appStyles.aboutTitleTextStyle(),
-            ),
-            subtitle: Padding(
+            title: Padding(
               padding: widget.titlePadding?? EdgeInsets.zero,
               child: Text(
-                "${widget.subTitle}",
-                style:
-                    widget.subTitleTextStyle ?? appStyles.aboutTitleTextStyle(),
+                "${widget.title}",
+                style: widget.titleTextStyle ?? appStyles.aboutTitleTextStyle(),
               ),
+            ),
+            subtitle: Text(
+              "${widget.subTitle}",
+              style:
+                  widget.subTitleTextStyle ?? appStyles.aboutTitleTextStyle(),
             ),
             trailing: widget.trailingIcon,
             children: widget.children)

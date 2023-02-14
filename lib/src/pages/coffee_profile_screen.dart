@@ -6,19 +6,15 @@ import 'package:base_flutter_app/src/image_res/iconApp.dart';
 import 'package:base_flutter_app/src/model/profile_list_tile_model.dart';
 import 'package:base_flutter_app/src/pages/sign_in_screen.dart';
 import 'package:base_flutter_app/src/widgets/alerts/exit_conformation_alert.dart';
-import 'package:base_flutter_app/src/widgets/appbar/appbar_with_left_icon_title.dart';
 import 'package:base_flutter_app/src/pages/payment_methods_card.dart';
 import 'package:base_flutter_app/src/widgets/profile_list_tile.dart';
 import 'package:base_flutter_app/src/pages/myorder_screen.dart';
 import 'package:base_flutter_app/src/pages/profile_tile_notification_screen.dart';
-import 'package:base_flutter_app/src/widgets/write_to_us.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import '../all_file_import/app_widget_files_link.dart';
-import '../widgets/appbar/common_app_bar.dart';
 import '../widgets/appbar/common_app_bar_new.dart';
-import 'about_screen.dart';
 import 'edit_profile_bottom_sheet.dart';
 import 'faq_screen.dart';
 

@@ -1,11 +1,7 @@
-import 'dart:convert';
 import 'package:base_flutter_app/src/app_utility/app_navigator/app_navigator.dart';
 import 'package:base_flutter_app/src/model/signin_model.dart';
 import 'package:base_flutter_app/src/widgets/alerts/error_alert.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:base_flutter_app/src/all_file_import/app_utils_files_link.dart';
-import 'package:base_flutter_app/src/helper/local_constant.dart';
 import 'package:base_flutter_app/src/model/main_app_state_model.dart';
 
 abstract class MainAppState {

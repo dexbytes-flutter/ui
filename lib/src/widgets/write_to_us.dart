@@ -1,7 +1,6 @@
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/values/app_string.dart';
 import 'package:base_flutter_app/src/values/app_style.dart';
-import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:flutter/material.dart';
 
 import '../values/app_color.dart';

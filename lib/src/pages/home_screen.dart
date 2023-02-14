@@ -4,7 +4,6 @@ import 'package:base_flutter_app/src/image_res/iconApp.dart';
 import 'package:base_flutter_app/src/model/coffee_model.dart';
 import 'package:base_flutter_app/src/model/special_for_you_model.dart';
 import 'package:base_flutter_app/src/pages/menu_screen.dart';
-import 'package:base_flutter_app/src/values/app_string.dart';
 import 'package:base_flutter_app/src/widgets/appbar/home_appbar.dart';
 import 'package:base_flutter_app/src/widgets/basic_view_container/container_first.dart';
 import 'package:base_flutter_app/src/widgets/item_deatail_card.dart';
@@ -12,7 +11,6 @@ import 'package:base_flutter_app/src/widgets/coffee_name_horizontal_list.dart';
 import 'package:base_flutter_app/src/widgets/common_coffee_card_list_widget.dart';
 import 'package:base_flutter_app/src/widgets/common_text_field_with_error.dart';
 import 'package:base_flutter_app/src/widgets/special_for_you_common_card.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../all_file_import/app_utils_files_link.dart';

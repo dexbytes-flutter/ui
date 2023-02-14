@@ -1,10 +1,10 @@
 class NotificationModel {
   String? title;
   String? descriptions;
-  String notificationTime;
+  String? notificationTime;
 
   NotificationModel({this.title, this.descriptions,
-    required this.notificationTime});
+    this.notificationTime});
 }
 
 final List<NotificationModel> notificationInfoList = [

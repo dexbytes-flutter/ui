@@ -1,5 +1,4 @@
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
-import 'package:base_flutter_app/src/model/coffee_model.dart';
 import 'package:flutter/material.dart';
 
 class CoffeeNameHorizontalList extends StatefulWidget {

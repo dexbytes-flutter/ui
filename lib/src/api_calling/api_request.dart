@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:async/async.dart';
 import 'package:connectivity/connectivity.dart';
-import 'package:flutter/material.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';

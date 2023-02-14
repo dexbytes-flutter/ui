@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:base_flutter_app/src/all_file_import/app_providers_files_link.dart';
-import 'package:base_flutter_app/src/all_file_import/app_screens_files_link.dart';
-import 'package:base_flutter_app/src/all_file_import/app_utils_files_link.dart';
-import 'package:base_flutter_app/src/bloc/main_app_bloc/main_app_event.dart';
 
 class AppNavigator {
   //SignUpScreen

@@ -1,8 +1,5 @@
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
-import 'package:base_flutter_app/src/app_utility/animation/slide_left_route.dart';
-import 'package:base_flutter_app/src/bloc/main_app_bloc/main_app_bloc.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
-import 'package:base_flutter_app/src/pages/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 
 class ProfileListTile extends StatelessWidget {
