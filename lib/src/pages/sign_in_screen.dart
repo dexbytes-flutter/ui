@@ -10,6 +10,7 @@ import 'package:base_flutter_app/src/widgets/basic_view_container/container_firs
 import 'package:base_flutter_app/src/widgets/country_code_picker.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'otp_verification_screen.dart';
 
@@ -103,7 +104,6 @@ class _SignInScreenState extends State<SignInScreen> {
         });
       }
     }
-
 
     // Validate fields
     bool _validateFields({isButtonClicked = false}) {
@@ -313,6 +313,10 @@ class _SignInScreenState extends State<SignInScreen> {
                               widget: OtpVerificationScreen(
                                 isSignInScreen: true,
                               )),
+                        );
+                        Fluttertoast.showToast(msg: appString.trans(context, appString.loggedInSuccessfully),
+                          backgroundColor: appColors.textNormalColor7,
+                          textColor: appColors.textNormalColor,
                         );
                     }
                   },

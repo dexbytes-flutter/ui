@@ -89,7 +89,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
             child: CachedNetworkImage(
               height: MediaQuery.of(context).size.height/2.0,
               width: MediaQuery.of(context).size.width,
-              imageUrl: "https://png.pngtree.com/template/20191011/ourmid/pngtree-a-cup-of-coffee-logo-design-image_317567.jpg",
+              imageUrl: "https://i.pinimg.com/736x/dd/bb/0c/ddbb0c5380af987cb41caacb6f374a07.jpg",
               fit:BoxFit.cover,
             ),
           ),

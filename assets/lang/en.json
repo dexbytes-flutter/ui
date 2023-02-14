@@ -179,5 +179,10 @@
   "priceText" : "Price",
   "rupeeSignText":"₹",
   "buyNowButtonText" : "Buy Now",
-  "profileAppBarText" : "Profile"
+  "profileAppBarText" : "Profile",
+  "updateDetailsButtonText": "Update details",
+  "updateProfileDetails" : "Update your profile details",
+  "yourProfileDetailsUpdated" : "Your profile details updated successfully!",
+  "loggedOutSuccessfully" : "Your are logged out successfully!",
+  "loggedInSuccessfully" : "Your are logged in successfully!"
 }

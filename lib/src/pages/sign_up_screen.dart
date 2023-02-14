@@ -38,13 +38,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
     'name': "",
   };
 
-  bool hideNewPassword = true;
   String phoneNumber = '';
   String countryCode = 'in';
   OverlayEntry? overlayEntry;
   bool isSignInScreen = false;
-  void togglePasswordVisibility1() =>
-      setState(() => hideNewPassword = !hideNewPassword);
+
 
   @override
   void initState() {
@@ -371,7 +369,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
           )
       );
     }
-
 
     return ContainerFirst(
       appBarHeight: -1,

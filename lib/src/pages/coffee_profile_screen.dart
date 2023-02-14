@@ -13,11 +13,13 @@ import 'package:base_flutter_app/src/pages/myorder_screen.dart';
 import 'package:base_flutter_app/src/pages/profile_tile_notification_screen.dart';
 import 'package:base_flutter_app/src/widgets/write_to_us.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../all_file_import/app_widget_files_link.dart';
 import '../widgets/appbar/common_app_bar.dart';
 import '../widgets/appbar/common_app_bar_new.dart';
 import 'about_screen.dart';
+import 'edit_profile_bottom_sheet.dart';
 import 'faq_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -72,6 +74,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Navigator.pushAndRemoveUntil(MainAppBloc.getDashboardContext, MaterialPageRoute(builder: (BuildContext context){
                 return SignInScreen();
               }), (route) => false);
+              Fluttertoast.showToast(msg: appString.trans(context, appString.loggedOutSuccessfully),
+                backgroundColor: appColors.editTextErrorColor,
+                textColor: appColors.textNormalColor,
+              );
             }, noCallback: (contextTemp){
           Navigator.pop(contextTemp);
         });
@@ -110,9 +116,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     )
                   ],
                 ),
-                iconApps.iconImage(imageUrl: iconApps.editIcon,
-                  iconSize: Size(20,20),
-                  imageColor: appColors.iconColor2
+                GestureDetector(
+                  onTap: (){
+                    showModalBottomSheet(
+                        context: context,
+                        builder: (context) => EditProfileBottomSheetScreen(),
+                        isScrollControlled: true,
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(20))
+                        ));
+                  },
+                  child: iconApps.iconImage(imageUrl: iconApps.editIcon,
+                      iconSize: Size(20,20),
+                      imageColor: appColors.iconColor3
+                  ),
                 )
               ],
             ),

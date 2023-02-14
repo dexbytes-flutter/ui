@@ -266,7 +266,11 @@ class AppString {
   String rupeeSignText = "rupeeSignText";
   String buyNowButtonText = "buyNowButtonText";
   String profileAppBarText = "profileAppBarText";
-
+  String updateDetailsButtonText = "updateDetailsButtonText";
+  String updateProfileDetails = "updateProfileDetails";
+  String yourProfileDetailsUpdated = "yourProfileDetailsUpdated";
+  String loggedOutSuccessfully = "loggedOutSuccessfully";
+  String loggedInSuccessfully = "loggedInSuccessfully";
 
 }
 
