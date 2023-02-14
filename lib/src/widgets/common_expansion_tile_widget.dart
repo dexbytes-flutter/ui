@@ -11,18 +11,21 @@ class FaqExpansionTileWidget extends StatefulWidget {
   final Widget? trailingIcon;
   final List<Widget> children;
   final bool initiallyExpanded;
+  final bool? isSubtitle;
+  final EdgeInsetsGeometry? titlePadding;
 
-  const FaqExpansionTileWidget({Key? key,
+  const FaqExpansionTileWidget({
+    Key? key,
     this.onCardClickCallBack,
     this.title,
-    this.subTitle = "",
+    this.subTitle,
     this.trailingIcon,
     this.children = const [],
     this.titleTextStyle,
     this.subTitleTextStyle,
     this.initiallyExpanded = false,
-
-
+    this.isSubtitle,
+    this.titlePadding,
   }) : super(key: key);
 
   @override
@@ -30,30 +33,47 @@ class FaqExpansionTileWidget extends StatefulWidget {
 }
 
 class _FaqExpansionTileWidgetState extends State<FaqExpansionTileWidget> {
-  late  num itemCount = 1;
+  late num itemCount = 1;
 
   @override
   Widget build(BuildContext context) {
-
     AppDimens appDimens = AppDimens();
     appDimens.appDimensFind(context: context);
 
-    return ExpansionTileWidget(
-        initiallyExpanded: widget.initiallyExpanded,
-        maintainState: true,
-        onExpansionChanged:(z){
-          widget.onCardClickCallBack?.call(z);
-        },
-        // leading: Icon(cdm.icon,color: Colors.white),
-        title: Text("${widget.title}",
-          style: widget.titleTextStyle ?? appStyles.aboutTitleTextStyle(),
-        ),
-        subtitle: Text("${widget.subTitle}",
-          style: widget.subTitleTextStyle ?? appStyles.aboutTitleTextStyle(),
-        ),
-        trailing: widget.trailingIcon,
-        children: widget.children
-    );
+    return widget.isSubtitle!
+        ? ExpansionTileWidget(
+            initiallyExpanded: widget.initiallyExpanded,
+            maintainState: true,
+            onExpansionChanged: (z) {
+              widget.onCardClickCallBack?.call(z);
+            },
+            // leading: Icon(cdm.icon,color: Colors.white),
+            title: Text(
+              "${widget.title}",
+              style: widget.titleTextStyle ?? appStyles.aboutTitleTextStyle(),
+            ),
+            subtitle: Padding(
+              padding: widget.titlePadding?? EdgeInsets.zero,
+              child: Text(
+                "${widget.subTitle}",
+                style:
+                    widget.subTitleTextStyle ?? appStyles.aboutTitleTextStyle(),
+              ),
+            ),
+            trailing: widget.trailingIcon,
+            children: widget.children)
+        : ExpansionTileWidget(
+            initiallyExpanded: widget.initiallyExpanded,
+            maintainState: true,
+            onExpansionChanged: (z) {
+              widget.onCardClickCallBack?.call(z);
+            },
+            // leading: Icon(cdm.icon,color: Colors.white),
+            title: Text(
+              "${widget.title}",
+              style: widget.titleTextStyle ?? appStyles.aboutTitleTextStyle(),
+            ),
+            trailing: widget.trailingIcon,
+            children: widget.children);
   }
 }
-

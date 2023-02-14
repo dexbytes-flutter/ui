@@ -94,6 +94,7 @@ class _FaqScreenState extends State<FaqScreen> {
               ],
             ),
             child: FaqExpansionTileWidget(
+              isSubtitle: false,
                 key: Key(index.toString()), //attention
                 initiallyExpanded : index == selectedIndex, //attenti
                 // onCardClickCallBack: ((newState) {
@@ -111,12 +112,6 @@ class _FaqScreenState extends State<FaqScreen> {
                   setState(() {
                     selectedIndex = z?index:-1;
                     print("$index");
-                    descriptions.isEmpty?Fluttertoast.showToast(
-                      msg: "Tapped on $title",
-                      fontSize: 14,
-                      backgroundColor: Color(0xff828588),
-                      textColor: Colors.black,
-                    ):Container();
                   });
                 },
                 title: title,

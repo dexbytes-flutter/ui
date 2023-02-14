@@ -8,7 +8,7 @@ import '../values/app_string.dart';
 import '../values/app_style.dart';
 import 'like_button_icon.dart';
 
-class MenuGridListCard extends StatelessWidget {
+class MenuGridListCard extends StatefulWidget {
   final bool isFav;
   final String imageUrl;
   final String menuGridItemTitle;
@@ -23,6 +23,11 @@ class MenuGridListCard extends StatelessWidget {
     this.price = "4.00"
   }) : super(key: key);
 
+  @override
+  State<MenuGridListCard> createState() => _MenuGridListCardState();
+}
+
+class _MenuGridListCardState extends State<MenuGridListCard> {
   @override
   Widget build(BuildContext context) {
     AppDimens appDimens = AppDimens();
@@ -48,7 +53,7 @@ class MenuGridListCard extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: CachedNetworkImage(
-                        imageUrl: imageUrl,
+                        imageUrl: widget.imageUrl,
                         height: 130,
                         width: 130,
                         fit: BoxFit.cover,
@@ -65,9 +70,12 @@ class MenuGridListCard extends StatelessWidget {
                           color: appColors.appButtonBgColor
                       ),
                       child: FavoriteButton(
-                        isFavorite: isFav,
+                        isFavorite: widget.isFav,
                         iconDisabledColor: appColors.white,
                         valueChanged: (_isFavorite) {
+                          setState(() {
+                            _isFavorite = widget.isFav;
+                          });
                           print('Is Favorite : $_isFavorite');
                         },
                       ),/*iconApps.iconImage(imageUrl: iconApps.favoriteIcon,
@@ -81,20 +89,20 @@ class MenuGridListCard extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 12, top: 5),
                 child: Text(
-                  menuGridItemTitle,
+                  widget.menuGridItemTitle,
                   style: appStyles.commonCardTitleTextStyle(),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 12, top: 5),
                 child: Text(
-                 menuGridItemSubtitle,
+                 widget.menuGridItemSubtitle,
                   style: appStyles.commonCardSubTitleTextStyle(),
                 ),
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 12,right: 12,),
+                  padding: const EdgeInsets.only(left: 12,),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -104,8 +112,22 @@ class MenuGridListCard extends StatelessWidget {
                               fontWeight: FontWeight.w500,
                               fontSize: 15)
                       ),
-                      Text(price,
+                      Text(widget.price,
                         style: appStyles.commonCardTitleTextStyle(),),
+                      SizedBox(width: 44,),
+                      Container(
+                        padding: EdgeInsets.all(10).copyWith(left: 20,right: 20),
+                        decoration: BoxDecoration(
+                            color: Color(0xFFCB7642),
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                bottomRight: Radius.circular(20)
+                            )
+                        ),
+                        child: iconApps.iconImage(
+                            imageUrl: iconApps.plusIcon,
+                            iconSize: Size(20, 20)),
+                      )
                     ],
                   ),
                 ),
@@ -113,7 +135,7 @@ class MenuGridListCard extends StatelessWidget {
             ],
           ),
         ),
-        Positioned(
+        /*Positioned(
           bottom: 1,
           right: 16.5,
           child: Container(
@@ -129,7 +151,7 @@ class MenuGridListCard extends StatelessWidget {
                 imageUrl: iconApps.plusIcon,
                 iconSize: Size(20, 20)),
           ),
-        )
+        )*/
       ],
     );
   }

@@ -520,7 +520,7 @@ class AppStyle {
         bool isItalic = false}) =>
       TextStyle(
         color: texColor != null ? texColor : appColors.textNormalColor1,
-        fontSize: fontSize != null ? fontSize : 16,
+        fontSize: fontSize != null ? fontSize : 15,
         fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
         fontWeight: fontWeight != null ? fontWeight : appFonts.medium500,
       );

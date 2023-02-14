@@ -63,7 +63,7 @@ class ExpansionTileWidget extends StatefulWidget {
     this.collapsedTextColor,
     this.iconColor,
     this.collapsedIconColor,
-    this.controlAffinity,
+    this.controlAffinity, this.titlePadding,
   }) : assert(initiallyExpanded != null),
         assert(maintainState != null),
         assert(
@@ -155,6 +155,7 @@ class ExpansionTileWidget extends StatefulWidget {
   /// * [ExpansionTileTheme.of], which returns the nearest [ExpansionTileTheme]'s
   ///   [ExpansionTileThemeData].
   final EdgeInsetsGeometry? tilePadding;
+  final EdgeInsetsGeometry? titlePadding;
 
   /// Specifies the alignment of [children], which are arranged in a column when
   /// the tile is expanded.
@@ -373,7 +374,10 @@ class _ExpansionTileWidgetState extends State<ExpansionTileWidget> with SingleTi
               onTap: _handleTap,
               contentPadding: widget.tilePadding ?? expansionTileTheme.tilePadding,
               leading: widget.leading ?? _buildLeadingIcon(context),
-              title: widget.title,
+              title: Padding(
+                padding: widget.titlePadding ?? EdgeInsets.zero,
+                child: widget.title,
+              ),
               subtitle: widget.subtitle,
               trailing: widget.trailing ?? _buildTrailingIcon(context),
             ),

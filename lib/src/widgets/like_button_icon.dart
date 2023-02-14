@@ -4,6 +4,7 @@ class FavoriteButton extends StatefulWidget {
   final double _iconSize;
   final Color _iconColor;
   final bool _isFavorite;
+  final bool? isFavorite;
   final Function _valueChanged;
   final Color? _iconDisabledColor;
 
@@ -11,9 +12,8 @@ class FavoriteButton extends StatefulWidget {
     double? iconSize,
     Color? iconColor,
     Color? iconDisabledColor,
-    bool? isFavorite,
     required Function valueChanged,
-    Key? key,
+    Key? key, this.isFavorite,
   })  : _iconSize = iconSize ?? 25.0,
         _iconColor = iconColor ?? Color(0xfff71d6d),
         _iconDisabledColor = iconDisabledColor ?? Colors.grey[400],
