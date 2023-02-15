@@ -187,6 +187,7 @@ class _MenuScreenState extends State<MenuScreen> {
           physics: ClampingScrollPhysics(),
           itemCount: gridItemList.length,
           itemBuilder: (context,index){
+            MenuGridCardModel gridIndex = gridItemList[index];
             return GestureDetector(
               onTap: (){
                 Navigator.push(

@@ -8,7 +8,8 @@ import '../values/app_string.dart';
 import '../values/app_style.dart';
 import 'like_button_icon.dart';
 
-class MenuGridListCard extends StatefulWidget {
+class MenuGridListCard extends StatelessWidget {
+
   final bool isFav;
   final String imageUrl;
   final String menuGridItemTitle;
@@ -24,11 +25,6 @@ class MenuGridListCard extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<MenuGridListCard> createState() => _MenuGridListCardState();
-}
-
-class _MenuGridListCardState extends State<MenuGridListCard> {
-  @override
   Widget build(BuildContext context) {
     AppDimens appDimens = AppDimens();
     appDimens.appDimensFind(context: context);
@@ -37,7 +33,6 @@ class _MenuGridListCardState extends State<MenuGridListCard> {
       children: [
         Container(
           width: 156,
-          // margin: EdgeInsets.only(right:10,),
           decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(width: 0.8,color: Colors.grey.shade200),
@@ -53,7 +48,7 @@ class _MenuGridListCardState extends State<MenuGridListCard> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: CachedNetworkImage(
-                        imageUrl: widget.imageUrl,
+                        imageUrl: imageUrl,
                         height: 130,
                         width: 130,
                         fit: BoxFit.cover,
@@ -70,12 +65,9 @@ class _MenuGridListCardState extends State<MenuGridListCard> {
                           color: appColors.appButtonBgColor
                       ),
                       child: FavoriteButton(
-                        isFavorite: widget.isFav,
+                        isFavorite: isFav,
                         iconDisabledColor: appColors.white,
                         valueChanged: (_isFavorite) {
-                          setState(() {
-                            _isFavorite = widget.isFav;
-                          });
                           print('Is Favorite : $_isFavorite');
                         },
                       ),/*iconApps.iconImage(imageUrl: iconApps.favoriteIcon,
@@ -89,14 +81,14 @@ class _MenuGridListCardState extends State<MenuGridListCard> {
               Padding(
                 padding: const EdgeInsets.only(left: 12, top: 5),
                 child: Text(
-                  widget.menuGridItemTitle,
+                  menuGridItemTitle,
                   style: appStyles.commonCardTitleTextStyle(),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 12, top: 5),
                 child: Text(
-                 widget.menuGridItemSubtitle,
+                  menuGridItemSubtitle,
                   style: appStyles.commonCardSubTitleTextStyle(),
                 ),
               ),
@@ -112,7 +104,7 @@ class _MenuGridListCardState extends State<MenuGridListCard> {
                               fontWeight: FontWeight.w500,
                               fontSize: 15)
                       ),
-                      Text(widget.price,
+                      Text(price,
                         style: appStyles.commonCardTitleTextStyle(),),
                       SizedBox(width: 44,),
                       Container(
