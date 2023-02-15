@@ -1,6 +1,6 @@
 {
   "homeBottomNavigationBar": {
-    "backgroundColor": "0xFF54321E",
+    "backgroundColor": "0xFFFFFFFF",
     "activeIconColor": "0xFF2196F3",
     "deActiveIconColor": "0xFF607D8B",
     "activeMenuTextStyle": {
@@ -16,23 +16,23 @@
 {
   "icon": "0xf53a",
   "label": "Home",
-  "backgroundColor": "0xFF54321E"
+  "backgroundColor": "0xFFFFEBEE"
 },
   {"icon": "0xe11b",
   "label": "Studio",
-  "backgroundColor": "0xFF54321E"
+  "backgroundColor": "0xFFFFEBEE"
 },
   {"icon": "0xe04b",
   "label": "add_box",
-  "backgroundColor": "0xFF54321E"
+  "backgroundColor": "0xFFFFEBEE"
 },
   {"icon": "0xee4e",
   "label": "Profile",
-  "backgroundColor": "0xFF54321E"
+  "backgroundColor": "0xFFFFEBEE"
 },
   {"icon": "0xe559",
   "label": "Explore",
-  "backgroundColor": "0xFF54321E"
+  "backgroundColor": "0xFFFFEBEE"
 }
 ]
   },

@@ -1,4 +1,4 @@
-export 'package:base_flutter_app/src/pages/splash_screen.dart';
+export 'package:base_flutter_app/src/pages/splash.dart';
 
 //================ ENUMS ===================================
 //Enums for common background screen

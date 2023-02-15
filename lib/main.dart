@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'package:base_flutter_app/src/all_file_import/app_screens_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
-import 'package:base_flutter_app/src/pages/sign_up_screen.dart';
 import 'package:base_flutter_app/src/widgets/slider_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -21,8 +19,7 @@ import 'package:base_flutter_app/src/helper/shared_preferencesFile.dart';
 import 'package:provider/provider.dart';
 import 'package:base_flutter_app/src/config/routes.dart';
 
-import 'src/pages/dashboard_screen.dart';
-import 'src/pages/sign_in_screen.dart';
+import 'src/pages/register_screen.dart';
 
 void main() async {
   // if you are using await in main function then add this line
@@ -272,19 +269,8 @@ class _MyAppState extends State<MyAppFlutterMain> {
     return /*!widget.isOneTimeProfileSetUpDone
         ? CreateAccount()
         : */
-        //SignUpPage
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SliderScreen(
-              urlImages: ["https://images.wallpapersden.com/image/download/landscape-pixel-art_bGhnaGeUmZqaraWkpJRmbmdlrWZlbWU.jpg",
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNEegapBEz-TgsTk0wdHwoERShihEq2cyWWSsTtxP5LGVhrWG-jUhY2FteEwnKin-9EmE&usqp=CAU",
-              "https://www.marketing91.com/wp-content/uploads/2019/05/Features-of-advertising-1.jpg",
-              "https://www.wallpaperup.com/uploads/wallpapers/2019/06/27/1328160/888061e927e72ea9b44968a1a829d57c-700.jpg"],
-              imageHeight: 70,
-            ),
-          ],
-        );
+      RegisterScreen();
+
   }
 
   //Redirect to another screen if already loggedIn
@@ -294,10 +280,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
 
     //If profile set done by user
     // if (widget.isOneTimeProfileSetUpDone) {
-    // return const SignInScreen();
-    return const DashboardScreen();
-    // return const SplashScreen();
-    // return const SignUpScreen();
+    return const RegisterScreen();
     //SignInPage();
     // }
     //If set up not done by user than redirect to selected screen

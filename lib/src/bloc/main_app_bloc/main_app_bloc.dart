@@ -9,25 +9,16 @@ import 'package:base_flutter_app/src/helper/local_constant.dart';
 class MainAppBloc extends Bloc<MainAppEvent, MainAppState> {
   MainAppBloc() : super(MainAppInitStat());
   static Map<String, dynamic> configTheme = Map<String, dynamic>();
-  static BuildContext? dashboardContext;
-  static get getDashboardContext => dashboardContext!;
-
   @override
   Stream<MainAppState> mapEventToState(MainAppEvent event) async* {
     if (event is UpdateLoggedInUserAuth) {
       yield UserAuthState(loggedInUserAuth: event.apiAuth);
     } else if (event is LoggedInEvent) {
       yield LoggedInState(isLoggedInUser: event.isLoggedIn);
-    }  else if (event is HomeBottomNavigationBarTapedEvent) {
-      yield HomeBottomNavigationBarTapedState(
-          tapedBottomBarIndex: event.tapedBottomBarIndex,
-          tapedBottomBarPageId: event.tapedBottomBarPageId,
-          statusBarColor: event.statusBarColor);
     } else if (event is HomeBottomNavigationBarTapedEvent) {
       yield HomeBottomNavigationBarTapedState(
           tapedBottomBarIndex: event.tapedBottomBarIndex,
-          tapedBottomBarPageId: event.tapedBottomBarPageId,
-          statusBarColor: event.statusBarColor);
+          tapedBottomBarPageId: event.tapedBottomBarPageId);
     } else if (event is LogOutEvent) {
       loadingWidget.startLoadingPopUp(event.context);
       /*await sharedPreferencesFile.saveBool(isUserLoggedInC, false);

@@ -7,7 +7,7 @@ const dashBoardScreen = 'dashBoardScreen';
 class Routes {
   static dynamic route() {
     return {
-      'SplashPage': (BuildContext context) => SplashScreen(),
+      'SplashPage': (BuildContext context) => SplashPage(),
     };
   }
 

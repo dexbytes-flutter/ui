@@ -66,7 +66,6 @@ class AppString {
   String newCode = 'newCode';
   String verify = 'verify';
   String lastName = 'lastName';
-  String password = 'password';
   String verificationCode = 'verificationCode';
   String confirmPassword = 'confirmPassword';
   String enterFirstName = 'enterFirstName';
@@ -203,17 +202,18 @@ class AppString {
   String importContact = "importContact";
   String skip = "skip";
   String nextBtn = "nextBtn";
-  String phoneNumber = "phoneNumber";
-  String correctPhone = "correctPhone";
+  String phoneNumber = 'Please enter phone number';
+  String correctPhone = 'Phone number length must be 10 characters long.';
   String enterCorrectPassword = "enterCorrectPassword";
   String enterPassword1 = "enterPassword1";
-  String fullNameError = "fullNameError";
-  String fullNameValidError = "fullNameValidError";
+  String registerText = "registerText";
+  String alreadyHaveAccountText = "alreadyHaveAccountText";
+  String loginHereText = "loginHereText";
+  String orRegisterWithText = "orRegisterWithText";
   String fullNameHintText = "fullNameHintText";
-  String mobileNumberHintText = "mobileNumberHintText";
-  String pleaseEnterOTP = "pleaseEnterOTP";
-  String pleaseEnterCorrectOTP = "pleaseEnterCorrectOTP";
-  String searchTextFieldHintText = "searchTextFieldHintText";
+  String emailIdHintText = "emailIdHintText";
+  String passwordHintText = "passwordHintText";
+
 }
 
 AppString appString = AppString();

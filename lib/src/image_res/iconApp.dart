@@ -21,8 +21,12 @@ class IconApps {
   String passwordIcon = 'assets/images/password_icon.svg';
   String facebookIcon = 'assets/images/facebook_icon.svg';
   String googleIcon = 'assets/images/google_icon.svg';
-  String dashboardIcon = 'assets/images/dashboard_icon.svg';
-  String searchIcon = 'assets/images/search_icon.svg';
+  String leftArrow = 'assets/images/left_arrow.svg';
+  String rightArrow = 'assets/images/right_arrow.svg';
+  String appleLogo = 'assets/images/apple_logo.svg';
+  String userIcon = 'assets/images/user_icon.svg';
+  String emailIcon = 'assets/images/email_icon.svg';
+  String locationIcon = 'assets/images/location_icon.svg';
 
   iconImage(
       {required String imageUrl,

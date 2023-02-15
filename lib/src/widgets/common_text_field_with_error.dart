@@ -90,6 +90,7 @@ class CommonTextFieldWithError extends StatelessWidget {
     this.textInputAction,
     this.lable,
     this.borderStyle,
+    this.decoration
   });
 
   final CapitalizationText capitalization;
@@ -140,6 +141,7 @@ class CommonTextFieldWithError extends StatelessWidget {
   final double errorLeftRightMargin;
   final Widget? lable;
   final BorderStyle? borderStyle;
+  final InputDecoration? decoration;
 
 //  get focusNode => null;
   @override
@@ -268,7 +270,7 @@ class CommonTextFieldWithError extends StatelessWidget {
                     )
                         : null,
                     textCapitalization: capitalizationTemp,
-                    decoration: InputDecoration(
+                    decoration: decoration ?? InputDecoration(
                       //   prefixText: inputFieldPrefixText??'',
                       contentPadding:
                       contentPadding ?? EdgeInsets.fromLTRB(10, 5, 10, 5),

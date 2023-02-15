@@ -38,8 +38,7 @@ class CountryPicker extends StatelessWidget {
               thickness: 1,
               endIndent: 0,
               indent: 0,
-              // color: Colors.grey.withOpacity(0.5),
-              color: Colors.grey.shade200,
+              color: Colors.grey.withOpacity(0.5),
             ),
           ),
           CountryCodePicker(

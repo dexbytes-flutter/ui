@@ -16,7 +16,7 @@ class AppNavigator {
   void launchDashBoardScreen(BuildContext context) {
     // Navigator.pushAndRemoveUntil(
     //     context,
-    //     SlideRightRoute(widget: DashboardScreen()),
+    //     SlideRightRoute(widget: DashBoardPage()),
     //     ModalRoute.withName("dashBoardScreen"));
   }
 

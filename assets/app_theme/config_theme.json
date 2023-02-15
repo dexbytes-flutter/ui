@@ -1,60 +1,49 @@
 {
   "homeBottomNavigationBar": {
-    "backgroundColor": "0xFF54321E",
-    "darkBackgroundColor": "0xFF374151",
-    "activeIconColor": "0xFFCB7642",
-    "deActiveIconColor": "0xFF9CA3AF",
+    "backgroundColor": "0xFFFFFFFF",
+    "activeIconColor": "0xFF2196F3",
+    "deActiveIconColor": "0xFF607D8B",
     "activeMenuTextStyle": {
       "fontSize": 12,
-      "color": "0xFF022964"
+      "color": "0xFF2196F3"
     },
     "deActiveMenuTextStyle": {
       "fontSize": 12,
-      "color": "0xFF9CA3AF"
+      "color": "0xFF607D8B"
     },"elevation": 0.0,
     "bottomMenuType": 0,
     "menu_item": [
+      {
+        "icon": "0xf53a",
+        "label": "Home",
+        "backgroundColor": "0xFFFFEBEE",
+        "menuPageId": "menu1"
+      },
+      {"icon": "0xe11b",
+        "label": "Studio",
+        "backgroundColor": "0xFFFFEBEE",
+        "menuPageId": "menu2"
+      },
+      {"icon": "0xe04b",
+        "label": "Category",
+        "backgroundColor": "0xFFFFEBEE",
+        "menuPageId": "menu3"
+      },
+      {"icon": "0xee4e",
+        "label": "Profile",
+        "backgroundColor": "0xFFFFEBEE",
+        "menuPageId": "menu4"
+      },
+      {"icon": "0xe559",
+        "label": "Explore",
+        "backgroundColor": "0xFFFFEBEE",
+        "menuPageId": "menu5"
 
-      {
-        "activeIcon": "assets/images/home_icon.svg",
-        "deActiveIcon": "assets/images/home_icon.svg",
-        "label": "",
-        "backgroundColor": "0xFF54321E",
-        "menuPageId": "menu1",
-        "statusBarColors": "0xff212327"
-      },
-      {
-        "activeIcon": "assets/images/shopping_bag.svg",
-        "deActiveIcon":"assets/images/shopping_bag.svg",
-        "label": "",
-        "backgroundColor": "0xFF54321E",
-        "menuPageId": "menu2",
-        "statusBarColors": "0xff212327"
-      },
-      {
-        "activeIcon":"assets/images/favorite_icon.svg",
-        "deActiveIcon":"assets/images/favorite_icon.svg",
-        "label": "",
-        "backgroundColor": "0xFF54321E",
-        "menuPageId": "menu3",
-        "statusBarColors": "0xff212327"
-      },
-      {
-        "activeIcon": "assets/images/notification_icon.svg",
-        "deActiveIcon":"assets/images/notification_icon.svg",
-        "label": "",
-        "backgroundColor": "0xFF54321E",
-        "menuPageId": "menu4",
-        "statusBarColors": "0xff212327"
       }
     ]
   },
 
   "setting": {
-    "homeBottomNavigationBarHeight": 56,
-    "statusBarColors": "0xff212327",
-    "appBackgroundColors": ["0xFFFFFFFF"],
-    "isDisplaySideDrawer": false,
-    "isDisplayHomeSearch": false
+    "homeBottomNavigationBarHeight": 56
   }
 }

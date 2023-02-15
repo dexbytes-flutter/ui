@@ -472,6 +472,80 @@ class AppStyle {
         fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
         fontWeight: fontWeight != null ? fontWeight : appFonts.regular400,
       );
+
+  TextStyle commonAppBarTextTextStyle(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+        color: texColor != null ? texColor : appColors.textNormalColor,
+        fontSize: fontSize != null ? fontSize : 14,
+        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontWeight: fontWeight != null ? fontWeight : appFonts.regular400,
+      );
+
+  TextStyle alreadyHaveAccountTextStyle(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+        color: texColor != null ? texColor : appColors.textColor,
+        fontSize: fontSize != null ? fontSize : 14,
+        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontWeight: fontWeight != null ? fontWeight : appFonts.regular400,
+      );
+  TextStyle registerWithTextStyle(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+        color: texColor != null ? texColor : appColors.textColor,
+        fontSize: fontSize != null ? fontSize : 14,
+        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontWeight: fontWeight != null ? fontWeight : appFonts.regular400,
+      );
+  TextStyle textFieldHintTextTextStyle(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+        color: texColor != null ? texColor : appColors.appBgColor1,
+        fontSize: fontSize != null ? fontSize : 14,
+        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontWeight: fontWeight != null ? fontWeight : appFonts.regular400,
+      );
+  TextStyle textFieldTextTextStyle(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+        color: texColor != null ? texColor : appColors.textColor,
+        fontSize: fontSize != null ? fontSize : 15,
+        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontWeight: fontWeight != null ? fontWeight : FontWeight.w500,
+      );
+  TextStyle registerTextTextStyle(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+        color: texColor != null ? texColor : appColors.textNormalColor,
+        fontSize: fontSize != null ? fontSize : 25,
+        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontWeight: fontWeight != null ? fontWeight : FontWeight.w700,
+      );
 }
 
 AppStyle appStyles = AppStyle();

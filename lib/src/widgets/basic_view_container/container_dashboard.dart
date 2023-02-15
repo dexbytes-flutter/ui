@@ -44,8 +44,12 @@ class ContainerDashboard extends StatelessWidget {
     Color? bottomBarSafeAreaColor = this.bottomBarSafeAreaColor;
 
     //Set status bar and bottom sef area color
-    statusBarColor ??= appBackgroundColor;
-    bottomBarSafeAreaColor ??= appBackgroundColor;
+    if (statusBarColor == null) {
+      statusBarColor = appBackgroundColor;
+    }
+    if (bottomBarSafeAreaColor == null) {
+      bottomBarSafeAreaColor = appBackgroundColor;
+    }
 
     // Main view return according to Scroll need condition
     Widget returnSubMainView(
@@ -78,7 +82,7 @@ class ContainerDashboard extends StatelessWidget {
             )
                 : StatusBar(statusBarColor: statusBarColor),
             AppBarViewDashboard(
-                appBar: appBar, appBarHeight: calculateAppBarHeight()),
+                appBar: this.appBar, appBarHeight: calculateAppBarHeight()),
             Expanded(
               child: Stack(
                 fit: StackFit.expand,
@@ -87,10 +91,10 @@ class ContainerDashboard extends StatelessWidget {
                       behavior: MyBehavior(), child: returnMainView()),
                   Align(
                     alignment: Alignment.bottomCenter,
-                    child: SizedBox(
+                    child: Container(
                       height: bottomMenuHeight,
                       child: BottomMenuViewDashboard(
-                          bottomMenuView: bottomMenuView,
+                          bottomMenuView: this.bottomMenuView,
                           bottomMenuHeight: bottomMenuHeight),
                     ),
                   ),
@@ -109,7 +113,7 @@ class ContainerDashboard extends StatelessWidget {
     double fullScreenSize = mediaQueryData.size.height;
     double remainingViewFullHeight = fullScreenSize;
 
-    double statusBarHeight = isOverLayStatusBar?0:mediaQueryData.padding.top;
+    double statusBarHeight = this.isOverLayStatusBar?0:mediaQueryData.padding.top;
     double bottomBarSafeAreaHeight = mediaQueryData.padding.bottom;
 
     double appBarHeight = calculateAppBarHeight();
@@ -164,20 +168,20 @@ class AppBarViewDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     double appBarHeight = this.appBarHeight;
     // MediaQueryData mediaQueryData = MediaQuery.of(context);
-    return SizedBox(
+    return Container(
       height: appBarHeight,
       child: PreferredSize(
-          preferredSize: Size(double.infinity, appBarHeight),
           child: (appBar == null || appBarHeight == 0)
               ? Container(
             height: appBarHeight,
             color: Colors.blue,
-            child: const Text(
+            child: Text(
               "custom height appBarHeight>0, no app bar appBarHeight < 0, Default system appBar height  appBarHeight == 0",
               style: TextStyle(color: Colors.black, fontSize: 14),
             ),
           )
-              : appBar!),
+              : appBar!,
+          preferredSize: Size(double.infinity, appBarHeight)),
     );
   }
 }
@@ -192,20 +196,20 @@ class BottomMenuViewDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     double bottomMenuHeight = this.bottomMenuHeight;
     // MediaQueryData mediaQueryData = MediaQuery.of(context);
-    return SizedBox(
+    return Container(
       height: bottomMenuHeight,
       child: PreferredSize(
-          preferredSize: Size(double.infinity, bottomMenuHeight),
           child: (bottomMenuView == null || bottomMenuHeight == 0)
               ? Container(
             height: bottomMenuHeight,
             color: Colors.blue,
-            child: const Text(
+            child: Text(
               "custom height appBarHeight>0, no app bar appBarHeight < 0, Default system appBar height  appBarHeight == 0",
               style: TextStyle(color: Colors.black, fontSize: 14),
             ),
           )
-              : bottomMenuView!),
+              : bottomMenuView!,
+          preferredSize: Size(double.infinity, bottomMenuHeight)),
     );
   }
 }

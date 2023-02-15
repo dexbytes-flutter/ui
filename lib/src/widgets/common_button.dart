@@ -22,7 +22,7 @@ class CommonButton extends StatefulWidget {
         this.textStyle,
         this.isDisable = false,
         this.isBottomMarginRequired = true,
-        this.buttonColor,
+        this.buttonColor = const Color(0xFFD6A266),
         this.buttonBorderRadius = 40,
         this.isShowIcon = false
 

@@ -34,7 +34,6 @@ class AppColors {
   Color primaryColor = const Color(0xFF4AA546);
 
   Color appThemeColor = const Color.fromRGBO(155, 133, 96, .1);
-  Color appThemeColor1 = const Color(0xFF482A17);
 
   //Status bar color
   Color appStatusBarTransColor = Color(0x00000000);
@@ -79,8 +78,14 @@ class AppColors {
 
   //*Application Main containers BG color ***********************************
   Color appBgColor = const Color(0xFF000000);
-  Color appBgColor3 = const Color(0xFF272727);
-  Color appBgColor6 = const Color(0xFF374151);
+  Color appBgColorJungleGreen = const Color(0xFF1B3232);
+  Color appBgColor1 = const Color(0xFF417777);
+  Color appBgColor2 = const Color(0xFF244444);
+  Color appBgColorEmerald = const Color(0xFF3d9676);
+  Color appBgColorLeanWhite = const Color(0xFFF5eadd);
+
+
+
   Color appTopBgColor = const Color(0xFFFFFFFF);
   Color appCenterBgColor = const Color(0xFFFFFFFF);
   Color appBottomBgColor = const Color(0xFFFFFFFF);
@@ -95,7 +100,7 @@ class AppColors {
   Color appTransColor = const Color(0x00000000);
 
   //Buttons Color ************************************
-  Color buttonBgColor = const Color(0xFF27AE60);
+  Color buttonBgColor = const Color(0xFFD6A266);
   Color buttonTextColor = const Color(0xFFFFFFFF);
   Color buttonTextColor1 = const Color(0xFF27AE60);
   Color buttonTextColor2 = const Color(0xFF34C759);
@@ -107,12 +112,14 @@ class AppColors {
   Color buttonBorderColor2 = const Color(0xFF34C759);
   Color activeBorderColor = const Color(0xFF27AE60);
   Color borderColor = const Color(0xFF575757);
-  Color appButtonColor = const Color(0xFF54321E);
 
 
 
   //Card bg color ************************************
   Color cardBgColor = const Color(0xFFFFFFFF);
+
+  //Text color ************************************
+  Color textColor = const Color(0xFFAEABA0);
 
   //Edit field Color *********************************
   Color editTextColor = const Color(0xFF2c3134);
@@ -167,6 +174,7 @@ class AppColors {
 
   Color circleColor = const Color(0xFF003071);
   Color iconColor = const Color(0xFF726344);
+  Color iconColor1 = const Color(0xFFAEABA0);
   Color BoxBtextorderColor = const Color(0xFFE5E5E5);
 
   Color datetimeColor = const Color(0xFF4AA546);
@@ -180,9 +188,6 @@ class AppColors {
   Color imgColor = const Color(0xFFE0E0E0);
   Color imgColor1 = const Color(0xFFF2F2F2);
   Color imgColor3 = const Color(0xFFFFFFFF);
-
-  Color bottomMenuColor1 = const Color(0xFFFFFFFF);
-  Color bottomMenuColor2 = const Color(0xFF374151);
 
 }
 

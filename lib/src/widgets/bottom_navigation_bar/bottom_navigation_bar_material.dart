@@ -1,8 +1,5 @@
 import 'package:base_flutter_app/src/all_file_import/app_providers_files_link.dart';
-import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
-import 'package:base_flutter_app/src/pages/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 
 /// This is the stateful widget that the main application instantiates.
 class BottomNavigationBarMaterial extends StatefulWidget {
@@ -11,9 +8,9 @@ class BottomNavigationBarMaterial extends StatefulWidget {
   final List<Widget>? widgetOptions;
   const BottomNavigationBarMaterial(
       {Key? key,
-        this.onItemTapped,
-        this.intSelectedIndex = -1,
-        this.widgetOptions})
+      this.onItemTapped,
+      this.intSelectedIndex = -1,
+      this.widgetOptions})
       : super(key: key);
 
   @override
@@ -29,7 +26,7 @@ class _BottomNavigationBarMaterialState
   int selectedIndex = 0;
 
   static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
     Text(
       'Index 0: Home',
@@ -55,7 +52,7 @@ class _BottomNavigationBarMaterialState
 
   double fontSize = 18;
   Map<String, dynamic> homeBottomNavigationBar =
-  MainAppBloc.configTheme["homeBottomNavigationBar"];
+      MainAppBloc.configTheme["homeBottomNavigationBar"];
   Map<String, dynamic> setting = MainAppBloc.configTheme["setting"];
 
   Color backgroundColor = Colors.white;
@@ -63,7 +60,7 @@ class _BottomNavigationBarMaterialState
   Color deActiveIconColor = Colors.blueGrey;
   TextStyle activeMenuTextStyle = TextStyle(fontSize: 12, color: Colors.blue);
   TextStyle deActiveMenuTextStyle =
-  TextStyle(fontSize: 12, color: Colors.blueGrey);
+      TextStyle(fontSize: 12, color: Colors.blueGrey);
   double elevation = 0;
   int bottomMenuType = 0;
 
@@ -179,11 +176,11 @@ class _BottomNavigationBarMaterialState
         child: _widgetOptions.length > selectedIndex
             ? _widgetOptions.elementAt(selectedIndex)
             : Container(
-          child: Text(
-            'User development',
-            style: optionStyle,
-          ),
-        ),
+                child: Text(
+                  'User development',
+                  style: optionStyle,
+                ),
+              ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: menuItem,
@@ -201,56 +198,5 @@ class _BottomNavigationBarMaterialState
         onTap: _onItemTapped,
       ),
     );
-  }
-}
-
-
-
-
-class BNBCustomPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    var brightness = SchedulerBinding.instance.window.platformBrightness;
-    bool isDarkMode = brightness == Brightness.dark;
-    Paint paint = new Paint()
-      ..color = appColors.whiteCard.withOpacity(0.95)//AppColors().appBgColor3
-      ..style = PaintingStyle.fill;
-
-    Path path = Path();
-    path.moveTo(0, 0); // Start
-    path.quadraticBezierTo(size.width * 0.9, 5.7, size.width * 0.339, 2.1);
-    path.quadraticBezierTo(size.width * 0.390 ,6, size.width * 0.40, 15);
-    path.arcToPoint(Offset(size.width * 0.60, 16), radius: Radius.elliptical(44,44), clockwise: false);
-    path.quadraticBezierTo(size.width * 0.63, 0, size.width *0.71, 0);
-    path.quadraticBezierTo(size.width * 0.0, 0, size.width, 0);
-    path.lineTo(size.width, size.height);
-    path.lineTo(0, size.height);
-    path.lineTo(0, 0);
-    canvas.drawShadow(path, Colors.transparent, 5, true);
-    canvas.drawPath(path, paint);
-  }
-
-  // void paint(Canvas canvas, Size size) {
-  //   Paint paint = new Paint()
-  //     ..color = AppColors().appBgColor3
-  //     ..style = PaintingStyle.fill;
-  //
-  //   Path path = Path();
-  //   path.moveTo(0,10); // Start
-  //   path.quadraticBezierTo(size.width * 0.0, 0, size.width * 0.0, 0);
-  //   path.quadraticBezierTo(size.width * 0.40, 0, size.width * 0.39, 4);
-  //   path.arcToPoint(Offset(size.width * 0.61, 5), radius: Radius.circular(30.0), clockwise: false);
-  //   path.quadraticBezierTo(size.width * 0.60, 0, size.width * 0.80, 0);
-  //   path.quadraticBezierTo(size.width * 0.80, 0, size.width, 0);
-  //   path.lineTo(size.width, size.height);
-  //   path.lineTo(0, size.height);
-  //   path.lineTo(0, 20);
-  //   canvas.drawShadow(path, Colors.transparent, 5, true);
-  //   canvas.drawPath(path, paint);
-  // }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return false;
   }
 }
