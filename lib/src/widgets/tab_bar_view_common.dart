@@ -6,9 +6,11 @@ import 'package:flutter/material.dart';
 
 class ActualOrder extends StatefulWidget {
   final int selectedIndex;
+  final int listIndex;
   const ActualOrder({
     Key? key,
-    this.selectedIndex = 0
+    this.selectedIndex = 0,
+    this.listIndex = 0
   }) : super(key: key);
 
   @override
@@ -47,7 +49,8 @@ class _ActualOrderState extends State<ActualOrder> {
       );
     }
 
-      return Container(
+      return widget.selectedIndex == 1
+          ? Container(
         margin: EdgeInsets.only(left: 20,right: 20, bottom: 20),
         padding: EdgeInsets.all(15),
         decoration: BoxDecoration(
@@ -61,15 +64,15 @@ class _ActualOrderState extends State<ActualOrder> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(widget.selectedIndex == 1 ? "Order No.${pastOrderList[widget.selectedIndex].orderNumber}" : "Order No.${actualOrderList[widget.selectedIndex].orderNumber}",
+                Text("Order No.${pastOrderList[widget.listIndex].orderNumber}",
                   style: TextStyle(
                       fontSize: 15,fontWeight: FontWeight.w500, color: appColors.textNormalColor1
                   ),
                 ),
-                Text( widget.selectedIndex == 1 ? pastOrderList[widget.selectedIndex].orderStatus : actualOrderList[widget.selectedIndex].orderStatus,
+                Text(pastOrderList[widget.listIndex].orderStatus,
                     style: TextStyle(
                       fontSize: 13,fontWeight: FontWeight.w500,
-                      color: widget.selectedIndex == 1 ? appColors.textNormalColor7: appColors.textColorBlue,
+                      color: appColors.textNormalColor7,
                     )
                 )
               ],
@@ -79,14 +82,14 @@ class _ActualOrderState extends State<ActualOrder> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(widget.selectedIndex == 1 ? "${pastOrderList[widget.selectedIndex].numberOfItems} items": "${actualOrderList[widget.selectedIndex].numberOfItems} items",
+                Text("${pastOrderList[widget.listIndex].numberOfItems} items",
                   style: TextStyle(fontWeight: FontWeight.w400,fontSize: 15,
                     color: appColors.textColorBlue,
                     // decoration: TextDecoration.underline,
                     // decorationStyle: TextDecorationStyle.dashed,
                   ),
                 ),
-                Text(widget.selectedIndex == 1 ? "${pastOrderList[widget.selectedIndex].orderTrackId} BYN": "${actualOrderList[widget.selectedIndex].orderTrackId} BYN",
+                Text("${pastOrderList[widget.listIndex].orderTrackId} BYN",
                   style: TextStyle(fontWeight: FontWeight.w500,fontSize: 13,
                       color: appColors.textNormalColor1.withOpacity(0.65)),
                 )
@@ -103,12 +106,12 @@ class _ActualOrderState extends State<ActualOrder> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 iconApps.iconImage(
-                    imageUrl: widget.selectedIndex == 1 ? pastOrderList[widget.selectedIndex].locationIcon: actualOrderList[widget.selectedIndex].locationIcon,
+                    imageUrl: pastOrderList[widget.listIndex].locationIcon,
                     iconSize: Size(20, 20),
                     imageColor: Colors.grey.shade300
                 ),
                 SizedBox(width: 10,),
-                Text(widget.selectedIndex == 1 ? pastOrderList[widget.selectedIndex].address: actualOrderList[widget.selectedIndex].address,
+                Text(pastOrderList[widget.listIndex].address,
                   style: TextStyle(fontWeight: FontWeight.w500,fontSize: 13,
                       color: appColors.textNormalColor1.withOpacity(0.65)),
                 )
@@ -120,12 +123,12 @@ class _ActualOrderState extends State<ActualOrder> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 iconApps.iconImage(
-                    imageUrl:  widget.selectedIndex == 1 ? pastOrderList[widget.selectedIndex].calendarIcon: actualOrderList[widget.selectedIndex].calendarIcon,
+                    imageUrl: pastOrderList[widget.listIndex].calendarIcon,
                     iconSize: Size(18, 20),
                     imageColor: Colors.grey.shade300
                 ),
                 SizedBox(width: 10,),
-                Text(widget.selectedIndex == 1 ? pastOrderList[widget.selectedIndex].orderDate : actualOrderList[widget.selectedIndex].orderDate,
+                Text(pastOrderList[widget.listIndex].orderDate,
                   style: TextStyle(fontWeight: FontWeight.w500,fontSize: 13,
                       color: appColors.textNormalColor1.withOpacity(0.65)),
                 )
@@ -138,20 +141,127 @@ class _ActualOrderState extends State<ActualOrder> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 iconApps.iconImage(
-                    imageUrl:  widget.selectedIndex == 1 ? pastOrderList[widget.selectedIndex].clockIcon: actualOrderList[widget.selectedIndex].clockIcon,
+                    imageUrl: pastOrderList[widget.listIndex].clockIcon,
                     iconSize: Size(20, 20),
                     imageColor: Colors.grey.shade300
                 ),
                 SizedBox(width: 10,),
-                Text(widget.selectedIndex == 1 ? pastOrderList[widget.selectedIndex].orderTime : actualOrderList[widget.selectedIndex].orderTime,
+                Text(pastOrderList[widget.listIndex].orderTime,
                   style: TextStyle(fontWeight: FontWeight.w500,fontSize: 13,
                       color: appColors.textNormalColor1.withOpacity(0.65)),
                 )
               ],
             ),
-            SizedBox(height: widget.selectedIndex == 1 ? 20 : 10,),
-            widget.selectedIndex == 1 ? repeatButton() : Container(),
-            SizedBox(height: widget.selectedIndex == 1 ? 5 : 0,),
+            SizedBox(height: 20),
+           repeatButton(),
+            SizedBox(height: 5),
+          ],
+        ),
+      )
+          :
+          Container(
+        margin: EdgeInsets.only(left: 20,right: 20, bottom: 20),
+        padding: EdgeInsets.all(15),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: Colors.white
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text("Order No.${actualOrderList[widget.listIndex].orderNumber}",
+                  style: TextStyle(
+                      fontSize: 15,fontWeight: FontWeight.w500, color: appColors.textNormalColor1
+                  ),
+                ),
+                Text(actualOrderList[widget.listIndex].orderStatus,
+                    style: TextStyle(
+                      fontSize: 13,fontWeight: FontWeight.w500,
+                      color: appColors.textColorBlue,
+                    )
+                )
+              ],
+            ),
+            SizedBox(height: 20,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text("${actualOrderList[widget.listIndex].numberOfItems} items",
+                  style: TextStyle(fontWeight: FontWeight.w400,fontSize: 15,
+                    color: appColors.textColorBlue,
+                    // decoration: TextDecoration.underline,
+                    // decorationStyle: TextDecorationStyle.dashed,
+                  ),
+                ),
+                Text("${actualOrderList[widget.listIndex].orderTrackId} BYN",
+                  style: TextStyle(fontWeight: FontWeight.w500,fontSize: 13,
+                      color: appColors.textNormalColor1.withOpacity(0.65)),
+                )
+              ],
+            ),
+            SizedBox(
+              child:Divider(
+                color: Colors.grey.withOpacity(0.20),
+                height: 36,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                iconApps.iconImage(
+                    imageUrl: actualOrderList[widget.listIndex].locationIcon,
+                    iconSize: Size(20, 20),
+                    imageColor: Colors.grey.shade300
+                ),
+                SizedBox(width: 10,),
+                Text(actualOrderList[widget.listIndex].address,
+                  style: TextStyle(fontWeight: FontWeight.w500,fontSize: 13,
+                      color: appColors.textNormalColor1.withOpacity(0.65)),
+                )
+              ],
+            ),
+            SizedBox(height: 10,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                iconApps.iconImage(
+                    imageUrl: actualOrderList[widget.listIndex].calendarIcon,
+                    iconSize: Size(18, 20),
+                    imageColor: Colors.grey.shade300
+                ),
+                SizedBox(width: 10,),
+                Text(actualOrderList[widget.listIndex].orderDate,
+                  style: TextStyle(fontWeight: FontWeight.w500,fontSize: 13,
+                      color: appColors.textNormalColor1.withOpacity(0.65)),
+                )
+
+              ],
+            ),
+            SizedBox(height: 10,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                iconApps.iconImage(
+                    imageUrl:  actualOrderList[widget.listIndex].clockIcon,
+                    iconSize: Size(20, 20),
+                    imageColor: Colors.grey.shade300
+                ),
+                SizedBox(width: 10,),
+                Text(actualOrderList[widget.listIndex].orderTime,
+                  style: TextStyle(fontWeight: FontWeight.w500,fontSize: 13,
+                      color: appColors.textNormalColor1.withOpacity(0.65)),
+                )
+              ],
+            ),
+            SizedBox(height: 10,),
           ],
         ),
       );

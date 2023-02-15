@@ -80,9 +80,10 @@ class _MyOrderScreenState extends State<MyOrderScreen> with TickerProviderStateM
         shrinkWrap: true,
         padding: EdgeInsets.only(top: 20,
             bottom: appDimens.heightFullScreen()/4),
-        itemCount: actualOrderList.length,
+        itemCount: selectedTab == 0? actualOrderList.length : pastOrderList.length,
         itemBuilder: (contex, index){
           return ActualOrder(
+            listIndex: selectedTab == 0 ? actualOrderList[index].id : pastOrderList[index].id,
             selectedIndex: selectedTab,
           );
         },
