@@ -109,7 +109,7 @@ class _MyOrderScreenState extends State<MyOrderScreen> with TickerProviderStateM
               margin: EdgeInsets.only(left: 20,right: 20,top: 20),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: appColors.textFiledColor.withOpacity(0.20),
+                color: appColors.textFiledColor.withOpacity(0.10),
               ),
               child: SizedBox(
                 height: 45,
