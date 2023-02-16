@@ -20,6 +20,7 @@ import 'package:base_flutter_app/src/helper/shared_preferencesFile.dart';
 import 'package:provider/provider.dart';
 import 'package:base_flutter_app/src/config/routes.dart';
 
+import 'src/pages/login_screen.dart';
 import 'src/pages/register_screen.dart';
 
 void main() async {
@@ -270,7 +271,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
     return /*!widget.isOneTimeProfileSetUpDone
         ? CreateAccount()
         : */
-      TutorialScreen();
+      SignInScreen();
 
   }
 
@@ -281,7 +282,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
 
     //If profile set done by user
     // if (widget.isOneTimeProfileSetUpDone) {
-    return const TutorialScreen();
+    return const SignInScreen();
     //SignInPage();
     // }
     //If set up not done by user than redirect to selected screen

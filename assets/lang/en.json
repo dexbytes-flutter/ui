@@ -53,7 +53,6 @@
   "changePassword": "Change Password",
   "newPassword": "New Password",
   "currentPassword": "Current Password",
-  "pleaseEnterPassword": "Please enter password ",
   "yourProfileHeading": "Your Profile",
   "login": "Login",
   "tabBarHeading1": "Profile",
@@ -72,7 +71,6 @@
   "months": "Month",
   "profile": "Profile",
   "message": "MESSAGE",
-  "pleaseEnterPassword2": "Please enter current password ",
   "messageHeading": "Messages",
   "signUpText" : "Sign up",
   "signUpWith" : "Sign up with your ",
@@ -127,5 +125,12 @@
   "fullNameHintText" : "Full Name",
   "emailIdHintText" : "Email ID",
   "passwordHintText" : "Password",
-  "signUpButtonText" : "Sign Up"
+  "signUpButtonText" : "Sign Up",
+  "pleaseEnterFullName" : "Please enter full name",
+  "pleaseEnterCorrectName" : "Please enter correct name",
+  "pleaseEnterEmail" : "Please enter email",
+  "pleaseEnterCorrectEmail" : "Please enter correct email",
+  "pleaseEnterPassword": "Please enter password",
+  "pleaseEnterCorrectPassword": "Please enter current password",
+  "loginText" : "Login"
 }

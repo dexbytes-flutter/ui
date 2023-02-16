@@ -33,7 +33,7 @@ class AppString {
 
   String remove = 'remove';
 
-  String pleaseEnterPassword = 'pleaseEnterPassword';
+
   String pleaseEnterCurrentPassword = 'pleaseEnterCurrentPassword';
   String pleaseReEnterPassword = 'pleaseReEnterPassword';
   String firstName = 'firstName';
@@ -60,7 +60,6 @@ class AppString {
 
   String email = 'email';
   String swipeToStart = 'swipeToStart';
-  String pleaseEnterEmail = 'pleaseEnterEmail';
   String loginT = 'login';
   String createAccountButton = 'createAccountButton';
   String newCode = 'newCode';
@@ -214,6 +213,13 @@ class AppString {
   String emailIdHintText = "emailIdHintText";
   String passwordHintText = "passwordHintText";
   String signUpButtonText = "signUpButtonText";
+  String pleaseEnterFullName = "pleaseEnterFullName";
+  String pleaseEnterCorrectName = "pleaseEnterCorrectName";
+  String pleaseEnterEmail = "pleaseEnterEmail";
+  String pleaseEnterCorrectEmail = "pleaseEnterCorrectEmail";
+  String pleaseEnterPassword = 'pleaseEnterPassword';
+  String pleaseEnterCorrectPassword = 'pleaseEnterCorrectPassword';
+  String loginText = 'loginText';
 
 }
 

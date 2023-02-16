@@ -1,90 +1,43 @@
-import 'dart:io';
-import 'dart:ui';
-
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/app_utility/validation.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:base_flutter_app/src/widgets/basic_view_container/container_first.dart';
-import 'package:base_flutter_app/src/widgets/country_code_picker.dart';
+import 'package:base_flutter_app/src/widgets/common_text_field_with_error.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({Key? key}) : super(key: key);
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({Key? key}) : super(key: key);
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _SignInScreenState extends State<SignInScreen> {
 
   Map<String, TextEditingController> controllers = {
-    'name': new TextEditingController(),
     'email': new TextEditingController(),
     'password': new TextEditingController(),
   };
 
   Map<String, FocusNode> focusNodes = {
-    'name': new FocusNode(),
     'email': new FocusNode(),
     'password': new FocusNode(),
   };
 
   Map<String, String> errorMessages = {
-    'name': "",
     'email': "",
     'password': "",
   };
-
-  bool hideNewPassword = true;
-  OverlayEntry? overlayEntry;
-  bool isSignUpScreen = false;
-  void togglePasswordVisibility1() =>
-      setState(() => hideNewPassword = !hideNewPassword);
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
 
     AppDimens appDimens = AppDimens();
     appDimens.appDimensFind(context: context);
-
-    //Check full name field
-    checkFullName(value, fieldName, {onchange = false}) {
-      if (Validation().isNotEmpty(value.trim())) {
-        if (Validation().validateNameField(value.trim())) {
-          setState(() {
-            errorMessages[fieldName] = '';
-          });
-        }
-        else {
-          setState(() {
-            if (!onchange) {
-              errorMessages[fieldName] = appString.trans(context,appString.pleaseEnterFullName);
-            }
-          });
-        }
-      } else {
-        setState(() {
-          if (!onchange) {
-            errorMessages[fieldName] = appString.trans(context,appString.pleaseEnterCorrectName);
-          }
-        });
-      }
-    }
 
     //Check email field
     checkEmail(value, fieldName,{onchange = false}) {
@@ -152,21 +105,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
           }
         });
         return false;
-      } else if (controllers['email']?.text == null ||
-          controllers['email']?.text == '') {
-        setState(() {
-          if (isButtonClicked) {
-            errorMessages['email'] = appString.trans(context, appString.pleaseEnterEmail);
-          }
-        });
-        return false;
-      } else if (!Validation().validateEmail(controllers['email']?.text ?? "")) {
-        setState(() {
-          if (isButtonClicked) {
-            errorMessages['email'] = appString.trans(context, appString.pleaseEnterCorrectEmail);
-          }
-        });
-        return false;
       } else if (controllers['password']?.text == null ||
           controllers['password']?.text == '') {
         setState(() {
@@ -199,8 +137,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ).createShader(bound),
             blendMode: BlendMode.darken,
             child: CachedNetworkImage(
-              height: MediaQuery.of(context).size.height/2.8,
-              width: MediaQuery.of(context).size.width,
+              height: appDimens.heightFullScreen()/2.4,
+              width: appDimens.widthFullScreen(),
               imageUrl: "http://lh3.ggpht.com/-LBkmHsPl3XU/TmMb5-qgdiI/AAAAAAAAQHA/eu3yiXNXKPU/rice-terraces-8%25255B2%25255D.jpg?imgmax=800",
               fit:BoxFit.fill,
             ),
@@ -219,21 +157,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
         ],
       );
-
-      /*ShaderMask(
-        shaderCallback: (bound) =>LinearGradient(
-          colors: [appColors.appBgColorJungleGreen.withOpacity(0.50),appColors.appBgColorJungleGreen.withOpacity(0.60)],
-          begin:Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ).createShader(bound),
-        blendMode: BlendMode.darken,
-        child: CachedNetworkImage(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          imageUrl: "https://lh3.ggpht.com/-LBkmHsPl3XU/TmMb5-qgdiI/AAAAAAAAQHA/eu3yiXNXKPU/rice-terraces-8%25255B2%25255D.jpg?imgmax=800",
-          fit:BoxFit.cover,
-        ),
-      );*/
     }
 
     // Center view widget
@@ -244,61 +167,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // User name field
-            Container(
-              padding: EdgeInsets.only(
-                left: 20,right: 20,
-              ),
-              width: MediaQuery.of(context).size.width,
-              child: CommonTextFieldWithError(
-                decoration: InputDecoration(
-                  hintText: appString.trans(context, appString.fullNameHintText),
-                  hintStyle: appStyles.textFieldHintTextTextStyle(),
-                  contentPadding: EdgeInsets.all(10).copyWith(top: 18),
-                  prefixIcon: Padding(
-                    padding: EdgeInsets.all(15),
-                    child: iconApps.iconImage(
-                        imageUrl: iconApps.userIcon,
-                        iconSize: Size(15, 15),
-                        imageColor: appColors.buttonBgColor),
-                  ),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: appColors.appBgColor1.withOpacity(0.30),
-                        width: 1.5),
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: appColors.appBgColor1.withOpacity(0.30),
-                        width: 1.5
-                    ),
-                  ),
-                ),
-                focusNode: focusNodes['name'],
-                isShowBottomErrorMsg: true,
-                errorMessages: errorMessages['name']?.toString()??'',
-                controllerT: controllers['name'],
-                inputHeight: 50,
-                errorMsgHeight: 22,
-                autoFocus: false,
-                errorLeftRightMargin: 0,
-                maxCharLength: 16,
-                capitalization: CapitalizationText.sentences,
-                cursorColor: appColors.textColor,
-                textInputAction: TextInputAction.done,
-                borderStyle: BorderStyle.none,
-                inputKeyboardType: InputKeyboardTypeWithError.text,
-                errorStyle: appStyles.errorStyle(fontSize: 10),
-                errorMessageStyle:appStyles.errorStyle(fontSize: 9),
-                hintStyle: appStyles.textFieldHintTextTextStyle(),
-                textStyle: appStyles.textFieldTextTextStyle(),
-                onTextChange: (value) {
-                  checkFullName(value, 'full_Name', onchange: true);
-                },
-                onEndEditing: (value) {
-                  checkFullName(value, 'name', onchange: true, );
-                  FocusScope.of(context).requestFocus(focusNodes["email"]);
-                },
-              ),
-            ),
 
             // Email field
             Container(
@@ -410,29 +278,52 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
             ),
 
-            // Register button
-            Container(
-              margin: EdgeInsets.only(
-                top: 10,
-                left: 20,
-                right: 20,
-              ),
-              child: CommonButton(
-                buttonName: appString.trans(context, appString.registerText),
-                buttonHeight: 50,
-                buttonBorderRadius: 18,
-                isBottomMarginRequired: false,
-                textStyle: TextStyle(fontSize:14, fontWeight: FontWeight.w500,color: appColors.textNormalColor1),
-                backCallback: (){
-                  if(_validateFields(isButtonClicked: true)){
-                    // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
-                    //   return OtpVerificationScreen(
-                    //     isSignUpScreen: this.isSignUpScreen,
-                    //   );
-                    // }), (route) => false);
-                  }
-                },
-              ),
+            // Login button
+            Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.only(
+                      top: 10,
+                      left: 20,
+                      right: 20,
+                    ),
+                    padding: EdgeInsets.only(right: 80),
+                    child: CommonButton(
+                      buttonName: appString.trans(context, appString.loginText),
+                      buttonHeight: 50,
+                      buttonBorderRadius: 18,
+                      isBottomMarginRequired: false,
+                      textStyle: TextStyle(fontSize:14, fontWeight: FontWeight.w500,color: appColors.textNormalColor1),
+                      backCallback: (){
+                        if(_validateFields(isButtonClicked: true)){
+                          // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
+                          //   return OtpVerificationScreen(
+                          //     isSignUpScreen: this.isSignUpScreen,
+                          //   );
+                          // }), (route) => false);
+                        }
+                      },
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 10,right: 20),
+                  decoration: BoxDecoration(
+                      color: appColors.appBgColor2.withOpacity(0.70),
+                      borderRadius: BorderRadius.circular(20)
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      iconApps.iconImage(
+                          imageUrl: iconApps.appleLogo,
+                          iconSize: Size(20, 20),
+                          imageColor: appColors.textColor),
+                    ],
+                  ),
+                ),
+              ],
             ),
             SizedBox(height: 15,),
             Text(appString.trans(context, appString.orRegisterWithText),
@@ -534,35 +425,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
           bottomView()
         ],
       ),
-    );
-  }
-  onPressCallback() {
-    removeOverlay();
-    FocusScope.of(context).requestFocus(new FocusNode());
-  }
-
-  //for keyboard done button
-  showOverlay(BuildContext context) {
-    if (overlayEntry != null) return;
-    OverlayState overlayState = Overlay.of(context)!;
-    overlayEntry = OverlayEntry(builder: (context) {
-      return Positioned(
-          bottom: MediaQuery.of(context).viewInsets.bottom,
-          right: 0.0,
-          left: 0.0,
-          child: InputDoneView(
-            onPressCallback: onPressCallback,
-            buttonName: "Done",
-          ));
-    });
-
-    overlayState.insert(overlayEntry!);
-  }
-
-  removeOverlay() {
-    if (overlayEntry != null) {
-      overlayEntry!.remove();
-      overlayEntry = null;
-    }
+    );;
   }
 }

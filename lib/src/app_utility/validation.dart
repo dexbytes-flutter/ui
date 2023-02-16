@@ -109,7 +109,7 @@ class Validation {
 
   /*===============validate name field=================*/
   bool validateNameField(String value) {
-    if (value.length > 0) {
+    if (value.length > 0 && value.length !=1) {
       String patttern = r'(^[a-zA-Z ]*$)';
       RegExp regExp = new RegExp(patttern);
       if (regExp.hasMatch(value)) {
