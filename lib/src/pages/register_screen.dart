@@ -177,30 +177,38 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
     // Background Image widget
     Widget backgroundImage() {
-      return Stack(
-        children: [
-          CachedNetworkImage(
-            height: MediaQuery.of(context).size.height/3.5,
-            width: MediaQuery.of(context).size.width,
-            imageUrl: "https://i.pinimg.com/originals/b8/11/1e/b8111ed58cad6e9dfeab5a02d13fec86.jpg",
-            fit:BoxFit.cover,
-          ),
-          CommonAppBar(
-            leftIconMargin: EdgeInsets.only(top: 22,left: 20),
-            isHideRightIcon: true,
-            title: "Bali Indonesia",
-          ),
-          Positioned(
-          top: 140,
-          left: 20,
-          child: Text(appString.trans(context, appString.registerText),
-            style: appStyles.registerTextTextStyle()),
-          ),
+      return ShaderMask(
+        shaderCallback: (rectangle) =>LinearGradient(
+          colors: [appColors.black.withOpacity(0.30),appColors.appBgColorJungleGreen.withOpacity(0.30)],
+          begin:Alignment.bottomCenter,
+          end: Alignment.topCenter,
+        ).createShader(Rect.fromLTRB(0, 0, rectangle.width, rectangle.height)),
+        blendMode: BlendMode.darken,
+        child: Stack(
+          children: [
+            CachedNetworkImage(
+              height: MediaQuery.of(context).size.height/2.8,
+              width: MediaQuery.of(context).size.width,
+              imageUrl: "https://i.pinimg.com/originals/b8/11/1e/b8111ed58cad6e9dfeab5a02d13fec86.jpg",
+              fit:BoxFit.fill,
+            ),
+            CommonAppBar(
+              leftIconMargin: EdgeInsets.only(top: 22,left: 20),
+              isHideRightIcon: true,
+              title: "Bali Indonesia",
+            ),
+            Positioned(
+              top: 190,
+              left: 20,
+              child: Text(appString.trans(context, appString.registerText),
+                  style: appStyles.registerTextTextStyle(fontWeight: FontWeight.w700)),
+            ),
 
-        ],
+          ],
+        ),
       );
 
-        /*ShaderMask(
+      /*ShaderMask(
         shaderCallback: (bound) =>LinearGradient(
           colors: [appColors.appBgColorJungleGreen.withOpacity(0.50),appColors.appBgColorJungleGreen.withOpacity(0.60)],
           begin:Alignment.topLeft,
@@ -218,297 +226,294 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
     // Center view widget
     Widget bottomView(){
-      return Container(
-        decoration: BoxDecoration(
-            color: appColors.appBgColorJungleGreen,
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 8,
-              spreadRadius: 12,
-              offset: Offset(5,0.0),
-              color: appColors.appBgColorJungleGreen
-            )
-          ]
-        ),
-        padding: EdgeInsets.only(top: 20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-
-            // User name field
-            Container(
-              padding: EdgeInsets.only(
-                left: 20,right: 20,
-              ),
-              width: MediaQuery.of(context).size.width,
-              child: CommonTextFieldWithError(
-                decoration: InputDecoration(
-                  hintText: appString.trans(context, appString.fullNameHintText),
-                  hintStyle: appStyles.textFieldHintTextTextStyle(),
-                  contentPadding: EdgeInsets.all(10).copyWith(top: 18),
-                  prefixIcon: Padding(
-                    padding: EdgeInsets.all(15),
-                    child: iconApps.iconImage(
-                        imageUrl: iconApps.userIcon,
-                        iconSize: Size(15, 15),
-                        imageColor: appColors.buttonBgColor),
-                  ),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: appColors.appBgColor1.withOpacity(0.30),
-                        width: 1.5),
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: appColors.appBgColor1.withOpacity(0.30),
-                        width: 1.5
-                    ),
-                  ),
+      return ShaderMask(
+        shaderCallback: (rectangle) =>LinearGradient(
+          colors: [appColors.appBgColorJungleGreen.withOpacity(0.45),appColors.appBgColorJungleGreen.withOpacity(0.30)],
+          begin:Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ).createShader(Rect.fromLTRB(0, rectangle.top, rectangle.right, rectangle.height)),
+        blendMode: BlendMode.dstOver,
+        child: Container(
+          color: appColors.appBgColorJungleGreen,
+          padding: EdgeInsets.only(top: 15),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // User name field
+              Container(
+                padding: EdgeInsets.only(
+                  left: 20,right: 20,
                 ),
-                focusNode: focusNodes['name'],
-                isShowBottomErrorMsg: true,
-                errorMessages: errorMessages['name']?.toString()??'',
-                controllerT: controllers['name'],
-                inputHeight: 50,
-                errorMsgHeight: 22,
-                autoFocus: false,
-                errorLeftRightMargin: 0,
-                maxCharLength: 16,
-                capitalization: CapitalizationText.sentences,
-                cursorColor: appColors.textColor,
-                textInputAction: TextInputAction.done,
-                borderStyle: BorderStyle.none,
-                inputKeyboardType: InputKeyboardTypeWithError.text,
-                errorStyle: appStyles.errorStyle(fontSize: 10),
-                errorMessageStyle:appStyles.errorStyle(fontSize: 9),
-                hintStyle: appStyles.textFieldHintTextTextStyle(),
-                textStyle: appStyles.textFieldTextTextStyle(),
-                onTextChange: (value) {
-                  checkPassword(value, 'name', onchange: false, );
-                },
-                onEndEditing: (value) {
-                  checkPassword(value, 'name', onchange: false, );
-                  FocusScope.of(context).requestFocus(new FocusNode());
-                },
-              ),
-            ),
-
-            // Email field
-            Container(
-              padding: EdgeInsets.only(
-                left: 20,right: 20,
-              ),
-              width: MediaQuery.of(context).size.width,
-              child: CommonTextFieldWithError(
-                decoration: InputDecoration(
-                  hintText: appString.trans(context, appString.emailIdHintText),
-                  hintStyle: appStyles.textFieldHintTextTextStyle(),
-                  contentPadding: EdgeInsets.all(10).copyWith(top: 18),
-                  prefixIcon: Padding(
-                    padding: EdgeInsets.all(15),
-                    child: iconApps.iconImage(
-                        imageUrl: iconApps.emailIcon,
-                        iconSize: Size(8, 10),
-                        imageColor: appColors.buttonBgColor),
-                  ),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: appColors.appBgColor1.withOpacity(0.30),
-                    width: 1.5),
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: appColors.appBgColor1.withOpacity(0.30),
-                    width: 1.5
+                width: MediaQuery.of(context).size.width,
+                child: CommonTextFieldWithError(
+                  decoration: InputDecoration(
+                    hintText: appString.trans(context, appString.fullNameHintText),
+                    hintStyle: appStyles.textFieldHintTextTextStyle(),
+                    contentPadding: EdgeInsets.all(10).copyWith(top: 18),
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.all(15),
+                      child: iconApps.iconImage(
+                          imageUrl: iconApps.userIcon,
+                          iconSize: Size(15, 15),
+                          imageColor: appColors.buttonBgColor),
                     ),
-                  ),
-                ),
-                focusNode: focusNodes['email'],
-                isShowBottomErrorMsg: true,
-                errorMessages: errorMessages['email']?.toString()??'',
-                controllerT: controllers['email'],
-                inputHeight: 50,
-                errorMsgHeight: 22,
-                autoFocus: false,
-                errorLeftRightMargin: 0,
-                maxCharLength: 16,
-                capitalization: CapitalizationText.sentences,
-                cursorColor: appColors.textColor,
-                textInputAction: TextInputAction.done,
-                borderStyle: BorderStyle.none,
-                inputKeyboardType: InputKeyboardTypeWithError.email,
-                errorStyle: appStyles.errorStyle(fontSize: 10),
-                errorMessageStyle:appStyles.errorStyle(fontSize: 9),
-                textStyle: appStyles.textFieldTextTextStyle(),
-                onTextChange: (value) {
-                  checkPassword(value, 'email', onchange: false, );
-                },
-                onEndEditing: (value) {
-                  checkPassword(value, 'email', onchange: false, );
-                  FocusScope.of(context).requestFocus(new FocusNode());
-                },
-              ),
-            ),
-
-            // password field
-            Container(
-              padding: EdgeInsets.only(
-                left: 20,right: 20,
-              ),
-              width: MediaQuery.of(context).size.width,
-              child: CommonTextFieldWithError(
-                decoration: InputDecoration(
-                  hintText: appString.trans(context, appString.passwordHintText),
-                  hintStyle:  appStyles.textFieldHintTextTextStyle(),
-                  contentPadding: EdgeInsets.all(10).copyWith(top: 18),
-                  prefixIcon: Padding(
-                    padding: EdgeInsets.all(15),
-                    child: iconApps.iconImage(
-                        imageUrl: iconApps.passwordIcon,
-                        iconSize: Size(10, 10),
-                        imageColor: appColors.buttonBgColor),
-                  ),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: appColors.appBgColor1.withOpacity(0.30),
-                        width: 1.5),
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: appColors.appBgColor1.withOpacity(0.30),
-                        width: 1.5
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: appColors.appBgColor1.withOpacity(0.30),
+                          width: 1.5),
                     ),
-                  ),
-                ),
-                focusNode: focusNodes['password'],
-                isShowBottomErrorMsg: true,
-                errorMessages: errorMessages['password']?.toString()??'',
-                controllerT: controllers['password'],
-                inputHeight: 50,
-                errorMsgHeight: 22,
-                autoFocus: false,
-                errorLeftRightMargin: 0,
-                maxCharLength: 16,
-                capitalization: CapitalizationText.sentences,
-                cursorColor: appColors.textColor,
-                textInputAction: TextInputAction.done,
-                borderStyle: BorderStyle.none,
-                inputKeyboardType: InputKeyboardTypeWithError.password,
-                errorStyle: appStyles.errorStyle(fontSize: 10),
-                errorMessageStyle:appStyles.errorStyle(fontSize: 9),
-                textStyle: appStyles.textFieldTextTextStyle(),
-                onTextChange: (value) {
-                  checkPassword(value, 'password', onchange: false, );
-                },
-                onEndEditing: (value) {
-                  checkPassword(value, 'password', onchange: false, );
-                  FocusScope.of(context).requestFocus(new FocusNode());
-                },
-              ),
-            ),
-
-            // Register button
-            Container(
-              margin: EdgeInsets.only(
-                top: 10,
-                left: 20,
-                right: 20,
-              ),
-              child: CommonButton(
-                buttonName: appString.trans(context, appString.registerText),
-                buttonHeight: 50,
-                buttonBorderRadius: 18,
-                isBottomMarginRequired: false,
-                textStyle: TextStyle(fontSize:14, fontWeight: FontWeight.w500,color: appColors.textNormalColor1),
-                backCallback: (){
-                  if(_validateFields(isButtonClicked: true)){
-                    // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
-                    //   return OtpVerificationScreen(
-                    //     isSignUpScreen: this.isSignUpScreen,
-                    //   );
-                    // }), (route) => false);
-                  }
-                },
-              ),
-            ),
-            SizedBox(height: 15,),
-            Text(appString.trans(context, appString.orRegisterWithText),
-            style: appStyles.registerWithTextStyle(),
-            ),
-            SizedBox(height: 15,),
-            // Sign in with online options
-            Container(
-              margin: EdgeInsets.only(left: 20,right: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(15).copyWith(left: 30,right: 30),
-                    decoration: BoxDecoration(
-                        color: appColors.appBgColor2.withOpacity(0.70),
-                        borderRadius: BorderRadius.circular(20)
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        iconApps.iconImage(
-                            imageUrl: iconApps.appleLogo,
-                            iconSize: Size(20, 20),
-                            imageColor: appColors.textColor),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(15).copyWith(left: 30,right: 30),
-                    decoration: BoxDecoration(
-                      color: appColors.appBgColor2.withOpacity(0.70),
-                      borderRadius: BorderRadius.circular(20)
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        iconApps.iconImage(
-                            imageUrl: iconApps.googleIcon,
-                            iconSize: Size(20, 20),
-                            imageColor: appColors.iconColor1),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(15).copyWith(left: 30,right: 30),
-                    decoration: BoxDecoration(
-                        color: appColors.appBgColor2.withOpacity(0.70),
-                        borderRadius: BorderRadius.circular(20)
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        iconApps.iconImage(
-                            imageUrl: iconApps.facebookIcon,
-                            iconSize: Size(25, 25),
-                            imageColor: appColors.iconColor1),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 25,),
-            RichText(
-              text: TextSpan(
-                  text: appString.trans(context, appString.alreadyHaveAccountText),
-                  style: appStyles.alreadyHaveAccountTextStyle(),
-                  children: <InlineSpan>[
-                    WidgetSpan(
-                        child: SizedBox(width: 5,)
-                    ),
-                    TextSpan(
-                      recognizer: TapGestureRecognizer()..onTap = () {
-                      },
-                      text: appString.trans(context, appString.loginHereText),
-                      style: appStyles.alreadyHaveAccountTextStyle(
-                        texColor: appColors.buttonBgColor, fontSize: 14.5, fontWeight: FontWeight.w700
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: appColors.appBgColor1.withOpacity(0.30),
+                          width: 1.5
                       ),
-                    )
-                  ]
+                    ),
+                  ),
+                  focusNode: focusNodes['name'],
+                  isShowBottomErrorMsg: true,
+                  errorMessages: errorMessages['name']?.toString()??'',
+                  controllerT: controllers['name'],
+                  inputHeight: 50,
+                  errorMsgHeight: 22,
+                  autoFocus: false,
+                  errorLeftRightMargin: 0,
+                  maxCharLength: 16,
+                  capitalization: CapitalizationText.sentences,
+                  cursorColor: appColors.textColor,
+                  textInputAction: TextInputAction.done,
+                  borderStyle: BorderStyle.none,
+                  inputKeyboardType: InputKeyboardTypeWithError.text,
+                  errorStyle: appStyles.errorStyle(fontSize: 10),
+                  errorMessageStyle:appStyles.errorStyle(fontSize: 9),
+                  hintStyle: appStyles.textFieldHintTextTextStyle(),
+                  textStyle: appStyles.textFieldTextTextStyle(),
+                  onTextChange: (value) {
+                    checkPassword(value, 'name', onchange: false, );
+                  },
+                  onEndEditing: (value) {
+                    checkPassword(value, 'name', onchange: false, );
+                    FocusScope.of(context).requestFocus(new FocusNode());
+                  },
+                ),
               ),
-            ),
-            SizedBox(height: 15,),
-          ],
+
+              // Email field
+              Container(
+                padding: EdgeInsets.only(
+                  left: 20,right: 20,
+                ),
+                width: MediaQuery.of(context).size.width,
+                child: CommonTextFieldWithError(
+                  decoration: InputDecoration(
+                    hintText: appString.trans(context, appString.emailIdHintText),
+                    hintStyle: appStyles.textFieldHintTextTextStyle(),
+                    contentPadding: EdgeInsets.all(10).copyWith(top: 18),
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.all(15),
+                      child: iconApps.iconImage(
+                          imageUrl: iconApps.emailIcon,
+                          iconSize: Size(8, 10),
+                          imageColor: appColors.buttonBgColor),
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: appColors.appBgColor1.withOpacity(0.30),
+                          width: 1.5),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: appColors.appBgColor1.withOpacity(0.30),
+                          width: 1.5
+                      ),
+                    ),
+                  ),
+                  focusNode: focusNodes['email'],
+                  isShowBottomErrorMsg: true,
+                  errorMessages: errorMessages['email']?.toString()??'',
+                  controllerT: controllers['email'],
+                  inputHeight: 50,
+                  errorMsgHeight: 22,
+                  autoFocus: false,
+                  errorLeftRightMargin: 0,
+                  maxCharLength: 16,
+                  capitalization: CapitalizationText.sentences,
+                  cursorColor: appColors.textColor,
+                  textInputAction: TextInputAction.done,
+                  borderStyle: BorderStyle.none,
+                  inputKeyboardType: InputKeyboardTypeWithError.email,
+                  errorStyle: appStyles.errorStyle(fontSize: 10),
+                  errorMessageStyle:appStyles.errorStyle(fontSize: 9),
+                  textStyle: appStyles.textFieldTextTextStyle(),
+                  onTextChange: (value) {
+                    checkPassword(value, 'email', onchange: false, );
+                  },
+                  onEndEditing: (value) {
+                    checkPassword(value, 'email', onchange: false, );
+                    FocusScope.of(context).requestFocus(new FocusNode());
+                  },
+                ),
+              ),
+
+              // password field
+              Container(
+                padding: EdgeInsets.only(
+                  left: 20,right: 20,
+                ),
+                width: MediaQuery.of(context).size.width,
+                child: CommonTextFieldWithError(
+                  decoration: InputDecoration(
+                    hintText: appString.trans(context, appString.passwordHintText),
+                    hintStyle:  appStyles.textFieldHintTextTextStyle(),
+                    contentPadding: EdgeInsets.all(10).copyWith(top: 18),
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.all(15),
+                      child: iconApps.iconImage(
+                          imageUrl: iconApps.passwordIcon,
+                          iconSize: Size(10, 10),
+                          imageColor: appColors.buttonBgColor),
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: appColors.appBgColor1.withOpacity(0.30),
+                          width: 1.5),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: appColors.appBgColor1.withOpacity(0.30),
+                          width: 1.5
+                      ),
+                    ),
+                  ),
+                  focusNode: focusNodes['password'],
+                  isShowBottomErrorMsg: true,
+                  errorMessages: errorMessages['password']?.toString()??'',
+                  controllerT: controllers['password'],
+                  inputHeight: 50,
+                  errorMsgHeight: 22,
+                  autoFocus: false,
+                  errorLeftRightMargin: 0,
+                  maxCharLength: 16,
+                  capitalization: CapitalizationText.sentences,
+                  cursorColor: appColors.textColor,
+                  textInputAction: TextInputAction.done,
+                  borderStyle: BorderStyle.none,
+                  inputKeyboardType: InputKeyboardTypeWithError.password,
+                  errorStyle: appStyles.errorStyle(fontSize: 10),
+                  errorMessageStyle:appStyles.errorStyle(fontSize: 9),
+                  textStyle: appStyles.textFieldTextTextStyle(),
+                  onTextChange: (value) {
+                    checkPassword(value, 'password', onchange: false, );
+                  },
+                  onEndEditing: (value) {
+                    checkPassword(value, 'password', onchange: false, );
+                    FocusScope.of(context).requestFocus(new FocusNode());
+                  },
+                ),
+              ),
+
+              // Register button
+              Container(
+                margin: EdgeInsets.only(
+                  top: 10,
+                  left: 20,
+                  right: 20,
+                ),
+                child: CommonButton(
+                  buttonName: appString.trans(context, appString.registerText),
+                  buttonHeight: 50,
+                  buttonBorderRadius: 18,
+                  isBottomMarginRequired: false,
+                  textStyle: TextStyle(fontSize:14, fontWeight: FontWeight.w500,color: appColors.textNormalColor1),
+                  backCallback: (){
+                    if(_validateFields(isButtonClicked: true)){
+                      // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
+                      //   return OtpVerificationScreen(
+                      //     isSignUpScreen: this.isSignUpScreen,
+                      //   );
+                      // }), (route) => false);
+                    }
+                  },
+                ),
+              ),
+              SizedBox(height: 15,),
+              Text(appString.trans(context, appString.orRegisterWithText),
+                style: appStyles.registerWithTextStyle(),
+              ),
+              SizedBox(height: 15,),
+              // Sign in with online options
+              Container(
+                margin: EdgeInsets.only(left: 20,right: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(15).copyWith(left: 30,right: 30),
+                      decoration: BoxDecoration(
+                          color: appColors.appBgColor2.withOpacity(0.70),
+                          borderRadius: BorderRadius.circular(20)
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          iconApps.iconImage(
+                              imageUrl: iconApps.appleLogo,
+                              iconSize: Size(20, 20),
+                              imageColor: appColors.textColor),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(15).copyWith(left: 30,right: 30),
+                      decoration: BoxDecoration(
+                          color: appColors.appBgColor2.withOpacity(0.70),
+                          borderRadius: BorderRadius.circular(20)
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          iconApps.iconImage(
+                              imageUrl: iconApps.googleIcon,
+                              iconSize: Size(20, 20),
+                              imageColor: appColors.iconColor1),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(15).copyWith(left: 30,right: 30),
+                      decoration: BoxDecoration(
+                          color: appColors.appBgColor2.withOpacity(0.70),
+                          borderRadius: BorderRadius.circular(20)
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          iconApps.iconImage(
+                              imageUrl: iconApps.facebookIcon,
+                              iconSize: Size(25, 25),
+                              imageColor: appColors.iconColor1),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 25,),
+              RichText(
+                text: TextSpan(
+                    text: appString.trans(context, appString.alreadyHaveAccountText),
+                    style: appStyles.alreadyHaveAccountTextStyle(),
+                    children: <InlineSpan>[
+                      WidgetSpan(
+                          child: SizedBox(width: 5,)
+                      ),
+                      TextSpan(
+                        recognizer: TapGestureRecognizer()..onTap = () {
+                        },
+                        text: appString.trans(context, appString.loginHereText),
+                        style: appStyles.alreadyHaveAccountTextStyle(
+                            texColor: appColors.buttonBgColor, fontSize: 14.5, fontWeight: FontWeight.w700
+                        ),
+                      )
+                    ]
+                ),
+              ),
+              SizedBox(height: 15,),
+            ],
+          ),
         ),
       );
     }
@@ -519,320 +524,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
       appBackgroundColor: Colors.white,
       statusBarColor: Colors.white,
       contextCurrentView: context,
-      containChild: ShaderMask(
-        shaderCallback: (rectangle) =>LinearGradient(
-          colors: [appColors.appBgColorJungleGreen.withOpacity(0.45),appColors.appBgColorJungleGreen.withOpacity(0.30)],
-          begin:Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ).createShader(Rect.fromLTRB(0, 0, rectangle.width, rectangle.height)),
-        blendMode: BlendMode.darken,
-        child: Column(
-          // alignment: Alignment.bottomCenter,
-          children: [
-            // backgroundImage(),
-            // Positioned(
-            //     top: 145,
-            //     left: 20,
-            //     child: Text(appString.trans(context, appString.registerText),
-            //       style: appStyles.registerTextTextStyle()),
-            // ),
-            // bottomView()
-            backgroundImage(),
-            Container(
-              decoration: BoxDecoration(
-                  color: appColors.appBgColorJungleGreen,
-                  boxShadow: [
-                    BoxShadow(
-                        blurRadius: 8,
-                        spreadRadius: 12,
-                        offset: Offset(5,0.0),
-                        color: appColors.appBgColorJungleGreen
-                    )
-                  ]
-              ),
-              padding: EdgeInsets.only(top: 20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-
-                  // User name field
-                  Container(
-                    padding: EdgeInsets.only(
-                      left: 20,right: 20,
-                    ),
-                    width: MediaQuery.of(context).size.width,
-                    child: CommonTextFieldWithError(
-                      decoration: InputDecoration(
-                        hintText: appString.trans(context, appString.fullNameHintText),
-                        hintStyle: appStyles.textFieldHintTextTextStyle(),
-                        contentPadding: EdgeInsets.all(10).copyWith(top: 18),
-                        prefixIcon: Padding(
-                          padding: EdgeInsets.all(15),
-                          child: iconApps.iconImage(
-                              imageUrl: iconApps.userIcon,
-                              iconSize: Size(15, 15),
-                              imageColor: appColors.buttonBgColor),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: appColors.appBgColor1.withOpacity(0.30),
-                              width: 1.5),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: appColors.appBgColor1.withOpacity(0.30),
-                              width: 1.5
-                          ),
-                        ),
-                      ),
-                      focusNode: focusNodes['name'],
-                      isShowBottomErrorMsg: true,
-                      errorMessages: errorMessages['name']?.toString()??'',
-                      controllerT: controllers['name'],
-                      inputHeight: 50,
-                      errorMsgHeight: 22,
-                      autoFocus: false,
-                      errorLeftRightMargin: 0,
-                      maxCharLength: 16,
-                      capitalization: CapitalizationText.sentences,
-                      cursorColor: appColors.textColor,
-                      textInputAction: TextInputAction.done,
-                      borderStyle: BorderStyle.none,
-                      inputKeyboardType: InputKeyboardTypeWithError.text,
-                      errorStyle: appStyles.errorStyle(fontSize: 10),
-                      errorMessageStyle:appStyles.errorStyle(fontSize: 9),
-                      hintStyle: appStyles.textFieldHintTextTextStyle(),
-                      textStyle: appStyles.textFieldTextTextStyle(),
-                      onTextChange: (value) {
-                        checkPassword(value, 'name', onchange: false, );
-                      },
-                      onEndEditing: (value) {
-                        checkPassword(value, 'name', onchange: false, );
-                        FocusScope.of(context).requestFocus(new FocusNode());
-                      },
-                    ),
-                  ),
-
-                  // Email field
-                  Container(
-                    padding: EdgeInsets.only(
-                      left: 20,right: 20,
-                    ),
-                    width: MediaQuery.of(context).size.width,
-                    child: CommonTextFieldWithError(
-                      decoration: InputDecoration(
-                        hintText: appString.trans(context, appString.emailIdHintText),
-                        hintStyle: appStyles.textFieldHintTextTextStyle(),
-                        contentPadding: EdgeInsets.all(10).copyWith(top: 18),
-                        prefixIcon: Padding(
-                          padding: EdgeInsets.all(15),
-                          child: iconApps.iconImage(
-                              imageUrl: iconApps.emailIcon,
-                              iconSize: Size(8, 10),
-                              imageColor: appColors.buttonBgColor),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: appColors.appBgColor1.withOpacity(0.30),
-                              width: 1.5),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: appColors.appBgColor1.withOpacity(0.30),
-                              width: 1.5
-                          ),
-                        ),
-                      ),
-                      focusNode: focusNodes['email'],
-                      isShowBottomErrorMsg: true,
-                      errorMessages: errorMessages['email']?.toString()??'',
-                      controllerT: controllers['email'],
-                      inputHeight: 50,
-                      errorMsgHeight: 22,
-                      autoFocus: false,
-                      errorLeftRightMargin: 0,
-                      maxCharLength: 16,
-                      capitalization: CapitalizationText.sentences,
-                      cursorColor: appColors.textColor,
-                      textInputAction: TextInputAction.done,
-                      borderStyle: BorderStyle.none,
-                      inputKeyboardType: InputKeyboardTypeWithError.email,
-                      errorStyle: appStyles.errorStyle(fontSize: 10),
-                      errorMessageStyle:appStyles.errorStyle(fontSize: 9),
-                      textStyle: appStyles.textFieldTextTextStyle(),
-                      onTextChange: (value) {
-                        checkPassword(value, 'email', onchange: false, );
-                      },
-                      onEndEditing: (value) {
-                        checkPassword(value, 'email', onchange: false, );
-                        FocusScope.of(context).requestFocus(new FocusNode());
-                      },
-                    ),
-                  ),
-
-                  // password field
-                  Container(
-                    padding: EdgeInsets.only(
-                      left: 20,right: 20,
-                    ),
-                    width: MediaQuery.of(context).size.width,
-                    child: CommonTextFieldWithError(
-                      decoration: InputDecoration(
-                        hintText: appString.trans(context, appString.passwordHintText),
-                        hintStyle:  appStyles.textFieldHintTextTextStyle(),
-                        contentPadding: EdgeInsets.all(10).copyWith(top: 18),
-                        prefixIcon: Padding(
-                          padding: EdgeInsets.all(15),
-                          child: iconApps.iconImage(
-                              imageUrl: iconApps.passwordIcon,
-                              iconSize: Size(10, 10),
-                              imageColor: appColors.buttonBgColor),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: appColors.appBgColor1.withOpacity(0.30),
-                              width: 1.5),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: appColors.appBgColor1.withOpacity(0.30),
-                              width: 1.5
-                          ),
-                        ),
-                      ),
-                      focusNode: focusNodes['password'],
-                      isShowBottomErrorMsg: true,
-                      errorMessages: errorMessages['password']?.toString()??'',
-                      controllerT: controllers['password'],
-                      inputHeight: 50,
-                      errorMsgHeight: 22,
-                      autoFocus: false,
-                      errorLeftRightMargin: 0,
-                      maxCharLength: 16,
-                      capitalization: CapitalizationText.sentences,
-                      cursorColor: appColors.textColor,
-                      textInputAction: TextInputAction.done,
-                      borderStyle: BorderStyle.none,
-                      inputKeyboardType: InputKeyboardTypeWithError.password,
-                      errorStyle: appStyles.errorStyle(fontSize: 10),
-                      errorMessageStyle:appStyles.errorStyle(fontSize: 9),
-                      textStyle: appStyles.textFieldTextTextStyle(),
-                      onTextChange: (value) {
-                        checkPassword(value, 'password', onchange: false, );
-                      },
-                      onEndEditing: (value) {
-                        checkPassword(value, 'password', onchange: false, );
-                        FocusScope.of(context).requestFocus(new FocusNode());
-                      },
-                    ),
-                  ),
-
-                  // Register button
-                  Container(
-                    margin: EdgeInsets.only(
-                      top: 10,
-                      left: 20,
-                      right: 20,
-                    ),
-                    child: CommonButton(
-                      buttonName: appString.trans(context, appString.registerText),
-                      buttonHeight: 50,
-                      buttonBorderRadius: 18,
-                      isBottomMarginRequired: false,
-                      textStyle: TextStyle(fontSize:14, fontWeight: FontWeight.w500,color: appColors.textNormalColor1),
-                      backCallback: (){
-                        if(_validateFields(isButtonClicked: true)){
-                          // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
-                          //   return OtpVerificationScreen(
-                          //     isSignUpScreen: this.isSignUpScreen,
-                          //   );
-                          // }), (route) => false);
-                        }
-                      },
-                    ),
-                  ),
-                  SizedBox(height: 15,),
-                  Text(appString.trans(context, appString.orRegisterWithText),
-                    style: appStyles.registerWithTextStyle(),
-                  ),
-                  SizedBox(height: 15,),
-                  // Sign in with online options
-                  Container(
-                    margin: EdgeInsets.only(left: 20,right: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.all(15).copyWith(left: 30,right: 30),
-                          decoration: BoxDecoration(
-                              color: appColors.appBgColor2.withOpacity(0.70),
-                              borderRadius: BorderRadius.circular(20)
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              iconApps.iconImage(
-                                  imageUrl: iconApps.appleLogo,
-                                  iconSize: Size(20, 20),
-                                  imageColor: appColors.textColor),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.all(15).copyWith(left: 30,right: 30),
-                          decoration: BoxDecoration(
-                              color: appColors.appBgColor2.withOpacity(0.70),
-                              borderRadius: BorderRadius.circular(20)
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              iconApps.iconImage(
-                                  imageUrl: iconApps.googleIcon,
-                                  iconSize: Size(20, 20),
-                                  imageColor: appColors.iconColor1),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.all(15).copyWith(left: 30,right: 30),
-                          decoration: BoxDecoration(
-                              color: appColors.appBgColor2.withOpacity(0.70),
-                              borderRadius: BorderRadius.circular(20)
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              iconApps.iconImage(
-                                  imageUrl: iconApps.facebookIcon,
-                                  iconSize: Size(25, 25),
-                                  imageColor: appColors.iconColor1),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 25,),
-                  RichText(
-                    text: TextSpan(
-                        text: appString.trans(context, appString.alreadyHaveAccountText),
-                        style: appStyles.alreadyHaveAccountTextStyle(),
-                        children: <InlineSpan>[
-                          WidgetSpan(
-                              child: SizedBox(width: 5,)
-                          ),
-                          TextSpan(
-                            recognizer: TapGestureRecognizer()..onTap = () {
-                            },
-                            text: appString.trans(context, appString.loginHereText),
-                            style: appStyles.alreadyHaveAccountTextStyle(
-                                texColor: appColors.buttonBgColor, fontSize: 14.5, fontWeight: FontWeight.w700
-                            ),
-                          )
-                        ]
-                    ),
-                  ),
-                  SizedBox(height: 15,),
-                ],
-              ),
-            )
-          ],
-        ),
+      containChild: Column(
+        // alignment: Alignment.bottomCenter,
+        children: [
+          // backgroundImage(),
+          // Positioned(
+          //     top: 145,
+          //     left: 20,
+          //     child: Text(appString.trans(context, appString.registerText),
+          //       style: appStyles.registerTextTextStyle()),
+          // ),
+          // bottomView()
+          backgroundImage(),
+          bottomView()
+        ],
       ),
     );
   }

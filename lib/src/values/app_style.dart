@@ -546,6 +546,30 @@ class AppStyle {
         fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
         fontWeight: fontWeight != null ? fontWeight : FontWeight.w700,
       );
+  TextStyle appButtonTextStyle(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+        color: texColor != null ? texColor : appColors.textNormalColor1,
+        fontSize: fontSize != null ? fontSize : 15,
+        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontWeight: fontWeight != null ? fontWeight : FontWeight.w500,
+      );
+  TextStyle sliderTextStyle(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+        color: texColor != null ? texColor : appColors.textNormalColor,
+        fontSize: fontSize != null ? fontSize : 28,
+        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontWeight: fontWeight != null ? fontWeight : FontWeight.w700,
+      );
 }
 
 AppStyle appStyles = AppStyle();

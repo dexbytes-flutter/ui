@@ -213,6 +213,7 @@ class AppString {
   String fullNameHintText = "fullNameHintText";
   String emailIdHintText = "emailIdHintText";
   String passwordHintText = "passwordHintText";
+  String signUpButtonText = "signUpButtonText";
 
 }
 

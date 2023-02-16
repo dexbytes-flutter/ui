@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
+import 'package:base_flutter_app/src/pages/tutorials_screen.dart';
 import 'package:base_flutter_app/src/widgets/slider_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -269,7 +270,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
     return /*!widget.isOneTimeProfileSetUpDone
         ? CreateAccount()
         : */
-      RegisterScreen();
+      TutorialScreen();
 
   }
 
@@ -280,7 +281,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
 
     //If profile set done by user
     // if (widget.isOneTimeProfileSetUpDone) {
-    return const RegisterScreen();
+    return const TutorialScreen();
     //SignInPage();
     // }
     //If set up not done by user than redirect to selected screen

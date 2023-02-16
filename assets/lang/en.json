@@ -126,5 +126,6 @@
   "orRegisterWithText" : "Or Register With",
   "fullNameHintText" : "Full Name",
   "emailIdHintText" : "Email ID",
-  "passwordHintText" : "Password"
+  "passwordHintText" : "Password",
+  "signUpButtonText" : "Sign Up"
 }
