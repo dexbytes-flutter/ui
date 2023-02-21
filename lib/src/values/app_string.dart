@@ -220,6 +220,18 @@ class AppString {
   String pleaseEnterPassword = 'pleaseEnterPassword';
   String pleaseEnterCorrectPassword = 'pleaseEnterCorrectPassword';
   String loginText = 'loginText';
+  String newUserText = 'newUserText';
+  String registerHereText = 'registerHereText';
+  String verifyYourIdentityText = 'verifyYourIdentityText';
+  String verificationSubTitleText = 'verificationSubTitleText';
+  String didNotReceivedCode = 'didNotReceivedCode';
+  String resendCodeText = 'resendCodeText';
+  String doneButtonText = 'doneButtonText';
+  String verificationText = 'verificationText';
+  String byRegisteringYouAreAgreeText = 'byRegisteringYouAreAgreeText';
+  String pleaseEnterOtp = 'pleaseEnterOtp';
+  String pleaseEnterCorrectOtp = 'pleaseEnterCorrectOtp';
+  String lastUpdatedText = 'lastUpdatedText';
 
 }
 

@@ -1,13 +1,10 @@
-import 'dart:io';
-import 'dart:ui';
-
+import 'package:base_flutter_app/src/all_file_import/app_utils_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/app_utility/validation.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
+import 'package:base_flutter_app/src/pages/login_screen.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
-import 'package:base_flutter_app/src/widgets/basic_view_container/container_first.dart';
-import 'package:base_flutter_app/src/widgets/country_code_picker.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -80,7 +77,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
       } else {
         setState(() {
           if (!onchange) {
-            errorMessages[fieldName] = appString.trans(context,appString.pleaseEnterCorrectName);
+            if (fieldName == 'name'){
+              errorMessages[fieldName] = appString.trans(context,appString.pleaseEnterCorrectName);
+            }
           }
         });
       }
@@ -193,7 +192,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         children: [
           ShaderMask(
             shaderCallback: (bound) =>LinearGradient(
-              colors: [appColors.appTransColor.withOpacity(0.30),appColors.appBgColorJungleGreen],
+              colors: [appColors.appTransColor.withOpacity(0.15),appColors.appBgColorJungleGreen],
               begin:Alignment.topCenter,
               end: Alignment.bottomCenter,
             ).createShader(bound),
@@ -211,12 +210,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
             title: "Bali Indonesia",
           ),
           Positioned(
-            top: 190,
+            top: 200,
             left: 20,
             child: Text(appString.trans(context, appString.registerText),
-                style: appStyles.registerTextTextStyle(fontWeight: FontWeight.w700)),
+                style: appStyles.registerTextTextStyle(fontWeight: FontWeight.w700)
+            ),
           ),
-
         ],
       );
     }
@@ -276,7 +275,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 hintStyle: appStyles.textFieldHintTextTextStyle(),
                 textStyle: appStyles.textFieldTextTextStyle(),
                 onTextChange: (value) {
-                  checkFullName(value, 'full_Name', onchange: true);
+                  checkFullName(value, 'name', onchange: true);
                 },
                 onEndEditing: (value) {
                   checkFullName(value, 'name', onchange: true, );
@@ -492,6 +491,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     TextSpan(
                       recognizer: TapGestureRecognizer()..onTap = () {
+                        Navigator.push(
+                          context,
+                          SlideRightRoute(widget: SignInScreen()),
+                        );
                       },
                       text: appString.trans(context, appString.loginHereText),
                       style: appStyles.alreadyHaveAccountTextStyle(
@@ -510,14 +513,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return ContainerFirst(
       appBarHeight: -1,
       isOverLayStatusBar: true,
-      appBackgroundColor: Colors.white,
+      appBackgroundColor: appColors.appBgColorJungleGreen,
       statusBarColor: Colors.white,
       contextCurrentView: context,
-      containChild: Column(
-        children: [
-          backgroundImage(),
-          bottomView()
-        ],
+      isSingleChildScrollViewNeed: true,
+      containChild: ShaderMask(
+        shaderCallback: (bound) =>LinearGradient(
+          colors: [appColors.appTransColor.withOpacity(0.30),appColors.appBgColorJungleGreen.withOpacity(0.30)],
+          begin:Alignment.center,
+          end: Alignment.bottomCenter,
+        ).createShader(bound),
+        blendMode: BlendMode.darken,
+        child: Column(
+          children: [
+            backgroundImage(),
+            bottomView(),
+          ],
+        ),
       ),
     );
   }

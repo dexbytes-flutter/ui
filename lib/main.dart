@@ -21,7 +21,9 @@ import 'package:provider/provider.dart';
 import 'package:base_flutter_app/src/config/routes.dart';
 
 import 'src/pages/login_screen.dart';
+import 'src/pages/otp_verification_page.dart';
 import 'src/pages/register_screen.dart';
+import 'src/pages/terms_of_services_screen.dart';
 
 void main() async {
   // if you are using await in main function then add this line
@@ -271,7 +273,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
     return /*!widget.isOneTimeProfileSetUpDone
         ? CreateAccount()
         : */
-      TutorialScreen();
+      TermsOfServicesScreen();
 
   }
 
@@ -282,7 +284,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
 
     //If profile set done by user
     // if (widget.isOneTimeProfileSetUpDone) {
-    return const TutorialScreen();
+    return const OtpVerificationScreen();
     //SignInPage();
     // }
     //If set up not done by user than redirect to selected screen

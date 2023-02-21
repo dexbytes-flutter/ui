@@ -37,8 +37,8 @@ class CommonAppBar extends StatelessWidget {
               child: Container(
                 margin: leftIconMargin??EdgeInsets.zero,
                 child: iconApps.iconImage(imageUrl: iconApps.leftArrow,
-                    iconSize: Size(25,25),
-                    imageColor: appColors.appBarTextColor
+                    iconSize: Size(28,28),
+                    imageColor: appColors.appBgColorLeanWhite,
                 ),
               ),
             ),

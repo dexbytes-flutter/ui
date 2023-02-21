@@ -83,6 +83,18 @@ class AppStyle {
           fontWeight: fontWeight != null ? fontWeight : appFonts.semiBold600,
           fontStyle: isItalic ? FontStyle.italic : FontStyle.normal);
 
+  TextStyle commonTitleStyle(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+        color: texColor != null ? texColor : appColors.appBgColorLeanWhite,
+        fontSize: fontSize != null ? fontSize : 25,
+        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontWeight: fontWeight != null ? fontWeight : FontWeight.w700,);
+
   TextStyle subTitleStyle(
           {Color? texColor,
           double? fontSize,
@@ -95,6 +107,18 @@ class AppStyle {
           fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
           fontWeight: fontWeight != null ? fontWeight : appFonts.semiBold600,
           fontStyle: isItalic ? FontStyle.italic : FontStyle.normal);
+
+  TextStyle commonSubTitleTextStyle(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+        color: texColor != null ? texColor : appColors.textColor,
+        fontSize: fontSize != null ? fontSize : 14,
+        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontWeight: fontWeight != null ? fontWeight : appFonts.regular400,);
 
   TextStyle hStyle1(
           {Color? texColor,
@@ -541,7 +565,7 @@ class AppStyle {
         fontWeight,
         bool isItalic = false}) =>
       TextStyle(
-        color: texColor != null ? texColor : appColors.textNormalColor,
+        color: texColor != null ? texColor : appColors.appBgColorLeanWhite,
         fontSize: fontSize != null ? fontSize : 25,
         fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
         fontWeight: fontWeight != null ? fontWeight : FontWeight.w700,
@@ -565,10 +589,22 @@ class AppStyle {
         fontWeight,
         bool isItalic = false}) =>
       TextStyle(
-        color: texColor != null ? texColor : appColors.textNormalColor,
+        color: texColor != null ? texColor : appColors.appBgColorLeanWhite,
         fontSize: fontSize != null ? fontSize : 28,
         fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
         fontWeight: fontWeight != null ? fontWeight : FontWeight.w700,
+      );
+  TextStyle otpFieldTextStyle(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+        color: texColor != null ? texColor : appColors.appBgColorLeanWhite,
+        fontSize: fontSize != null ? fontSize : 20,
+        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontWeight: fontWeight != null ? fontWeight : FontWeight.bold,
       );
 }
 

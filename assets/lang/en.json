@@ -131,6 +131,18 @@
   "pleaseEnterEmail" : "Please enter email",
   "pleaseEnterCorrectEmail" : "Please enter correct email",
   "pleaseEnterPassword": "Please enter password",
-  "pleaseEnterCorrectPassword": "Please enter current password",
-  "loginText" : "Login"
+  "pleaseEnterCorrectPassword": "Please enter correct password",
+  "loginText" : "Login",
+  "newUserText" : "New User?",
+  "registerHereText" : "Register Here",
+  "verifyYourIdentityText" : "Verify Your Identity",
+  "verificationSubTitleText" : "We have just sent a verification code to",
+  "didNotReceivedCode" : "Didn't receive the code?",
+  "resendCodeText" : "Resend code",
+  "doneButtonText" : "Done",
+  "verificationText" : "Verification",
+  "byRegisteringYouAreAgreeText" : "By registering you agree to our",
+  "pleaseEnterOtp" : "Please enter otp",
+  "pleaseEnterCorrectOtp" : "Please enter correct otp",
+  "lastUpdatedText" : "Last updated July 2019"
 }

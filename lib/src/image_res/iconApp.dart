@@ -27,6 +27,8 @@ class IconApps {
   String userIcon = 'assets/images/user_icon.svg';
   String emailIcon = 'assets/images/email_icon.svg';
   String locationIcon = 'assets/images/location_icon.svg';
+  String faceIdIcon = 'assets/images/face_id.svg';
+  String termsOfServicesIcon = 'assets/images/terms_of_services_icon.svg';
 
   iconImage(
       {required String imageUrl,
