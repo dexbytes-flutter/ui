@@ -271,7 +271,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
     return /*!widget.isOneTimeProfileSetUpDone
         ? CreateAccount()
         : */
-      SignInScreen();
+      TutorialScreen();
 
   }
 
@@ -282,7 +282,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
 
     //If profile set done by user
     // if (widget.isOneTimeProfileSetUpDone) {
-    return const SignInScreen();
+    return const TutorialScreen();
     //SignInPage();
     // }
     //If set up not done by user than redirect to selected screen

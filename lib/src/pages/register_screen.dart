@@ -199,8 +199,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ).createShader(bound),
             blendMode: BlendMode.darken,
             child: CachedNetworkImage(
-              height: MediaQuery.of(context).size.height/2.8,
-              width: MediaQuery.of(context).size.width,
+              height: appDimens.heightFullScreen()/2.8,
+              width: appDimens.widthFullScreen(),
               imageUrl: "http://lh3.ggpht.com/-LBkmHsPl3XU/TmMb5-qgdiI/AAAAAAAAQHA/eu3yiXNXKPU/rice-terraces-8%25255B2%25255D.jpg?imgmax=800",
               fit:BoxFit.fill,
             ),
@@ -219,21 +219,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
         ],
       );
-
-      /*ShaderMask(
-        shaderCallback: (bound) =>LinearGradient(
-          colors: [appColors.appBgColorJungleGreen.withOpacity(0.50),appColors.appBgColorJungleGreen.withOpacity(0.60)],
-          begin:Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ).createShader(bound),
-        blendMode: BlendMode.darken,
-        child: CachedNetworkImage(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          imageUrl: "https://lh3.ggpht.com/-LBkmHsPl3XU/TmMb5-qgdiI/AAAAAAAAQHA/eu3yiXNXKPU/rice-terraces-8%25255B2%25255D.jpg?imgmax=800",
-          fit:BoxFit.cover,
-        ),
-      );*/
     }
 
     // Center view widget

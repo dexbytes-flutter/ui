@@ -40,7 +40,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
 
     TutorialModel(
       imageUrl:  'https://images.unsplash.com/photo-1523810804307-760585ed63cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8aW5kb25lc2lhJTIwYmVhY2h8ZW58MHx8MHx8&w=1000&q=80',
-      title: 'Explore the \nbeauty of the \nworld!',
+      title: 'Explore the \nbeauty of the \nworld !',
     ),
     TutorialModel(
       imageUrl: 'https://wallpaperbat.com/img/360593-stunning-indonesia-picture.jpg',
@@ -66,8 +66,9 @@ class _TutorialScreenState extends State<TutorialScreen> {
     bottomButton(){
       return Container(
           margin: EdgeInsets.only(left: 20,right: 20,bottom: 20),
-          height: 50,
-          width: 100,
+          // height: 50,
+          // width: 100,
+          padding: EdgeInsets.only(left: 20,right: 20).copyWith(top: 4,bottom: 4),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               color: appColors.buttonBgColor
@@ -93,6 +94,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
                     : iconApps.iconImage(
                   imageUrl: iconApps.rightArrow,
                   imageColor: appColors.textNormalColor1,
+                  iconSize: Size(20, 20)
                 )
             ),
           )
@@ -102,22 +104,14 @@ class _TutorialScreenState extends State<TutorialScreen> {
     Widget slideItem(int index) => Stack(
       alignment: Alignment.bottomCenter,
       children: <Widget>[
-        ShaderMask(
-          shaderCallback: (rectangle) =>LinearGradient(
-            colors: [appColors.black.withOpacity(0.25),appColors.appBgColorJungleGreen.withOpacity(0.60)],
-            begin:Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ).createShader(Rect.fromLTRB(0, 0, rectangle.width, rectangle.height)),
-          blendMode: BlendMode.darken,
-          child: CachedNetworkImage(
-            imageUrl: tutorialModelList[index].imageUrl,
-            fit:BoxFit.fill,
-            height: appDimens.heightFullScreen(),
-            width: appDimens.widthFullScreen(),
-          ),
+        CachedNetworkImage(
+          imageUrl: tutorialModelList[index].imageUrl,
+          fit:BoxFit.fill,
+          height: appDimens.heightFullScreen(),
+          width: appDimens.widthFullScreen(),
         ),
         Positioned(
-          bottom: 200,
+          bottom: 130,
           left: 20,
           child: Text(
             tutorialModelList[index].title,
@@ -126,7 +120,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
         ),
         Positioned(
           left: 20,
-          bottom: 170,
+          bottom: 110,
           child: AnimatedSmoothIndicator(
               activeIndex:activeIndex,
               count: 3,
@@ -138,10 +132,6 @@ class _TutorialScreenState extends State<TutorialScreen> {
 
               )),
         ),
-        Positioned(
-          bottom: 20,right: 10,
-            child: bottomButton()
-        )
       ],
     );
 
@@ -170,10 +160,22 @@ class _TutorialScreenState extends State<TutorialScreen> {
         isFixedDeviceHeight: true,
         appBarHeight: -1,
         appBar: Container(),
-        containChild: Column(
-          children: [
-            pageBuilder()
-          ],
+        containChild: ShaderMask(
+          shaderCallback: (rectangle) =>LinearGradient(
+            colors: [appColors.black.withOpacity(0.25),appColors.appBgColorJungleGreen.withOpacity(0.60)],
+            begin:Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ).createShader(Rect.fromLTRB(0, 0, rectangle.width, rectangle.height)),
+          blendMode: BlendMode.darken,
+          child: Stack(
+            children: [
+              pageBuilder(),
+              Positioned(
+                  bottom: 10,right: 10,
+                  child: bottomButton()
+              )
+            ],
+          ),
         ),
       );
     }
