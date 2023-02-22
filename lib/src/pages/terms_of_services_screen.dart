@@ -4,6 +4,7 @@ import 'package:base_flutter_app/src/image_res/iconApp.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:flutter/material.dart';
 
+import '../model/terms_and _services.dart';
 import '../values/app_color.dart';
 
 class TermsOfServicesScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class _TermsOfServicesScreenState extends State<TermsOfServicesScreen> {
     // Top view
     Widget topView(){
       return Container(
-        margin: EdgeInsets.only(top: 50,left: 20),
+        margin: EdgeInsets.only(top: 25,left: 20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -39,11 +40,16 @@ class _TermsOfServicesScreenState extends State<TermsOfServicesScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(appString.trans(context, appString.termsOfServices),
-                style: appStyles.commonTitleStyle(fontSize: 20),
+                style: appStyles.commonTitleStyle(fontSize: 20,fontWeight: FontWeight.w900),
                 ),
                 SizedBox(height: 5,),
-                Text(appString.trans(context, appString.lastUpdatedText),
-                style: appStyles.commonSubTitleTextStyle(),
+                Padding(
+                  padding: const EdgeInsets.only(left: 2),
+                  child: Text(appString.trans(context, appString.lastUpdatedText),
+                  style: appStyles.commonSubTitleTextStyle(fontWeight: FontWeight.w600,
+                  texColor: appColors.textColor.withOpacity(0.50)
+                  ),
+                  ),
                 )
               ],
             )
@@ -51,24 +57,36 @@ class _TermsOfServicesScreenState extends State<TermsOfServicesScreen> {
         ),
       );
     }
-    
+
     // Terms and conditions list
     Widget termsAndConditionsList(){
       return Container(
         child: ListView.builder(
             shrinkWrap: true,
-            padding: EdgeInsets.zero,
+            padding: const EdgeInsets.only(left: 20,right: 20,),
             physics: ClampingScrollPhysics(),
-            itemCount: 2,
+            itemCount: termsAndServicesList.length,
             itemBuilder: (context,index){
-            return Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("1. YOUR AGREEMENT"),
-                Expanded(child: Text("By using this Site you agree to be bound by and to comply with these Terms and Conditions. If you do not agree to these Terms and Conditions please do not use this site. PLEASE NOTE: We reserve the right at our sole discretion to change, modify or otherwise alter these Terms and Conditions periodically. Your continued use of the Site following the posting of changes and /or modifications will constitute your acceptance of the revised Terms and conditions and the reasonableness of these standards for notice of changes. For your information, this page was last updated as of the date at the top of these terms and conditions."))
-              ],
+             int serieseIndex = index + 1;
+            return Container(
+              margin: EdgeInsets.only(top: 20),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("$serieseIndex. ${termsAndServicesList[index].title}",
+                  style: appStyles.commonTitleStyle(
+                    fontSize: 18),
+                  ),
+                  SizedBox(height: 20,),
+                  Text("${termsAndServicesList[index].subTitle}",
+                  style: appStyles.commonSubTitleTextStyle(
+                    texColor: appColors.textColor.withOpacity(0.45)
+                  ),
+                  )
+                ],
+              ),
             );
             }
         ),
@@ -76,7 +94,7 @@ class _TermsOfServicesScreenState extends State<TermsOfServicesScreen> {
     }
 
     return ContainerFirst(
-        appBarHeight: -1,
+        appBarHeight: 56,
         isOverLayStatusBar: true,
         appBackgroundColor: appColors.appBgColorJungleGreen,
         statusBarColor: Colors.white,
@@ -90,15 +108,15 @@ class _TermsOfServicesScreenState extends State<TermsOfServicesScreen> {
           children: [
             topView(),
             Padding(
-              padding: const EdgeInsets.only(left: 20,right: 20),
+              padding: const EdgeInsets.only(top: 35, left: 20,right: 20),
               child: SizedBox(
                 child:Divider(
                   color: appColors.appBgColor1.withOpacity(0.30),
-                  height: 60,
+                  height: 20,
                 ),
               ),
             ),
-            // termsAndConditionsList()
+            termsAndConditionsList()
           ],
         )
     );
