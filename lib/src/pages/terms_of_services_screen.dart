@@ -60,36 +60,64 @@ class _TermsOfServicesScreenState extends State<TermsOfServicesScreen> {
 
     // Terms and conditions list
     Widget termsAndConditionsList(){
-      return Container(
-        child: ListView.builder(
-            shrinkWrap: true,
-            padding: const EdgeInsets.only(left: 20,right: 20,),
-            physics: ClampingScrollPhysics(),
-            itemCount: termsAndServicesList.length,
-            itemBuilder: (context,index){
-             int serieseIndex = index + 1;
-            return Container(
-              margin: EdgeInsets.only(top: 20),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("$serieseIndex. ${termsAndServicesList[index].title}",
-                  style: appStyles.commonTitleStyle(
-                    fontSize: 18),
-                  ),
-                  SizedBox(height: 20,),
-                  Text("${termsAndServicesList[index].subTitle}",
-                  style: appStyles.commonSubTitleTextStyle(
-                    texColor: appColors.textColor.withOpacity(0.45)
-                  ),
-                  )
-                ],
-              ),
-            );
-            }
-        ),
+      return Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          ListView.builder(
+              shrinkWrap: true,
+              padding: const EdgeInsets.only(left: 20,right: 20,bottom: 15),
+              physics: ClampingScrollPhysics(),
+              itemCount: termsAndServicesList.length,
+              itemBuilder: (context,index){
+               int serieseIndex = index + 1;
+              return Container(
+                margin: EdgeInsets.only(top: 20),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("$serieseIndex. ${termsAndServicesList[index].title}",
+                    style: appStyles.commonTitleStyle(
+                      fontSize: 18),
+                    ),
+                    SizedBox(height: 20,),
+                    Text("${termsAndServicesList[index].subTitle}",
+                    style: appStyles.commonSubTitleTextStyle(
+                      texColor: appColors.textColor.withOpacity(0.45)
+                    ),
+                    )
+                  ],
+                ),
+              );
+              }
+          ),
+          Container(
+            margin: EdgeInsets.only(
+              top: 10,
+              left: 20,
+              right: 20,
+            ),
+            child: CommonButton(
+              buttonName: appString.trans(context, appString.iAcceptButtonText),
+              buttonHeight: 50,
+              buttonBorderRadius: 18,
+              isBottomMarginRequired: false,
+              textStyle: TextStyle(fontSize:14, fontWeight: FontWeight.w500,color: appColors.textNormalColor1),
+              backCallback: (){
+                Navigator.of(context).pop();
+                /*if(_validateFields(isButtonClicked: true)){
+                  // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
+                  //   return OtpVerificationScreen(
+                  //     isSignUpScreen: this.isSignUpScreen,
+                  //   );
+                  // }), (route) => false);
+                }*/
+              },
+            ),
+          ),
+          SizedBox(height: 20,)
+        ],
       );
     }
 

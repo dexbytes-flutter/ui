@@ -10,6 +10,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import 'terms_of_services_screen.dart';
+
 /*class OtpVerificationScreen extends StatefulWidget {
   const OtpVerificationScreen({Key? key}) : super(key: key);
 
@@ -372,10 +374,10 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               TextSpan(
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
-                    /*Navigator.push(
-                              context,
-                              SlideRightRoute(widget: RegisterScreen()),
-                            );*/
+                    Navigator.push(
+                      context,
+                      SlideRightRoute(widget: TermsOfServicesScreen()),
+                    );
                   },
                 text:
                 appString.trans(context, appString.termsOfServices),

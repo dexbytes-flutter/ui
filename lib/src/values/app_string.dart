@@ -232,6 +232,7 @@ class AppString {
   String pleaseEnterOtp = 'pleaseEnterOtp';
   String pleaseEnterCorrectOtp = 'pleaseEnterCorrectOtp';
   String lastUpdatedText = 'lastUpdatedText';
+  String iAcceptButtonText = 'iAcceptButtonText';
 
 }
 

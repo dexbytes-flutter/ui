@@ -144,5 +144,6 @@
   "byRegisteringYouAreAgreeText" : "By registering you agree to our",
   "pleaseEnterOtp" : "Please enter otp",
   "pleaseEnterCorrectOtp" : "Please enter correct otp",
-  "lastUpdatedText" : "Last updated July 2019"
+  "lastUpdatedText" : "Last updated July 2019",
+  "iAcceptButtonText" : "I Accept"
 }

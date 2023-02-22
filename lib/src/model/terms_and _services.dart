@@ -22,6 +22,12 @@ final List<TermsAndServicesModel> termsAndServicesList = [
   TermsAndServicesModel(
       title: "PRIVACY",
       subTitle: "Please review our Privacy Policy. which also governs your visit to this Site, to understand our practices."
+  ),TermsAndServicesModel(
+      title: "PRIVACY",
+      subTitle: "Please review our Privacy Policy. which also governs your visit to this Site, to understand our practices."
+  ),TermsAndServicesModel(
+      title: "PRIVACY",
+      subTitle: "Please review our Privacy Policy. which also governs your visit to this Site, to understand our practices."
   ),
 
 ];
