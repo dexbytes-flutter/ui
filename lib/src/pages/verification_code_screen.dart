@@ -10,14 +10,14 @@ import 'package:flutter/material.dart';
 
 import 'terms_of_services_screen.dart';
 
-class OtpVerificationScreen extends StatefulWidget {
-  const OtpVerificationScreen({Key? key}) : super(key: key);
+class VerificationCodeScreen extends StatefulWidget {
+  const VerificationCodeScreen({Key? key}) : super(key: key);
 
   @override
-  State<OtpVerificationScreen> createState() => _OtpVerificationScreenState();
+  State<VerificationCodeScreen> createState() => _VerificationCodeScreenState();
 }
 
-class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
+class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
 
   String errorMessage = '';
   TextEditingController inputController = new TextEditingController();
@@ -28,7 +28,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   bool enableResend = false;
 
 
-  
+
   @override
   Widget build(BuildContext context) {
     AppDimens appDimens = AppDimens();
@@ -36,7 +36,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
 
     Widget otpErrorMsg = (errorMessage != '')
         ? Center(
-          child: Container(
+      child: Container(
           height: 24,
           child: Padding(
             padding: EdgeInsets.only(top: 5, left: 3),
@@ -45,7 +45,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               style: appStyles.errorStyle(),
             ),
           )),
-        )
+    )
         : Container(
       height: 24,
     );
@@ -187,97 +187,72 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
       );
     }
 
-    // Center view widget
-    Widget bottomView() {
-      return Container(
-        color: appColors.appBgColorJungleGreen,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20,right: 20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(appString.trans(context, appString.verifyYourIdentityText),
-                  style: appStyles.commonTitleStyle(fontSize: 30)),
-              SizedBox(height: 15,),
-              Text(appString.trans(context, appString.verificationSubTitleText),
-                  style: appStyles.alreadyHaveAccountTextStyle(fontSize: 15)),
-              SizedBox(height: 5,),
-              Text("johndoe@gmail.com",
-                  style: appStyles.alreadyHaveAccountTextStyle(fontSize: 15)
-              ),
-              SizedBox(height: 10,),
-              verificationCode(),
-              otpErrorMsg,
-              SizedBox(height: 5,),
-              Center(child: didNotReceivedCode()),
-              SizedBox(height: 35,),
-              Container(
-                child: CommonButton(
-                  buttonName: appString.trans(context, appString.verificationText),
-                  buttonHeight: 50,
-                  buttonBorderRadius: 18,
-                  isBottomMarginRequired: false,
-                  textStyle: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: appColors.textNormalColor1),
-                  backCallback: () {
-                    if (verificationCodeStr != '' && verificationCodeStr.trim().length == otpLength) {
-                      setState(() {
-                        errorMessage = '';
-                        Navigator.of(context).pop();
-                        /*if(isSignInScreen){
-                          sharedPreferencesFile.saveBool(isUserLoggedInC, true);
-                          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
-                            return DashboardScreen();
-                          }), (route) => false);
-                        } else{
-                          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
-                            return DashboardScreen();
-                          }), (route) => false);
-                        }*/
-                      });
-                    }else{
-                      setState(() {
-                        if( verificationCodeStr == '')
-                          errorMessage = appString.trans(context, appString.pleaseEnterOtp);
-                        else
-                          errorMessage = appString.trans(context, appString.pleaseEnterCorrectOtp);
-                      });
-                    }
-                  },
-                ),
-              ),
-              SizedBox(height: 20,),
-              termsAndConditions(),
-              SizedBox(height: 20,),
-            ],
-          ),
-        ),
-      );
-    }
-
     return ContainerFirst(
-      appBarHeight: -1,
+      appBarHeight: 56,
       isOverLayStatusBar: true,
       statusBarColor: Colors.white,
       isSingleChildScrollViewNeed: false,
       contextCurrentView: context,
-      containChild: ShaderMask(
-        shaderCallback: (bound) => LinearGradient(
-          colors: [
-            appColors.appTransColor.withOpacity(0.20),
-            appColors.appBgColorJungleGreen.withOpacity(0.60)
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ).createShader(bound),
-        blendMode: BlendMode.darken,
+      appBar: CommonAppBar(
+        leftIconMargin: EdgeInsets.only(top: 22, left: 20),
+        isHideRightIcon: true,
+      ),
+      containChild: Container(
+        margin: const EdgeInsets.only(left: 20,right: 20,top: 50),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            backgroundImage(),
-            bottomView()
+            Text(appString.trans(context, appString.verifyYourIdentityText),
+                style: appStyles.commonTitleStyle(fontSize: 30)),
+            SizedBox(height: 15,),
+            Text(appString.trans(context, appString.verificationSubTitleText),
+                style: appStyles.alreadyHaveAccountTextStyle(fontSize: 15)),
+            SizedBox(height: 5,),
+            Text("johndoe@gmail.com",
+                style: appStyles.alreadyHaveAccountTextStyle(fontSize: 15)
+            ),
+            SizedBox(height: 30,),
+            verificationCode(),
+            otpErrorMsg,
+            SizedBox(height: 5,),
+            Center(child: didNotReceivedCode()),
+            SizedBox(height: 210,),
+            CommonButton(
+              buttonName: appString.trans(context, appString.verificationText),
+              buttonHeight: 50,
+              buttonBorderRadius: 18,
+              isBottomMarginRequired: false,
+              textStyle: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: appColors.textNormalColor1),
+              backCallback: () {
+                if (verificationCodeStr != '' && verificationCodeStr.trim().length == otpLength) {
+                  setState(() {
+                    errorMessage = '';
+                    Navigator.of(context).pop();
+                    /*if(isSignInScreen){
+                        sharedPreferencesFile.saveBool(isUserLoggedInC, true);
+                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
+                          return DashboardScreen();
+                        }), (route) => false);
+                      } else{
+                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
+                          return DashboardScreen();
+                        }), (route) => false);
+                      }*/
+                  });
+                }else{
+                  setState(() {
+                    if( verificationCodeStr == '')
+                      errorMessage = appString.trans(context, appString.pleaseEnterOtp);
+                    else
+                      errorMessage = appString.trans(context, appString.pleaseEnterCorrectOtp);
+                  });
+                }
+              },
+            ),
           ],
         ),
       ),

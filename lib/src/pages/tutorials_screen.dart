@@ -125,7 +125,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
           left: 20,
           child: Text(
             tutorialModelList[index].title,
-            style: appStyles.sliderTextStyle(),
+            style: appStyles.sliderTextStyle(fontFamily: "Raleway"),
           ),
         ),
         Positioned(

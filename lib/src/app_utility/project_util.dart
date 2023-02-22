@@ -365,6 +365,7 @@ class ProjectUtil {
     return isImageFile;
     // return item.endsWith(".jpg");
   }
+
 }
 
 ProjectUtil projectUtil = new ProjectUtil();

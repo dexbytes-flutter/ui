@@ -233,6 +233,9 @@ class AppString {
   String pleaseEnterCorrectOtp = 'pleaseEnterCorrectOtp';
   String lastUpdatedText = 'lastUpdatedText';
   String iAcceptButtonText = 'iAcceptButtonText';
+  String forgotPasswordTitleText = 'forgotPasswordTitleText';
+  String selectContactDetailText = 'selectContactDetailText';
+  String forgotText = 'forgotText';
 
 }
 

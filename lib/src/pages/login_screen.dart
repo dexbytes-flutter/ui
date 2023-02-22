@@ -9,6 +9,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../all_file_import/app_utils_files_link.dart';
+import 'forgot_password_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -247,8 +248,7 @@ class _SignInScreenState extends State<SignInScreen> {
               width: MediaQuery.of(context).size.width,
               child: CommonTextFieldWithError(
                 decoration: InputDecoration(
-                  hintText:
-                      appString.trans(context, appString.passwordHintText),
+                  hintText: appString.trans(context, appString.passwordHintText),
                   hintStyle: appStyles.textFieldHintTextTextStyle(),
                   contentPadding: EdgeInsets.all(10).copyWith(top: 18),
                   prefixIcon: Padding(
@@ -257,6 +257,20 @@ class _SignInScreenState extends State<SignInScreen> {
                         imageUrl: iconApps.passwordIcon,
                         iconSize: Size(10, 10),
                         imageColor: appColors.buttonBgColor),
+                  ),
+                  suffixIcon: GestureDetector(
+                    onTap: (){
+                      Navigator.push(
+                      context,
+                      SlideRightRoute(widget: ForgotPasswordScreen()),
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: Text(appString.trans(context, appString.forgotText),
+                      style: appStyles.textFieldHintTextTextStyle(texColor: appColors.buttonBgColor),
+                      ),
+                    ),
                   ),
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(

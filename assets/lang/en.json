@@ -145,5 +145,8 @@
   "pleaseEnterOtp" : "Please enter otp",
   "pleaseEnterCorrectOtp" : "Please enter correct otp",
   "lastUpdatedText" : "Last updated July 2019",
-  "iAcceptButtonText" : "I Accept"
+  "iAcceptButtonText" : "I Accept",
+  "forgotPasswordTitleText" : "Forgot Password",
+  "selectContactDetailText" : "Please select your contact details and we will send a verification code to reset your password.",
+  "forgotText" : "Forgot?"
 }

@@ -25,7 +25,6 @@ class CommonAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Container(
-        // margin: leftIconMargin??EdgeInsets.zero,
         child: Stack(
           children: [
             isHideLeftIcon ? Container() :

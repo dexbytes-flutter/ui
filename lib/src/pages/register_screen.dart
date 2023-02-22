@@ -9,6 +9,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import 'otp_verification_page.dart';
+
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
 
@@ -410,11 +412,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 textStyle: TextStyle(fontSize:14, fontWeight: FontWeight.w500,color: appColors.textNormalColor1),
                 backCallback: (){
                   if(_validateFields(isButtonClicked: true)){
-                    // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
-                    //   return OtpVerificationScreen(
-                    //     isSignUpScreen: this.isSignUpScreen,
-                    //   );
-                    // }), (route) => false);
+                    Navigator.push(
+                    context, SlideRightRoute(
+                        widget: OtpVerificationScreen()
+                    ),);
                   }
                 },
               ),

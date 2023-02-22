@@ -113,12 +113,15 @@ class AppStyle {
         double? fontSize,
         fontFamily,
         fontWeight,
+        double? letterSpacing,
         bool isItalic = false}) =>
       TextStyle(
         color: texColor != null ? texColor : appColors.textColor,
         fontSize: fontSize != null ? fontSize : 14,
         fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
-        fontWeight: fontWeight != null ? fontWeight : appFonts.regular400,);
+        fontWeight: fontWeight != null ? fontWeight : appFonts.regular400,
+        letterSpacing: letterSpacing != null ? letterSpacing : 1,
+      );
 
   TextStyle hStyle1(
           {Color? texColor,
