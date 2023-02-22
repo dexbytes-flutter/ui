@@ -1,3 +1,4 @@
+import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
@@ -25,7 +26,7 @@ class ContainerFirst extends StatelessWidget {
     required this.contextCurrentView,
     required this.containChild,
     this.bottomBarSafeAreaColor,
-    this.appBackgroundColor = Colors.white,
+    this.appBackgroundColor = const Color(0xFF1B3232),
     this.statusBarColor = const Color(0xFF397DE3),
     this.isFixedDeviceHeight = true,
     this.isOverLayStatusBar = false,

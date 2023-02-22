@@ -1,5 +1,7 @@
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
+import 'package:base_flutter_app/src/pages/login_screen.dart';
+import 'package:base_flutter_app/src/pages/register_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -77,9 +79,9 @@ class _TutorialScreenState extends State<TutorialScreen> {
             onTap: (){
               print('Hello');
               if ( activeIndex == 2 ) {
-                /*   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
+                   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
                   return SignInScreen();
-                }), (route) => false);*/
+                }), (route) => false);
               }else{
                 activeIndex = activeIndex+1;
                 _scrollToIndex(activeIndex);
@@ -88,7 +90,7 @@ class _TutorialScreenState extends State<TutorialScreen> {
             child: Container(
                 padding: EdgeInsets.all(12),
                 child: activeIndex == 2
-                    ? Center(child: Text(appString.trans(context, appString.signUpButtonText),
+                    ? Center(child: Text(appString.trans(context, appString.signInTitle),
                   style: appStyles.appButtonTextStyle(),
                 ))
                     : iconApps.iconImage(
@@ -104,11 +106,19 @@ class _TutorialScreenState extends State<TutorialScreen> {
     Widget slideItem(int index) => Stack(
       alignment: Alignment.bottomCenter,
       children: <Widget>[
-        CachedNetworkImage(
-          imageUrl: tutorialModelList[index].imageUrl,
-          fit:BoxFit.fill,
-          height: appDimens.heightFullScreen(),
-          width: appDimens.widthFullScreen(),
+        ShaderMask(
+          shaderCallback: (rectangle) =>LinearGradient(
+            colors: [appColors.black.withOpacity(0.50),appColors.appBgColorJungleGreen.withOpacity(0.60)],
+            begin:Alignment.center,
+            end: Alignment.bottomCenter,
+          ).createShader(Rect.fromLTRB(0, 0, rectangle.width, rectangle.height)),
+          blendMode: BlendMode.darken,
+          child: CachedNetworkImage(
+            imageUrl: tutorialModelList[index].imageUrl,
+            fit:BoxFit.fill,
+            height: appDimens.heightFullScreen(),
+            width: appDimens.widthFullScreen(),
+          ),
         ),
         Positioned(
           bottom: 130,
@@ -155,27 +165,18 @@ class _TutorialScreenState extends State<TutorialScreen> {
         isOverLayStatusBar: true,
         isOverLayAppBar: true,
         contextCurrentView: context,
-        appBackgroundColor: Colors.white,
         isSingleChildScrollViewNeed: false,
         isFixedDeviceHeight: true,
         appBarHeight: -1,
         appBar: Container(),
-        containChild: ShaderMask(
-          shaderCallback: (rectangle) =>LinearGradient(
-            colors: [appColors.black.withOpacity(0.25),appColors.appBgColorJungleGreen.withOpacity(0.60)],
-            begin:Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ).createShader(Rect.fromLTRB(0, 0, rectangle.width, rectangle.height)),
-          blendMode: BlendMode.darken,
-          child: Stack(
-            children: [
-              pageBuilder(),
-              Positioned(
-                  bottom: 10,right: 10,
-                  child: bottomButton()
-              )
-            ],
-          ),
+        containChild: Stack(
+          children: [
+            pageBuilder(),
+            Positioned(
+                bottom: 10,right: 10,
+                child: bottomButton()
+            )
+          ],
         ),
       );
     }

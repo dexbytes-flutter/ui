@@ -174,7 +174,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           }
         });
         return false;
-      } else if (!Validation().validateEmail(controllers['password']?.text ?? "")) {
+      } else if (!Validation().validatePassword(controllers['password']?.text ?? "")) {
         setState(() {
           if (isButtonClicked) {
             errorMessages['password'] = appString.trans(context, appString.pleaseEnterCorrectPassword);
@@ -198,7 +198,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ).createShader(bound),
             blendMode: BlendMode.darken,
             child: CachedNetworkImage(
-              height: appDimens.heightFullScreen()/2.8,
+              height: appDimens.heightFullScreen()/3.48,
               width: appDimens.widthFullScreen(),
               imageUrl: "http://lh3.ggpht.com/-LBkmHsPl3XU/TmMb5-qgdiI/AAAAAAAAQHA/eu3yiXNXKPU/rice-terraces-8%25255B2%25255D.jpg?imgmax=800",
               fit:BoxFit.fill,
@@ -210,7 +210,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             title: "Bali Indonesia",
           ),
           Positioned(
-            top: 200,
+            top: 150,
             left: 20,
             child: Text(appString.trans(context, appString.registerText),
                 style: appStyles.registerTextTextStyle(fontWeight: FontWeight.w700)
@@ -264,7 +264,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 errorMsgHeight: 22,
                 autoFocus: false,
                 errorLeftRightMargin: 0,
-                maxCharLength: 16,
+                maxCharLength: 25,
                 capitalization: CapitalizationText.sentences,
                 cursorColor: appColors.textColor,
                 textInputAction: TextInputAction.done,
@@ -320,7 +320,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 errorMsgHeight: 22,
                 autoFocus: false,
                 errorLeftRightMargin: 0,
-                maxCharLength: 16,
+                maxCharLength: 25,
                 capitalization: CapitalizationText.sentences,
                 cursorColor: appColors.textColor,
                 textInputAction: TextInputAction.done,
@@ -374,8 +374,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 inputHeight: 50,
                 errorMsgHeight: 22,
                 autoFocus: false,
+                obscureText: true,
                 errorLeftRightMargin: 0,
-                maxCharLength: 16,
+                maxCharLength: 10,
                 capitalization: CapitalizationText.sentences,
                 cursorColor: appColors.textColor,
                 textInputAction: TextInputAction.done,
@@ -491,10 +492,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     TextSpan(
                       recognizer: TapGestureRecognizer()..onTap = () {
-                        Navigator.push(
-                          context,
-                          SlideRightRoute(widget: SignInScreen()),
-                        );
+                        Navigator.of(context).pop();
                       },
                       text: appString.trans(context, appString.loginHereText),
                       style: appStyles.alreadyHaveAccountTextStyle(
@@ -513,10 +511,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return ContainerFirst(
       appBarHeight: -1,
       isOverLayStatusBar: true,
-      appBackgroundColor: appColors.appBgColorJungleGreen,
       statusBarColor: Colors.white,
       contextCurrentView: context,
-      isSingleChildScrollViewNeed: true,
+      isSingleChildScrollViewNeed: false,
       containChild: ShaderMask(
         shaderCallback: (bound) =>LinearGradient(
           colors: [appColors.appTransColor.withOpacity(0.30),appColors.appBgColorJungleGreen.withOpacity(0.30)],

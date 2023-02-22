@@ -228,18 +228,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   int secondsRemaining = 30;
   bool enableResend = false;
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
 
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-    inputController.dispose();
-  }
   
   @override
   Widget build(BuildContext context) {
@@ -323,7 +312,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
             ).createShader(Rect.fromLTRB(0, 0, rectangle.width, rectangle.height)),
             blendMode: BlendMode.darken,
             child: CachedNetworkImage(
-              height: appDimens.heightFullScreen() / 2.2,
+              height: appDimens.heightFullScreen() / 3.15,
               width: appDimens.widthFullScreen(),
               imageUrl:
               "https://www.plataran.com/wp-content/uploads/2020/04/plataran-bimonthly-may-june-2019-lr-15_0ztqu.jpg",
@@ -411,18 +400,18 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
             children: [
               Text(appString.trans(context, appString.verifyYourIdentityText),
                   style: appStyles.sliderTextStyle()),
-              SizedBox(height: 20,),
+              SizedBox(height: 15,),
               Text(appString.trans(context, appString.verificationSubTitleText),
                   style: appStyles.alreadyHaveAccountTextStyle()),
               SizedBox(height: 5,),
               Text("johndoe@gmail.com",
                   style: appStyles.alreadyHaveAccountTextStyle()),
-              SizedBox(height: 20,),
+              SizedBox(height: 10,),
               verificationCode(),
               otpErrorMsg,
               SizedBox(height: 5,),
               Center(child: didNotReceivedCode()),
-              SizedBox(height: 58,),
+              SizedBox(height: 35,),
               Container(
                 child: CommonButton(
                   buttonName: appString.trans(context, appString.verificationText),
@@ -474,9 +463,8 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     return ContainerFirst(
       appBarHeight: -1,
       isOverLayStatusBar: true,
-      appBackgroundColor: appColors.appBgColorJungleGreen,
       statusBarColor: Colors.white,
-      isSingleChildScrollViewNeed: true,
+      isSingleChildScrollViewNeed: false,
       contextCurrentView: context,
       containChild: ShaderMask(
         shaderCallback: (bound) => LinearGradient(

@@ -181,11 +181,11 @@ class Validation {
     return false;
   }
 
-  /*========================validate email field=============*/
+  /*========================validate password field=============*/
   bool validatePassword(String pass) {
     // String pattern = r"^(?=.*[a-zA-Z])(?=.*?[0-9])";
-    String pattern =
-        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+    String pattern = r"^[A-Za-z0-9]*$";
+    // String pattern = r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
     RegExp regExp = new RegExp(pattern);
     if (regExp.hasMatch(pass)) {
       return true;

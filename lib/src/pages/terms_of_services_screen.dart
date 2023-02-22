@@ -54,18 +54,27 @@ class _TermsOfServicesScreenState extends State<TermsOfServicesScreen> {
     
     // Terms and conditions list
     Widget termsAndConditionsList(){
-      return ListView.builder(
-        itemCount: 2,
-          itemBuilder: (context,index){
-          return Row(
-            children: [
-              Text(""),
-              Text("")
-            ],
-          );
-          }
+      return Container(
+        child: ListView.builder(
+            shrinkWrap: true,
+            padding: EdgeInsets.zero,
+            physics: ClampingScrollPhysics(),
+            itemCount: 2,
+            itemBuilder: (context,index){
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("1. YOUR AGREEMENT"),
+                Expanded(child: Text("By using this Site you agree to be bound by and to comply with these Terms and Conditions. If you do not agree to these Terms and Conditions please do not use this site. PLEASE NOTE: We reserve the right at our sole discretion to change, modify or otherwise alter these Terms and Conditions periodically. Your continued use of the Site following the posting of changes and /or modifications will constitute your acceptance of the revised Terms and conditions and the reasonableness of these standards for notice of changes. For your information, this page was last updated as of the date at the top of these terms and conditions."))
+              ],
+            );
+            }
+        ),
       );
     }
+
     return ContainerFirst(
         appBarHeight: -1,
         isOverLayStatusBar: true,
@@ -78,7 +87,6 @@ class _TermsOfServicesScreenState extends State<TermsOfServicesScreen> {
           isHideRightIcon: true,
         ),
         containChild: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             topView(),
             Padding(
@@ -90,6 +98,7 @@ class _TermsOfServicesScreenState extends State<TermsOfServicesScreen> {
                 ),
               ),
             ),
+            // termsAndConditionsList()
           ],
         )
     );

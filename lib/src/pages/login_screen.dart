@@ -143,7 +143,7 @@ class _SignInScreenState extends State<SignInScreen> {
             ).createShader(bound),
             blendMode: BlendMode.darken,
             child: CachedNetworkImage(
-              height: appDimens.heightFullScreen() / 2.2,
+              height: appDimens.heightFullScreen() / 2.50,
               width: appDimens.widthFullScreen(),
               imageUrl:
                   "https://img.freepik.com/free-photo/beautiful-scenery-emerald-lake-yoho-national-park-british-columbia-canada_181624-6877.jpg?w=2000",
@@ -156,7 +156,7 @@ class _SignInScreenState extends State<SignInScreen> {
             title: "Bali Indonesia",
           ),
           Positioned(
-            top: 250,
+            top: 210,
             left: 20,
             child: Text(appString.trans(context, appString.loginText),
                 style: appStyles.registerTextTextStyle()),
@@ -211,7 +211,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 errorMsgHeight: 22,
                 autoFocus: false,
                 errorLeftRightMargin: 0,
-                maxCharLength: 16,
+                maxCharLength: 25,
                 capitalization: CapitalizationText.sentences,
                 cursorColor: appColors.textColor,
                 textInputAction: TextInputAction.done,
@@ -276,8 +276,9 @@ class _SignInScreenState extends State<SignInScreen> {
                 inputHeight: 50,
                 errorMsgHeight: 22,
                 autoFocus: false,
+                obscureText: true,
                 errorLeftRightMargin: 0,
-                maxCharLength: 16,
+                maxCharLength: 10,
                 capitalization: CapitalizationText.sentences,
                 cursorColor: appColors.textColor,
                 textInputAction: TextInputAction.done,
@@ -305,55 +306,27 @@ class _SignInScreenState extends State<SignInScreen> {
             ),
 
             // Login button
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.only(top: 10, left: 20, right: 5),
-                    child: CommonButton(
-                      buttonName: appString.trans(context, appString.loginText),
-                      buttonHeight: 50,
-                      buttonBorderRadius: 18,
-                      isBottomMarginRequired: false,
-                      textStyle: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                          color: appColors.textNormalColor1),
-                      backCallback: () {
-                        if (_validateFields(isButtonClicked: true)) {
-                          // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
-                          //   return OtpVerificationScreen(
-                          //     isSignUpScreen: this.isSignUpScreen,
-                          //   );
-                          // }), (route) => false);
-                        }
-                      },
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 10, right: 20, top: 10),
-                  padding: EdgeInsets.all(15),
-                  decoration: BoxDecoration(
-                      color: appColors.appBgColor2.withOpacity(0.70),
-                      borderRadius: BorderRadius.circular(18),
-                      border: Border.all(
-                          width: 2,
-                          style: BorderStyle.solid,
-                          color: appColors.appBgColor1.withOpacity(0.30))),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      iconApps.iconImage(
-                          imageUrl: iconApps.faceIdIcon,
-                          iconSize: Size(20, 20),
-                          imageColor: appColors.buttonBgColor),
-                    ],
-                  ),
-                ),
-              ],
+            Container(
+              margin: EdgeInsets.only(top: 10, left: 20, right: 20),
+              child: CommonButton(
+                buttonName: appString.trans(context, appString.loginText),
+                buttonHeight: 50,
+                buttonBorderRadius: 18,
+                isBottomMarginRequired: false,
+                textStyle: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: appColors.textNormalColor1),
+                backCallback: () {
+                  if (_validateFields(isButtonClicked: true)) {
+                    // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
+                    //   return OtpVerificationScreen(
+                    //     isSignUpScreen: this.isSignUpScreen,
+                    //   );
+                    // }), (route) => false);
+                  }
+                },
+              ),
             ),
             SizedBox(
               height: 15,
@@ -459,7 +432,7 @@ class _SignInScreenState extends State<SignInScreen> {
       isOverLayStatusBar: true,
       appBackgroundColor: appColors.appBgColorJungleGreen,
       statusBarColor: Colors.white,
-      isSingleChildScrollViewNeed: true,
+      isSingleChildScrollViewNeed: false,
       contextCurrentView: context,
       containChild: ShaderMask(
         shaderCallback: (bound) => LinearGradient(

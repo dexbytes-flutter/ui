@@ -565,7 +565,7 @@ class AppStyle {
         fontWeight,
         bool isItalic = false}) =>
       TextStyle(
-        color: texColor != null ? texColor : appColors.appBgColorLeanWhite,
+        color: texColor != null ? texColor : appColors.textNormalColor,
         fontSize: fontSize != null ? fontSize : 25,
         fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
         fontWeight: fontWeight != null ? fontWeight : FontWeight.w700,
@@ -589,8 +589,8 @@ class AppStyle {
         fontWeight,
         bool isItalic = false}) =>
       TextStyle(
-        color: texColor != null ? texColor : appColors.appBgColorLeanWhite,
-        fontSize: fontSize != null ? fontSize : 28,
+        color: texColor != null ? texColor : appColors.textNormalColor,
+        fontSize: fontSize != null ? fontSize : 48,
         fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
         fontWeight: fontWeight != null ? fontWeight : FontWeight.w700,
       );
