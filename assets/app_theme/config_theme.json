@@ -1,49 +1,60 @@
+
 {
   "homeBottomNavigationBar": {
     "backgroundColor": "0xFFFFFFFF",
-    "activeIconColor": "0xFF2196F3",
-    "deActiveIconColor": "0xFF607D8B",
+    "darkBackgroundColor": "0xFF374151",
+    "activeIconColor": "0xFF022964",
+    "deActiveIconColor": "0xFF9CA3AF",
     "activeMenuTextStyle": {
       "fontSize": 12,
-      "color": "0xFF2196F3"
+      "color": "0xFF022964"
     },
     "deActiveMenuTextStyle": {
       "fontSize": 12,
-      "color": "0xFF607D8B"
+      "color": "0xFF9CA3AF"
     },"elevation": 0.0,
     "bottomMenuType": 0,
     "menu_item": [
       {
-        "icon": "0xf53a",
-        "label": "Home",
-        "backgroundColor": "0xFFFFEBEE",
-        "menuPageId": "menu1"
+        "activeIcon": "assets/images/home_icon.svg",
+        "deActiveIcon": "assets/images/home_icon.svg",
+        "label": "",
+        "backgroundColor": "0xFFDD2E37",
+        "menuPageId": "menu1",
+        "statusBarColors": "0xFF1B3232"
       },
-      {"icon": "0xe11b",
-        "label": "Studio",
-        "backgroundColor": "0xFFFFEBEE",
-        "menuPageId": "menu2"
+      {
+        "activeIcon": "assets/images/compass_icon.svg",
+        "deActiveIcon":"assets/images/compass_icon.svg",
+        "label": "",
+        "backgroundColor": "0xFFDD2E37",
+        "menuPageId": "menu2",
+        "statusBarColors": "0xFF1B3232"
       },
-      {"icon": "0xe04b",
-        "label": "Category",
-        "backgroundColor": "0xFFFFEBEE",
-        "menuPageId": "menu3"
+      {
+        "activeIcon":"assets/images/bookmark_icon.svg",
+        "deActiveIcon":"assets/images/bookmark_icon.svg",
+        "label": "",
+        "backgroundColor": "0xFFDD2E37",
+        "menuPageId": "menu3",
+        "statusBarColors": "0xFF1B3232"
       },
-      {"icon": "0xee4e",
-        "label": "Profile",
-        "backgroundColor": "0xFFFFEBEE",
-        "menuPageId": "menu4"
-      },
-      {"icon": "0xe559",
-        "label": "Explore",
-        "backgroundColor": "0xFFFFEBEE",
-        "menuPageId": "menu5"
-
+      {
+        "activeIcon": "assets/images/profile_icon.svg",
+        "deActiveIcon":"assets/images/profile_icon.svg",
+        "label": "",
+        "backgroundColor": "0xFFDD2E37",
+        "menuPageId": "menu4",
+        "statusBarColors": "0xFF1B3232"
       }
     ]
   },
 
   "setting": {
-    "homeBottomNavigationBarHeight": 56
+    "homeBottomNavigationBarHeight": 56,
+    "statusBarColors": "0xFF1B3232",
+    "appBackgroundColors": ["0xFFFFFFFF"],
+    "isDisplaySideDrawer": false,
+    "isDisplayHomeSearch": false
   }
 }

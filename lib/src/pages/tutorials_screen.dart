@@ -30,12 +30,6 @@ class _TutorialScreenState extends State<TutorialScreen> {
     _pageController.dispose();
   }
 
-  _onPageChanged(int index) {
-    setState(() {
-      _currentPage = index;
-    });
-  }
-
 
 
   final tutorialModelList = [
@@ -77,7 +71,6 @@ class _TutorialScreenState extends State<TutorialScreen> {
           ),
           child: InkWell(
             onTap: (){
-              print('Hello');
               if ( activeIndex == 2 ) {
                    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
                   return SignInScreen();

@@ -242,6 +242,8 @@ class AppString {
   String pleaseEnterConfirmPassword = 'pleaseEnterConfirmPassword';
   String passwordMustBeSame = 'passwordMustBeSame';
   String passwordLengthError = 'passwordLengthError';
+  String welcomeText = 'welcomeText';
+  String recommendationText = 'recommendationText';
 
 }
 

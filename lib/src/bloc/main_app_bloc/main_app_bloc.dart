@@ -9,6 +9,9 @@ import 'package:base_flutter_app/src/helper/local_constant.dart';
 class MainAppBloc extends Bloc<MainAppEvent, MainAppState> {
   MainAppBloc() : super(MainAppInitStat());
   static Map<String, dynamic> configTheme = Map<String, dynamic>();
+  static BuildContext? dashboardContext;
+  static get getDashboardContext => dashboardContext!;
+
   @override
   Stream<MainAppState> mapEventToState(MainAppEvent event) async* {
     if (event is UpdateLoggedInUserAuth) {

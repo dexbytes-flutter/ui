@@ -30,6 +30,9 @@ class IconApps {
   String faceIdIcon = 'assets/images/face_id.svg';
   String termsOfServicesIcon = 'assets/images/terms_of_services_icon.svg';
   String mobileIcon = 'assets/images/mobile_icon.svg';
+  String appBarProfileIcon = 'assets/images/app_bar_profile_icon.svg';
+  String dashboardIcon = 'assets/images/dashboard_icon.svg';
+  String searchIcon = 'assets/images/search_icon.svg';
 
   iconImage(
       {required String imageUrl,

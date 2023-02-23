@@ -20,7 +20,9 @@ import 'package:base_flutter_app/src/helper/shared_preferencesFile.dart';
 import 'package:provider/provider.dart';
 import 'package:base_flutter_app/src/config/routes.dart';
 
+import 'src/pages/dashboard_screen.dart';
 import 'src/pages/forgot_password_screen.dart';
+import 'src/pages/home_screen.dart';
 import 'src/pages/login_screen.dart';
 import 'src/pages/otp_verification_page.dart';
 import 'src/pages/register_screen.dart';
@@ -276,7 +278,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
     return /*!widget.isOneTimeProfileSetUpDone
         ? CreateAccount()
         : */
-      ResetPasswordScreen();
+      HomeScreen();
 
   }
 

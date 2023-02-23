@@ -30,10 +30,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(appString.trans(context, appString.forgotPasswordTitleText),
-                style: appStyles.commonTitleStyle(fontSize: 30)),
+                style: appStyles.commonTitleStyle(fontSize: 30,fontFamily: "Raleway")),
             SizedBox(height: 15,),
             Text(appString.trans(context, appString.selectContactDetailText),
-                style: appStyles.commonSubTitleTextStyle(fontSize: 15)),
+                style: appStyles.commonSubTitleTextStyle(fontSize: 15,fontFamily: "Raleway")),
           ],
         ),
       );
