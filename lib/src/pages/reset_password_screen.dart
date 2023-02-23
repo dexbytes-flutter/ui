@@ -80,7 +80,15 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
           }
         });
         return false;
-      }else if (controllers['confirm_password']?.text.trim() == null ||
+      } else if (!Validation().validatePassword(controllers['new_password']?.text ?? "")) {
+        setState(() {
+          if (isButtonClicked) {
+            errorMessages['new_password'] =
+                appString.trans(context, appString.mustContain1LetterAndNumber);
+          }
+        });
+        return false;
+      } else if (controllers['confirm_password']?.text.trim() == null ||
           controllers['confirm_password']?.text.trim() == '') {
         setState(() {
           if (isButtonClicked) {
@@ -89,7 +97,23 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
           }
         });
         return false;
-      } else {
+      } else if (!Validation().validatePassword(controllers['confirm_password']?.text ?? "")) {
+        setState(() {
+          if (isButtonClicked) {
+            errorMessages['confirm_password'] =
+                appString.trans(context, appString.mustContain1LetterAndNumber);
+          }
+        });
+        return false;
+      } else if (controllers['new_password']?.text != controllers['confirm_password']?.text) {
+        setState(() {
+          if (isButtonClicked) {
+            errorMessages['confirm_password'] = appString.trans(context, appString.passwordMustBeSame);
+          }
+        });
+        return false;
+      }
+      else {
         return true;
       }
     }
@@ -98,43 +122,46 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
     _checkPassword(value, fieldName, {onchange = false}) {
       if (Validation().isNotEmpty(value)) {
         setState(() {
-          if (value.length >= 6) {
+          if (value.length >= 8) {
             errorMessages['new_password'] = "";
-            errorMessages['confirm_password'] = "";
-            if (Validation().onlyNumberAndCharacter(controllers[fieldName]!.text.trim())) {
-              if ((controllers['confirm_password']?.text != null &&
-                  controllers['confirm_password']?.text != "") &&
-                  controllers['new_password']?.text !=
-                      controllers['confirm_password']?.text) {
+
+            if (Validation().validatePassword(controllers[fieldName]!.text.trim())) {
+
+              errorMessages['new_password'] = "";
+
+              /*if ((controllers['confirm_password']?.text != null && controllers['confirm_password']?.text != "")
+                  &&
+                  controllers['new_password']?.text != controllers['confirm_password']?.text) {
                 errorMessages['confirm_password'] = appString.trans(context, appString.passwordMustBeSame);
               } else {
                 errorMessages['new_password'] = "";
                 errorMessages['confirm_password'] = "";
-              }
+              }*/
             } else {
-              if (!onchange) {
-                errorMessages[fieldName] = appString.trans(
-                    context, appString.mustContain1LetterAndNumber);
-              }
+              errorMessages[fieldName] = appString.trans(context, appString.mustContain1LetterAndNumber);
+              // if (!onchange) {
+              //   errorMessages[fieldName] = appString.trans(context, appString.mustContain1LetterAndNumber);
+              // }
             }
           } else {
-            if (!onchange) {
-              errorMessages[fieldName] = appString.trans(
-                  context, appString.mustContain1LetterAndNumber);
-            }
+            setState(() {
+              errorMessages[fieldName] = appString.trans(context, appString.passwordLengthError);
+            });
+            /*if (!onchange) {
+              errorMessages[fieldName] = appString.trans(context, appString.passwordLengthError);
+            }*/
           }
         });
       } else {
         setState(() {
-          if (!onchange) {
+          errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterNewPassword);
+         /* if (!onchange) {
             if (fieldName == 'new_password') {
-              errorMessages[fieldName] =
-                  appString.trans(context, appString.pleaseEnterNewPassword);
+              errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterNewPassword);
             } else if (fieldName == 'confirm_password') {
-              errorMessages[fieldName] =
-                  appString.trans(context, appString.pleaseEnterConfirmPassword);
+              errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterConfirmPassword);
             }
-          }
+          }*/
         });
       }
     }
@@ -155,11 +182,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
         });
       } else {
         setState(() {
-          if (!onchange) {
-            if (fieldName == 'confirm_password') {
-              errorMessages[fieldName] =
-                  appString.trans(context, appString.pleaseEnterConfirmPassword);
-            }
+          if (fieldName == 'confirm_password') {
+            errorMessages[fieldName] =
+                appString.trans(context, appString.pleaseEnterConfirmPassword);
           }
         });
       }

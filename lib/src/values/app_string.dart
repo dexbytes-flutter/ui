@@ -241,6 +241,7 @@ class AppString {
   String updatePasswordButtonText = 'updatePasswordButtonText';
   String pleaseEnterConfirmPassword = 'pleaseEnterConfirmPassword';
   String passwordMustBeSame = 'passwordMustBeSame';
+  String passwordLengthError = 'passwordLengthError';
 
 }
 

@@ -23,7 +23,7 @@
   "pleaseReEnterPassword": "Please re-enter password",
   "enterVerificationCode": "Please enter verification code",
   "passwordAndConfirmPasswordSame": "Password and confirm password must be same",
-  "mustContain1LetterAndNumber": "Password must contain 1 number, 1 upper and lower character with one spacial character",
+  "mustContain1LetterAndNumber": "Password must contain 1 digit, and 1 letter",
   "reEnterPassHeading": "Re-enter password",
   "verificationCode": "Verification Code",
   "signInTitle": "Sign In",
@@ -153,5 +153,6 @@
   "resetPasswordSubTitleText": "At least 8 character with uppercase, lowercase and special character.",
   "updatePasswordButtonText" : "Update Password",
   "pleaseEnterConfirmPassword" : "Please enter confirm password",
-  "passwordMustBeSame" : "Password and confirm password must be same"
+  "passwordMustBeSame" : "Password and confirm password must be same",
+  "passwordLengthError" : "Password length must be greater than or equal to 8 characters"
 }

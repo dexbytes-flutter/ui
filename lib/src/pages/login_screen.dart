@@ -115,8 +115,7 @@ class _SignInScreenState extends State<SignInScreen> {
           }
         });
         return false;
-      } else if (!Validation()
-          .validatePassword(controllers['password']?.text ?? "")) {
+      } else if (!Validation().validatePassword(controllers['password']?.text ?? "")) {
         setState(() {
           if (isButtonClicked) {
             errorMessages['password'] =
