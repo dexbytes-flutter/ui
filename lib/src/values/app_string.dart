@@ -236,6 +236,11 @@ class AppString {
   String forgotPasswordTitleText = 'forgotPasswordTitleText';
   String selectContactDetailText = 'selectContactDetailText';
   String forgotText = 'forgotText';
+  String resetPasswordTitleText = 'resetPasswordTitleText';
+  String resetPasswordSubTitleText = 'resetPasswordSubTitleText';
+  String updatePasswordButtonText = 'updatePasswordButtonText';
+  String pleaseEnterConfirmPassword = 'pleaseEnterConfirmPassword';
+  String passwordMustBeSame = 'passwordMustBeSame';
 
 }
 

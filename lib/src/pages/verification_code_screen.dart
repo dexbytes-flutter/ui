@@ -8,6 +8,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import 'reset_password_screen.dart';
 import 'terms_of_services_screen.dart';
 
 class VerificationCodeScreen extends StatefulWidget {
@@ -232,6 +233,10 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
                   setState(() {
                     errorMessage = '';
                     Navigator.of(context).pop();
+                    Navigator.push(
+                      context,
+                      SlideRightRoute(widget: ResetPasswordScreen()),
+                    );
                     /*if(isSignInScreen){
                         sharedPreferencesFile.saveBool(isUserLoggedInC, true);
                         Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){

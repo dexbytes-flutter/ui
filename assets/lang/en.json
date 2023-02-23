@@ -16,7 +16,7 @@
   "and": "  and",
   "nextSmall": "Next",
   "createAccountButton": "CREATE AN ACCOUNT",
-  "pleaseEnterNewPassword":"Please enter password",
+  "pleaseEnterNewPassword":"Please enter new password",
   "privacyPolicy": "Privacy Policy",
   "createProfile": "CREATE PROFILE",
   "enterValidEmail": "Please enter valid email",
@@ -148,5 +148,10 @@
   "iAcceptButtonText" : "I Accept",
   "forgotPasswordTitleText" : "Forgot Password",
   "selectContactDetailText" : "Please select your contact details and we will send a verification code to reset your password.",
-  "forgotText" : "Forgot?"
+  "forgotText" : "Forgot?",
+  "resetPasswordTitleText": "Reset Password",
+  "resetPasswordSubTitleText": "At least 8 character with uppercase, lowercase and special character.",
+  "updatePasswordButtonText" : "Update Password",
+  "pleaseEnterConfirmPassword" : "Please enter confirm password",
+  "passwordMustBeSame" : "Password and confirm password must be same"
 }

@@ -24,6 +24,7 @@ import 'src/pages/forgot_password_screen.dart';
 import 'src/pages/login_screen.dart';
 import 'src/pages/otp_verification_page.dart';
 import 'src/pages/register_screen.dart';
+import 'src/pages/reset_password_screen.dart';
 import 'src/pages/terms_of_services_screen.dart';
 import 'src/pages/verification_code_screen.dart';
 
@@ -275,7 +276,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
     return /*!widget.isOneTimeProfileSetUpDone
         ? CreateAccount()
         : */
-      VerificationCodeScreen();
+      ResetPasswordScreen();
 
   }
 
