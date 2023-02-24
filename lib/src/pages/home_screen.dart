@@ -99,30 +99,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
     // Center image list
-    Widget centerImage(){
-      return Container(
-        width: appDimens.widthFullScreen(),
-        child: ListView.builder(
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          padding: EdgeInsets.only(left: 20,top: 20),
-          physics: ClampingScrollPhysics(),
-          itemCount: homePageSlideImageList.length,
-          itemBuilder: (context,index){
-            return ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(30)),
-              child: CachedNetworkImage(
-                imageUrl: "https://images.unsplash.com/photo-1523810804307-760585ed63cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8aW5kb25lc2lhJTIwYmVhY2h8ZW58MHx8MHx8&w=1000&q=80",
-                fit:BoxFit.cover,
-                height: appDimens.heightFullScreen()/2,
-                width: appDimens.widthFullScreen()/1.5,
-              ),
-            );
-          },
-        ),
-      );
-    }
-
     Widget listView(){
       return Container(
         width: appDimens.widthFullScreen()/1.22,
