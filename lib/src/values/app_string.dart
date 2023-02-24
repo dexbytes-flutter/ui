@@ -244,6 +244,7 @@ class AppString {
   String passwordLengthError = 'passwordLengthError';
   String welcomeText = 'welcomeText';
   String recommendationText = 'recommendationText';
+  String recommendedImageText = 'recommendedImageText';
 
 }
 

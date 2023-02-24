@@ -90,9 +90,9 @@ class AppStyle {
         fontWeight,
         bool isItalic = false}) =>
       TextStyle(
-        color: texColor != null ? texColor : appColors.appBgColorLeanWhite,
+        color: texColor != null ? texColor : appColors.textNormalColor,
         fontSize: fontSize != null ? fontSize : 25,
-        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontFamily: fontFamily != null ? fontFamily : "Raleway",
         fontWeight: fontWeight != null ? fontWeight : FontWeight.w700,);
 
   TextStyle subTitleStyle(
@@ -118,7 +118,7 @@ class AppStyle {
       TextStyle(
         color: texColor != null ? texColor : appColors.textColor,
         fontSize: fontSize != null ? fontSize : 14,
-        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontFamily: fontFamily != null ? fontFamily : "Raleway",
         fontWeight: fontWeight != null ? fontWeight : appFonts.regular400,
         letterSpacing: letterSpacing != null ? letterSpacing : 1,
       );
@@ -494,10 +494,10 @@ class AppStyle {
   buttonNameStyle(
           {Color? texColor, double? fontSize, fontFamily, fontWeight}) =>
       TextStyle(
-        color: texColor != null ? texColor : appColors.textNormalColor,
+        color: texColor != null ? texColor : appColors.textNormalColor1,
         fontSize: fontSize != null ? fontSize : 14,
-        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
-        fontWeight: fontWeight != null ? fontWeight : appFonts.regular400,
+        fontFamily: fontFamily != null ? fontFamily : "Raleway",
+        fontWeight: fontWeight != null ? fontWeight : FontWeight.w700,
       );
 
   TextStyle commonAppBarTextTextStyle(
@@ -509,7 +509,7 @@ class AppStyle {
       TextStyle(
         color: texColor != null ? texColor : appColors.textNormalColor,
         fontSize: fontSize != null ? fontSize : 14,
-        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontFamily: fontFamily != null ? fontFamily : "Raleway",
         fontWeight: fontWeight != null ? fontWeight : appFonts.regular400,
       );
 
@@ -522,7 +522,7 @@ class AppStyle {
       TextStyle(
         color: texColor != null ? texColor : appColors.textColor,
         fontSize: fontSize != null ? fontSize : 14,
-        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontFamily: fontFamily != null ? fontFamily : "Raleway",
         fontWeight: fontWeight != null ? fontWeight : appFonts.regular400,
       );
   TextStyle registerWithTextStyle(
@@ -534,7 +534,7 @@ class AppStyle {
       TextStyle(
         color: texColor != null ? texColor : appColors.textColor,
         fontSize: fontSize != null ? fontSize : 14,
-        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontFamily: fontFamily != null ? fontFamily : "Raleway",
         fontWeight: fontWeight != null ? fontWeight : appFonts.regular400,
       );
   TextStyle textFieldHintTextTextStyle(
@@ -546,7 +546,7 @@ class AppStyle {
       TextStyle(
         color: texColor != null ? texColor : appColors.appBgColor1,
         fontSize: fontSize != null ? fontSize : 14,
-        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontFamily: fontFamily != null ? fontFamily : "Raleway",
         fontWeight: fontWeight != null ? fontWeight : appFonts.regular400,
       );
   TextStyle textFieldTextTextStyle(
@@ -558,7 +558,7 @@ class AppStyle {
       TextStyle(
         color: texColor != null ? texColor : appColors.textColor,
         fontSize: fontSize != null ? fontSize : 15,
-        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontFamily: fontFamily != null ? fontFamily : "Raleway",
         fontWeight: fontWeight != null ? fontWeight : FontWeight.w500,
       );
   TextStyle registerTextTextStyle(
@@ -570,7 +570,7 @@ class AppStyle {
       TextStyle(
         color: texColor != null ? texColor : appColors.textNormalColor,
         fontSize: fontSize != null ? fontSize : 25,
-        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontFamily: fontFamily != null ? fontFamily : "Raleway",
         fontWeight: fontWeight != null ? fontWeight : FontWeight.w700,
       );
   TextStyle appButtonTextStyle(
@@ -582,7 +582,7 @@ class AppStyle {
       TextStyle(
         color: texColor != null ? texColor : appColors.textNormalColor1,
         fontSize: fontSize != null ? fontSize : 15,
-        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontFamily: fontFamily != null ? fontFamily : "Raleway",
         fontWeight: fontWeight != null ? fontWeight : FontWeight.w500,
       );
   TextStyle sliderTextStyle(
@@ -594,7 +594,7 @@ class AppStyle {
       TextStyle(
         color: texColor != null ? texColor : appColors.textNormalColor,
         fontSize: fontSize != null ? fontSize : 48,
-        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontFamily: fontFamily != null ? fontFamily : "Raleway",
         fontWeight: fontWeight != null ? fontWeight : FontWeight.w700,
       );
   TextStyle otpFieldTextStyle(
@@ -606,7 +606,7 @@ class AppStyle {
       TextStyle(
         color: texColor != null ? texColor : appColors.appBgColorLeanWhite,
         fontSize: fontSize != null ? fontSize : 20,
-        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontFamily: fontFamily != null ? fontFamily : "Raleway",
         fontWeight: fontWeight != null ? fontWeight : FontWeight.bold,
       );
 }

@@ -97,54 +97,64 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     }
 
-    bottomButton(){
-      return Container(
-          margin: EdgeInsets.only(left: 20,right: 20,bottom: 20),
-          // height: 50,
-          // width: 100,
-          padding: EdgeInsets.only(left: 20,right: 20).copyWith(top: 4,bottom: 4),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: appColors.buttonBgColor
-          ),
-          child: InkWell(
-            onTap: (){
-              activeIndex = activeIndex+1;
-              _scrollToIndex(activeIndex);
-            },
-            child: Container(
-                padding: EdgeInsets.all(12),
-                child: iconApps.iconImage(
-                    imageUrl: iconApps.rightArrow,
-                    imageColor: appColors.textNormalColor1,
-                    iconSize: Size(20, 20)
-                )
-            ),
-          )
-      );
-    }
 
     // Center image list
     Widget centerImage(){
-      return ListView.builder(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.only(top: 20),
-        physics: ClampingScrollPhysics(),
-        itemCount: homePageSlideImageList.length,
-        itemBuilder: (context,index){
-          return HomepageCommonImage();
-        },
+      return Container(
+        width: appDimens.widthFullScreen(),
+        child: ListView.builder(
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          padding: EdgeInsets.only(left: 20,top: 20),
+          physics: ClampingScrollPhysics(),
+          itemCount: homePageSlideImageList.length,
+          itemBuilder: (context,index){
+            return ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(30)),
+              child: CachedNetworkImage(
+                imageUrl: "https://images.unsplash.com/photo-1523810804307-760585ed63cd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8aW5kb25lc2lhJTIwYmVhY2h8ZW58MHx8MHx8&w=1000&q=80",
+                fit:BoxFit.cover,
+                height: appDimens.heightFullScreen()/2,
+                width: appDimens.widthFullScreen()/1.5,
+              ),
+            );
+          },
+        ),
+      );
+    }
+
+    Widget listView(){
+      return Container(
+        width: appDimens.widthFullScreen()/1.22,
+        height: appDimens.heightFullScreen()/1.5,
+        margin: EdgeInsets.only(top: 10),
+        // color: Colors.yellow,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
+          physics: ClampingScrollPhysics(),
+          padding: EdgeInsets.zero,
+          itemCount: homePageSlideImageList.length,
+          itemBuilder: (context,index){
+            return Container(
+              margin: EdgeInsets.only(right: 15),
+                child: HomepageCommonImage(
+                  imageUrl: homePageSlideImageList[index].imageUrl,
+                )
+            );
+          },
+        ),
       );
     }
 
     //Center view
     Widget homeCenterView(){
       return Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           verticalTitleList(),
-          HomepageCommonImage(),
-          // centerImage()
+          listView()
         ],
       );
     }
@@ -172,7 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            homeCenterView(),
+            homeCenterView()
           ],
         )
     );

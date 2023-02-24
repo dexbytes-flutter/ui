@@ -156,5 +156,6 @@
   "passwordMustBeSame" : "Password and confirm password must be same",
   "passwordLengthError" : "Password length must be greater than or equal to 8 characters",
   "welcomeText" : "Welcome",
-  "recommendationText" : "Recommendation"
+  "recommendationText" : "Recommendation",
+  "recommendedImageText" : "Recommended"
 }

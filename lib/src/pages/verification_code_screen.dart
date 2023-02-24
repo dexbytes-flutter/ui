@@ -12,7 +12,11 @@ import 'reset_password_screen.dart';
 import 'terms_of_services_screen.dart';
 
 class VerificationCodeScreen extends StatefulWidget {
-  const VerificationCodeScreen({Key? key}) : super(key: key);
+  final String selectedContactDetail;
+  const VerificationCodeScreen({
+    Key? key,
+    required this.selectedContactDetail
+  }) : super(key: key);
 
   @override
   State<VerificationCodeScreen> createState() => _VerificationCodeScreenState();
@@ -210,7 +214,7 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
             Text(appString.trans(context, appString.verificationSubTitleText),
                 style: appStyles.alreadyHaveAccountTextStyle(fontSize: 15)),
             SizedBox(height: 5,),
-            Text("johndoe@gmail.com",
+            Text(widget.selectedContactDetail,
                 style: appStyles.alreadyHaveAccountTextStyle(fontSize: 15)
             ),
             SizedBox(height: 30,),
@@ -224,10 +228,7 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
               buttonHeight: 50,
               buttonBorderRadius: 18,
               isBottomMarginRequired: false,
-              textStyle: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  color: appColors.textNormalColor1),
+              textStyle: appStyles.buttonNameStyle(),
               backCallback: () {
                 if (verificationCodeStr != '' && verificationCodeStr.trim().length == otpLength) {
                   setState(() {

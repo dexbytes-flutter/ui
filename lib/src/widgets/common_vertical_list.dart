@@ -17,7 +17,7 @@ class CommonVerticalList extends StatelessWidget {
     return RotatedBox(
       quarterTurns: -1,
       child: Container(
-        margin: EdgeInsets.only(left: 5,top: 20,bottom: 20,right: 40),
+        margin: EdgeInsets.only(left: 5,top: 20,right: 40),
         child: Column(
           children: [
             Text(listTitle!,

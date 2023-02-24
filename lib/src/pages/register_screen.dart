@@ -10,6 +10,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'otp_verification_page.dart';
+import 'verification_code_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -73,6 +74,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
           setState(() {
             if (!onchange) {
               errorMessages[fieldName] = appString.trans(context,appString.pleaseEnterFullName);
+            } else{
+              setState(() {
+                errorMessages[fieldName] = "";
+              });
             }
           });
         }
@@ -82,6 +87,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
             if (fieldName == 'name'){
               errorMessages[fieldName] = appString.trans(context,appString.pleaseEnterCorrectName);
             }
+          }else{
+            setState(() {
+              errorMessages[fieldName] = appString.trans(context,appString.pleaseEnterFullName);
+            });
           }
         });
       }
@@ -99,6 +108,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
           setState(() {
             if (!onchange) {
               errorMessages[fieldName] = appString.trans(context,appString.pleaseEnterEmail);
+            }else{
+              setState(() {
+                errorMessages[fieldName] = "";
+              });
             }
           });
         }
@@ -106,6 +119,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
         setState(() {
           if (!onchange) {
             errorMessages[fieldName] = appString.trans(context,appString.pleaseEnterCorrectEmail);
+          }else{
+            setState(() {
+              errorMessages[fieldName] = appString.trans(context,appString.pleaseEnterEmail);
+            });
           }
         });
       }
@@ -119,8 +136,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
             errorMessages[fieldName] = '';
           } else {
             if (!onchange) {
-              errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterPassword);
-              // errorMessages[fieldName] = "Please correct enter password";
+              setState(() {
+                errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterPassword);
+              });
+            }else{
+              setState(() {
+                errorMessages[fieldName] = "";
+              });
             }
           }
         });
@@ -130,6 +152,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
             if (fieldName == 'password') {
               errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterCorrectPassword);
             }
+          }
+          else{
+            setState(() {
+              errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterPassword);
+            });
           }
         });
       }
@@ -203,6 +230,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               height: appDimens.heightFullScreen()/3.48,
               width: appDimens.widthFullScreen(),
               imageUrl: "http://lh3.ggpht.com/-LBkmHsPl3XU/TmMb5-qgdiI/AAAAAAAAQHA/eu3yiXNXKPU/rice-terraces-8%25255B2%25255D.jpg?imgmax=800",
+              // imageUrl: "https://cdn.pixabay.com/photo/2016/11/14/02/51/rice-plantation-1822444__340.jpg",
               fit:BoxFit.fill,
             ),
           ),
@@ -409,7 +437,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 buttonHeight: 50,
                 buttonBorderRadius: 18,
                 isBottomMarginRequired: false,
-                textStyle: TextStyle(fontSize:14, fontWeight: FontWeight.w500,color: appColors.textNormalColor1),
+                textStyle: appStyles.buttonNameStyle(),
                 backCallback: (){
                   if(_validateFields(isButtonClicked: true)){
                     Navigator.push(

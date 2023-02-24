@@ -2,6 +2,7 @@ import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart'
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/app_utility/validation.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
+import 'package:base_flutter_app/src/pages/dashboard_screen.dart';
 import 'package:base_flutter_app/src/pages/register_screen.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -51,6 +52,10 @@ class _SignInScreenState extends State<SignInScreen> {
           setState(() {
             if (!onchange) {
               errorMessages[fieldName] = appString.trans(context,appString.pleaseEnterEmail);
+            }else{
+              setState(() {
+                errorMessages[fieldName] = "";
+              });
             }
           });
         }
@@ -58,6 +63,10 @@ class _SignInScreenState extends State<SignInScreen> {
         setState(() {
           if (!onchange) {
             errorMessages[fieldName] = appString.trans(context,appString.pleaseEnterCorrectEmail);
+          }else{
+            setState(() {
+              errorMessages[fieldName] = appString.trans(context,appString.pleaseEnterEmail);
+            });
           }
         });
       }
@@ -71,8 +80,13 @@ class _SignInScreenState extends State<SignInScreen> {
             errorMessages[fieldName] = '';
           } else {
             if (!onchange) {
-              errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterPassword);
-              // errorMessages[fieldName] = "Please correct enter password";
+              setState(() {
+                errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterPassword);
+              });
+            }else{
+              setState(() {
+                errorMessages[fieldName] = "";
+              });
             }
           }
         });
@@ -82,6 +96,10 @@ class _SignInScreenState extends State<SignInScreen> {
             if (fieldName == 'password') {
               errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterCorrectPassword);
             }
+          }else{
+            setState(() {
+              errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterPassword);
+            });
           }
         });
       }
@@ -326,12 +344,13 @@ class _SignInScreenState extends State<SignInScreen> {
                 buttonHeight: 50,
                 buttonBorderRadius: 18,
                 isBottomMarginRequired: false,
-                textStyle: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: appColors.textNormalColor1),
+                textStyle: appStyles.buttonNameStyle(),
                 backCallback: () {
                   if (_validateFields(isButtonClicked: true)) {
+                    Navigator.push(
+                      context,
+                      SlideRightRoute(widget: DashBoardPage()),
+                    );
                     // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
                     //   return OtpVerificationScreen(
                     //     isSignUpScreen: this.isSignUpScreen,

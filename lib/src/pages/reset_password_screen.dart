@@ -2,8 +2,11 @@ import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart'
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/app_utility/validation.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
+import 'package:base_flutter_app/src/pages/login_screen.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:flutter/material.dart';
+
+import '../app_utility/animation/slide_left_route.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({Key? key}) : super(key: key);
@@ -325,10 +328,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 buttonHeight: 50,
                 buttonBorderRadius: 18,
                 isBottomMarginRequired: false,
-                textStyle: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: appColors.textNormalColor1),
+                textStyle: appStyles.buttonNameStyle(),
                 backCallback: () {
                   if (_validateFields(isButtonClicked: true)) {
                     // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
@@ -336,6 +336,10 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     //     isSignUpScreen: this.isSignUpScreen,
                     //   );
                     // }), (route) => false);
+                    Navigator.push(
+                      context,
+                      SlideRightRoute(widget: SignInScreen()),
+                    );
                   }
                 },
               ),
