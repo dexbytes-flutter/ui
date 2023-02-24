@@ -1,7 +1,7 @@
 
 {
   "homeBottomNavigationBar": {
-    "backgroundColor": "0xFFFFFFFF",
+    "backgroundColor": "0xFF1B3232",
     "darkBackgroundColor": "0xFF374151",
     "activeIconColor": "0xFF022964",
     "deActiveIconColor": "0xFF9CA3AF",
@@ -53,7 +53,7 @@
   "setting": {
     "homeBottomNavigationBarHeight": 56,
     "statusBarColors": "0xFF1B3232",
-    "appBackgroundColors": ["0xFFFFFFFF"],
+    "appBackgroundColors": ["0xFF1B3232"],
     "isDisplaySideDrawer": false,
     "isDisplayHomeSearch": false
   }

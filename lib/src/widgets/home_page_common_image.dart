@@ -122,7 +122,7 @@ class HomepageCommonImage extends StatelessWidget {
               )
             ),
             Positioned(
-              bottom: 230,
+              bottom: 212,
                 left: 25,
                 child: Text(appString.trans(context, appString.recommendedImageText),
                   style: appStyles.commonSubTitleTextStyle(fontSize: 13),

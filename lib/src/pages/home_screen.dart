@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
     // Vertical title list
     Widget verticalTitleList(){
       return Container(
-        width: 64,
+        width: 58,
         // color: Colors.yellow,
         child: ListView.builder(
           shrinkWrap: true,
@@ -126,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Widget listView(){
       return Container(
         width: appDimens.widthFullScreen()/1.22,
-        height: appDimens.heightFullScreen()/1.5,
+        height: appDimens.heightFullScreen()/1.52,
         margin: EdgeInsets.only(top: 10),
         // color: Colors.yellow,
         child: ListView.builder(

@@ -278,7 +278,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
     return /*!widget.isOneTimeProfileSetUpDone
         ? CreateAccount()
         : */
-      TutorialScreen();
+      DashBoardPage();
 
   }
 

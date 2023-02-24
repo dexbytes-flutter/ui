@@ -109,7 +109,7 @@ class _DashBoardPage extends State<DashBoardPage>
                 statusBarColor: statusBarColorsLocal,
                 appBackgroundColor:!isDarkMode? appColors.white:appColors.appBgColor6,
                 appBarHeight: -1,
-                bottomMenuHeight: 58,
+                bottomMenuHeight: 60,
                 bottomMenuView: BottomNavigatorWithStack(
                   currentTab: _currentTab,
                   onSelectTab: _selectTab,
