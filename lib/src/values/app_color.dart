@@ -81,9 +81,10 @@ class AppColors {
   Color appBgColorJungleGreen = const Color(0xFF1B3232);
   Color appBgColor1 = const Color(0xFF417777);
   Color appBgColor2 = const Color(0xFF244444);
+  Color appBgColor3 = const Color(0xFF272727);
   Color appBgColorEmerald = const Color(0xFF3d9676);
   Color appBgColorLeanWhite = const Color(0xFFF5eadd);
-
+  Color appBgColor6 = const Color(0xFF374151);
 
 
   Color appTopBgColor = const Color(0xFFFFFFFF);
@@ -188,6 +189,10 @@ class AppColors {
   Color imgColor = const Color(0xFFE0E0E0);
   Color imgColor1 = const Color(0xFFF2F2F2);
   Color imgColor3 = const Color(0xFFFFFFFF);
+
+  /*====================== bottom navigation bar colors ================*/
+  Color bottomMenuColor1 = const Color(0xFFFFFFFF);
+  Color bottomMenuColor2 = const Color(0xFF374151);
 
 }
 

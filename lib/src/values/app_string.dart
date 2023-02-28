@@ -233,6 +233,28 @@ class AppString {
   String pleaseEnterCorrectOtp = 'pleaseEnterCorrectOtp';
   String lastUpdatedText = 'lastUpdatedText';
   String iAcceptButtonText = 'iAcceptButtonText';
+  String forgotPasswordTitleText = 'forgotPasswordTitleText';
+  String selectContactDetailText = 'selectContactDetailText';
+  String forgotText = 'forgotText';
+  String resetPasswordTitleText = 'resetPasswordTitleText';
+  String resetPasswordSubTitleText = 'resetPasswordSubTitleText';
+  String updatePasswordButtonText = 'updatePasswordButtonText';
+  String pleaseEnterConfirmPassword = 'pleaseEnterConfirmPassword';
+  String passwordMustBeSame = 'passwordMustBeSame';
+  String passwordLengthError = 'passwordLengthError';
+  String welcomeText = 'welcomeText';
+  String recommendationText = 'recommendationText';
+  String recommendedImageText = 'recommendedImageText';
+  String topRecommendedImageText = 'topRecommendedImageText';
+  String destinationText = 'destinationText';
+  String searchTextFieldHintText = 'searchTextFieldHintText';
+  String foundText = 'foundText';
+  String viewTitleText = 'viewTitleText';
+  String locationTitleText = 'locationTitleText';
+  String priceTitleText = 'priceTitleText';
+  String ratingTitleText = 'ratingTitleText';
+  String rangeTitleText = 'rangeTitleText';
+  String applyFilterButtonText = 'applyFilterButtonText';
 
 }
 

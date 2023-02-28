@@ -1,7 +1,6 @@
 import 'package:base_flutter_app/src/all_file_import/app_utils_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
-import 'package:base_flutter_app/src/pages/login_screen.dart';
 import 'package:base_flutter_app/src/pages/register_screen.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:base_flutter_app/src/widgets/pin_code_fields.dart';
@@ -9,18 +8,21 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import 'reset_password_screen.dart';
 import 'terms_of_services_screen.dart';
 
-class OtpVerificationScreen extends StatefulWidget {
-  const OtpVerificationScreen({
+class VerificationCodeScreen extends StatefulWidget {
+  final String selectedContactDetail;
+  const VerificationCodeScreen({
     Key? key,
+    required this.selectedContactDetail
   }) : super(key: key);
 
   @override
-  State<OtpVerificationScreen> createState() => _OtpVerificationScreenState();
+  State<VerificationCodeScreen> createState() => _VerificationCodeScreenState();
 }
 
-class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
+class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
 
   String errorMessage = '';
   TextEditingController inputController = new TextEditingController();
@@ -31,7 +33,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   bool enableResend = false;
 
 
-  
+
   @override
   Widget build(BuildContext context) {
     AppDimens appDimens = AppDimens();
@@ -39,7 +41,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
 
     Widget otpErrorMsg = (errorMessage != '')
         ? Center(
-          child: Container(
+      child: Container(
           height: 24,
           child: Padding(
             padding: EdgeInsets.only(top: 5, left: 3),
@@ -48,7 +50,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
               style: appStyles.errorStyle(),
             ),
           )),
-        )
+    )
         : Container(
       height: 24,
     );
@@ -190,97 +192,73 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
       );
     }
 
-    // Center view widget
-    Widget bottomView() {
-      return Container(
-        color: appColors.appBgColorJungleGreen,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20,right: 20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(appString.trans(context, appString.verifyYourIdentityText),
-                  style: appStyles.commonTitleStyle(fontSize: 30)),
-              SizedBox(height: 15,),
-              Text(appString.trans(context, appString.verificationSubTitleText),
-                  style: appStyles.alreadyHaveAccountTextStyle(fontSize: 15)),
-              SizedBox(height: 5,),
-              Text("johndoe@gmail.com",
-                  style: appStyles.alreadyHaveAccountTextStyle(fontSize: 15)
-              ),
-              SizedBox(height: 10,),
-              verificationCode(),
-              otpErrorMsg,
-              SizedBox(height: 5,),
-              Center(child: didNotReceivedCode()),
-              SizedBox(height: 35,),
-              Container(
-                child: CommonButton(
-                  buttonName: appString.trans(context, appString.verificationText),
-                  buttonHeight: 50,
-                  buttonBorderRadius: 18,
-                  isBottomMarginRequired: false,
-                  textStyle: appStyles.buttonNameStyle(),
-                  backCallback: () {
-                    if (verificationCodeStr != '' && verificationCodeStr.trim().length == otpLength) {
-                      setState(() {
-                        errorMessage = '';
-                        Navigator.push(
-                          context,
-                          SlideRightRoute(widget: SignInScreen()),
-                        );
-                        /*if(isSignInScreen){
-                          sharedPreferencesFile.saveBool(isUserLoggedInC, true);
-                          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
-                            return DashboardScreen();
-                          }), (route) => false);
-                        } else{
-                          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
-                            return DashboardScreen();
-                          }), (route) => false);
-                        }*/
-                      });
-                    }else{
-                      setState(() {
-                        if( verificationCodeStr == '')
-                          errorMessage = appString.trans(context, appString.pleaseEnterOtp);
-                        else
-                          errorMessage = appString.trans(context, appString.pleaseEnterCorrectOtp);
-                      });
-                    }
-                  },
-                ),
-              ),
-              SizedBox(height: 20,),
-              termsAndConditions(),
-              SizedBox(height: 20,),
-            ],
-          ),
-        ),
-      );
-    }
-
     return ContainerFirst(
-      appBarHeight: -1,
+      appBarHeight: 56,
       isOverLayStatusBar: true,
       statusBarColor: Colors.white,
       isSingleChildScrollViewNeed: false,
       contextCurrentView: context,
-      containChild: ShaderMask(
-        shaderCallback: (bound) => LinearGradient(
-          colors: [
-            appColors.appTransColor.withOpacity(0.20),
-            appColors.appBgColorJungleGreen.withOpacity(0.60)
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ).createShader(bound),
-        blendMode: BlendMode.darken,
+      appBar: CommonAppBar(
+        leftIconMargin: EdgeInsets.only(top: 22, left: 20),
+        isHideRightIcon: true,
+      ),
+      containChild: Container(
+        margin: const EdgeInsets.only(left: 20,right: 20,top: 50),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            backgroundImage(),
-            bottomView()
+            Text(appString.trans(context, appString.verifyYourIdentityText),
+                style: appStyles.commonTitleStyle(fontSize: 30)),
+            SizedBox(height: 15,),
+            Text(appString.trans(context, appString.verificationSubTitleText),
+                style: appStyles.alreadyHaveAccountTextStyle(fontSize: 15)),
+            SizedBox(height: 5,),
+            Text(widget.selectedContactDetail,
+                style: appStyles.alreadyHaveAccountTextStyle(fontSize: 15)
+            ),
+            SizedBox(height: 30,),
+            verificationCode(),
+            otpErrorMsg,
+            SizedBox(height: 5,),
+            Center(child: didNotReceivedCode()),
+            SizedBox(height: 210,),
+            CommonButton(
+              buttonName: appString.trans(context, appString.verificationText),
+              buttonHeight: 50,
+              buttonBorderRadius: 18,
+              isBottomMarginRequired: false,
+              textStyle: appStyles.buttonNameStyle(),
+              backCallback: () {
+                if (verificationCodeStr != '' && verificationCodeStr.trim().length == otpLength) {
+                  setState(() {
+                    errorMessage = '';
+                    Navigator.of(context).pop();
+                    Navigator.push(
+                      context,
+                      SlideRightRoute(widget: ResetPasswordScreen()),
+                    );
+                    /*if(isSignInScreen){
+                        sharedPreferencesFile.saveBool(isUserLoggedInC, true);
+                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
+                          return DashboardScreen();
+                        }), (route) => false);
+                      } else{
+                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
+                          return DashboardScreen();
+                        }), (route) => false);
+                      }*/
+                  });
+                }else{
+                  setState(() {
+                    if( verificationCodeStr == '')
+                      errorMessage = appString.trans(context, appString.pleaseEnterOtp);
+                    else
+                      errorMessage = appString.trans(context, appString.pleaseEnterCorrectOtp);
+                  });
+                }
+              },
+            ),
           ],
         ),
       ),

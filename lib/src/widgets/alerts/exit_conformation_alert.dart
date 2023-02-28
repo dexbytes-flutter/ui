@@ -4,11 +4,11 @@ import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart'
 class ExitConformationAlert {
   ExitConformationAlert(
       {Key? key,
-      required BuildContext context,
-      String extraMsg = "",
-      required msg,
-      required noCallback,
-      required callback}) {
+        required BuildContext context,
+        String extraMsg = "",
+        required msg,
+        required noCallback,
+        required callback}) {
     alertPopUp(context, extraMsg, msg, noCallback, callback);
   }
   alertPopUp(BuildContext context, extraMsg, msg, noCallback, callback) {
@@ -36,13 +36,14 @@ class ExitConformationAlert {
                   borderRadius: new BorderRadius.all(new Radius.circular(20.0)),
                 ),
                 child: ListView(
+                  physics: ClampingScrollPhysics(),
                   shrinkWrap: true,
                   children: [
                     Padding(
                         padding: EdgeInsets.only(
                             top: AppDimens().verticalMarginPadding(value: 20),
                             bottom:
-                                AppDimens().verticalMarginPadding(value: 0)),
+                            AppDimens().verticalMarginPadding(value: 0)),
                         child: Align(
                             alignment: Alignment.center,
                             child: Text(
@@ -58,34 +59,34 @@ class ExitConformationAlert {
                             ))),
                     (extraMsg != null && extraMsg != "")
                         ? Padding(
-                            padding: EdgeInsets.only(
-                                top:
-                                    AppDimens().verticalMarginPadding(value: 5),
-                                bottom: AppDimens()
-                                    .verticalMarginPadding(value: 0)),
-                            child: Align(
-                                alignment: Alignment.center,
-                                child: Text(
-                                  extraMsg ?? "",
-                                  textAlign: TextAlign.center,
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                      fontFamily: AppFonts().defaultFont,
-                                      color: AppColors().textSubHeadingColor,
-                                      fontSize: AppDimens().fontSize(value: 15),
-                                      fontWeight: FontWeight.w500),
-                                )))
+                        padding: EdgeInsets.only(
+                            top:
+                            AppDimens().verticalMarginPadding(value: 5),
+                            bottom: AppDimens()
+                                .verticalMarginPadding(value: 0)),
+                        child: Align(
+                            alignment: Alignment.center,
+                            child: Text(
+                              extraMsg ?? "",
+                              textAlign: TextAlign.center,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                  fontFamily: AppFonts().defaultFont,
+                                  color: AppColors().textSubHeadingColor,
+                                  fontSize: AppDimens().fontSize(value: 15),
+                                  fontWeight: FontWeight.w500),
+                            )))
                         : Container(),
                     Padding(
                         padding: EdgeInsets.only(
                             top: AppDimens().verticalMarginPadding(value: 25),
                             left:
-                                AppDimens().horizontalMarginPadding(value: 15),
+                            AppDimens().horizontalMarginPadding(value: 15),
                             right:
-                                AppDimens().horizontalMarginPadding(value: 15),
+                            AppDimens().horizontalMarginPadding(value: 15),
                             bottom:
-                                AppDimens().verticalMarginPadding(value: 20)),
+                            AppDimens().verticalMarginPadding(value: 20)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
@@ -119,7 +120,7 @@ class ExitConformationAlert {
                                           fontFamily: AppFonts().defaultFont,
                                           fontWeight: FontWeight.w500,
                                           fontSize:
-                                              AppDimens().fontSize(value: 15),
+                                          AppDimens().fontSize(value: 15),
                                           color: AppColors().textNormalColor)),
                                 ),
                               ),
@@ -152,7 +153,7 @@ class ExitConformationAlert {
                                           fontFamily: AppFonts().defaultFont,
                                           fontWeight: FontWeight.w500,
                                           fontSize:
-                                              AppDimens().fontSize(value: 15),
+                                          AppDimens().fontSize(value: 15),
                                           color: AppColors().textNormalColor)),
                                 ),
                               ),

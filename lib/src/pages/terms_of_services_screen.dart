@@ -103,7 +103,7 @@ class _TermsOfServicesScreenState extends State<TermsOfServicesScreen> {
               buttonHeight: 50,
               buttonBorderRadius: 18,
               isBottomMarginRequired: false,
-              textStyle: TextStyle(fontSize:14, fontWeight: FontWeight.w500,color: appColors.textNormalColor1),
+              textStyle: appStyles.buttonNameStyle(),
               backCallback: (){
                 Navigator.of(context).pop();
                 /*if(_validateFields(isButtonClicked: true)){

@@ -1,6 +1,5 @@
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 class ContainerDashboard extends StatelessWidget {
   final Color appBackgroundColor;
@@ -44,12 +43,8 @@ class ContainerDashboard extends StatelessWidget {
     Color? bottomBarSafeAreaColor = this.bottomBarSafeAreaColor;
 
     //Set status bar and bottom sef area color
-    if (statusBarColor == null) {
-      statusBarColor = appBackgroundColor;
-    }
-    if (bottomBarSafeAreaColor == null) {
-      bottomBarSafeAreaColor = appBackgroundColor;
-    }
+    statusBarColor ??= appBackgroundColor;
+    bottomBarSafeAreaColor ??= appBackgroundColor;
 
     // Main view return according to Scroll need condition
     Widget returnSubMainView(
@@ -82,7 +77,7 @@ class ContainerDashboard extends StatelessWidget {
             )
                 : StatusBar(statusBarColor: statusBarColor),
             AppBarViewDashboard(
-                appBar: this.appBar, appBarHeight: calculateAppBarHeight()),
+                appBar: appBar, appBarHeight: calculateAppBarHeight()),
             Expanded(
               child: Stack(
                 fit: StackFit.expand,
@@ -91,10 +86,10 @@ class ContainerDashboard extends StatelessWidget {
                       behavior: MyBehavior(), child: returnMainView()),
                   Align(
                     alignment: Alignment.bottomCenter,
-                    child: Container(
+                    child: SizedBox(
                       height: bottomMenuHeight,
                       child: BottomMenuViewDashboard(
-                          bottomMenuView: this.bottomMenuView,
+                          bottomMenuView: bottomMenuView,
                           bottomMenuHeight: bottomMenuHeight),
                     ),
                   ),
@@ -113,7 +108,7 @@ class ContainerDashboard extends StatelessWidget {
     double fullScreenSize = mediaQueryData.size.height;
     double remainingViewFullHeight = fullScreenSize;
 
-    double statusBarHeight = this.isOverLayStatusBar?0:mediaQueryData.padding.top;
+    double statusBarHeight = isOverLayStatusBar?0:mediaQueryData.padding.top;
     double bottomBarSafeAreaHeight = mediaQueryData.padding.bottom;
 
     double appBarHeight = calculateAppBarHeight();
@@ -168,20 +163,20 @@ class AppBarViewDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     double appBarHeight = this.appBarHeight;
     // MediaQueryData mediaQueryData = MediaQuery.of(context);
-    return Container(
+    return SizedBox(
       height: appBarHeight,
       child: PreferredSize(
+          preferredSize: Size(double.infinity, appBarHeight),
           child: (appBar == null || appBarHeight == 0)
               ? Container(
             height: appBarHeight,
             color: Colors.blue,
-            child: Text(
+            child: const Text(
               "custom height appBarHeight>0, no app bar appBarHeight < 0, Default system appBar height  appBarHeight == 0",
               style: TextStyle(color: Colors.black, fontSize: 14),
             ),
           )
-              : appBar!,
-          preferredSize: Size(double.infinity, appBarHeight)),
+              : appBar!),
     );
   }
 }
@@ -196,20 +191,20 @@ class BottomMenuViewDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     double bottomMenuHeight = this.bottomMenuHeight;
     // MediaQueryData mediaQueryData = MediaQuery.of(context);
-    return Container(
+    return SizedBox(
       height: bottomMenuHeight,
       child: PreferredSize(
+          preferredSize: Size(double.infinity, bottomMenuHeight),
           child: (bottomMenuView == null || bottomMenuHeight == 0)
               ? Container(
             height: bottomMenuHeight,
             color: Colors.blue,
-            child: Text(
+            child: const Text(
               "custom height appBarHeight>0, no app bar appBarHeight < 0, Default system appBar height  appBarHeight == 0",
               style: TextStyle(color: Colors.black, fontSize: 14),
             ),
           )
-              : bottomMenuView!,
-          preferredSize: Size(double.infinity, bottomMenuHeight)),
+              : bottomMenuView!),
     );
   }
 }

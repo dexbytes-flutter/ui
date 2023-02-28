@@ -1,11 +1,11 @@
 
 class TermsAndServicesModel{
-  final String title;
-  final String subTitle;
+  final String? title;
+  final String? subTitle;
 
   TermsAndServicesModel({
-    required this.title,
-    required this.subTitle
+    this.title,
+    this.subTitle
   });
 }
 

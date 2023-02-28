@@ -2,6 +2,7 @@ import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart'
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/app_utility/validation.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
+import 'package:base_flutter_app/src/pages/dashboard_screen.dart';
 import 'package:base_flutter_app/src/pages/register_screen.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -9,6 +10,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../all_file_import/app_utils_files_link.dart';
+import 'forgot_password_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -50,6 +52,10 @@ class _SignInScreenState extends State<SignInScreen> {
           setState(() {
             if (!onchange) {
               errorMessages[fieldName] = appString.trans(context,appString.pleaseEnterEmail);
+            }else{
+              setState(() {
+                errorMessages[fieldName] = "";
+              });
             }
           });
         }
@@ -57,6 +63,10 @@ class _SignInScreenState extends State<SignInScreen> {
         setState(() {
           if (!onchange) {
             errorMessages[fieldName] = appString.trans(context,appString.pleaseEnterCorrectEmail);
+          }else{
+            setState(() {
+              errorMessages[fieldName] = appString.trans(context,appString.pleaseEnterEmail);
+            });
           }
         });
       }
@@ -70,8 +80,13 @@ class _SignInScreenState extends State<SignInScreen> {
             errorMessages[fieldName] = '';
           } else {
             if (!onchange) {
-              errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterPassword);
-              // errorMessages[fieldName] = "Please correct enter password";
+              setState(() {
+                errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterPassword);
+              });
+            }else{
+              setState(() {
+                errorMessages[fieldName] = "";
+              });
             }
           }
         });
@@ -81,6 +96,10 @@ class _SignInScreenState extends State<SignInScreen> {
             if (fieldName == 'password') {
               errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterCorrectPassword);
             }
+          }else{
+            setState(() {
+              errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterPassword);
+            });
           }
         });
       }
@@ -114,8 +133,7 @@ class _SignInScreenState extends State<SignInScreen> {
           }
         });
         return false;
-      } else if (!Validation()
-          .validatePassword(controllers['password']?.text ?? "")) {
+      } else if (!Validation().validatePassword(controllers['password']?.text ?? "")) {
         setState(() {
           if (isButtonClicked) {
             errorMessages['password'] =
@@ -212,7 +230,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 autoFocus: false,
                 errorLeftRightMargin: 0,
                 maxCharLength: 25,
-                capitalization: CapitalizationText.sentences,
+                capitalization: CapitalizationText.none,
                 cursorColor: appColors.textColor,
                 textInputAction: TextInputAction.done,
                 borderStyle: BorderStyle.none,
@@ -247,8 +265,7 @@ class _SignInScreenState extends State<SignInScreen> {
               width: MediaQuery.of(context).size.width,
               child: CommonTextFieldWithError(
                 decoration: InputDecoration(
-                  hintText:
-                      appString.trans(context, appString.passwordHintText),
+                  hintText: appString.trans(context, appString.passwordHintText),
                   hintStyle: appStyles.textFieldHintTextTextStyle(),
                   contentPadding: EdgeInsets.all(10).copyWith(top: 18),
                   prefixIcon: Padding(
@@ -257,6 +274,20 @@ class _SignInScreenState extends State<SignInScreen> {
                         imageUrl: iconApps.passwordIcon,
                         iconSize: Size(10, 10),
                         imageColor: appColors.buttonBgColor),
+                  ),
+                  suffixIcon: GestureDetector(
+                    onTap: (){
+                      Navigator.push(
+                      context,
+                      SlideRightRoute(widget: ForgotPasswordScreen()),
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 20),
+                      child: Text(appString.trans(context, appString.forgotText),
+                      style: appStyles.textFieldHintTextTextStyle(texColor: appColors.buttonBgColor),
+                      ),
+                    ),
                   ),
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
@@ -279,7 +310,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 obscureText: true,
                 errorLeftRightMargin: 0,
                 maxCharLength: 10,
-                capitalization: CapitalizationText.sentences,
+                capitalization: CapitalizationText.none,
                 cursorColor: appColors.textColor,
                 textInputAction: TextInputAction.done,
                 borderStyle: BorderStyle.none,
@@ -313,12 +344,13 @@ class _SignInScreenState extends State<SignInScreen> {
                 buttonHeight: 50,
                 buttonBorderRadius: 18,
                 isBottomMarginRequired: false,
-                textStyle: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: appColors.textNormalColor1),
+                textStyle: appStyles.buttonNameStyle(),
                 backCallback: () {
                   if (_validateFields(isButtonClicked: true)) {
+                    Navigator.push(
+                      context,
+                      SlideRightRoute(widget: DashBoardPage()),
+                    );
                     // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
                     //   return OtpVerificationScreen(
                     //     isSignUpScreen: this.isSignUpScreen,
