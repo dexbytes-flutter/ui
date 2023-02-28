@@ -248,6 +248,13 @@ class AppString {
   String topRecommendedImageText = 'topRecommendedImageText';
   String destinationText = 'destinationText';
   String searchTextFieldHintText = 'searchTextFieldHintText';
+  String foundText = 'foundText';
+  String viewTitleText = 'viewTitleText';
+  String locationTitleText = 'locationTitleText';
+  String priceTitleText = 'priceTitleText';
+  String ratingTitleText = 'ratingTitleText';
+  String rangeTitleText = 'rangeTitleText';
+  String applyFilterButtonText = 'applyFilterButtonText';
 
 }
 

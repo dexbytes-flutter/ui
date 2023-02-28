@@ -38,6 +38,7 @@ class IconApps {
   String bookmarkIconFilled = "assets/images/bookmark_icon_filled.svg";
   String islandIcon = "assets/images/island_icon.svg";
   String indonesiaFlag = "assets/images/indonesia_flag.svg";
+  String filterIcon = "assets/images/filter_icon.svg";
 
   iconImage(
       {required String imageUrl,

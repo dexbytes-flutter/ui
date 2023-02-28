@@ -31,13 +31,6 @@ class _SearchScreenState extends State<SearchScreen> {
 
   int selectedIndex = 0;
 
-  List<String> recentSearchList = [
-    "Indonesia",
-    "Blausee",
-    "National Park",
-    "Komodo Island"
-  ];
-
   @override
   Widget build(BuildContext context) {
     // Top search field
@@ -100,29 +93,6 @@ class _SearchScreenState extends State<SearchScreen> {
             )
           ],
         ),
-      );
-    }
-
-    // Recent search list
-    Widget recentSearchListView() {
-      return Container(
-        height: 35,
-        width: appDimens.widthFullScreen(),
-        child: ListView.builder(
-            itemCount: recentSearchList.length,
-            scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
-            physics: ClampingScrollPhysics(),
-            itemBuilder: (context, index) {
-              return Container(
-                padding: EdgeInsets.all(10).copyWith(left: 15, right: 15),
-                margin: EdgeInsets.only(left: 20),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: appColors.appBgColor2),
-                child: Text(recentSearchList[index]),
-              );
-            }),
       );
     }
 

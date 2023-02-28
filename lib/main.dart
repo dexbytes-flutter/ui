@@ -21,6 +21,7 @@ import 'package:provider/provider.dart';
 import 'package:base_flutter_app/src/config/routes.dart';
 
 import 'src/pages/dashboard_screen.dart';
+import 'src/pages/destination_filter_screen.dart';
 import 'src/pages/forgot_password_screen.dart';
 import 'src/pages/home_screen.dart';
 import 'src/pages/login_screen.dart';
@@ -279,8 +280,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
     return /*!widget.isOneTimeProfileSetUpDone
         ? CreateAccount()
         : */
-      SearchScreen();
-
+      HomeScreen();
   }
 
   //Redirect to another screen if already loggedIn

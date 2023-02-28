@@ -160,5 +160,12 @@
   "recommendedImageText" : "Recommended",
   "topRecommendedImageText" : "Top Recommended",
   "destinationText" : "Destination",
-  "searchTextFieldHintText" : "Search your dream destination"
+  "searchTextFieldHintText" : "Search your dream destination",
+  "foundText" : "Found",
+  "viewTitleText" : "View",
+  "locationTitleText" : "Location",
+  "priceTitleText" : "Price",
+  "ratingTitleText" : "Rating",
+  "rangeTitleText" : "Range",
+  "applyFilterButtonText" : "Apply Filter",
 }
