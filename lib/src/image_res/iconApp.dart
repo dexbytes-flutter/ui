@@ -29,6 +29,16 @@ class IconApps {
   String locationIcon = 'assets/images/location_icon.svg';
   String faceIdIcon = 'assets/images/face_id.svg';
   String termsOfServicesIcon = 'assets/images/terms_of_services_icon.svg';
+  String mobileIcon = 'assets/images/mobile_icon.svg';
+  String appBarProfileIcon = 'assets/images/app_bar_profile_icon.svg';
+  String dashboardIcon = 'assets/images/dashboard_icon.svg';
+  String searchIcon = 'assets/images/search_icon.svg';
+  String starIcon = 'assets/images/star_icon.svg';
+  String bookmarkIcon = "assets/images/bookmark_icon.svg";
+  String bookmarkIconFilled = "assets/images/bookmark_icon_filled.svg";
+  String islandIcon = "assets/images/island_icon.svg";
+  String indonesiaFlag = "assets/images/indonesia_flag.svg";
+  String filterIcon = "assets/images/filter_icon.svg";
 
   iconImage(
       {required String imageUrl,

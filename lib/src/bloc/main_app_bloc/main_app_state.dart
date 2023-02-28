@@ -68,8 +68,12 @@ class LoggedInState extends MainAppState {
 class HomeBottomNavigationBarTapedState extends MainAppState {
   int tapedBottomBarIndex;
   String tapedBottomBarPageId;
+  String? statusBarColor;
   HomeBottomNavigationBarTapedState(
-      {this.tapedBottomBarIndex = 0, this.tapedBottomBarPageId = ""}) {
+      {this.tapedBottomBarIndex = 0,
+        this.tapedBottomBarPageId = "",
+        this.statusBarColor
+      }) {
     getMainAppStateModel.tapedBottomBarIndex = tapedBottomBarIndex;
     getMainAppStateModel.tapedBottomBarPageId = tapedBottomBarPageId;
     //updateModel(mainAppStateModelTemp: this.getMainAppStateModel);
