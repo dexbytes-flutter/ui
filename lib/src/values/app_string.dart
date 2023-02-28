@@ -245,6 +245,9 @@ class AppString {
   String welcomeText = 'welcomeText';
   String recommendationText = 'recommendationText';
   String recommendedImageText = 'recommendedImageText';
+  String topRecommendedImageText = 'topRecommendedImageText';
+  String destinationText = 'destinationText';
+  String searchTextFieldHintText = 'searchTextFieldHintText';
 
 }
 

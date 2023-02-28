@@ -1,16 +1,14 @@
+import 'package:base_flutter_app/src/all_file_import/app_utils_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
-import 'package:base_flutter_app/src/model/home_screen_images.dart';
 import 'package:base_flutter_app/src/model/home_screen_verticle_title_list.dart';
 import 'package:base_flutter_app/src/widgets/appbar/home_screen_app_bar.dart';
 import 'package:base_flutter_app/src/widgets/common_vertical_list.dart';
 import 'package:base_flutter_app/src/widgets/home_page_common_image.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../widgets/appbar/common_app_bar.dart';
+import 'search_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -21,9 +19,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
-  int activeIndex = 0;
   int selectedIndex = 0;
-  final PageController _pageController = PageController(initialPage: 0);
 
 
 
@@ -35,7 +31,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void dispose() {
     super.dispose();
-    _pageController.dispose();
   }
 
   @override
@@ -44,9 +39,6 @@ class _HomeScreenState extends State<HomeScreen> {
     AppDimens appDimens = AppDimens();
     appDimens.appDimensFind(context: context);
 
-    void _scrollToIndex(int index) {
-      _pageController.animateToPage(index, duration: Duration(seconds: 2), curve: Curves.fastLinearToSlowEaseIn);
-    }
 
     // Title text and search icon
     Widget titleText(){
@@ -59,10 +51,19 @@ class _HomeScreenState extends State<HomeScreen> {
             Text(appString.trans(context, appString.recommendationText),
             style: appStyles.commonTitleStyle(fontSize: 18,texColor: appColors.buttonBgColor),
             ),
-            iconApps.iconImage(
-                imageUrl: iconApps.searchIcon,
-                imageColor: appColors.buttonBgColor,
-                iconSize: Size(22, 22)
+            GestureDetector(
+              onTap: (){
+                Navigator.push(
+                  context,
+                  SlideRightRoute(widget: SearchScreen()
+                  ),
+                );
+              },
+              child: iconApps.iconImage(
+                  imageUrl: iconApps.searchIcon,
+                  imageColor: appColors.buttonBgColor,
+                  iconSize: Size(22, 22)
+              ),
             ),
           ],
         ),
@@ -97,25 +98,28 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     }
 
-
     // Center image list
     Widget listView(){
+      List<VerticalTitleSublistList> verticalTitleSubTitleList = homeVerticalList[selectedIndex].verticalTitleSubTitleList;
       return Container(
         width: appDimens.widthFullScreen()/1.22,
         height: appDimens.heightFullScreen()/1.52,
         margin: EdgeInsets.only(top: 10),
-        // color: Colors.yellow,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           shrinkWrap: true,
           physics: ClampingScrollPhysics(),
           padding: EdgeInsets.zero,
-          itemCount: homePageSlideImageList.length,
+          itemCount: verticalTitleSubTitleList.length,
           itemBuilder: (context,index){
             return Container(
               margin: EdgeInsets.only(right: 15),
                 child: HomepageCommonImage(
-                  imageUrl: homePageSlideImageList[index].imageUrl,
+                  imageUrl: verticalTitleSubTitleList[index].imageUrl,
+                  selectedIndex: homeVerticalList[selectedIndex].id,
+                  title: verticalTitleSubTitleList[index].title,
+                  subTitle: verticalTitleSubTitleList[index].subTitle,
+                  countryTitle: verticalTitleSubTitleList[index].countryTitle,
                 )
             );
           },

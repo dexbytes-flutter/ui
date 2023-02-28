@@ -34,7 +34,10 @@ class IconApps {
   String dashboardIcon = 'assets/images/dashboard_icon.svg';
   String searchIcon = 'assets/images/search_icon.svg';
   String starIcon = 'assets/images/star_icon.svg';
+  String bookmarkIcon = "assets/images/bookmark_icon.svg";
   String bookmarkIconFilled = "assets/images/bookmark_icon_filled.svg";
+  String islandIcon = "assets/images/island_icon.svg";
+  String indonesiaFlag = "assets/images/indonesia_flag.svg";
 
   iconImage(
       {required String imageUrl,

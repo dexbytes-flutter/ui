@@ -5,9 +5,17 @@ import 'package:flutter/material.dart';
 
 class HomepageCommonImage extends StatelessWidget {
   final String? imageUrl;
-  const HomepageCommonImage({
+  final String? title;
+  final String? subTitle;
+  final String? countryTitle;
+  late final int? selectedIndex;
+  HomepageCommonImage({
     Key? key,
-    this.imageUrl
+    this.imageUrl,
+    this.title,
+    this.subTitle,
+    this.countryTitle,
+    this.selectedIndex
   }) : super(key: key);
 
   @override
@@ -37,23 +45,93 @@ class HomepageCommonImage extends StatelessWidget {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Borobudur \nTemple",
-          style: appStyles.commonTitleStyle(fontSize: 32),
-          ),
-          SizedBox(height: 8,),
           Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              selectedIndex == 1? Container(
+                decoration: BoxDecoration(
+                    border: Border.all(color: appColors.white),
+                    borderRadius: BorderRadius.circular(8)
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: CachedNetworkImage(
+                    imageUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
+                    fit: BoxFit.cover,
+                    height: 20,
+                    width: 20,
+                  ),
+                ),
+              ) : Container(),
+              SizedBox(width: selectedIndex == 1? 10 : 0,),
+              Text(title!,
+                style: appStyles.commonTitleStyle(fontSize: 32),
+              ),
+          ],),
+          SizedBox(height: selectedIndex == 1? 8 : selectedIndex == 0? 10:15,),
+          selectedIndex == 2
+              ? Row(
             children: [
               Container(
-                height: 15,
-                width: 15,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: appColors.red
+                    border: Border.all(color: appColors.white),
+                    borderRadius: BorderRadius.circular(5)
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(5),
+                  child: CachedNetworkImage(
+                    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Flag_of_Venezuela_%281930%E2%80%932006%29.svg/220px-Flag_of_Venezuela_%281930%E2%80%932006%29.svg.png",
+                    fit: BoxFit.cover,
+                    height: 15,
+                    width: 15,
+                  ),
                 ),
               ),
               SizedBox(width: 5,),
-              Text("Magelang Indonesia",
-              style: appStyles.commonSubTitleTextStyle(fontSize: 14),
+              Text(countryTitle!,
+              style: appStyles.commonSubTitleTextStyle(fontSize: 14,),
+              ),
+            ],
+          )
+              : Container(),
+          SizedBox(height: selectedIndex == 2? 15 : 0,),
+          Row(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  selectedIndex == 0
+                      ? Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: appColors.white),
+                        borderRadius: BorderRadius.circular(8)
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: CachedNetworkImage(
+                        imageUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
+                        fit: BoxFit.cover,
+                        height: 20,
+                        width: 20,
+                      ),
+                    ),
+                  )
+                      : iconApps.iconImage(
+                      imageUrl: iconApps.islandIcon,
+                      iconSize: Size(20, 20),
+                      imageColor: appColors.white
+                  ),
+                  SizedBox(width: selectedIndex != 0? 10 : 5,),
+                  Text(subTitle!,
+                  style: appStyles.commonSubTitleTextStyle(fontSize: 14,texColor: appColors.white),
+                  ),
+                  SizedBox(width: 2,),
+                  Text( selectedIndex != 0
+                      ? appString.trans(context, appString.destinationText)
+                      : "",
+                    style: appStyles.commonSubTitleTextStyle(fontSize: 13),
+                  ),
+                ],
               )
             ],
           )
@@ -110,27 +188,30 @@ class HomepageCommonImage extends StatelessWidget {
             Positioned(
               left: 25,
                 top: 25,
-                child: ratingView()
+                child: selectedIndex == 0? ratingView():Container()
             ),
             Positioned(
               top: 25,
                 right: 25,
-                child: iconApps.iconImage(
+                child: selectedIndex == 0? iconApps.iconImage(
                 imageUrl: iconApps.bookmarkIconFilled,
                 iconSize: Size(25, 35),
                   imageColor: appColors.buttonBgColor.withOpacity(0.70)
-              )
+              ): Container()
             ),
             Positioned(
-              bottom: 212,
+              bottom: selectedIndex != 1? 230 : 185,
                 left: 25,
-                child: Text(appString.trans(context, appString.recommendedImageText),
+                child: Text(
+                  selectedIndex == 1
+                      ? appString.trans(context, appString.topRecommendedImageText)
+                      : appString.trans(context, appString.recommendedImageText),
                   style: appStyles.commonSubTitleTextStyle(fontSize: 13),
                 )
             ),
             Positioned(
-              bottom: 110,
-                left: 25,
+              bottom: selectedIndex == 1?115:120,
+                left: selectedIndex == 0? 24 : 25,
                 child: placeTitleView()
             ),
             Positioned(

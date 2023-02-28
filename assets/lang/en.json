@@ -157,5 +157,8 @@
   "passwordLengthError" : "Password length must be greater than or equal to 8 characters",
   "welcomeText" : "Welcome",
   "recommendationText" : "Recommendation",
-  "recommendedImageText" : "Recommended"
+  "recommendedImageText" : "Recommended",
+  "topRecommendedImageText" : "Top Recommended",
+  "destinationText" : "Destination",
+  "searchTextFieldHintText" : "Search your dream destination"
 }
