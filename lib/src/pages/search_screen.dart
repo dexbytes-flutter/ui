@@ -130,20 +130,20 @@ class _SearchScreenState extends State<SearchScreen> {
         homeVerticalList[selectedIndex].verticalTitleSubTitleList;
     // Center stack view
     Widget centerView() {
-      return Stack(
-        children: [
-          ShaderMask(
-            shaderCallback: (rectangle) => LinearGradient(
-              colors: [
-                appColors.appTransColor.withOpacity(0.30),
-                appColors.appBgColorJungleGreen.withOpacity(0.30),
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ).createShader(
-                Rect.fromLTRB(0, 0, rectangle.width, rectangle.height)),
-            blendMode: BlendMode.dstIn,
-            child: Row(
+      return ShaderMask(
+        shaderCallback: (rectangle) => LinearGradient(
+          colors: [
+            appColors.appBgColorJungleGreen,
+            appColors.appTransColor,
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ).createShader(
+            Rect.fromLTRB(0, 0,rectangle.width, rectangle.height)),
+        blendMode: BlendMode.dstIn,
+        child: Stack(
+          children: [
+            Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -195,19 +195,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 )
               ],
             ),
-          ),
-          ShaderMask(
-            shaderCallback: (rectangle) => LinearGradient(
-              colors: [
-                appColors.appTransColor.withOpacity(0.30),
-                appColors.appBgColorJungleGreen.withOpacity(0.30),
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ).createShader(
-                Rect.fromLTRB(0, 0, rectangle.width, rectangle.height)),
-            blendMode: BlendMode.dstOver,
-            child: Container(
+            Container(
               color: appColors.appBgColorJungleGreen,
               margin: EdgeInsets.only(left: 20),
               child: Column(
@@ -288,9 +276,9 @@ class _SearchScreenState extends State<SearchScreen> {
                   )
                 ],
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       );
     }
 
