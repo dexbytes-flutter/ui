@@ -1,3 +1,4 @@
+import 'package:base_flutter_app/src/all_file_import/app_utils_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/model/common_detail_card.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
@@ -5,6 +6,8 @@ import 'package:flutter/material.dart';
 
 import '../all_file_import/app_values_files_link.dart';
 import '../widgets/common_contact_detail_widget.dart';
+import 'otp_verification_page.dart';
+import 'verification_code_screen.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({Key? key}) : super(key: key);
@@ -15,7 +18,7 @@ class ForgotPasswordScreen extends StatefulWidget {
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
-  int? selectedIndex;
+  int selectedIndex = 0;
   bool isSelected = false;
 
   @override
@@ -30,10 +33,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(appString.trans(context, appString.forgotPasswordTitleText),
-                style: appStyles.commonTitleStyle(fontSize: 30)),
+                style: appStyles.commonTitleStyle(fontSize: 30,fontFamily: "Raleway")),
             SizedBox(height: 15,),
             Text(appString.trans(context, appString.selectContactDetailText),
-                style: appStyles.commonSubTitleTextStyle(fontSize: 15)),
+                style: appStyles.commonSubTitleTextStyle(fontSize: 15,fontFamily: "Raleway")),
           ],
         ),
       );
@@ -52,6 +55,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 setState(() {
                   this.selectedIndex = index;
                 });
+                Navigator.push(
+                  context,
+                  SlideRightRoute(widget: VerificationCodeScreen(
+                    selectedContactDetail: commonDetailCardList[selectedIndex].subTitle,
+                  )),
+                );
               },
               child: CommonContactDetailCard(
                 cardMargin: EdgeInsets.only(left: 20,right: 20,bottom: 20),

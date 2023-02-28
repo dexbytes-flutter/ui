@@ -2,12 +2,12 @@ class CommonDetailCardModel{
 
   final String? icon;
   final String? title;
-  final String? subTitle;
+  final String subTitle;
 
   CommonDetailCardModel({
     this.icon,
     this.title,
-    this.subTitle
+    required this.subTitle
   });
 }
 

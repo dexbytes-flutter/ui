@@ -1,6 +1,7 @@
 import 'package:base_flutter_app/src/all_file_import/app_utils_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
+import 'package:base_flutter_app/src/pages/login_screen.dart';
 import 'package:base_flutter_app/src/pages/register_screen.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:base_flutter_app/src/widgets/pin_code_fields.dart';
@@ -11,7 +12,9 @@ import 'package:flutter/material.dart';
 import 'terms_of_services_screen.dart';
 
 class OtpVerificationScreen extends StatefulWidget {
-  const OtpVerificationScreen({Key? key}) : super(key: key);
+  const OtpVerificationScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<OtpVerificationScreen> createState() => _OtpVerificationScreenState();
@@ -218,15 +221,15 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                   buttonHeight: 50,
                   buttonBorderRadius: 18,
                   isBottomMarginRequired: false,
-                  textStyle: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: appColors.textNormalColor1),
+                  textStyle: appStyles.buttonNameStyle(),
                   backCallback: () {
                     if (verificationCodeStr != '' && verificationCodeStr.trim().length == otpLength) {
                       setState(() {
                         errorMessage = '';
-                        Navigator.of(context).pop();
+                        Navigator.push(
+                          context,
+                          SlideRightRoute(widget: SignInScreen()),
+                        );
                         /*if(isSignInScreen){
                           sharedPreferencesFile.saveBool(isUserLoggedInC, true);
                           Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
