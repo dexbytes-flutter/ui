@@ -259,7 +259,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 maxCharLength: 25,
                 capitalization: CapitalizationText.none,
                 cursorColor: appColors.textColor,
-                textInputAction: TextInputAction.done,
+                textInputAction: TextInputAction.next,
                 borderStyle: BorderStyle.none,
                 inputKeyboardType: InputKeyboardTypeWithError.email,
                 errorStyle: appStyles.errorStyle(fontSize: 10),

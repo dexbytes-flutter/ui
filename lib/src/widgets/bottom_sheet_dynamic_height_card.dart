@@ -44,7 +44,10 @@ class BottomSheetDynamicHeightCardView extends StatelessWidget {
           margin: bottomSheetMargin ?? EdgeInsets.zero,
           decoration: BoxDecoration(
               color: cardBackgroundColor,
-              borderRadius: BorderRadius.all(Radius.circular(20))
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20)
+              )
           ),
           child: Column(
             crossAxisAlignment: crossAxisAlignment,

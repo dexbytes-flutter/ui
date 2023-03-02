@@ -35,6 +35,9 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
   String address = "";
   SfRangeValues _values = SfRangeValues(150, 400);
 
+  RangeValues values = const RangeValues(150, 400);
+  RangeLabels labels = const RangeLabels("100", "1000");
+
   @override
   void initState() {
     // TODO: implement initState
@@ -244,62 +247,55 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
       );
     }
 
-    /*priceRangeSlider(){
+    priceRangeSlider(){
       return Container(
-        child: Stack(
+        child: Column(
           children: [
-            Column(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("\$${values.start.ceil()} - \$${values.end.ceil()}",
-                        style:appStyles.commonSubTitleTextStyle(
-                          fontSize: 15 ,
-                          fontWeight: FontWeight.w600,
-                          texColor:appColors.textNormalColor5,
-                        )
+                Text("\$${values.start.ceil()} - \$${values.end.ceil()}",
+                    style:appStyles.commonSubTitleTextStyle(
+                      fontSize: 11.5 ,
+                      fontWeight: FontWeight.w600,
+                      texColor:appColors.textNormalColor5,
                     )
-                  ],
-                ),
-                const SizedBox(height: 45,),
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal:14),
-                  child: SliderTheme(
-                    data: SliderThemeData(
-                      activeTickMarkColor: appColors.textNormalColor5,
-                      activeTrackColor: appColors.textNormalColor5,
-                      inactiveTickMarkColor: Colors.transparent,
-                      thumbColor: appColors.textNormalColor5,
-                      overlayShape: SliderComponentShape.noOverlay,
-                      trackHeight: 4.5,
-                      rangeThumbShape: const RoundRangeSliderThumbShape(enabledThumbRadius: 15),
-                    ),
-                    child: RangeSlider(
-                      onChanged: (value){
-                        setState(() {
-                          values = value;
-                          labels =  RangeLabels(values.start.toString(),values.end.toString());
-                        });
-                      },
-                      values: values,
-                      min: 10,
-                      max: 200,
-                      // labels:labels,
-                      divisions: 10,
-
-                    ),
-                  ),
-                ),
+                )
               ],
+            ),
+            const SizedBox(height: 10,),
+            Container(
+              child: SliderTheme(
+                data: SliderThemeData(
+                  activeTrackColor: appColors.buttonBgColor,
+                  inactiveTrackColor: appColors.textColor.withOpacity(0.40),
+                  thumbColor: appColors.buttonBgColor,
+                  overlayShape: SliderComponentShape.noOverlay,
+                  trackHeight: 3,
+                  trackShape: RoundedRectSliderTrackShape(),
+                  rangeThumbShape: const RoundRangeSliderThumbShape(enabledThumbRadius: 5),
+                ),
+                child: RangeSlider(
+                  onChanged: (value){
+                    setState(() {
+                      values = value;
+                      labels =  RangeLabels(values.start.toString(),values.end.toString());
+                    });
+                  },
+                  values: values,
+                  min: 100,
+                  max: 1000,
+                  labels: labels,
+                ),
+              ),
             ),
           ],
         ),
       );
-    }*/
+    }
 
     // Price value slider
-    Widget priceValueSlider(){
+    /*Widget priceValueSlider(){
       return SfRangeSlider(
         min: 100,
         max: 1000.0,
@@ -318,7 +314,7 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
           });
         },
       );
-    }
+    }*/
 
 
     Widget filterScreenView(){
@@ -340,12 +336,12 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
             ),
             SizedBox(height: 10,),
             locationDropDownView(),
-            SizedBox(height: 35,),
+            SizedBox(height: 25,),
             Text(appString.trans(context, appString.priceTitleText),
               style: appStyles.commonSubTitleTextStyle(fontSize: 15),
             ),
             SizedBox(height: 10,),
-            priceValueSlider(),
+            priceRangeSlider(),
             SizedBox(height: 35,),
             Text(appString.trans(context, appString.ratingTitleText),
               style: appStyles.commonSubTitleTextStyle(fontSize: 15),
@@ -374,7 +370,6 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
     return BottomSheetDynamicHeightCardView(
       cardBackgroundColor: appColors.appBgColorJungleGreen,
       topLineShow: false,
-      bottomSheetMargin: EdgeInsets.all(20),
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,

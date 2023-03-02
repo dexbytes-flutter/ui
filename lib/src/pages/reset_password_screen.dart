@@ -240,7 +240,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 maxCharLength: 8,
                 capitalization: CapitalizationText.sentences,
                 cursorColor: appColors.textColor,
-                textInputAction: TextInputAction.done,
+                textInputAction: TextInputAction.next,
                 borderStyle: BorderStyle.none,
                 inputKeyboardType: InputKeyboardTypeWithError.password,
                 errorStyle: appStyles.errorStyle(fontSize: 10),

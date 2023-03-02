@@ -4,7 +4,7 @@ import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart'
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
 import 'package:base_flutter_app/src/model/home_screen_verticle_title_list.dart';
 import 'package:base_flutter_app/src/model/recent_search_model.dart';
-import 'package:base_flutter_app/src/pages/destination_filter_screen.dart';
+import 'package:base_flutter_app/src/pages/destination_search_filter_bottom_sheet.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:base_flutter_app/src/widgets/appbar/home_screen_app_bar.dart';
 import 'package:base_flutter_app/src/widgets/common_vertical_list.dart';
@@ -91,10 +91,7 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
             GestureDetector(
               onTap: (){
-                Navigator.push(
-                  MainAppBloc.getDashboardContext,
-                  SlideRightRoute(widget: DestinationFilterScreen()),
-                );
+
               },
               child: Container(
                 padding: EdgeInsets.all(15),
@@ -183,6 +180,46 @@ class _SearchScreenState extends State<SearchScreen> {
       );*/
     }
 
+    // Search result title text with filter button
+    Widget titleWithFilterOption(){
+      return Padding(
+        padding: const EdgeInsets.only(left: 20,right: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(appString.trans(context, appString.topRecentSearchText),
+              style: appStyles.commonSubTitleTextStyle(fontWeight: FontWeight.w600,
+                  fontSize: 15),
+            ),
+            GestureDetector(
+              onTap: (){
+                showModalBottomSheet(
+                    context: context,
+                    builder: (context) => DestinationSearchFilterBottomSheet(),
+                    isScrollControlled: true,
+                    backgroundColor: appColors.appTransColor,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20)
+                        )
+                    ));
+              },
+              child: Container(
+                padding: EdgeInsets.all(8).copyWith(left: 15,right: 15),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: appColors.buttonBgColor),
+                child: iconApps.iconImage(
+                    imageUrl: iconApps.filterIcon,
+                    imageColor: appColors.black,
+                    iconSize: Size(20, 20)),
+              ),
+            )
+          ],
+        ),
+      );
+    }
 
     // Center stack view
     Widget centerView() {
@@ -239,15 +276,7 @@ class _SearchScreenState extends State<SearchScreen> {
           children: [
             topSearchField(),
             // Top recent search title text
-            Padding(
-              padding: const EdgeInsets.only(left: 20,right: 20),
-              child: TitleText(
-                  text: appString.trans(context, appString.topRecentSearchText),
-                style: appStyles.commonTitleStyle(fontSize: 15,texColor: appColors.textColor,
-                  fontWeight: FontWeight.w500
-                ),
-              ),
-            ),
+            titleWithFilterOption(),
             SizedBox(height: 20,),
             recentSearchTexts(),
             SizedBox(height: 20,),
