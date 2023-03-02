@@ -27,7 +27,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     // Screen title
     Widget screenTitle(){
       return Padding(
-        padding: const EdgeInsets.only(top: 15,left: 20,right: 20),
+        padding: const EdgeInsets.only(top: 30,left: 20,right: 20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,

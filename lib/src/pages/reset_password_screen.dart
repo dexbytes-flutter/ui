@@ -32,6 +32,14 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
     'confirm_password': "",
   };
 
+  bool hideNewPassword = true;
+  bool hideConfirmPassword = true;
+
+  void togglePasswordVisibility1() =>
+      setState(() => hideNewPassword = !hideNewPassword);
+  void togglePasswordVisibility2() =>
+      setState(() => hideConfirmPassword = !hideConfirmPassword);
+
   @override
   void initState() {
     super.initState();
@@ -44,30 +52,6 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
-
-    //Check password field
-    checkPassword(value, fieldName, {onchange = false}) {
-      if (Validation().isNotEmpty(value.trim())) {
-        setState(() {
-          if (Validation().validatePassword(value.trim())) {
-            errorMessages[fieldName] = '';
-          } else {
-            if (!onchange) {
-              errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterPassword);
-              // errorMessages[fieldName] = "Please correct enter password";
-            }
-          }
-        });
-      } else {
-        setState(() {
-          if (!onchange) {
-            if (fieldName == 'password') {
-              errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterCorrectPassword);
-            }
-          }
-        });
-      }
-    }
 
     // Validation on button click
     bool _validateFields({isButtonClicked = false}) {
@@ -126,19 +110,13 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
             errorMessages['new_password'] = "";
 
             if (Validation().validatePassword(controllers[fieldName]!.text.trim())) {
-
-              errorMessages['new_password'] = "";
-
-              /*if ((controllers['confirm_password']?.text != null && controllers['confirm_password']?.text != "")
-                  &&
-                  controllers['new_password']?.text != controllers['confirm_password']?.text) {
-                errorMessages['confirm_password'] = appString.trans(context, appString.passwordMustBeSame);
-              } else {
+              setState(() {
                 errorMessages['new_password'] = "";
-                errorMessages['confirm_password'] = "";
-              }*/
+              });
             } else {
-              errorMessages[fieldName] = appString.trans(context, appString.mustContain1LetterAndNumber);
+              setState(() {
+                errorMessages[fieldName] = appString.trans(context, appString.mustContain1LetterAndNumber);
+              });
               // if (!onchange) {
               //   errorMessages[fieldName] = appString.trans(context, appString.mustContain1LetterAndNumber);
               // }
@@ -190,11 +168,22 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       }
     }
 
+    //Visibility icons
+    Widget visibilityOffIcon = Icon(
+      Icons.visibility_off,
+      color: appColors.buttonBgColor,
+      size: 20,
+    );
+    Widget visibilityOnIcon = Icon(
+      Icons.visibility,
+      color: appColors.grey,
+      size: 20,
+    );
 
     // Screen title
     Widget screenTitle(){
       return Padding(
-        padding: const EdgeInsets.only(top: 80,left: 20,right: 20),
+        padding: const EdgeInsets.only(top: 30,left: 20,right: 20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -214,7 +203,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               width: MediaQuery.of(context).size.width,
               child: CommonTextFieldWithError(
                 decoration: InputDecoration(
-                  hintText: appString.trans(context, appString.passwordHintText),
+                  hintText: appString.trans(context, appString.newPasswordHintText),
                   hintStyle: appStyles.textFieldHintTextTextStyle(),
                   contentPadding: EdgeInsets.all(10).copyWith(top: 18),
                   prefixIcon: Padding(
@@ -223,6 +212,10 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                         imageUrl: iconApps.passwordIcon,
                         iconSize: Size(10, 10),
                         imageColor: appColors.buttonBgColor),
+                  ),
+                  suffixIcon: IconButton(
+                    icon: hideNewPassword ? visibilityOffIcon : visibilityOnIcon,
+                    onPressed: togglePasswordVisibility1,
                   ),
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
@@ -240,11 +233,11 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 errorMessages: errorMessages['new_password']?.toString() ?? '',
                 controllerT: controllers['new_password'],
                 inputHeight: 50,
-                errorMsgHeight: 22,
+                errorMsgHeight: 24,
                 autoFocus: false,
-                obscureText: true,
+                obscureText: hideNewPassword,
                 errorLeftRightMargin: 0,
-                maxCharLength: 10,
+                maxCharLength: 8,
                 capitalization: CapitalizationText.sentences,
                 cursorColor: appColors.textColor,
                 textInputAction: TextInputAction.done,
@@ -262,8 +255,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 },
               ),
             ),
-            SizedBox(height: 5,),
-
+            SizedBox(height: 10,),
             // Confirm password field
             Container(
               padding: EdgeInsets.only(
@@ -273,7 +265,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               width: MediaQuery.of(context).size.width,
               child: CommonTextFieldWithError(
                 decoration: InputDecoration(
-                  hintText: appString.trans(context, appString.passwordHintText),
+                  hintText: appString.trans(context, appString.confirmPasswordHintText),
                   hintStyle: appStyles.textFieldHintTextTextStyle(),
                   contentPadding: EdgeInsets.all(10).copyWith(top: 18),
                   prefixIcon: Padding(
@@ -282,6 +274,10 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                         imageUrl: iconApps.passwordIcon,
                         iconSize: Size(10, 10),
                         imageColor: appColors.buttonBgColor),
+                  ),
+                  suffixIcon: IconButton(
+                    icon: hideConfirmPassword ? visibilityOffIcon : visibilityOnIcon,
+                    onPressed: togglePasswordVisibility2,
                   ),
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
@@ -301,9 +297,9 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 inputHeight: 50,
                 errorMsgHeight: 22,
                 autoFocus: false,
-                obscureText: true,
+                obscureText: hideConfirmPassword,
                 errorLeftRightMargin: 0,
-                maxCharLength: 10,
+                maxCharLength: 8,
                 capitalization: CapitalizationText.sentences,
                 cursorColor: appColors.textColor,
                 textInputAction: TextInputAction.done,
@@ -321,7 +317,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 },
               ),
             ),
-            SizedBox(height: 140,),
+            SizedBox(height: 195,),
             Container(
               child: CommonButton(
                 buttonName: appString.trans(context, appString.updatePasswordButtonText),

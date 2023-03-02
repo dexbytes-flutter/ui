@@ -35,6 +35,11 @@ class _SignInScreenState extends State<SignInScreen> {
     'password': "",
   };
 
+  bool hidePassword = true;
+
+  void togglePasswordVisibility1() =>
+      setState(() => hidePassword = !hidePassword);
+
   @override
   Widget build(BuildContext context) {
     AppDimens appDimens = AppDimens();
@@ -74,33 +79,43 @@ class _SignInScreenState extends State<SignInScreen> {
 
     //Check password field
     checkPassword(value, fieldName, {onchange = false}) {
-      if (Validation().isNotEmpty(value.trim())) {
+
+      if (Validation().isNotEmpty(value)) {
         setState(() {
-          if (Validation().validatePassword(value.trim())) {
-            errorMessages[fieldName] = '';
-          } else {
-            if (!onchange) {
+          if (value.length >= 8) {
+            errorMessages['password'] = "";
+
+            if (Validation().validatePassword(controllers[fieldName]!.text.trim())) {
               setState(() {
-                errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterPassword);
+                errorMessages['password'] = "";
               });
-            }else{
+            } else {
               setState(() {
-                errorMessages[fieldName] = "";
+                errorMessages[fieldName] = appString.trans(context, appString.mustContain1LetterAndNumber);
               });
+              // if (!onchange) {
+              //   errorMessages[fieldName] = appString.trans(context, appString.mustContain1LetterAndNumber);
+              // }
             }
+          } else {
+            setState(() {
+              errorMessages[fieldName] = appString.trans(context, appString.passwordLengthError);
+            });
+            /*if (!onchange) {
+              errorMessages[fieldName] = appString.trans(context, appString.passwordLengthError);
+            }*/
           }
         });
       } else {
         setState(() {
-          if (!onchange) {
+          errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterPassword);
+          /* if (!onchange) {
             if (fieldName == 'password') {
-              errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterCorrectPassword);
+              errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterNewPassword);
+            } else if (fieldName == 'confirm_password') {
+              errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterConfirmPassword);
             }
-          }else{
-            setState(() {
-              errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterPassword);
-            });
-          }
+          }*/
         });
       }
     }
@@ -146,6 +161,19 @@ class _SignInScreenState extends State<SignInScreen> {
       }
     }
 
+    //Visibility icons
+    Widget visibilityOffIcon = Icon(
+      Icons.visibility_off,
+      color: appColors.buttonBgColor,
+      size: 20,
+    );
+
+    Widget visibilityOnIcon = Icon(
+      Icons.visibility,
+      color: appColors.grey,
+      size: 20,
+    );
+
     // Background Image widget
     Widget backgroundImage() {
       return Stack(
@@ -161,7 +189,7 @@ class _SignInScreenState extends State<SignInScreen> {
             ).createShader(bound),
             blendMode: BlendMode.darken,
             child: CachedNetworkImage(
-              height: appDimens.heightFullScreen() / 2.50,
+              height: appDimens.heightFullScreen() / 3.5,
               width: appDimens.widthFullScreen(),
               imageUrl:
                   "https://img.freepik.com/free-photo/beautiful-scenery-emerald-lake-yoho-national-park-british-columbia-canada_181624-6877.jpg?w=2000",
@@ -173,12 +201,12 @@ class _SignInScreenState extends State<SignInScreen> {
             isHideRightIcon: true,
             title: "Bali Indonesia",
           ),
-          Positioned(
-            top: 210,
+          /*Positioned(
+            top: 250,
             left: 20,
             child: Text(appString.trans(context, appString.loginText),
                 style: appStyles.registerTextTextStyle()),
-          ),
+          ),*/
         ],
       );
     }
@@ -187,16 +215,15 @@ class _SignInScreenState extends State<SignInScreen> {
     Widget bottomView() {
       return Container(
         color: appColors.appBgColorJungleGreen,
-        padding: EdgeInsets.only(top: 15),
+        padding: EdgeInsets.only(top: 15,left: 20,right: 20),
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text(appString.trans(context, appString.loginText),
+                style: appStyles.registerTextTextStyle()),
+            SizedBox(height: 15,),
             // Email field
             Container(
-              padding: EdgeInsets.only(
-                left: 20,
-                right: 20,
-              ),
               width: MediaQuery.of(context).size.width,
               child: CommonTextFieldWithError(
                 decoration: InputDecoration(
@@ -258,10 +285,6 @@ class _SignInScreenState extends State<SignInScreen> {
 
             // password field
             Container(
-              padding: EdgeInsets.only(
-                left: 20,
-                right: 20,
-              ),
               width: MediaQuery.of(context).size.width,
               child: CommonTextFieldWithError(
                 decoration: InputDecoration(
@@ -275,21 +298,11 @@ class _SignInScreenState extends State<SignInScreen> {
                         iconSize: Size(10, 10),
                         imageColor: appColors.buttonBgColor),
                   ),
-                  suffixIcon: GestureDetector(
-                    onTap: (){
-                      Navigator.push(
-                      context,
-                      SlideRightRoute(widget: ForgotPasswordScreen()),
-                      );
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 20),
-                      child: Text(appString.trans(context, appString.forgotText),
-                      style: appStyles.textFieldHintTextTextStyle(texColor: appColors.buttonBgColor),
-                      ),
+                    suffixIcon: IconButton(
+                    icon: hidePassword ? visibilityOffIcon : visibilityOnIcon,
+                    onPressed: togglePasswordVisibility1,
                     ),
-                  ),
-                  enabledBorder: UnderlineInputBorder(
+                    enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
                         color: appColors.appBgColor1.withOpacity(0.30),
                         width: 1.5),
@@ -305,11 +318,11 @@ class _SignInScreenState extends State<SignInScreen> {
                 errorMessages: errorMessages['password']?.toString() ?? '',
                 controllerT: controllers['password'],
                 inputHeight: 50,
-                errorMsgHeight: 22,
+                errorMsgHeight: 24,
                 autoFocus: false,
-                obscureText: true,
+                obscureText: hidePassword,
                 errorLeftRightMargin: 0,
-                maxCharLength: 10,
+                maxCharLength: 8,
                 capitalization: CapitalizationText.none,
                 cursorColor: appColors.textColor,
                 textInputAction: TextInputAction.done,
@@ -335,10 +348,30 @@ class _SignInScreenState extends State<SignInScreen> {
                 },
               ),
             ),
-
+            SizedBox(
+              height: 5,
+            ),
+            GestureDetector(
+              onTap: (){
+                Navigator.push(
+                  context,
+                  SlideRightRoute(widget: ForgotPasswordScreen()),
+                );
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(appString.trans(context, appString.forgotText),
+                    style: appStyles.textFieldHintTextTextStyle(texColor: appColors.buttonBgColor),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
             // Login button
             Container(
-              margin: EdgeInsets.only(top: 10, left: 20, right: 20),
               child: CommonButton(
                 buttonName: appString.trans(context, appString.loginText),
                 buttonHeight: 50,
@@ -363,9 +396,11 @@ class _SignInScreenState extends State<SignInScreen> {
             SizedBox(
               height: 15,
             ),
-            Text(
-              appString.trans(context, appString.orRegisterWithText),
-              style: appStyles.registerWithTextStyle(),
+            Center(
+              child: Text(
+                appString.trans(context, appString.orRegisterWithText),
+                style: appStyles.registerWithTextStyle(),
+              ),
             ),
             SizedBox(
               height: 15,
@@ -427,31 +462,33 @@ class _SignInScreenState extends State<SignInScreen> {
             SizedBox(
               height: 35,
             ),
-            RichText(
-              text: TextSpan(
-                  text: appString.trans(context, appString.newUserText),
-                  style: appStyles.alreadyHaveAccountTextStyle(),
-                  children: <InlineSpan>[
-                    WidgetSpan(
-                        child: SizedBox(
-                      width: 5,
-                    )),
-                    TextSpan(
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          Navigator.push(
-                            context,
-                            SlideRightRoute(widget: RegisterScreen()),
-                          );
-                        },
-                      text:
-                          appString.trans(context, appString.registerHereText),
-                      style: appStyles.alreadyHaveAccountTextStyle(
-                          texColor: appColors.buttonBgColor,
-                          fontSize: 14.5,
-                          fontWeight: FontWeight.w700),
-                    )
-                  ]),
+            Center(
+              child: RichText(
+                text: TextSpan(
+                    text: appString.trans(context, appString.newUserText),
+                    style: appStyles.alreadyHaveAccountTextStyle(),
+                    children: <InlineSpan>[
+                      WidgetSpan(
+                          child: SizedBox(
+                        width: 5,
+                      )),
+                      TextSpan(
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Navigator.push(
+                              context,
+                              SlideRightRoute(widget: RegisterScreen()),
+                            );
+                          },
+                        text:
+                            appString.trans(context, appString.registerHereText),
+                        style: appStyles.alreadyHaveAccountTextStyle(
+                            texColor: appColors.buttonBgColor,
+                            fontSize: 14.5,
+                            fontWeight: FontWeight.w700),
+                      )
+                    ]),
+              ),
             ),
             SizedBox(height: 15,)
           ],

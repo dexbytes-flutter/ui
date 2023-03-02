@@ -203,7 +203,7 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
         isHideRightIcon: true,
       ),
       containChild: Container(
-        margin: const EdgeInsets.only(left: 20,right: 20,top: 50),
+        margin: const EdgeInsets.only(left: 20,right: 20,top: 30),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -222,7 +222,7 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
             otpErrorMsg,
             SizedBox(height: 5,),
             Center(child: didNotReceivedCode()),
-            SizedBox(height: 210,),
+            SizedBox(height: 230,),
             CommonButton(
               buttonName: appString.trans(context, appString.verificationText),
               buttonHeight: 50,

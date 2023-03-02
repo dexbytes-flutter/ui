@@ -1,13 +1,20 @@
+import 'package:base_flutter_app/src/all_file_import/app_providers_files_link.dart';
+import 'package:base_flutter_app/src/all_file_import/app_utils_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
 import 'package:base_flutter_app/src/model/home_screen_verticle_title_list.dart';
+import 'package:base_flutter_app/src/model/recent_search_model.dart';
+import 'package:base_flutter_app/src/pages/destination_filter_screen.dart';
+import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:base_flutter_app/src/widgets/appbar/home_screen_app_bar.dart';
 import 'package:base_flutter_app/src/widgets/common_vertical_list.dart';
 import 'package:base_flutter_app/src/widgets/home_page_common_image.dart';
+import 'package:base_flutter_app/src/widgets/recent_search_list.dart';
 import 'package:base_flutter_app/src/widgets/search_screen_image.dart';
 import 'package:flutter/material.dart';
 
 import '../all_file_import/app_values_files_link.dart';
+import '../widgets/title_text.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
@@ -33,10 +40,11 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     // Top search field
     Widget topSearchField() {
       return Container(
-        padding: EdgeInsets.only(left: 20, right: 20, top: 10),
+        padding: EdgeInsets.only(left: 20, right: 20,),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -81,172 +89,135 @@ class _SearchScreenState extends State<SearchScreen> {
                 onEndEditing: (value) {},
               ),
             ),
-            Container(
-              padding: EdgeInsets.all(15),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  color: appColors.buttonBgColor),
-              child: iconApps.iconImage(
-                  imageUrl: iconApps.searchIcon,
-                  imageColor: appColors.black,
-                  iconSize: Size(20, 20)),
+            GestureDetector(
+              onTap: (){
+                Navigator.push(
+                  MainAppBloc.getDashboardContext,
+                  SlideRightRoute(widget: DestinationFilterScreen()),
+                );
+              },
+              child: Container(
+                padding: EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: appColors.buttonBgColor),
+                child: iconApps.iconImage(
+                    imageUrl: iconApps.searchIcon,
+                    imageColor: appColors.black,
+                    iconSize: Size(20, 20)),
+              ),
             )
           ],
         ),
       );
     }
 
-    List<VerticalTitleSublistList> verticalTitleSubTitleList =
-        homeVerticalList[selectedIndex].verticalTitleSubTitleList;
-    // Center stack view
-    Widget centerView() {
-      return ShaderMask(
-        shaderCallback: (rectangle) => LinearGradient(
-          colors: [
-            appColors.appBgColorJungleGreen,
-            appColors.appTransColor,
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ).createShader(
-            Rect.fromLTRB(0, 0,rectangle.width, rectangle.height)),
-        blendMode: BlendMode.dstIn,
-        child: Stack(
+    // Recent search list
+    Widget recentSearchTexts(){
+      return Container(
+        padding: EdgeInsets.only(left: 20),
+        child: Wrap(
+          runSpacing: 8.0,
+          spacing: 10.0,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  width: 58,
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    padding: EdgeInsets.zero,
-                    physics: ClampingScrollPhysics(),
-                    itemCount: homeVerticalList.length,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            selectedIndex = index;
-                          });
-                        },
-                        child: CommonVerticalList(
-                          listTitle: homeVerticalList[index].listTitle,
-                          index: index,
-                          selectedIndex: selectedIndex,
-                        ),
-                      );
-                    },
-                  ),
-                ),
-                Container(
-                  width: appDimens.widthFullScreen() / 1.22,
-                  height: appDimens.heightFullScreen() / 1.52,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    physics: ClampingScrollPhysics(),
-                    padding: EdgeInsets.zero,
-                    itemCount: verticalTitleSubTitleList.length,
-                    itemBuilder: (context, index) {
-                      return Container(
-                          margin: EdgeInsets.only(right: 15),
-                          child: HomepageCommonImage(
-                            imageUrl: verticalTitleSubTitleList[index].imageUrl,
-                            selectedIndex: homeVerticalList[selectedIndex].id,
-                            title: verticalTitleSubTitleList[index].title,
-                            subTitle: verticalTitleSubTitleList[index].subTitle,
-                            countryTitle:
-                                verticalTitleSubTitleList[index].countryTitle,
-                          ));
-                    },
-                  ),
-                )
-              ],
+            Container(
+              padding:
+              EdgeInsets.all(10).copyWith(left: 15, right: 15),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: appColors.appBgColor2),
+              child: Text("Indonesia",
+                style: appStyles.commonSubTitleTextStyle(fontSize: 13,texColor: appColors.white),
+              ),
             ),
             Container(
-              color: appColors.appBgColorJungleGreen,
-              margin: EdgeInsets.only(left: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    width: appDimens.widthFullScreen(),
-                    height: appDimens.heightFullScreen() / 3.8,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      shrinkWrap: true,
-                      physics: ClampingScrollPhysics(),
-                      padding: EdgeInsets.zero,
-                      itemCount: searchScreenImageList.length,
-                      itemBuilder: (context, index) {
-                        return Container(
-                            margin: EdgeInsets.only(right: 15),
-                            child: SearchScreenCommonImage(
-                              imageUrl: searchScreenImageList[index].imageUrl,
-                              title: searchScreenImageList[index].title,
-                              subTitle: searchScreenImageList[index].subTitle,
-                              countryTitle:
-                                  searchScreenImageList[index].countryTitle,
-                            ));
-                      },
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Wrap(
-                    runSpacing: 8.0,
-                    spacing: 10.0,
-                    children: [
-                      Container(
-                        padding:
-                            EdgeInsets.all(10).copyWith(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: appColors.appBgColor2),
-                        child: Text("Indonesia",
-                        style: appStyles.commonSubTitleTextStyle(fontSize: 13,texColor: appColors.white),
-                        ),
-                      ),
-                      Container(
-                        padding:
-                            EdgeInsets.all(10).copyWith(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: appColors.appBgColor2),
-                        child: Text(
-                          "Blausee",
-                            style: appStyles.commonSubTitleTextStyle(fontSize: 13,texColor: appColors.white)
-                        ),
-                      ),
-                      Container(
-                        padding:
-                            EdgeInsets.all(10).copyWith(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: appColors.appBgColor2),
-                        child: Text(
-                          "National Park",
-                            style: appStyles.commonSubTitleTextStyle(fontSize: 13,texColor: appColors.white)
-                        ),
-                      ),
-                      Container(
-                        padding:
-                            EdgeInsets.all(10).copyWith(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: appColors.appBgColor2),
-                        child: Text("Komodo Island",
-                            style: appStyles.commonSubTitleTextStyle(fontSize: 13,texColor: appColors.white)
-                        ),
-                      ),
-                    ],
-                  )
-                ],
+              padding:
+              EdgeInsets.all(10).copyWith(left: 15, right: 15),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: appColors.appBgColor2),
+              child: Text(
+                  "Blausee",
+                  style: appStyles.commonSubTitleTextStyle(fontSize: 13,texColor: appColors.white)
               ),
-            )
+            ),
+            Container(
+              padding:
+              EdgeInsets.all(10).copyWith(left: 15, right: 15),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: appColors.appBgColor2),
+              child: Text(
+                  "National Park",
+                  style: appStyles.commonSubTitleTextStyle(fontSize: 13,texColor: appColors.white)
+              ),
+            ),
+            Container(
+              padding:
+              EdgeInsets.all(10).copyWith(left: 15, right: 15),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: appColors.appBgColor2),
+              child: Text("Komodo Island",
+                  style: appStyles.commonSubTitleTextStyle(fontSize: 13,texColor: appColors.white)
+              ),
+            ),
+          ],
+        ),
+      );
+
+        /*Container(
+        height: 40,
+        child: ListView.builder(
+          itemCount: recentSearchTextList.length,
+          scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
+          physics: ClampingScrollPhysics(),
+          itemBuilder: (context, index){
+            return RecentSearchListView(
+              recentSearchText: recentSearchTextList[index].recentSearchText,
+              margin: EdgeInsets.only(left: 20),
+            );
+          },
+        ),
+      );*/
+    }
+
+
+    // Center stack view
+    Widget centerView() {
+      return Container(
+        color: appColors.appBgColorJungleGreen,
+        margin: EdgeInsets.only(left: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: appDimens.widthFullScreen(),
+              height: appDimens.heightFullScreen() / 3.8,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                physics: ClampingScrollPhysics(),
+                padding: EdgeInsets.zero,
+                itemCount: searchScreenImageList.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                      margin: EdgeInsets.only(right: 15),
+                      child: SearchScreenCommonImage(
+                        imageUrl: searchScreenImageList[index].imageUrl,
+                        title: searchScreenImageList[index].title,
+                        subTitle: searchScreenImageList[index].subTitle,
+                        countryTitle:
+                            searchScreenImageList[index].countryTitle,
+                      ));
+                },
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+
           ],
         ),
       );
@@ -258,18 +229,39 @@ class _SearchScreenState extends State<SearchScreen> {
         isOverLayStatusBar: false,
         isSingleChildScrollViewNeed: false,
         contextCurrentView: context,
-        appBar: HomeScreenAppBar(
-          margin: EdgeInsets.only(
-            left: 20,
-            right: 20,
-          ),
+        appBar: CommonAppBar(
+          leftIconMargin: EdgeInsets.only(left: 20),
+          isHideRightIcon: true,
         ),
         containChild: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             topSearchField(),
-            centerView()
+            // Top recent search title text
+            Padding(
+              padding: const EdgeInsets.only(left: 20,right: 20),
+              child: TitleText(
+                  text: appString.trans(context, appString.topRecentSearchText),
+                style: appStyles.commonTitleStyle(fontSize: 15,texColor: appColors.textColor,
+                  fontWeight: FontWeight.w500
+                ),
+              ),
+            ),
+            SizedBox(height: 20,),
+            recentSearchTexts(),
+            SizedBox(height: 20,),
+            Padding(
+              padding: const EdgeInsets.only(left: 20,right: 20),
+              child: TitleText(
+                text: appString.trans(context, appString.recommendedForYouTex),
+                style: appStyles.commonTitleStyle(fontSize: 15,texColor: appColors.textColor,
+                    fontWeight: FontWeight.w500
+                ),
+              ),
+            ),
+            SizedBox(height: 20,),
+            centerView(),
           ],
         ));
   }

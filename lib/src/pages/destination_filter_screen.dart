@@ -1,6 +1,8 @@
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
+import 'package:base_flutter_app/src/pages/destination_search_filter_bottom_sheet.dart';
+import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:snippet_coder_utils/FormHelper.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
@@ -57,9 +59,6 @@ class _DestinationFilterScreenState extends State<DestinationFilterScreen> {
     this.cityNameList = [
       {"ID": 1, "Name" : "Delhi", "ParentId" : 1},
       {"ID": 2, "Name" : "Indore", "ParentId" : 1},
-      {"ID": 3, "Name" : "Mumbai", "ParentId" : 1},
-      {"ID": 4, "Name" : "Bhopal", "ParentId" : 1},
-      {"ID": 5, "Name" : "Gwalior", "ParentId" : 1},
       {"ID": 1, "Name" : "Abu Dhabi", "ParentId" : 2},
       {"ID": 2, "Name" : "Dubai", "ParentId" : 2},
     ];
@@ -71,56 +70,75 @@ class _DestinationFilterScreenState extends State<DestinationFilterScreen> {
     AppDimens appDimens = AppDimens();
     appDimens.appDimensFind(context: context);
 
-    // Filter search result view option card
-    Widget filterSearchResultViewOption(){
-      return Container(
-        height: 38,
-        child: ListView.builder(
-            itemCount: searchResultViewOptionList.length,
-            scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.zero,
-            shrinkWrap: true,
-            physics: ClampingScrollPhysics(),
-            itemBuilder: (context,index){
-              return GestureDetector(
-                onTap: (){
-                  setState(() {
-                    this.selectedIndex = index;
-                  });
-                },
-                child: Container(
-                  padding: EdgeInsets.all(10).copyWith(left: 12,right: 12),
-                  margin: EdgeInsets.only(right: 10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: selectedIndex == index ? appColors.appBgColor1.withOpacity(0.15) : appColors.appTransColor,
-                    border: Border.all(color:  selectedIndex == index
-                        ? appColors.appTransColor
-                        : appColors.appBgColor1.withOpacity(0.15),
-                        width: selectedIndex == index
-                        ? 0
-                        :1.5)
-                  ),
-                  child: Text(searchResultViewOptionList[index],
-                  style: appStyles.commonSubTitleTextStyle(
-                      fontSize: 11.5, texColor: selectedIndex == index
-                      ? appColors.buttonBgColor
-                      :appColors.textColor
-                  ),
-                  ),
-                ),
-              );
-            }
-        ),
-      );
-    }
 
     // Location drop down
     Widget locationDropDownView(){
       return Container(
-        padding: EdgeInsets.only(right: 80),
-        height: 100,
-        child: Column(
+        color: Colors.red,
+
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Container(
+              height: 50,
+              width: 140,
+              color: Colors.grey,
+              child: FormHelper.dropDownWidget(
+                  context,
+                  "Country",
+                  this.countryId,
+                  this.countryNameList,
+                      (onChangedVal){
+                    this.countryId = onChangedVal;
+                    this.city = cityNameList.where(
+                            (cityItem) => cityItem["ParentId"].toString() == onChangedVal.toString()
+                    ).toList();
+                    this.cityId = null;
+                  },
+                      (onValidateVal){
+                    if(onValidateVal == null){
+                      return "Please select country";
+                    }
+                    return null;
+                  },
+                  borderColor: appColors.buttonBgColor,
+                  borderFocusColor: appColors.appThemeColor,
+                  borderRadius: 10,
+                  paddingLeft: 0,
+                  paddingRight: 0,
+                  paddingTop: 5,
+                  paddingBottom: 5
+              ),
+            ),
+            SizedBox(width: 10,),
+            Container(
+              height: 50,
+              width: 130,
+              color: Colors.blue,
+              child:  FormHelper.dropDownWidget(
+                context,
+                "City",
+                this.cityId,
+                this.city,
+                    (onChangedVal){
+                  this.cityId = onChangedVal;
+                },
+                    (onValidateVal){
+                  return null;
+                },
+                borderColor: appColors.buttonBgColor,
+                borderFocusColor: appColors.appThemeColor,
+                borderRadius: 10,
+                optionValue: "ID",
+                optionLabel: "Name",
+                paddingLeft: 0,
+                paddingRight: 0
+              ),
+            )
+          ],
+        )
+
+        /*Column(
             children: [
               FormHelper.dropDownWidget(
                   context,
@@ -130,7 +148,8 @@ class _DestinationFilterScreenState extends State<DestinationFilterScreen> {
                   (onChangedVal){
                     this.countryId = onChangedVal;
                     this.city = cityNameList.where(
-                            (cityItem) => cityItem["ParentId"].toString() == onChangedVal.toString()).toList();
+                            (cityItem) => cityItem["ParentId"].toString() == onChangedVal.toString()
+                    ).toList();
                     this.cityId = null;
                     },
                   (onValidateVal){
@@ -142,12 +161,14 @@ class _DestinationFilterScreenState extends State<DestinationFilterScreen> {
                 borderColor: appColors.buttonBgColor,
                 borderFocusColor: appColors.appThemeColor,
                 borderRadius: 10,
+                paddingLeft: 0,
+                paddingRight: 60
               ),
               FormHelper.dropDownWidget(
                   context,
                   "City",
                   this.cityId,
-                  this.cityNameList,
+                  this.city,
                   (onChangedVal){
                     this.cityId = onChangedVal;
                   },
@@ -158,10 +179,10 @@ class _DestinationFilterScreenState extends State<DestinationFilterScreen> {
                 borderFocusColor: appColors.appThemeColor,
                 borderRadius: 10,
                 optionValue: "ID",
-                optionLabel: "Name"
+                optionLabel: "Name",
               )
             ]
-        ),
+        ),*/
       );
     }
 
@@ -186,20 +207,32 @@ class _DestinationFilterScreenState extends State<DestinationFilterScreen> {
 
     // Filter pop up dialog
     filterPopUpDialog() {
-      return showDialog(
+      return showModalBottomSheet(
+          context: context,
+          builder: (context) => DestinationSearchFilterBottomSheet(),
+          isScrollControlled: true,
+          backgroundColor: appColors.appTransColor,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20))
+          ));
+
+
+        /*showDialog(
           context: context,
           barrierDismissible: true,
           builder: (context) {
-            return SimpleDialog(
-              backgroundColor: appColors.appBgColorJungleGreen,
-              insetPadding: EdgeInsets.all(20),
-              contentPadding: EdgeInsets.all(20),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(20.0),
-                ),
-              ),
-              children: [
+            return StatefulBuilder(
+              builder: (context, setState) {
+                return SimpleDialog(
+                  backgroundColor: appColors.appBgColorJungleGreen,
+                  insetPadding: EdgeInsets.all(20),
+                  contentPadding: EdgeInsets.all(20),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20.0),
+                    ),
+                  ),
+                  children: [
                     Container(
                       height: appDimens.heightFullScreen() - 425,
                       width: appDimens.widthFullScreen() - 20,
@@ -213,7 +246,47 @@ class _DestinationFilterScreenState extends State<DestinationFilterScreen> {
                               style: appStyles.commonSubTitleTextStyle(fontSize: 15),
                             ),
                             SizedBox(height: 10,),
-                            filterSearchResultViewOption(),
+                            // Filter search result view option card
+                            Container(
+                              height: 38,
+                              child: ListView.builder(
+                                  itemCount: searchResultViewOptionList.length,
+                                  scrollDirection: Axis.horizontal,
+                                  padding: EdgeInsets.zero,
+                                  shrinkWrap: true,
+                                  physics: ClampingScrollPhysics(),
+                                  itemBuilder: (context,index){
+                                    return GestureDetector(
+                                      onTap: (){
+                                        setState(() {
+                                          this.selectedIndex = index;
+                                        });
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.all(10).copyWith(left: 12,right: 12),
+                                        margin: EdgeInsets.only(right: 10),
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(15),
+                                            color: selectedIndex == index ? appColors.appBgColor1.withOpacity(0.15) : appColors.appTransColor,
+                                            border: Border.all(color:  selectedIndex == index
+                                                ? appColors.appTransColor
+                                                : appColors.appBgColor1.withOpacity(0.15),
+                                                width: selectedIndex == index
+                                                    ? 0
+                                                    :1.5)
+                                        ),
+                                        child: Text(searchResultViewOptionList[index],
+                                          style: appStyles.commonSubTitleTextStyle(
+                                              fontSize: 11.5, texColor: selectedIndex == index
+                                              ? appColors.buttonBgColor
+                                              :appColors.textColor
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  }
+                              ),
+                            ),
                             SizedBox(height: 35,),
                             Text(appString.trans(context, appString.locationTitleText),
                               style: appStyles.commonSubTitleTextStyle(fontSize: 15),
@@ -249,15 +322,17 @@ class _DestinationFilterScreenState extends State<DestinationFilterScreen> {
                         ),
                       ),
                     )
-              ],
+                  ],
+                );
+              },
             );
-          });
+          });*/
     }
     
       // Top search field
       Widget topSearchField() {
         return Container(
-          padding: EdgeInsets.only(left: 20, right: 20, top: 10),
+          padding: EdgeInsets.only(left: 20, right: 20,),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -367,11 +442,9 @@ class _DestinationFilterScreenState extends State<DestinationFilterScreen> {
           isOverLayStatusBar: false,
           isSingleChildScrollViewNeed: false,
           contextCurrentView: context,
-          appBar: HomeScreenAppBar(
-            margin: EdgeInsets.only(
-              left: 20,
-              right: 20,
-            ),
+          appBar: CommonAppBar(
+            leftIconMargin: EdgeInsets.only(left: 20),
+            isHideRightIcon: true,
           ),
           containChild: Column(
             children: [

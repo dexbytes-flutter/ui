@@ -23,7 +23,7 @@
   "pleaseReEnterPassword": "Please re-enter password",
   "enterVerificationCode": "Please enter verification code",
   "passwordAndConfirmPasswordSame": "Password and confirm password must be same",
-  "mustContain1LetterAndNumber": "Password must contain 1 digit, and 1 letter",
+  "mustContain1LetterAndNumber": "Password must contain 1 upper case letter, 1 lower case letter and 1 special character",
   "reEnterPassHeading": "Re-enter password",
   "verificationCode": "Verification Code",
   "signInTitle": "Sign In",
@@ -148,7 +148,7 @@
   "iAcceptButtonText" : "I Accept",
   "forgotPasswordTitleText" : "Forgot Password",
   "selectContactDetailText" : "Please select your contact details and we will send a verification code to reset your password.",
-  "forgotText" : "Forgot?",
+  "forgotText" : "Forgot password?",
   "resetPasswordTitleText": "Reset Password",
   "resetPasswordSubTitleText": "At least 8 character with uppercase, lowercase and special character.",
   "updatePasswordButtonText" : "Update Password",
@@ -167,5 +167,9 @@
   "priceTitleText" : "Price",
   "ratingTitleText" : "Rating",
   "rangeTitleText" : "Range",
-  "applyFilterButtonText" : "Apply Filter"
+  "applyFilterButtonText" : "Apply Filter",
+  "newPasswordHintText" : "New Password",
+  "confirmPasswordHintText" : "Confirm Password",
+  "topRecentSearchText" : "Top recent search",
+  "recommendedForYouTex": "Recommended for you"
 }

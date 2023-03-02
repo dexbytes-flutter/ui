@@ -8,6 +8,7 @@ import 'package:base_flutter_app/src/widgets/common_vertical_list.dart';
 import 'package:base_flutter_app/src/widgets/home_page_common_image.dart';
 import 'package:flutter/material.dart';
 
+import '../all_file_import/app_providers_files_link.dart';
 import 'search_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -44,28 +45,28 @@ class _HomeScreenState extends State<HomeScreen> {
     Widget titleText(){
       return Padding(
         padding: const EdgeInsets.only(left: 20,right: 20,top: 8),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(appString.trans(context, appString.recommendationText),
-            style: appStyles.commonTitleStyle(fontSize: 18,texColor: appColors.buttonBgColor),
-            ),
-            GestureDetector(
-              onTap: (){
-                Navigator.push(
-                  context,
-                  SlideRightRoute(widget: SearchScreen()
-                  ),
-                );
-              },
-              child: iconApps.iconImage(
+        child: GestureDetector(
+          onTap: (){
+            Navigator.push(
+              MainAppBloc.getDashboardContext,
+              SlideRightRoute(widget: SearchScreen()
+              ),
+            );
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(appString.trans(context, appString.recommendationText),
+              style: appStyles.commonTitleStyle(fontSize: 18,texColor: appColors.buttonBgColor),
+              ),
+              iconApps.iconImage(
                   imageUrl: iconApps.searchIcon,
                   imageColor: appColors.buttonBgColor,
                   iconSize: Size(22, 22)
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       );
     }

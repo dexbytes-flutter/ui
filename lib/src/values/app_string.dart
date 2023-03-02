@@ -255,6 +255,10 @@ class AppString {
   String ratingTitleText = 'ratingTitleText';
   String rangeTitleText = 'rangeTitleText';
   String applyFilterButtonText = 'applyFilterButtonText';
+  String newPasswordHintText = 'newPasswordHintText';
+  String confirmPasswordHintText = 'confirmPasswordHintText';
+  String topRecentSearchText = 'topRecentSearchText';
+  String recommendedForYouTex = 'recommendedForYouTex';
 
 }
 
