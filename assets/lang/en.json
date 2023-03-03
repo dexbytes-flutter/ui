@@ -23,7 +23,7 @@
   "pleaseReEnterPassword": "Please re-enter password",
   "enterVerificationCode": "Please enter verification code",
   "passwordAndConfirmPasswordSame": "Password and confirm password must be same",
-  "mustContain1LetterAndNumber": "Password must contain 1 upper case letter, 1 lower case letter and 1 special character",
+  "mustContain1LetterAndNumber": "Password must contain letters, and digits only",
   "reEnterPassHeading": "Re-enter password",
   "verificationCode": "Verification Code",
   "signInTitle": "Sign In",
@@ -171,5 +171,7 @@
   "newPasswordHintText" : "New Password",
   "confirmPasswordHintText" : "Confirm Password",
   "topRecentSearchText" : "Top recent search",
-  "recommendedForYouTex": "Recommended for you"
+  "recommendedForYouTex": "Recommended for you",
+  "countryDropDownHintText" : "Country",
+  "cityDropDownHintText" : "City"
 }

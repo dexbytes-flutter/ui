@@ -2,11 +2,13 @@ import 'package:base_flutter_app/src/all_file_import/app_providers_files_link.da
 import 'package:base_flutter_app/src/all_file_import/app_utils_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
+import 'package:base_flutter_app/src/model/filter_choice_chip_model.dart';
 import 'package:base_flutter_app/src/model/home_screen_verticle_title_list.dart';
 import 'package:base_flutter_app/src/model/recent_search_model.dart';
 import 'package:base_flutter_app/src/pages/destination_search_filter_bottom_sheet.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:base_flutter_app/src/widgets/appbar/home_screen_app_bar.dart';
+import 'package:base_flutter_app/src/widgets/common_choice_chip_widget.dart';
 import 'package:base_flutter_app/src/widgets/common_vertical_list.dart';
 import 'package:base_flutter_app/src/widgets/home_page_common_image.dart';
 import 'package:base_flutter_app/src/widgets/recent_search_list.dart';
@@ -17,7 +19,13 @@ import '../all_file_import/app_values_files_link.dart';
 import '../widgets/title_text.dart';
 
 class SearchScreen extends StatefulWidget {
-  const SearchScreen({Key? key}) : super(key: key);
+  final bool? isFilterApplied;
+  final bool? isVerticalViewSearchResult;
+  const SearchScreen({
+    Key? key,
+    this.isFilterApplied,
+    this.isVerticalViewSearchResult
+  }) : super(key: key);
 
   @override
   State<SearchScreen> createState() => _SearchScreenState();
@@ -37,6 +45,9 @@ class _SearchScreenState extends State<SearchScreen> {
   };
 
   int selectedIndex = 0;
+
+  int? _selectedIndex;
+
 
   @override
   Widget build(BuildContext context) {
@@ -111,53 +122,15 @@ class _SearchScreenState extends State<SearchScreen> {
 
     // Recent search list
     Widget recentSearchTexts(){
-      return Container(
-        padding: EdgeInsets.only(left: 20),
+      return Padding(
+        padding: const EdgeInsets.only(left: 20,right: 20),
         child: Wrap(
-          runSpacing: 8.0,
           spacing: 10.0,
-          children: [
-            Container(
-              padding:
-              EdgeInsets.all(10).copyWith(left: 15, right: 15),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: appColors.appBgColor2),
-              child: Text("Indonesia",
-                style: appStyles.commonSubTitleTextStyle(fontSize: 13,texColor: appColors.white),
-              ),
-            ),
-            Container(
-              padding:
-              EdgeInsets.all(10).copyWith(left: 15, right: 15),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: appColors.appBgColor2),
-              child: Text(
-                  "Blausee",
-                  style: appStyles.commonSubTitleTextStyle(fontSize: 13,texColor: appColors.white)
-              ),
-            ),
-            Container(
-              padding:
-              EdgeInsets.all(10).copyWith(left: 15, right: 15),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: appColors.appBgColor2),
-              child: Text(
-                  "National Park",
-                  style: appStyles.commonSubTitleTextStyle(fontSize: 13,texColor: appColors.white)
-              ),
-            ),
-            Container(
-              padding:
-              EdgeInsets.all(10).copyWith(left: 15, right: 15),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: appColors.appBgColor2),
-              child: Text("Komodo Island",
-                  style: appStyles.commonSubTitleTextStyle(fontSize: 13,texColor: appColors.white)
-              ),
+          runSpacing: -5,
+          children: <Widget>[
+            ChoiceChipWidget(
+                reportList: chipList,
+                isAvatar: false,
             ),
           ],
         ),
@@ -187,8 +160,27 @@ class _SearchScreenState extends State<SearchScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(appString.trans(context, appString.topRecentSearchText),
-              style: appStyles.commonSubTitleTextStyle(fontWeight: FontWeight.w600,
+            widget.isFilterApplied!
+                ? Row(
+              children: [
+                Text(appString.trans(context, appString.foundText),
+                  style: appStyles.commonSubTitleTextStyle(fontWeight: FontWeight.w500,
+                      fontSize: 15),
+                ),
+                SizedBox(width: 3,),
+                Text("90+",
+                  style: appStyles.commonSubTitleTextStyle(fontWeight: FontWeight.w500,
+                      fontSize: 15),
+                ),
+                SizedBox(width: 3,),
+                Text(appString.trans(context, appString.destinationText),
+                  style: appStyles.commonSubTitleTextStyle(fontWeight: FontWeight.w500,
+                      fontSize: 15),
+                ),
+              ],
+            )
+                : Text(appString.trans(context, appString.topRecentSearchText),
+              style: appStyles.commonSubTitleTextStyle(fontWeight: FontWeight.w500,
                   fontSize: 15),
             ),
             GestureDetector(
@@ -203,16 +195,26 @@ class _SearchScreenState extends State<SearchScreen> {
                           topLeft: Radius.circular(20),
                           topRight: Radius.circular(20)
                         )
-                    ));
+                    ),
+                );
               },
               child: Container(
                 padding: EdgeInsets.all(8).copyWith(left: 15,right: 15),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    color: appColors.buttonBgColor),
+                  border: Border.all(color: widget.isFilterApplied!
+                      ? appColors.appBgColor1.withOpacity(0.20)
+                      : appColors.appTransColor,
+                      width: widget.isFilterApplied!? 1.5 : 0),
+                    color: widget.isFilterApplied!
+                        ? appColors.appBgColor2
+                        : appColors.buttonBgColor,
+                ),
                 child: iconApps.iconImage(
                     imageUrl: iconApps.filterIcon,
-                    imageColor: appColors.black,
+                    imageColor: widget.isFilterApplied!
+                        ? appColors.buttonBgColor
+                        : appColors.black,
                     iconSize: Size(20, 20)),
               ),
             )
@@ -221,9 +223,34 @@ class _SearchScreenState extends State<SearchScreen> {
       );
     }
 
-    // Center stack view
+    // Center view
     Widget centerView() {
-      return Container(
+      return widget.isFilterApplied!
+          ? Container(
+        width: appDimens.widthFullScreen(),
+        height: appDimens.heightFullScreen()/1.58,
+        margin: EdgeInsets.only(top: 10,left: 20),
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
+          physics: ClampingScrollPhysics(),
+          padding: EdgeInsets.zero,
+          itemCount: searchScreenImageList.length,
+          itemBuilder: (context,index){
+            return Container(
+                margin: EdgeInsets.only(right: 15),
+                child: HomepageCommonImage(
+                  imageUrl: searchScreenImageList[index].imageUrl,
+                  title: searchScreenImageList[index].title,
+                  subTitle: searchScreenImageList[index].subTitle,
+                  countryTitle: searchScreenImageList[index].countryTitle,
+                  isHorizontalViewCard: true,
+                )
+            );
+          },
+        ),
+      )
+          : Container(
         color: appColors.appBgColorJungleGreen,
         margin: EdgeInsets.only(left: 20),
         child: Column(
@@ -245,17 +272,40 @@ class _SearchScreenState extends State<SearchScreen> {
                         imageUrl: searchScreenImageList[index].imageUrl,
                         title: searchScreenImageList[index].title,
                         subTitle: searchScreenImageList[index].subTitle,
-                        countryTitle:
-                            searchScreenImageList[index].countryTitle,
+                        countryTitle: searchScreenImageList[index].countryTitle,
+                        imageWidth:appDimens.widthFullScreen()/1.25 ,
                       ));
                 },
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
-
           ],
+        ),
+      );
+    }
+
+    // Vertical filter view
+    Widget verticalFilterView() {
+      return  Container(
+        height: appDimens.heightFullScreen(),
+        child: ListView.builder(
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          // physics: ClampingScrollPhysics(),
+          padding: EdgeInsets.only(left: 20,right: 20,bottom: 210),
+          itemCount: searchScreenImageList.length,
+          itemBuilder: (context, index) {
+            return Container(
+              height: appDimens.heightFullScreen()/3.8,
+                margin: EdgeInsets.only(bottom: 15),
+                child: SearchScreenCommonImage(
+                  imageUrl: searchScreenImageList[index].imageUrl,
+                  title: searchScreenImageList[index].title,
+                  subTitle: searchScreenImageList[index].subTitle,
+                  countryTitle: searchScreenImageList[index].countryTitle,
+                  imageHeight: appDimens.heightFullScreen()/3.8,
+                  imageWidth: appDimens.widthFullScreen()/1.10,
+                ));
+          },
         ),
       );
     }
@@ -264,7 +314,7 @@ class _SearchScreenState extends State<SearchScreen> {
     return ContainerFirst(
         appBarHeight: 56,
         isOverLayStatusBar: false,
-        isSingleChildScrollViewNeed: false,
+        isSingleChildScrollViewNeed: false,isFixedDeviceHeight: false,
         contextCurrentView: context,
         appBar: CommonAppBar(
           leftIconMargin: EdgeInsets.only(left: 20),
@@ -275,12 +325,13 @@ class _SearchScreenState extends State<SearchScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             topSearchField(),
-            // Top recent search title text
             titleWithFilterOption(),
             SizedBox(height: 20,),
-            recentSearchTexts(),
-            SizedBox(height: 20,),
-            Padding(
+            widget.isFilterApplied!?
+            Container() : recentSearchTexts(),
+            SizedBox(height: widget.isFilterApplied!? 0 : 20,),
+            widget.isFilterApplied!?
+            Container() : Padding(
               padding: const EdgeInsets.only(left: 20,right: 20),
               child: TitleText(
                 text: appString.trans(context, appString.recommendedForYouTex),
@@ -289,8 +340,10 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 20,),
-            centerView(),
+            SizedBox(height: widget.isFilterApplied!?0 : 20,),
+            widget.isVerticalViewSearchResult!
+                ? verticalFilterView()
+                : centerView(),
           ],
         ));
   }

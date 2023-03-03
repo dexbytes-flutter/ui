@@ -12,14 +12,14 @@ import 'package:flutter/material.dart';
 import 'otp_verification_page.dart';
 import 'verification_code_screen.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({Key? key}) : super(key: key);
+class RegistrationScreen extends StatefulWidget {
+  const RegistrationScreen({Key? key}) : super(key: key);
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<RegistrationScreen> createState() => _RegistrationScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _RegistrationScreenState extends State<RegistrationScreen> {
 
   Map<String, TextEditingController> controllers = {
     'name': new TextEditingController(),
@@ -39,11 +39,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
     'password': "",
   };
 
-  bool hideNewPassword = true;
+  bool hidePassword = true;
   OverlayEntry? overlayEntry;
   bool isSignUpScreen = false;
   void togglePasswordVisibility1() =>
-      setState(() => hideNewPassword = !hideNewPassword);
+      setState(() => hidePassword = !hidePassword);
 
   @override
   void initState() {
@@ -61,6 +61,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
     AppDimens appDimens = AppDimens();
     appDimens.appDimensFind(context: context);
+
+    //Visibility icons
+    Widget visibilityOffIcon = Icon(
+      Icons.visibility_off,
+      color: appColors.buttonBgColor,
+      size: 20,
+    );
+
+    Widget visibilityOnIcon = Icon(
+      Icons.visibility,
+      color: appColors.grey,
+      size: 20,
+    );
 
     //Check full name field
     checkFullName(value, fieldName, {onchange = false}) {
@@ -130,34 +143,43 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
     //Check password field
     checkPassword(value, fieldName, {onchange = false}) {
-      if (Validation().isNotEmpty(value.trim())) {
+
+      if (Validation().isNotEmpty(value)) {
         setState(() {
-          if (Validation().validatePassword(value.trim())) {
-            errorMessages[fieldName] = '';
-          } else {
-            if (!onchange) {
+          if (value.length >= 8) {
+            errorMessages['password'] = "";
+
+            if (Validation().validatePassword(controllers[fieldName]!.text.trim())) {
               setState(() {
-                errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterPassword);
+                errorMessages['password'] = "";
               });
-            }else{
+            } else {
               setState(() {
-                errorMessages[fieldName] = "";
+                errorMessages[fieldName] = appString.trans(context, appString.mustContain1LetterAndNumber);
               });
+              // if (!onchange) {
+              //   errorMessages[fieldName] = appString.trans(context, appString.mustContain1LetterAndNumber);
+              // }
             }
+          } else {
+            setState(() {
+              errorMessages[fieldName] = appString.trans(context, appString.passwordLengthError);
+            });
+            /*if (!onchange) {
+              errorMessages[fieldName] = appString.trans(context, appString.passwordLengthError);
+            }*/
           }
         });
       } else {
         setState(() {
-          if (!onchange) {
+          errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterPassword);
+          /* if (!onchange) {
             if (fieldName == 'password') {
-              errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterCorrectPassword);
+              errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterNewPassword);
+            } else if (fieldName == 'confirm_password') {
+              errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterConfirmPassword);
             }
-          }
-          else{
-            setState(() {
-              errorMessages[fieldName] = appString.trans(context, appString.pleaseEnterPassword);
-            });
-          }
+          }*/
         });
       }
     }
@@ -206,7 +228,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       } else if (!Validation().validatePassword(controllers['password']?.text ?? "")) {
         setState(() {
           if (isButtonClicked) {
-            errorMessages['password'] = appString.trans(context, appString.pleaseEnterCorrectPassword);
+            errorMessages['password'] = appString.trans(context, appString.mustContain1LetterAndNumber);
           }
         });
         return false;
@@ -387,6 +409,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         iconSize: Size(10, 10),
                         imageColor: appColors.buttonBgColor),
                   ),
+                  suffixIcon: IconButton(
+                    icon: hidePassword ? visibilityOffIcon : visibilityOnIcon,
+                    onPressed: togglePasswordVisibility1,
+                  ),
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: appColors.appBgColor1.withOpacity(0.30),
                         width: 1.5),
@@ -404,9 +430,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 inputHeight: 50,
                 errorMsgHeight: 22,
                 autoFocus: false,
-                obscureText: true,
+                obscureText: hidePassword,
                 errorLeftRightMargin: 0,
-                maxCharLength: 10,
+                maxCharLength: 8,
                 capitalization: CapitalizationText.none,
                 cursorColor: appColors.textColor,
                 textInputAction: TextInputAction.done,

@@ -1,7 +1,7 @@
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/pages/login_screen.dart';
-import 'package:base_flutter_app/src/pages/register_screen.dart';
+import 'package:base_flutter_app/src/pages/registration_screen.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';

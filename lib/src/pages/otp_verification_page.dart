@@ -2,7 +2,7 @@ import 'package:base_flutter_app/src/all_file_import/app_utils_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/pages/login_screen.dart';
-import 'package:base_flutter_app/src/pages/register_screen.dart';
+import 'package:base_flutter_app/src/pages/registration_screen.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:base_flutter_app/src/widgets/pin_code_fields.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -146,7 +146,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                   ..onTap = () {
                     /*Navigator.push(
                               context,
-                              SlideRightRoute(widget: RegisterScreen()),
+                              SlideRightRoute(widget: RegistrationScreen()),
                             );*/
                   },
                 text:

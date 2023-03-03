@@ -24,8 +24,9 @@ import 'package:provider/provider.dart';
 import 'package:base_flutter_app/src/config/routes.dart';
 import 'src/pages/login_screen.dart';
 import 'src/pages/otp_verification_page.dart';
-import 'src/pages/register_screen.dart';
+import 'src/pages/registration_screen.dart';
 import 'src/pages/terms_of_services_screen.dart';
+import 'src/widgets/common_choice_chip_widget.dart';
 
 void main() async {
   // if you are using await in main function then add this line

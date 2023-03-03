@@ -85,6 +85,9 @@ class AppColors {
   Color appBgColorEmerald = const Color(0xFF3d9676);
   Color appBgColorLeanWhite = const Color(0xFFF5eadd);
   Color appBgColor6 = const Color(0xFF374151);
+  Color appContainerBgColor = const Color(0xFFABB6BB);
+  Color appContainerBgColor1 = const Color(0xFF425f5f);
+
 
 
 
@@ -143,12 +146,14 @@ class AppColors {
   Color textFiledColor = const Color(0xff828588);
   Color textNormalColor3 = const Color(0xFFC4C4C4);
   Color textNormalColor4 = const Color(0xFF4AA546);
+  Color textFiledColor4 = const Color(0xff1C2431);
   Color textNormalColor5 = const Color(0xFF27AE60);
   Color textNormalColor6 = const Color(0xFFF2F2F2);
   Color textNormalColor7 = const Color(0xFF34C759);
 
 
   Color textSubHeadingColor = const Color(0xFF000000);
+  Color textSubHeading = const Color(0xFF9CA3AF);
   Color textHeadingColor = const Color(0xFF2c3134);
 
   Color textDisabledColor = const Color(0xFFCCCCCC);

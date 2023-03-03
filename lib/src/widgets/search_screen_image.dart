@@ -9,13 +9,17 @@ class SearchScreenCommonImage extends StatelessWidget {
   final String? subTitle;
   final String? countryTitle;
   late final int? selectedIndex;
+  final double? imageHeight;
+  final double? imageWidth;
   SearchScreenCommonImage({
     Key? key,
     this.imageUrl,
     this.title,
     this.subTitle,
     this.countryTitle,
-    this.selectedIndex
+    this.selectedIndex,
+    this.imageHeight,
+    this.imageWidth
   }) : super(key: key);
 
   @override
@@ -121,8 +125,10 @@ class SearchScreenCommonImage extends StatelessWidget {
             child: CachedNetworkImage(
               imageUrl: imageUrl!,
               fit:BoxFit.cover,
-              width: appDimens.widthFullScreen()/1.35,
-              // height: appDimens.heightFullScreen()/1.5,
+              height: imageHeight ?? appDimens.heightFullScreen(),
+              width: imageWidth ?? appDimens.widthFullScreen(),
+              // width: appDimens.widthFullScreen()/1.25,
+              // height: appDimens.heightFullScreen()/3.8,
             ),
           ),
         ),

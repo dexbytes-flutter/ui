@@ -259,6 +259,8 @@ class AppString {
   String confirmPasswordHintText = 'confirmPasswordHintText';
   String topRecentSearchText = 'topRecentSearchText';
   String recommendedForYouTex = 'recommendedForYouTex';
+  String countryDropDownHintText = 'countryDropDownHintText';
+  String cityDropDownHintText = 'cityDropDownHintText';
 
 }
 

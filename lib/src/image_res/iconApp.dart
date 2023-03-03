@@ -39,6 +39,7 @@ class IconApps {
   String islandIcon = "assets/images/island_icon.svg";
   String indonesiaFlag = "assets/images/indonesia_flag.svg";
   String filterIcon = "assets/images/filter_icon.svg";
+  String dropDownDownArrow = "assets/images/drop_down_down_arrow.svg";
 
   iconImage(
       {required String imageUrl,

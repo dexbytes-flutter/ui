@@ -102,6 +102,7 @@ class VerticalTitleSublistList{
   });
 }
 
+// Search screen recommended list data
 final List<VerticalTitleSublistList> searchScreenImageList = [
     VerticalTitleSublistList(
     title: "Blausee \nNature park",
@@ -109,16 +110,44 @@ final List<VerticalTitleSublistList> searchScreenImageList = [
     countryTitle: "venezuela",
     imageUrl: "https://i.pinimg.com/originals/0c/ca/11/0cca112aaf106f312cece45cba34be54.jpg",
     ),
-  VerticalTitleSublistList(
+    VerticalTitleSublistList(
     title: "Aragua",
     subTitle: "Indonesia",
     countryTitle: "venezuela",
     imageUrl: "https://i.pinimg.com/originals/0c/ca/11/0cca112aaf106f312cece45cba34be54.jpg",
   ),
-  VerticalTitleSublistList(
+    VerticalTitleSublistList(
+    title: "Aragua",
+    subTitle: "Indonesia",
+    countryTitle: "venezuela",
+    imageUrl: "https://i.pinimg.com/originals/0c/ca/11/0cca112aaf106f312cece45cba34be54.jpg",
+  ),
+    VerticalTitleSublistList(
+    title: "Aragua",
+    subTitle: "Indonesia",
+    countryTitle: "venezuela",
+    imageUrl: "https://i.pinimg.com/originals/0c/ca/11/0cca112aaf106f312cece45cba34be54.jpg",
+  ),
+    VerticalTitleSublistList(
+    title: "Aragua",
+    subTitle: "Indonesia",
+    countryTitle: "venezuela",
+    imageUrl: "https://i.pinimg.com/originals/0c/ca/11/0cca112aaf106f312cece45cba34be54.jpg",
+  ),
+    VerticalTitleSublistList(
+    title: "Aragua",
+    subTitle: "Indonesia",
+    countryTitle: "venezuela",
+    imageUrl: "https://i.pinimg.com/originals/0c/ca/11/0cca112aaf106f312cece45cba34be54.jpg",
+  ),
+    VerticalTitleSublistList(
     title: "Aragua",
     subTitle: "Indonesia",
     countryTitle: "venezuela",
     imageUrl: "https://i.pinimg.com/originals/0c/ca/11/0cca112aaf106f312cece45cba34be54.jpg",
   ),
 ];
+
+
+
+

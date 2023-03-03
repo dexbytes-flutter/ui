@@ -1,3 +1,4 @@
+import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:flutter/material.dart';
 
@@ -38,17 +39,18 @@ class BottomSheetDynamicHeightCardView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScrollConfiguration(
       behavior: MyBehavior(),
-      child: SingleChildScrollView(
-        physics: ClampingScrollPhysics(),
-        child: Container(
-          margin: bottomSheetMargin ?? EdgeInsets.zero,
-          decoration: BoxDecoration(
-              color: cardBackgroundColor,
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20)
-              )
-          ),
+      child: Container(
+        height: appDimens.heightFullScreen() - 200,
+        margin: bottomSheetMargin ?? EdgeInsets.zero,
+        decoration: BoxDecoration(
+            color: cardBackgroundColor,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20)
+            )
+        ),
+        child: SingleChildScrollView(
+          physics: ClampingScrollPhysics(),
           child: Column(
             crossAxisAlignment: crossAxisAlignment,
             mainAxisSize: MainAxisSize.min,

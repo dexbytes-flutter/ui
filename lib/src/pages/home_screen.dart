@@ -49,7 +49,10 @@ class _HomeScreenState extends State<HomeScreen> {
           onTap: (){
             Navigator.push(
               MainAppBloc.getDashboardContext,
-              SlideRightRoute(widget: SearchScreen()
+              SlideRightRoute(widget: SearchScreen(
+                isFilterApplied: false,
+                isVerticalViewSearchResult: false,
+              )
               ),
             );
           },
@@ -121,6 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   title: verticalTitleSubTitleList[index].title,
                   subTitle: verticalTitleSubTitleList[index].subTitle,
                   countryTitle: verticalTitleSubTitleList[index].countryTitle,
+                  isHorizontalViewCard: false,
                 )
             );
           },

@@ -9,13 +9,15 @@ class HomepageCommonImage extends StatelessWidget {
   final String? subTitle;
   final String? countryTitle;
   late final int? selectedIndex;
+  final bool? isHorizontalViewCard;
   HomepageCommonImage({
     Key? key,
     this.imageUrl,
     this.title,
     this.subTitle,
     this.countryTitle,
-    this.selectedIndex
+    this.selectedIndex,
+    this.isHorizontalViewCard
   }) : super(key: key);
 
   @override
@@ -100,7 +102,7 @@ class HomepageCommonImage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  selectedIndex == 0
+                  selectedIndex == 0 || isHorizontalViewCard!
                       ? Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: appColors.white),
@@ -121,13 +123,13 @@ class HomepageCommonImage extends StatelessWidget {
                       iconSize: Size(20, 20),
                       imageColor: appColors.white
                   ),
-                  SizedBox(width: selectedIndex != 0? 10 : 5,),
+                  SizedBox(width: selectedIndex != 0 || isHorizontalViewCard!? 10 : 5,),
                   Text(subTitle!,
                   style: appStyles.commonSubTitleTextStyle(fontSize: 14,texColor: appColors.white),
                   ),
                   SizedBox(width: 2,),
                   Text( selectedIndex != 0
-                      ? appString.trans(context, appString.destinationText)
+                      ? isHorizontalViewCard! ? "" : appString.trans(context, appString.destinationText)
                       : "",
                     style: appStyles.commonSubTitleTextStyle(fontSize: 13),
                   ),
@@ -188,29 +190,29 @@ class HomepageCommonImage extends StatelessWidget {
             Positioned(
               left: 25,
                 top: 25,
-                child: selectedIndex == 0? ratingView():Container()
+                child: selectedIndex == 0 || isHorizontalViewCard!? ratingView():Container()
             ),
             Positioned(
               top: 25,
                 right: 25,
-                child: selectedIndex == 0? iconApps.iconImage(
-                imageUrl: iconApps.bookmarkIconFilled,
+                child: selectedIndex == 0 || isHorizontalViewCard! ? iconApps.iconImage(
+                imageUrl: isHorizontalViewCard!? iconApps.bookmarkIcon : iconApps.bookmarkIconFilled,
                 iconSize: Size(25, 35),
-                  imageColor: appColors.buttonBgColor.withOpacity(0.70)
+                  imageColor: isHorizontalViewCard! ? appColors.buttonBgColor.withOpacity(0.50): appColors.buttonBgColor.withOpacity(0.70)
               ): Container()
             ),
             Positioned(
-              bottom: selectedIndex != 1? 230 : 185,
+              bottom: selectedIndex != 1 || isHorizontalViewCard!? 230 : 185,
                 left: 25,
                 child: Text(
-                  selectedIndex == 1
+                  selectedIndex == 1 ||isHorizontalViewCard!
                       ? appString.trans(context, appString.topRecommendedImageText)
                       : appString.trans(context, appString.recommendedImageText),
                   style: appStyles.commonSubTitleTextStyle(fontSize: 13),
                 )
             ),
             Positioned(
-              bottom: selectedIndex == 1?115:120,
+              bottom: selectedIndex == 1 || isHorizontalViewCard!?115:120,
                 left: selectedIndex == 0? 24 : 25,
                 child: placeTitleView()
             ),

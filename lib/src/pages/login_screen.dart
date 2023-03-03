@@ -3,7 +3,7 @@ import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart'
 import 'package:base_flutter_app/src/app_utility/validation.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
 import 'package:base_flutter_app/src/pages/dashboard_screen.dart';
-import 'package:base_flutter_app/src/pages/register_screen.dart';
+import 'package:base_flutter_app/src/pages/registration_screen.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/gestures.dart';
@@ -477,7 +477,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           ..onTap = () {
                             Navigator.push(
                               context,
-                              SlideRightRoute(widget: RegisterScreen()),
+                              SlideRightRoute(widget: RegistrationScreen()),
                             );
                           },
                         text:
