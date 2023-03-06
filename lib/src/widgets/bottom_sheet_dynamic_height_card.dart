@@ -17,6 +17,7 @@ class BottomSheetDynamicHeightCardView extends StatelessWidget {
   final EdgeInsetsGeometry topLineMargin;
   final CrossAxisAlignment crossAxisAlignment;
   final EdgeInsetsGeometry? bottomSheetMargin;
+  final EdgeInsetsGeometry? sheetTitlePadding;
 
   BottomSheetDynamicHeightCardView(
       {Key? key,
@@ -32,7 +33,8 @@ class BottomSheetDynamicHeightCardView extends StatelessWidget {
         this.topLineShow =false,
         this.topLineMargin = const EdgeInsets.only(top: 12, bottom: 10),
         this.crossAxisAlignment = CrossAxisAlignment.start, this.child2,
-        this.bottomSheetMargin
+        this.bottomSheetMargin,
+        this.sheetTitlePadding
       })
       : super(key: key);
   @override
@@ -84,7 +86,7 @@ class BottomSheetDynamicHeightCardView extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(left: 20.0,right: 20,top: 10),
+                padding: sheetTitlePadding ?? EdgeInsets.only(left: 20.0,right: 20,top: 10),
                 child: Text("$sheetTitle",
                     style: sheetTitleStyle),
               ),

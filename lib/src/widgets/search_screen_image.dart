@@ -1,5 +1,6 @@
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
+import 'package:base_flutter_app/src/widgets/bookmark_button_icon.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,7 @@ class SearchScreenCommonImage extends StatelessWidget {
   late final int? selectedIndex;
   final double? imageHeight;
   final double? imageWidth;
+  final bool? isBookmarked;
   SearchScreenCommonImage({
     Key? key,
     this.imageUrl,
@@ -19,7 +21,8 @@ class SearchScreenCommonImage extends StatelessWidget {
     this.countryTitle,
     this.selectedIndex,
     this.imageHeight,
-    this.imageWidth
+    this.imageWidth,
+    this.isBookmarked
   }) : super(key: key);
 
   @override
@@ -140,11 +143,17 @@ class SearchScreenCommonImage extends StatelessWidget {
         Positioned(
             top: 20,
             right: 20,
-            child: iconApps.iconImage(
+            child: BookmarkButton(
+              isFavorite: isBookmarked,
+              iconDisabledColor: appColors.appBgColorLeanWhite.withOpacity(0.40),
+              valueChanged: (_isFavorite) {
+                print('Is Favorite : $_isFavorite');
+              },
+            )/*iconApps.iconImage(
                 imageUrl: iconApps.bookmarkIcon,
                 iconSize: Size(25, 25),
                 imageColor: appColors.appBgColorLeanWhite.withOpacity(0.40)
-            )
+            )*/
         ),
         Positioned(
             bottom: 30,

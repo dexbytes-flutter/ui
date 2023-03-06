@@ -125,6 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   subTitle: verticalTitleSubTitleList[index].subTitle,
                   countryTitle: verticalTitleSubTitleList[index].countryTitle,
                   isHorizontalViewCard: false,
+                  isBookmarked: verticalTitleSubTitleList[index].isBookmarked,
                 )
             );
           },

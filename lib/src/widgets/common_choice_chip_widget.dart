@@ -22,25 +22,27 @@ class _ChoiceChipWidgetState extends State<ChoiceChipWidget> {
   _buildChoiceList() {
     List<Widget> choices = [];
     widget.reportList.forEach((item) {
-      choices.add(Container(
-        child: ChoiceChip(
-          label: Text(item),
-          labelStyle: appStyles.commonSubTitleTextStyle(fontSize: 12.5,
-          texColor: selectedChoice == item ? appColors.buttonBgColor : appColors.textColor),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(12),
-            ),
+      choices.add(ChoiceChip(
+        label: Text(item),
+        side: BorderSide(
+          width: selectedChoice == item ? 0 : 1.5,
+          color: appColors.appBgColor2),
+        labelStyle: appStyles.commonSubTitleTextStyle(fontSize: 12.5,
+        texColor: selectedChoice == item ? appColors.buttonBgColor : appColors.textColor),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(12),
           ),
-          labelPadding: EdgeInsets.only(left: widget.isAvatar!? 0 : 10, right: 10),
-          backgroundColor: appColors.appBgColor2,
-          selectedColor: appColors.appContainerBgColor1,
-          selected: selectedChoice == item,
-          onSelected: (selected) {
-            setState(() {
-              selectedChoice = item;
-            });
-          },
         ),
+        labelPadding: EdgeInsets.only(left: widget.isAvatar!? 0 : 10, right: 10),
+        backgroundColor: appColors.appBgColorJungleGreen,
+        selectedColor: appColors.appBgColor2,
+        selected: selectedChoice == item,
+        selectedShadowColor: Colors.transparent,
+        onSelected: (selected) {
+          setState(() {
+            selectedChoice = item;
+          });
+        },
       ));
     });
     return choices;
@@ -61,10 +63,14 @@ class _ChoiceChipWidgetState extends State<ChoiceChipWidget> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(12),
             ),
+            side: BorderSide(
+              color:  appColors.appBgColor2,
+              width: selectedChoice == item ? 0 : 1.5
+            )
           ),
           labelPadding: EdgeInsets.only(right: 10),
-          backgroundColor: appColors.appBgColor2,
-          selectedColor: appColors.appContainerBgColor1,
+          backgroundColor: appColors.appBgColorJungleGreen,
+          selectedColor: appColors.appBgColor2,
           selected: selectedChoice == item,
           onSelected: (selected) {
             setState(() {

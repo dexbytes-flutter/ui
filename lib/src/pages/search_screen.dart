@@ -245,6 +245,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   subTitle: searchScreenImageList[index].subTitle,
                   countryTitle: searchScreenImageList[index].countryTitle,
                   isHorizontalViewCard: true,
+                  isBookmarked: searchScreenImageList[index].isBookmarked ?? true,
                 )
             );
           },
@@ -273,7 +274,8 @@ class _SearchScreenState extends State<SearchScreen> {
                         title: searchScreenImageList[index].title,
                         subTitle: searchScreenImageList[index].subTitle,
                         countryTitle: searchScreenImageList[index].countryTitle,
-                        imageWidth:appDimens.widthFullScreen()/1.25 ,
+                        imageWidth: appDimens.widthFullScreen()/1.25 ,
+                        isBookmarked: searchScreenImageList[index].isBookmarked,
                       ));
                 },
               ),

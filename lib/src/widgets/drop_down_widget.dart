@@ -1,96 +1,93 @@
-import 'package:base_flutter_app/src/image_res/iconApp.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 
 import '../all_file_import/app_values_files_link.dart';
 
-class DropDownPicker extends StatefulWidget {
 
+
+//for Restaurant type dropdown
+class DropDownDataPicker extends StatefulWidget {
   final List<DropdownMenuItem<String>> itemList;
   final String? hint;
   final Function? selectedValue;
-  const DropDownPicker({Key? key,
-    required this.itemList,this.selectedValue,
-    this.hint
+  late String? countryId;
+  final String? cityId;
+  final String? choosenValue;
+  final Function(String?)? onChangedValue;
+
+  DropDownDataPicker({Key? key,
+    required this.itemList,
+    this.hint,
+    this.selectedValue,
+    this.cityId,
+    this.countryId,
+    this.choosenValue,
+    this.onChangedValue
   }) : super(key: key);
 
   @override
-  _DropDownPickerState createState() => _DropDownPickerState(countryList: this.itemList);
+  _DropDownDataPickerState createState() => _DropDownDataPickerState(itemTypeList: this.itemList);
 }
 
-class _DropDownPickerState extends State<DropDownPicker> {
-  String? valueChoose;
-  List<DropdownMenuItem<String>>? countryList;
+class _DropDownDataPickerState extends State<DropDownDataPicker> {
 
-  _DropDownPickerState({this.countryList});
+  // String? valueChoose;
+  
+  List<DropdownMenuItem<String>>? itemTypeList;
+
+  _DropDownDataPickerState({this.itemTypeList});
 
   @override
   Widget build(BuildContext context) {
-    var brightness = SchedulerBinding.instance.window.platformBrightness;
-    bool isDarkMode = brightness == Brightness.dark;
 
 
     return Container(
-      height: 35,
-      width: 154,
+      height: 40,
+      padding: const EdgeInsets.only(right: 6),
       margin: EdgeInsets.zero,
       decoration: BoxDecoration(
-        color: appColors.appContainerBgColor.withOpacity(0.12),
-        borderRadius: BorderRadius.circular(12),
+          color: appColors.appBgColor2,
+          borderRadius: BorderRadius.circular(10),
       ),
       child: Padding(
-        padding: EdgeInsets.zero,
-        child: DropdownButton<String> (
-            icon: Container(
-              margin: EdgeInsets.only(right: 8),
-              child: SizedBox(
-                  child: Center(
-                      child: iconApps.iconImage(
-                          imageUrl: iconApps.dropDownDownArrow,
-                          iconSize: Size(20, 20),
-                          imageColor: appColors.textColor
-                      )
-                  )
-              ),
+        padding: const EdgeInsets.only(left: 15, right: 12),
+        child: DropdownButtonHideUnderline(
+          child: ButtonTheme(
+            // alignedDropdown: true,
+            child: DropdownButton<String> (
+                alignment: AlignmentDirectional.centerStart,
+                iconEnabledColor:Colors.grey.shade500,
+                icon: const Icon(Icons.keyboard_arrow_down),
+                iconSize: 28,
+                elevation: 1,
+                isExpanded: true,
+                dropdownColor: appColors.appBgColor2,
+                // dropdownColor: !isDarkMode? Colors.grey.shade300 : Color(0xff212327),
+                // alignment: Alignment.bottomCenter,
+                borderRadius: BorderRadius.circular(10),
+                hint: Text( widget.hint ??"",style: appStyles.commonTitleStyle(fontSize: 14,
+                    texColor: appColors.textColor, fontWeight: FontWeight.w500)
+                ),
+                isDense: false,
+                value: widget.choosenValue,
+                items: itemTypeList,
+                onChanged: widget.onChangedValue
             ),
-            iconEnabledColor:Colors.grey ,
-            elevation: 0,
-            isExpanded: true,
-            underline:Container(
-              height: 0.0,
-              decoration: BoxDecoration(
-                border: Border.all(width:0.01,color: appColors.appContainerBgColor.withOpacity(0.12))
-              ),
-            ),
-            dropdownColor:  appColors.textFiledColor4,
-            alignment: Alignment.centerLeft,
-            borderRadius: BorderRadius.circular(10),
-            hint: Padding(
-              padding: const EdgeInsets.all(8.0).copyWith(left: 15),
-              child: Text( widget.hint ??"Select Date",style:
-              appStyles.commonTitleStyle(fontSize: 11.5,texColor: appColors.textColor,
-                  fontWeight: FontWeight.w400
-              ),),
-            ),
-            isDense: false,
-            value: valueChoose,
-            items: countryList,
-            onChanged: (value) => setState(() {
-              this.valueChoose = value;
-              widget.selectedValue?.call(value);
-            })
+          ),
         ),
       ),
     );
   }
+
   DropdownMenuItem<String> buildMenuItem(String item) {
+
     return DropdownMenuItem(
         value:item,
         child: Text(
-          item,
-          style: appStyles.commonTitleStyle(fontWeight: FontWeight.w500,
-            fontSize: 11.5, texColor: appColors.textColor
-          ),
+            item,
+            style: appStyles.commonTitleStyle(texColor: appColors.textColor,
+                fontSize: 14, fontWeight: FontWeight.w500
+            )
         )
     );}
+
 }

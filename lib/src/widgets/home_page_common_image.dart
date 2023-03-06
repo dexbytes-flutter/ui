@@ -1,5 +1,6 @@
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
+import 'package:base_flutter_app/src/widgets/bookmark_button_icon.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,7 @@ class HomepageCommonImage extends StatelessWidget {
   final String? countryTitle;
   late final int? selectedIndex;
   final bool? isHorizontalViewCard;
+  final bool isBookmarked;
   HomepageCommonImage({
     Key? key,
     this.imageUrl,
@@ -17,7 +19,8 @@ class HomepageCommonImage extends StatelessWidget {
     this.subTitle,
     this.countryTitle,
     this.selectedIndex,
-    this.isHorizontalViewCard
+    this.isHorizontalViewCard,
+    this.isBookmarked = false
   }) : super(key: key);
 
   @override
@@ -195,11 +198,19 @@ class HomepageCommonImage extends StatelessWidget {
             Positioned(
               top: 25,
                 right: 25,
-                child: selectedIndex == 0 || isHorizontalViewCard! ? iconApps.iconImage(
+                child: selectedIndex == 0 || isHorizontalViewCard!
+                    ? BookmarkButton(
+                  isFavorite: isBookmarked,
+                  iconDisabledColor: appColors.appBgColorLeanWhite.withOpacity(0.40),
+                  valueChanged: (_isFavorite) {
+                    print('Is Favorite : $_isFavorite');
+                  },
+                )
+                /*iconApps.iconImage(
                 imageUrl: isHorizontalViewCard!? iconApps.bookmarkIcon : iconApps.bookmarkIconFilled,
                 iconSize: Size(25, 35),
                   imageColor: isHorizontalViewCard! ? appColors.buttonBgColor.withOpacity(0.50): appColors.buttonBgColor.withOpacity(0.70)
-              ): Container()
+              )*/: Container()
             ),
             Positioned(
               bottom: selectedIndex != 1 || isHorizontalViewCard!? 230 : 185,

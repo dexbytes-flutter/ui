@@ -276,7 +276,10 @@ class _MyAppState extends State<MyAppFlutterMain> {
     return /*!widget.isOneTimeProfileSetUpDone
         ? CreateAccount()
         : */
-      SearchScreen();
+      SearchScreen(
+        isFilterApplied: false,
+        isVerticalViewSearchResult: false,
+      );
 
   }
 

@@ -37,12 +37,11 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
 
   String? countryId;
   String? cityId;
+  // String? choosenValue;
 
   String countryValue = "";
-  String stateValue = "";
   String cityValue = "";
-  String address = "";
-  SfRangeValues _values = SfRangeValues(150, 400);
+
 
   RangeValues values = const RangeValues(150, 400);
   RangeLabels labels = const RangeLabels("100", "1000");
@@ -54,14 +53,21 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
     this.countryNameList.add({"id":1,"name" : "India", });
     this.countryNameList.add({"id":2,"name" : "UAE", });
 
+    this.countryNameList = [
+      {"id": 1, "Name" : "India", "ParentId" : 1},
+      {"id": 2, "Name" : "UAE", "ParentId" : 2},
+    ];
+
     this.cityNameList = [
-      {"ID": 1, "Name" : "Delhi", "ParentId" : 1},
-      {"ID": 2, "Name" : "Indore", "ParentId" : 1},
-      {"ID": 1, "Name" : "Abu Dhabi", "ParentId" : 2},
-      {"ID": 2, "Name" : "Dubai", "ParentId" : 2},
+      {"ID": 1, "Name" : "Delhi", "ParentId" : 0},
+      {"ID": 2, "Name" : "Indore", "ParentId" : 0},
+      {"ID": 3, "Name" : "Abu Dhabi", "ParentId" : 1},
+      {"ID": 4, "Name" : "Dubai", "ParentId" : 1},
     ];
   }
-  final items = ["Entertainment","Educational",];
+  final countryList = ["India","UAE",];
+  final cityList = ["Delhi","Indore",];
+
   DropdownMenuItem<String> buildMenuItem(String item)  {
     var brightness = SchedulerBinding.instance.window.platformBrightness;
     bool isDarkMode = brightness == Brightness.dark;
@@ -72,7 +78,7 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
-            color: !isDarkMode?  Colors.black:Colors.white,
+            color: !isDarkMode?  Colors.white:Colors.white,
           ),
         )
     );}
@@ -110,10 +116,10 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
                       margin: EdgeInsets.only(right: 10),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
-                          color: selectedIndex == index ? appColors.appContainerBgColor.withOpacity(0.12) : appColors.appTransColor,
+                          color: selectedIndex == index ? appColors.appBgColor2 : appColors.appTransColor,
                           border: Border.all(color:  selectedIndex == index
                               ? appColors.appTransColor
-                              : appColors.appContainerBgColor.withOpacity(0.12),
+                              : appColors.appBgColor2,
                               width: selectedIndex == index
                                   ? 0
                                   :1.5)
@@ -138,7 +144,7 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
       );
     }
     // Location drop down
-    Widget locationDropDownView(){
+    /*Widget locationDropDownView(){
       return Container(
           child: Builder(
             builder: (BuildContext context) {
@@ -180,8 +186,8 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
                         hintFontSize: 11.5,
                         borderRadius: 10,
                         borderWidth: 0,
-                        paddingLeft: 0,
-                        paddingRight: 0,
+                        paddingLeft: 15,
+                        paddingRight: 15,
                         paddingTop: 5,
                         paddingBottom: 5
                     ),
@@ -228,7 +234,7 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
 
           )
 
-        /*Column(
+        *//*Column(
             children: [
               FormHelper.dropDownWidget(
                   context,
@@ -272,21 +278,41 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
                 optionLabel: "Name",
               )
             ]
-        ),*/
+        ),*//*
       );
-    }
+    }*/
 
     Widget category = Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          DropDownPicker(
-            hint: appString.trans(context, appString.countryDropDownHintText) ,
-            itemList: items.map(buildMenuItem).toList(),
+          Flexible(
+            child: DropDownDataPicker(
+              hint: appString.trans(context, appString.countryDropDownHintText) ,
+              itemList: countryList.map(buildMenuItem).toList(),
+              onChangedValue: (onChangedVal){
+                setState(() {
+                  this.countryId = onChangedVal!;
+                  this.city = cityNameList.where(
+                          (cityItem) => cityItem["ParentId"].toString() == onChangedVal.toString()).toList();
+                  this.cityId = null;
+                });
+              },
+              choosenValue: countryId,
+            ),
           ),
-          DropDownPicker(
-            hint: appString.trans(context, appString.cityDropDownHintText) ,
-            itemList: items.map(buildMenuItem).toList(),
+          SizedBox(width: 10,),
+          Flexible(
+            child: DropDownDataPicker(
+              hint: appString.trans(context, appString.cityDropDownHintText) ,
+              itemList: cityList.map(buildMenuItem).toList(),
+              onChangedValue: (onChangedVal){
+                setState(() {
+                  this.cityId = onChangedVal!;
+                });
+              },
+              choosenValue: cityId,
+            ),
           )
         ],
       ),
@@ -327,7 +353,7 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
                       min: 100,
                       max: 1000,
                       labels: labels,
-                      divisions: 10,
+                      divisions: 5,
                     ),
                   ),
                 ),
@@ -420,8 +446,8 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
               style: appStyles.commonSubTitleTextStyle(fontSize: 15),
             ),
             SizedBox(height: 10,),
-            locationDropDownView(),
-            // category,
+            // locationDropDownView(),
+            category,
             SizedBox(height: 25,),
             Text(appString.trans(context, appString.priceTitleText),
               style: appStyles.commonSubTitleTextStyle(fontSize: 15),
@@ -448,6 +474,7 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
               isBottomMarginRequired: false,
               textStyle: appStyles.buttonNameStyle(),
               backCallback: (){
+                Navigator.of(context).pop();
                 Navigator.push(
                   context,
                   SlideRightRoute(widget: SearchScreen(
@@ -466,7 +493,8 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
 
     return BottomSheetDynamicHeightCardView(
       cardBackgroundColor: appColors.appBgColorJungleGreen,
-      topLineShow: false,
+      topLineShow: true,
+      sheetTitlePadding: EdgeInsets.only(left: 20.0,right: 20,top: 10),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
