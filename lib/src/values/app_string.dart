@@ -261,6 +261,16 @@ class AppString {
   String recommendedForYouTex = 'recommendedForYouTex';
   String countryDropDownHintText = 'countryDropDownHintText';
   String cityDropDownHintText = 'cityDropDownHintText';
+  String bookingListText = 'bookingListText';
+  String cancelledText = 'cancelledText';
+  String finishedText = 'finishedText';
+  String startDateText = 'startDateText';
+  String endDateText = 'endDateText';
+  String personText = 'personText';
+  String typeText = 'typeText';
+  String totalPriceText = 'totalPriceText';
+  String bookingDetailsText = 'bookingDetailsText';
+  String faqButtonText = 'faqButtonText';
 
 }
 

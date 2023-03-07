@@ -59,27 +59,22 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
     ];
 
     this.cityNameList = [
-      {"ID": 1, "Name" : "Delhi", "ParentId" : 0},
-      {"ID": 2, "Name" : "Indore", "ParentId" : 0},
-      {"ID": 3, "Name" : "Abu Dhabi", "ParentId" : 1},
-      {"ID": 4, "Name" : "Dubai", "ParentId" : 1},
+      {"ID": 1, "Name" : "Delhi", "ParentId" : "India"},
+      {"ID": 2, "Name" : "Indore", "ParentId" : "India"},
+      {"ID": 3, "Name" : "Abu Dhabi", "ParentId" : "UAE"},
+      {"ID": 4, "Name" : "Dubai", "ParentId" : "UAE"},
     ];
   }
   final countryList = ["India","UAE",];
   final cityList = ["Delhi","Indore",];
 
   DropdownMenuItem<String> buildMenuItem(String item)  {
-    var brightness = SchedulerBinding.instance.window.platformBrightness;
-    bool isDarkMode = brightness == Brightness.dark;
     return DropdownMenuItem(
         value:item,
         child: Text(
           item,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-            color: !isDarkMode?  Colors.white:Colors.white,
-          ),
+          style: appStyles.commonTitleStyle(fontSize: 14,
+            fontWeight: FontWeight.w500, texColor: appColors.textColor,)
         )
     );}
 
@@ -288,7 +283,7 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
         children: [
           Flexible(
             child: DropDownDataPicker(
-              hint: appString.trans(context, appString.countryDropDownHintText) ,
+              hint: appString.trans(context, appString.countryDropDownHintText),
               itemList: countryList.map(buildMenuItem).toList(),
               onChangedValue: (onChangedVal){
                 setState(() {

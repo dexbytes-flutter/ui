@@ -40,6 +40,9 @@ class IconApps {
   String indonesiaFlag = "assets/images/indonesia_flag.svg";
   String filterIcon = "assets/images/filter_icon.svg";
   String dropDownDownArrow = "assets/images/drop_down_down_arrow.svg";
+  String rightAngleArrowIcon = 'assets/images/right_angle_arrow_icon.svg';
+  String calendarIcon = 'assets/images/calendar_icon.svg';
+  String deleteIcon = 'assets/images/delete_icon.svg';
 
   iconImage(
       {required String imageUrl,

@@ -152,6 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
         contextCurrentView: context,
         appBar: HomeScreenAppBar(
           margin: EdgeInsets.only(left: 20,right: 20,),
+          isHideBackIcon: false,
         ),
         containChild: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -161,7 +162,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Padding(
               padding: const EdgeInsets.only(top: 5, left: 20,),
               child: SizedBox(
-                child:Divider(
+                child: Divider(
                   color: appColors.appBgColor1.withOpacity(0.15),
                   height: 20,
                   thickness: 2,

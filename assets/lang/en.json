@@ -173,5 +173,15 @@
   "topRecentSearchText" : "Top recent search",
   "recommendedForYouTex": "Recommended for you",
   "countryDropDownHintText" : "Country",
-  "cityDropDownHintText" : "City"
+  "cityDropDownHintText" : "City",
+  "bookingListText" : "Booking List",
+  "cancelledText" : "Cancelled",
+  "finishedText" : "Finished",
+  "startDateText" : "Start Date",
+  "endDateText" : "End Date",
+  "personText" : "Person",
+  "typeText" : "Type",
+  "totalPriceText" : "Total Price",
+  "bookingDetailsText" : "Booking Detail",
+  "faqButtonText" : "FAQ"
 }

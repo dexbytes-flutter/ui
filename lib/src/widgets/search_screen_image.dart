@@ -13,6 +13,10 @@ class SearchScreenCommonImage extends StatelessWidget {
   final double? imageHeight;
   final double? imageWidth;
   final bool? isBookmarked;
+  final String? subTitleFlagIcon;
+  final bool? isStaticCalenderIcon;
+  final String? bookingStatus;
+  final String? recommendationStatus;
   SearchScreenCommonImage({
     Key? key,
     this.imageUrl,
@@ -22,7 +26,11 @@ class SearchScreenCommonImage extends StatelessWidget {
     this.selectedIndex,
     this.imageHeight,
     this.imageWidth,
-    this.isBookmarked
+    this.isBookmarked,
+    this.subTitleFlagIcon,
+    this.isStaticCalenderIcon,
+    this.bookingStatus,
+    this.recommendationStatus
   }) : super(key: key);
 
   @override
@@ -53,6 +61,12 @@ class SearchScreenCommonImage extends StatelessWidget {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Text(recommendationStatus!,
+            style: appStyles.commonTitleStyle(fontSize: 11, fontWeight: FontWeight.w400,
+                texColor: appColors.textColor
+            ),
+          ),
+          SizedBox(height: 5,),
           Text(title!,
             style: appStyles.commonTitleStyle(fontSize: 20),
           ),
@@ -62,7 +76,13 @@ class SearchScreenCommonImage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Container(
+                  isStaticCalenderIcon!
+                      ? iconApps.iconImage(
+                      imageUrl: iconApps.calendarIcon,
+                      imageColor: appColors.buttonBgColor,
+                      iconSize: Size(12, 15)
+                      )
+                      : Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: appColors.white),
                         borderRadius: BorderRadius.circular(3)
@@ -70,7 +90,7 @@ class SearchScreenCommonImage extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(3),
                       child: CachedNetworkImage(
-                        imageUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
+                        imageUrl: subTitleFlagIcon ?? "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
                         fit: BoxFit.cover,
                         height: 10,
                         width: 10,
@@ -79,7 +99,9 @@ class SearchScreenCommonImage extends StatelessWidget {
                   ),
                   SizedBox(width:  5,),
                   Text(subTitle!,
-                    style: appStyles.commonSubTitleTextStyle(fontSize: 14,texColor: appColors.white),
+                    style: appStyles.commonSubTitleTextStyle(fontSize: isStaticCalenderIcon!? 11 : 14,
+                        texColor: isStaticCalenderIcon!? appColors.textColor : appColors.white
+                    ),
                   ),
                 ],
               )
@@ -91,16 +113,17 @@ class SearchScreenCommonImage extends StatelessWidget {
 
     bottomButton(){
       return Container(
-          padding: EdgeInsets.only(left: 12,right: 12),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: appColors.buttonBgColor.withOpacity(0.40)
-          ),
+          // padding: EdgeInsets.only(left: 12,right: 12),
+
           child: InkWell(
             onTap: (){
             },
             child: Container(
-                padding: EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: appColors.buttonBgColor.withOpacity(0.40)
+                ),
+                padding: EdgeInsets.all(8).copyWith(left: 18,right: 18),
                 child: iconApps.iconImage(
                     imageUrl: iconApps.rightArrow,
                     imageColor: appColors.buttonBgColor,
@@ -143,7 +166,22 @@ class SearchScreenCommonImage extends StatelessWidget {
         Positioned(
             top: 20,
             right: 20,
-            child: BookmarkButton(
+            child: isStaticCalenderIcon!
+                ? Container(
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: bookingStatus! == "Cancelled"? 
+                    appColors.red.withOpacity(0.15) : appColors.green.withOpacity(0.15)
+                  ),
+                  child: Text(bookingStatus!,
+                    style: appStyles.commonTitleStyle(
+                      fontSize: 11,fontWeight: FontWeight.w400,
+                      texColor: bookingStatus! == "Cancelled" ? appColors.red : appColors.green
+                    ),
+                  ),
+                )
+                : BookmarkButton(
               isFavorite: isBookmarked,
               iconDisabledColor: appColors.appBgColorLeanWhite.withOpacity(0.40),
               valueChanged: (_isFavorite) {
@@ -156,7 +194,7 @@ class SearchScreenCommonImage extends StatelessWidget {
             )*/
         ),
         Positioned(
-            bottom: 30,
+            bottom: 18,
             left: 20,
             child: placeTitleView()
         ),

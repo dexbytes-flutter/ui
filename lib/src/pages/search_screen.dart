@@ -276,6 +276,9 @@ class _SearchScreenState extends State<SearchScreen> {
                         countryTitle: searchScreenImageList[index].countryTitle,
                         imageWidth: appDimens.widthFullScreen()/1.25 ,
                         isBookmarked: searchScreenImageList[index].isBookmarked,
+                        isStaticCalenderIcon: false,
+                        bookingStatus: "",
+                        recommendationStatus: "",
                       ));
                 },
               ),

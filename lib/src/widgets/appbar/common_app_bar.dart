@@ -1,30 +1,36 @@
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
+import 'package:base_flutter_app/src/widgets/bookmark_button.dart';
 import 'package:flutter/material.dart';
 
 class CommonAppBar extends StatelessWidget {
   final bool isHideLeftIcon;
   final bool isHideRightIcon;
-  final bool isShowTitle;
+  final bool? isShowTitle;
   final String title;
   final Color? appBarColor;
   final EdgeInsetsGeometry? leftIconMargin;
   final EdgeInsetsGeometry? rightIconMargin;
+  final bool? isBookMarked;
+  final EdgeInsetsGeometry? appBarRowMargin;
   const CommonAppBar({
     Key? key,
     this.isHideLeftIcon = false,
-    this.isShowTitle = false,
+    this.isShowTitle,
     this.title = "",
     this.appBarColor,
     this.leftIconMargin,
     this.rightIconMargin,
-    this.isHideRightIcon = false
+    this.isHideRightIcon = false,
+    this.isBookMarked,
+    this.appBarRowMargin
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
     return Container(
+      margin: appBarRowMargin ?? EdgeInsets.zero,
         child: Stack(
           children: [
             isHideLeftIcon ? Container() :
@@ -49,16 +55,29 @@ class CommonAppBar extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children:[
-                    iconApps.iconImage(imageUrl: iconApps.locationIcon,
-                        iconSize: Size(15,15),
-                        imageColor: appColors.appBarTextColor
+                    isShowTitle!
+                        ? iconApps.iconImage(imageUrl: iconApps.locationIcon,
+                        iconSize: Size(20,20),
+                        imageColor: appColors.appBarTextColor)
+                        : Padding(
+                          padding: const EdgeInsets.only(bottom: 30,right: 20),
+                          child: BookmarkButton(
+                      isFavorite: isBookMarked,
+                      iconDisabledColor: appColors.appBgColorLeanWhite.withOpacity(0.40),
+                      valueChanged: (_isFavorite) {
+                          print('Is Favorite : $_isFavorite');
+                      },
                     ),
-                    SizedBox(width: 5,),
-                    Center(
+                        )
+                    ,
+                    SizedBox(width: isShowTitle! ? 5 : 0,),
+                    isShowTitle!
+                        ? Center(
                         child:
                         Text(title, style: appStyles.commonAppBarTextTextStyle()
                         )
                     )
+                        : Container(),
                   ]
               ),
             ),

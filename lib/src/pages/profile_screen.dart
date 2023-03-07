@@ -1,9 +1,13 @@
 import 'package:base_flutter_app/src/all_file_import/app_providers_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_utils_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
+import 'package:base_flutter_app/src/model/profile_list_tile_model.dart';
+import 'package:base_flutter_app/src/pages/registration_screen.dart';
 import 'package:base_flutter_app/src/widgets/appbar/home_screen_app_bar.dart';
+import 'package:base_flutter_app/src/widgets/profile_tile_view.dart';
 import 'package:flutter/material.dart';
 
+import 'book_list_tile_screen.dart';
 import 'home_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -17,6 +21,84 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
 
+    // On profile tile click navigation function
+    void redirectTo(index,context) {
+      MainAppBloc mainAppBloc = MainAppBloc();
+      if(index == 0){
+        Navigator.of(context).pop;
+      }else if(index == 1){
+        /*Navigator.push(
+          MainAppBloc.getDashboardContext,
+          SlideRightRoute(
+              widget: PaymentMethodScreen()),
+        );*/
+        Navigator.push(
+          context,
+          SlideRightRoute(
+              widget: BookListTileScreen()),
+        );
+      }else if(index == 2){
+        /*Navigator.push(
+          MainAppBloc.getDashboardContext,
+          SlideRightRoute(
+              widget: ProfileTileNotificationScreen()),
+        );*/
+      }else if(index == 3){
+        /*Navigator.push(
+          MainAppBloc.getDashboardContext,
+          SlideRightRoute(
+              widget: FaqScreen()
+          ),
+        );*/
+
+      }else if(index == 5){
+        /*Navigator.push(
+          MainAppBloc.getDashboardContext,
+          SlideRightRoute(
+              widget: FaqScreen()
+          ),
+        );*/
+
+      }else if(index == 4){
+       /* ExitConformationAlert(
+            context: context,
+            msg: appString.trans(context, appString.logoutConfirmation),
+            callback: (contextTemp) async {
+              sharedPreferencesFile.clearAll();
+              sharedPreferencesFile.saveBool(isUserLoggedInC, false);
+              Navigator.pushAndRemoveUntil(MainAppBloc.getDashboardContext, MaterialPageRoute(builder: (BuildContext context){
+                return SignInScreen();
+              }), (route) => false);
+              Fluttertoast.showToast(msg: appString.trans(context, appString.loggedOutSuccessfully),
+                backgroundColor: appColors.editTextErrorColor,
+                textColor: appColors.textNormalColor,
+              );
+            }, noCallback: (contextTemp){
+          Navigator.pop(contextTemp);
+        });*/
+      }
+    }
+
+    // Profile list tiles view
+    profileListTileView(){
+      return Container(
+        margin: EdgeInsets.zero,
+        child: ListView.builder(
+            itemCount: profileTileList.length,
+            shrinkWrap: true,
+            padding: EdgeInsets.zero,
+            itemBuilder: (context,index){
+              return ProfileTileView(
+                    title: profileTileList[index].title,
+                    index: index,
+                    listCallBack: (index){
+                      redirectTo(index, context);
+                },
+              );
+            }
+        ),
+      );
+    }
 
     return ContainerFirst(
         appBarHeight: -1,
@@ -29,7 +111,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               margin: EdgeInsets.only(left: 20,right: 20,),
               isHideBackIcon: true,
             ),
-
+            SizedBox(height: 30,),
+            profileListTileView()
           ],
         )
     );

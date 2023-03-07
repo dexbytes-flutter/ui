@@ -24,7 +24,7 @@ class AppColors {
   Color primaryShadeColor2 = const Color(0xFF6cc3e3);
   Color darkRed = const Color(0xFF620F0F);
   Color red = const Color(0xFFDD2E37);
-  Color yellow = const Color(0xFF4AA546);
+  Color green = const Color(0xFF1B5E35);
   Color lightBackgroundColor = const Color(0xFFF5F5F5);
   Color lightBlack = const Color(0xFF231F20);
   Color lightblack = const Color(0xFF231F20);

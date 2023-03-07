@@ -15,8 +15,8 @@ class BookmarkButton extends StatefulWidget {
     required Function valueChanged,
     Key? key,
   })  : _iconSize = iconSize ?? 25.0,
-        _iconColor = iconColor ?? Color(0xfff71d6d),
-        _iconDisabledColor = iconDisabledColor ?? Colors.grey[400],
+        _iconColor = iconColor ?? Color(0xFFD6A266),
+        _iconDisabledColor = iconDisabledColor ?? Colors.white,
         _isFavorite = isFavorite ?? false,
         _valueChanged = valueChanged,
         super(key: key);
@@ -129,7 +129,7 @@ class _BookmarkButtonState extends State<BookmarkButton>
             });
           },
           child: Icon(
-            (Icons.favorite),
+            (Icons.bookmark_outlined),
             color: _colorAnimation.value,
             size: _sizeAnimation.value,
           ),
