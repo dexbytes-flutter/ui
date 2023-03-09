@@ -91,7 +91,7 @@ class AppStyle {
         bool isItalic = false}) =>
       TextStyle(
         color: texColor != null ? texColor : appColors.textNormalColor,
-        fontSize: fontSize != null ? fontSize : 25,
+        fontSize: fontSize != null ? fontSize : 38,
         fontFamily: fontFamily != null ? fontFamily : "Raleway",
         fontWeight: fontWeight != null ? fontWeight : FontWeight.w700,);
 
@@ -497,7 +497,7 @@ class AppStyle {
         color: texColor != null ? texColor : appColors.textNormalColor1,
         fontSize: fontSize != null ? fontSize : 14,
         fontFamily: fontFamily != null ? fontFamily : "Raleway",
-        fontWeight: fontWeight != null ? fontWeight : FontWeight.w700,
+        fontWeight: fontWeight != null ? fontWeight : FontWeight.w500,
       );
 
   TextStyle commonAppBarTextTextStyle(
@@ -608,6 +608,42 @@ class AppStyle {
         fontSize: fontSize != null ? fontSize : 20,
         fontFamily: fontFamily != null ? fontFamily : "Raleway",
         fontWeight: fontWeight != null ? fontWeight : FontWeight.bold,
+      );
+  TextStyle aboutTitleTextStyle(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+        color: texColor != null ? texColor : appColors.textNormalColor1,
+        fontSize: fontSize != null ? fontSize : 16,
+        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontWeight: fontWeight != null ? fontWeight : appFonts.medium500,
+      );
+  TextStyle logOutBottomSheetHeadingTextStyle(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+        color: texColor != null ? texColor : appColors.textNormalColor1,
+        fontSize: fontSize != null ? fontSize :  18,
+        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontWeight: fontWeight != null ? fontWeight : appFonts.semiBold600,
+      );
+  TextStyle logOutBottomSheetSubHeadingTextStyle(
+      {Color? texColor,
+        double? fontSize,
+        fontFamily,
+        fontWeight,
+        bool isItalic = false}) =>
+      TextStyle(
+        color: texColor != null ? texColor : appColors.textColor,
+        fontSize: fontSize != null ? fontSize : 15,
+        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontWeight: fontWeight != null ? fontWeight : appFonts.medium500,
       );
 }
 

@@ -10,9 +10,11 @@ class CommonAppBar extends StatelessWidget {
   final String title;
   final Color? appBarColor;
   final EdgeInsetsGeometry? leftIconMargin;
-  final EdgeInsetsGeometry? rightIconMargin;
+  final EdgeInsetsGeometry? textAndRightIconMargin;
   final bool? isBookMarked;
   final EdgeInsetsGeometry? appBarRowMargin;
+  final bool? isShowTitleWithIcon;
+  final TextStyle? appBarTitleTextStyle;
   const CommonAppBar({
     Key? key,
     this.isHideLeftIcon = false,
@@ -20,10 +22,12 @@ class CommonAppBar extends StatelessWidget {
     this.title = "",
     this.appBarColor,
     this.leftIconMargin,
-    this.rightIconMargin,
+    this.textAndRightIconMargin,
     this.isHideRightIcon = false,
     this.isBookMarked,
-    this.appBarRowMargin
+    this.appBarRowMargin,
+    this.isShowTitleWithIcon,
+    this.appBarTitleTextStyle
   }) : super(key: key);
 
   @override
@@ -48,17 +52,19 @@ class CommonAppBar extends StatelessWidget {
               ),
             ),
             Container(
-              margin: rightIconMargin ?? EdgeInsets.zero,
+              margin: textAndRightIconMargin ?? EdgeInsets.zero,
               child: isHideRightIcon
                   ? Container()
                   : Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: isShowTitle!? MainAxisAlignment.center : MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children:[
                     isShowTitle!
+                        ? isShowTitleWithIcon!
                         ? iconApps.iconImage(imageUrl: iconApps.locationIcon,
                         iconSize: Size(20,20),
                         imageColor: appColors.appBarTextColor)
+                        : Container()
                         : Padding(
                           padding: const EdgeInsets.only(bottom: 30,right: 20),
                           child: BookmarkButton(
@@ -68,13 +74,13 @@ class CommonAppBar extends StatelessWidget {
                           print('Is Favorite : $_isFavorite');
                       },
                     ),
-                        )
-                    ,
+                    ),
                     SizedBox(width: isShowTitle! ? 5 : 0,),
                     isShowTitle!
                         ? Center(
                         child:
-                        Text(title, style: appStyles.commonAppBarTextTextStyle()
+                        Text(title,
+                            style: appBarTitleTextStyle ?? appStyles.commonAppBarTextTextStyle()
                         )
                     )
                         : Container(),

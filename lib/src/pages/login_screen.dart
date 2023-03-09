@@ -10,6 +10,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../all_file_import/app_utils_files_link.dart';
+import '../helper/local_constant.dart';
 import 'forgot_password_screen.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -380,6 +381,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 textStyle: appStyles.buttonNameStyle(),
                 backCallback: () {
                   if (_validateFields(isButtonClicked: true)) {
+                    sharedPreferencesFile.saveBool(isUserLoggedInC, true);
                     Navigator.push(
                       context,
                       SlideRightRoute(widget: DashBoardPage()),

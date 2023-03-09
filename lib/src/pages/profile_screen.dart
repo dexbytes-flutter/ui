@@ -1,7 +1,9 @@
 import 'package:base_flutter_app/src/all_file_import/app_providers_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_utils_files_link.dart';
+import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/model/profile_list_tile_model.dart';
+import 'package:base_flutter_app/src/pages/logout_bottomsheet.dart';
 import 'package:base_flutter_app/src/pages/registration_screen.dart';
 import 'package:base_flutter_app/src/widgets/appbar/home_screen_app_bar.dart';
 import 'package:base_flutter_app/src/widgets/profile_tile_view.dart';
@@ -52,14 +54,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
         );*/
 
       }else if(index == 5){
-        /*Navigator.push(
-          MainAppBloc.getDashboardContext,
-          SlideRightRoute(
-              widget: FaqScreen()
-          ),
-        );*/
-
+        showModalBottomSheet(
+            context: MainAppBloc.getDashboardContext,
+            builder: (context) => LogOutBottomSheetScreen(),
+            isScrollControlled: true,
+            backgroundColor: appColors.appBgColorJungleGreen,
+            shape: RoundedRectangleBorder(
+                borderRadius:
+                BorderRadius.only(
+                    topLeft: Radius.circular(35),
+                    topRight: Radius.circular(35),
+                )
+            ));
       }else if(index == 4){
+
        /* ExitConformationAlert(
             context: context,
             msg: appString.trans(context, appString.logoutConfirmation),

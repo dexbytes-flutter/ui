@@ -183,5 +183,13 @@
   "typeText" : "Type",
   "totalPriceText" : "Total Price",
   "bookingDetailsText" : "Booking Detail",
-  "faqButtonText" : "FAQ"
+  "faqButtonText" : "FAQ",
+  "bookingCancellationText" : "Booking Cancellation",
+  "bookingCancellationSubTitleText" : "Are you sure you want to cancel your booking? you will receive refund after 12 business days.",
+  "cancelBookingButtonText" : "Cancel Booking",
+  "closeButtonText" : "Close",
+  "logoutConfirmationText" : "Are you sure you want to logout?",
+  "yesButtonText" : "Yes",
+  "noButtonText" : "No"
+
 }

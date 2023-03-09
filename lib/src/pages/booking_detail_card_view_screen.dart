@@ -1,3 +1,4 @@
+import 'package:base_flutter_app/src/all_file_import/app_utils_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
@@ -5,11 +6,14 @@ import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-class DetailCardViewScreen extends StatelessWidget {
-  final bool? isBookMarked;
-  const DetailCardViewScreen({
+import 'booking_cancellation_screen.dart';
+import 'faq_screen.dart';
+
+class BookingDetailCardViewScreen extends StatelessWidget {
+  final bool isBookMarked;
+  const BookingDetailCardViewScreen({
     Key? key,
-    this.isBookMarked
+    this.isBookMarked = false
   }) : super(key: key);
 
   @override
@@ -152,21 +156,33 @@ class DetailCardViewScreen extends StatelessWidget {
                 //   );
                 // }), (route) => false);
               }*/
+              Navigator.push(
+                context,
+                SlideRightRoute(widget: FaqScreen()),
+              );
             },
           ),
         ),
-        Container(
-          height: 50,
-          width: 50,
-          padding: EdgeInsets.all(15),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(18),
-            color: appColors.appBgColor2
-          ),
-          child: iconApps.iconImage(
-              imageUrl: iconApps.deleteIcon,
-            iconSize: Size(20, 20),
-            imageColor: appColors.white
+        GestureDetector(
+          onTap: (){
+            Navigator.push(
+              context,
+              SlideRightRoute(widget: BookingCancellationScreen()),
+            );
+          },
+          child: Container(
+            height: 50,
+            width: 50,
+            padding: EdgeInsets.all(15),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(18),
+              color: appColors.appBgColor2
+            ),
+            child: iconApps.iconImage(
+                imageUrl: iconApps.deleteIcon,
+              iconSize: Size(20, 20),
+              imageColor: appColors.white
+            ),
           ),
         )
       ],
@@ -281,6 +297,7 @@ class DetailCardViewScreen extends StatelessWidget {
           isHideRightIcon: false,
           isShowTitle: false,
           appBarRowMargin: EdgeInsets.only(top: 20),
+          isBookMarked: isBookMarked,
         ),
         containChild: Column(
           mainAxisAlignment: MainAxisAlignment.start,

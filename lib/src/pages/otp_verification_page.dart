@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:base_flutter_app/src/all_file_import/app_utils_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
@@ -23,12 +25,36 @@ class OtpVerificationScreen extends StatefulWidget {
 class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
 
   String errorMessage = '';
-  TextEditingController inputController = new TextEditingController();
+  // TextEditingController inputController = new TextEditingController();
   String verificationCodeStr = "";
   int otpLength = 4;
   OverlayEntry? overlayEntry;
   int secondsRemaining = 30;
   bool enableResend = false;
+
+  Map<String, TextEditingController> controllers = {
+    'inputController': new TextEditingController(),
+  };
+
+  Map<String, FocusNode> focusNodes = {
+    'inputController': new FocusNode(),
+  };
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+      focusNodes["inputController"]!.addListener(() {
+      if (Platform.isIOS) {
+        bool hasFocus = focusNodes['inputController']!.hasFocus;
+        if (hasFocus)
+          showOverlay(context);
+        else
+          removeOverlay();
+      }
+    });
+    super.initState();
+  }
 
 
   
@@ -60,7 +86,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
       Color borderColor = appColors.appBgColor1.withOpacity(0.40);
       return Container(
           child: PinCodeFields(
-            controller: inputController,
+            controller: controllers["inputController"],
             length: otpLength,
             margin: EdgeInsets.only(left: 5,right:5,top: MediaQuery.of(context).size.height/20),
             fieldBorderStyle: FieldBorderStyle.Bottom,

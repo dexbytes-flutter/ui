@@ -22,12 +22,15 @@ import 'package:base_flutter_app/src/helper/local_constant.dart';
 import 'package:base_flutter_app/src/helper/shared_preferencesFile.dart';
 import 'package:provider/provider.dart';
 import 'package:base_flutter_app/src/config/routes.dart';
-import 'src/pages/detail_card_view_screen.dart';
+import 'src/pages/booking_cancellation_screen.dart';
+import 'src/pages/booking_detail_card_view_screen.dart';
+import 'src/pages/dashboard_screen.dart';
 import 'src/pages/login_screen.dart';
 import 'src/pages/otp_verification_page.dart';
 import 'src/pages/profile_screen.dart';
 import 'src/pages/registration_screen.dart';
 import 'src/pages/terms_of_services_screen.dart';
+import 'src/pages/test_drop_down.dart';
 import 'src/widgets/common_choice_chip_widget.dart';
 
 void main() async {
@@ -278,7 +281,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
     return /*!widget.isOneTimeProfileSetUpDone
         ? CreateAccount()
         : */
-      DetailCardViewScreen();
+      const TutorialScreen();
 
   }
 
@@ -289,7 +292,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
 
     //If profile set done by user
     // if (widget.isOneTimeProfileSetUpDone) {
-    return const TutorialScreen();
+    return const DashBoardPage();
     //SignInPage();
     // }
     //If set up not done by user than redirect to selected screen

@@ -271,6 +271,13 @@ class AppString {
   String totalPriceText = 'totalPriceText';
   String bookingDetailsText = 'bookingDetailsText';
   String faqButtonText = 'faqButtonText';
+  String bookingCancellationText = 'bookingCancellationText';
+  String bookingCancellationSubTitleText = 'bookingCancellationSubTitleText';
+  String cancelBookingButtonText = 'cancelBookingButtonText';
+  String closeButtonText = 'closeButtonText';
+  String logoutConfirmationText = 'logoutConfirmationText';
+  String yesButtonText = 'yesButtonText';
+  String noButtonText = 'noButtonText';
 
 }
 

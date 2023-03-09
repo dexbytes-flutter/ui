@@ -18,23 +18,30 @@ class BottomSheetDynamicHeightCardView extends StatelessWidget {
   final CrossAxisAlignment crossAxisAlignment;
   final EdgeInsetsGeometry? bottomSheetMargin;
   final EdgeInsetsGeometry? sheetTitlePadding;
+  final double? bottomSheetHeight;
+  final bool? isCenterSheetTitle;
+  final BorderRadiusGeometry? bottomSheetBorderRadius;
 
   BottomSheetDynamicHeightCardView(
       {Key? key,
-        this.sheetTitle = "",
-        this.sheetTitleStyle = const TextStyle(),
-        this.topLineColor = Colors.grey,
-        this.topLineThickness = 4,
-        this.topLineWidth = 50,
-        this.cardBackgroundColor = Colors.red,
-        this.cardShape = 30,
-        this.topLineClickCallBack,
-        required this.child,
-        this.topLineShow =false,
-        this.topLineMargin = const EdgeInsets.only(top: 12, bottom: 10),
-        this.crossAxisAlignment = CrossAxisAlignment.start, this.child2,
-        this.bottomSheetMargin,
-        this.sheetTitlePadding
+      this.sheetTitle = "",
+      this.sheetTitleStyle = const TextStyle(),
+      this.topLineColor = Colors.grey,
+      this.topLineThickness = 4,
+      this.topLineWidth = 50,
+      this.cardBackgroundColor = Colors.red,
+      this.cardShape = 30,
+      this.topLineClickCallBack,
+      required this.child,
+      this.topLineShow = false,
+      this.topLineMargin = const EdgeInsets.only(top: 12, bottom: 10),
+      this.crossAxisAlignment = CrossAxisAlignment.start,
+      this.child2,
+      this.bottomSheetMargin,
+      this.sheetTitlePadding,
+      this.bottomSheetHeight,
+      this.isCenterSheetTitle,
+        this.bottomSheetBorderRadius
       })
       : super(key: key);
   @override
@@ -42,15 +49,14 @@ class BottomSheetDynamicHeightCardView extends StatelessWidget {
     return ScrollConfiguration(
       behavior: MyBehavior(),
       child: Container(
-        height: appDimens.heightFullScreen() - 200,
+        height: bottomSheetHeight ?? appDimens.heightFullScreen() - 200,
         margin: bottomSheetMargin ?? EdgeInsets.zero,
         decoration: BoxDecoration(
             color: cardBackgroundColor,
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20)
-            )
-        ),
+            borderRadius: bottomSheetBorderRadius ?? BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            )),
         child: SingleChildScrollView(
           physics: ClampingScrollPhysics(),
           child: Column(
@@ -85,11 +91,17 @@ class BottomSheetDynamicHeightCardView extends StatelessWidget {
                   ),
                 ],
               ),
-              Padding(
-                padding: sheetTitlePadding ?? EdgeInsets.only(left: 20.0,right: 20,top: 10),
-                child: Text("$sheetTitle",
-                    style: sheetTitleStyle),
-              ),
+              isCenterSheetTitle!
+                  ? Center(child: Padding(
+                    padding: sheetTitlePadding ??
+                    EdgeInsets.only(top: 10),
+                    child: Text("$sheetTitle", style: sheetTitleStyle),
+                  ))
+                  : Padding(
+                      padding: sheetTitlePadding ??
+                          EdgeInsets.only(left: 20.0, right: 20, top: 10),
+                      child: Text("$sheetTitle", style: sheetTitleStyle),
+                    ),
               child,
 
               // Padding(
