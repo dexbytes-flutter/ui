@@ -5,6 +5,7 @@ import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart'
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
 import 'package:base_flutter_app/src/model/booking_list_model.dart';
 import 'package:base_flutter_app/src/model/home_screen_verticle_title_list.dart';
+import 'package:base_flutter_app/src/pages/booking_detail_card_view_screen.dart';
 import 'package:base_flutter_app/src/pages/search_screen.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:base_flutter_app/src/widgets/search_screen_image.dart';
@@ -18,13 +19,18 @@ class BookListTileScreen extends StatefulWidget {
 }
 
 class _BookListTileScreenState extends State<BookListTileScreen> {
+
+  String imageUrl = "";
+  bool isBookMarked = false;
+  String locationName = "";
+
   @override
   Widget build(BuildContext context) {
 
     // Title text and search icon
     Widget titleText(){
       return Padding(
-        padding: const EdgeInsets.only(left: 20,right: 20,top: 8),
+        padding: const EdgeInsets.only(left: 20,right: 20,top: 25),
         child: GestureDetector(
           onTap: (){
 
@@ -59,18 +65,35 @@ class _BookListTileScreenState extends State<BookListTileScreen> {
           itemCount: bookingListPlaceImagesList.length,
           itemBuilder: (context, index) {
             return Container(
-                height: appDimens.heightFullScreen()/4.40,
+                height: appDimens.heightFullScreen()/4,
                 margin: EdgeInsets.only(bottom: 15),
-                child: SearchScreenCommonImage(
-                  imageUrl: bookingListPlaceImagesList[index].imageUrl,
-                  title: bookingListPlaceImagesList[index].title,
-                  subTitle: bookingListPlaceImagesList[index].subTitle,
-                  countryTitle: bookingListPlaceImagesList[index].countryTitle,
-                  isStaticCalenderIcon: true,
-                  bookingStatus: bookingListPlaceImagesList[index].bookingStatus,
-                  recommendationStatus: bookingListPlaceImagesList[index].recommendation,
-                  imageHeight: appDimens.heightFullScreen()/4.40,
-                  imageWidth: appDimens.widthFullScreen()/1.10,
+                child: GestureDetector(
+                  onTap: (){
+                    setState(() {
+                      imageUrl = bookingListPlaceImagesList[index].imageUrl;
+                      isBookMarked = bookingListPlaceImagesList[index].isBookmarked;
+                      locationName = bookingListPlaceImagesList[index].title;
+                    });
+                    Navigator.push(context, SlideRightRoute(
+                      widget: BookingDetailCardViewScreen(
+                        isBookMarked: isBookMarked,
+                        imageUrl: imageUrl,
+                        locationName: locationName,
+                      )
+                    ));
+                  },
+                  child: SearchScreenCommonImage(
+                    imageUrl: bookingListPlaceImagesList[index].imageUrl,
+                    title: bookingListPlaceImagesList[index].title,
+                    subTitle: bookingListPlaceImagesList[index].subTitle,
+                    countryTitle: bookingListPlaceImagesList[index].countryTitle,
+                    isStaticCalenderIcon: true,
+                    isBookmarked: bookingListPlaceImagesList[index].isBookmarked,
+                    bookingStatus: bookingListPlaceImagesList[index].bookingStatus,
+                    recommendationStatus: bookingListPlaceImagesList[index].recommendation,
+                    imageHeight: appDimens.heightFullScreen()/4,
+                    imageWidth: appDimens.widthFullScreen()/1.10,
+                  ),
                 ));
           },
         ),
@@ -83,7 +106,6 @@ class _BookListTileScreenState extends State<BookListTileScreen> {
         isSingleChildScrollViewNeed: false,isFixedDeviceHeight: false,
         contextCurrentView: context,
         appBar: CommonAppBar(
-          leftIconMargin: EdgeInsets.only(left: 20),
           isHideRightIcon: true,
         ),
         containChild: Column(

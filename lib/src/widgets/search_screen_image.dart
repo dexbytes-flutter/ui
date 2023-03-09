@@ -127,7 +127,7 @@ class SearchScreenCommonImage extends StatelessWidget {
                 child: iconApps.iconImage(
                     imageUrl: iconApps.rightArrow,
                     imageColor: appColors.buttonBgColor,
-                    iconSize: Size(15, 20)
+                    iconSize: Size(20, 18)
                 )
             ),
           )
@@ -171,8 +171,8 @@ class SearchScreenCommonImage extends StatelessWidget {
                   padding: EdgeInsets.all(5),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: bookingStatus! == "Cancelled"? 
-                    appColors.red.withOpacity(0.15) : appColors.green.withOpacity(0.15)
+                    color: bookingStatus! == "Cancelled" ?
+                    appColors.red.withOpacity(0.15) : bookingStatus! == "" ? appColors.appTransColor : appColors.green.withOpacity(0.15)
                   ),
                   child: Text(bookingStatus!,
                     style: appStyles.commonTitleStyle(

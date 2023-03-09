@@ -616,9 +616,9 @@ class AppStyle {
         fontWeight,
         bool isItalic = false}) =>
       TextStyle(
-        color: texColor != null ? texColor : appColors.textNormalColor1,
+        color: texColor != null ? texColor : appColors.textColor,
         fontSize: fontSize != null ? fontSize : 16,
-        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontFamily: fontFamily != null ? fontFamily : "Raleway",
         fontWeight: fontWeight != null ? fontWeight : appFonts.medium500,
       );
   TextStyle logOutBottomSheetHeadingTextStyle(
@@ -630,7 +630,7 @@ class AppStyle {
       TextStyle(
         color: texColor != null ? texColor : appColors.textNormalColor1,
         fontSize: fontSize != null ? fontSize :  18,
-        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontFamily: fontFamily != null ? fontFamily : "Raleway",
         fontWeight: fontWeight != null ? fontWeight : appFonts.semiBold600,
       );
   TextStyle logOutBottomSheetSubHeadingTextStyle(
@@ -642,7 +642,7 @@ class AppStyle {
       TextStyle(
         color: texColor != null ? texColor : appColors.textColor,
         fontSize: fontSize != null ? fontSize : 15,
-        fontFamily: fontFamily != null ? fontFamily : appFonts.defaultFont,
+        fontFamily: fontFamily != null ? fontFamily : "Raleway",
         fontWeight: fontWeight != null ? fontWeight : appFonts.medium500,
       );
 }

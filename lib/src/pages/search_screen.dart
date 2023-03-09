@@ -309,6 +309,8 @@ class _SearchScreenState extends State<SearchScreen> {
                   countryTitle: searchScreenImageList[index].countryTitle,
                   imageHeight: appDimens.heightFullScreen()/3.8,
                   imageWidth: appDimens.widthFullScreen()/1.10,
+                  isStaticCalenderIcon: false,
+                  recommendationStatus: "",
                 ));
           },
         ),
@@ -322,7 +324,6 @@ class _SearchScreenState extends State<SearchScreen> {
         isSingleChildScrollViewNeed: false,isFixedDeviceHeight: false,
         contextCurrentView: context,
         appBar: CommonAppBar(
-          leftIconMargin: EdgeInsets.only(left: 20),
           isHideRightIcon: true,
         ),
         containChild: Column(

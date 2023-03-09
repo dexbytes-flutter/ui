@@ -199,7 +199,6 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
       isSingleChildScrollViewNeed: false,
       contextCurrentView: context,
       appBar: CommonAppBar(
-        leftIconMargin: EdgeInsets.only(top: 22, left: 20),
         isHideRightIcon: true,
       ),
       containChild: Container(

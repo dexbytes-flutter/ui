@@ -83,7 +83,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         isSingleChildScrollViewNeed: false,
         contextCurrentView: context,
         appBar: CommonAppBar(
-          leftIconMargin: EdgeInsets.only(top: 22, left: 20),
           isHideRightIcon: true,
         ),
         containChild: Column(

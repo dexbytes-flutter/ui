@@ -66,6 +66,7 @@ dependencies:
   snippet_coder_utils: ^1.0.13
   syncfusion_flutter_sliders: ^20.4.52
   intl: ^0.17.0
+  readmore: ^2.2.0
 
 
 
@@ -119,6 +120,14 @@ flutter:
         - asset: assets/fonts/Roboto-Medium.ttf
           weight: 500
         - asset: assets/fonts/Roboto-Bold.ttf
+          weight: 600
+    - family: Raleway
+      fonts:
+        - asset: assets/fonts/Raleway-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Raleway-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Raleway-Bold.ttf
           weight: 600
   #
   # For details regarding fonts from package dependencies,

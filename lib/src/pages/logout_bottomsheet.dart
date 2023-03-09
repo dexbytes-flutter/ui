@@ -46,33 +46,11 @@ class _LogOutBottomSheetScreenState extends State<LogOutBottomSheetScreen> {
 
     logoutConfirmationOptionButtons() {
       return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            margin: EdgeInsets.only(left: 20,top: 25),
-           width: 80,
-            child: CommonButton(
-              buttonName: appString.trans(context, appString.yesButtonText),
-              buttonHeight: 50,
-              buttonBorderRadius: 18,
-              isBottomMarginRequired: false,
-              textStyle: appStyles.buttonNameStyle(
-                fontSize: 15,
-              ),
-              backCallback: () {
-                sharedPreferencesFile.clearAll();
-                sharedPreferencesFile.saveBool(isUserLoggedInC, false);
-                 Navigator.push(
-                context,
-                SlideRightRoute(widget: SignInScreen()),
-              );
-              },
-            ),
-          ),
-          SizedBox(width: 15,),
-          Container(
-            margin: EdgeInsets.only(right: 20,top: 20),
-            width: 80,
+            margin: EdgeInsets.only(left: 20,top: 20),
+            width: 160,
             child: CommonButton(
               buttonName: appString.trans(context, appString.noButtonText),
               buttonHeight: 50,
@@ -84,22 +62,43 @@ class _LogOutBottomSheetScreenState extends State<LogOutBottomSheetScreen> {
               },
             ),
           ),
+          SizedBox(width: 15,),
+          Container(
+            margin: EdgeInsets.only(right: 20,top: 25),
+            width: 160,
+            child: CommonButton(
+              buttonName: appString.trans(context, appString.yesButtonText),
+              buttonHeight: 50,
+              buttonBorderRadius: 18,
+              isBottomMarginRequired: false,
+              textStyle: appStyles.buttonNameStyle(
+                fontSize: 15,
+              ),
+              backCallback: () {
+                sharedPreferencesFile.clearAll();
+                sharedPreferencesFile.saveBool(isUserLoggedInC, false);
+                Navigator.push(
+                  context,
+                  SlideRightRoute(widget: SignInScreen()),
+                );
+              },
+            ),
+          ),
         ],
       );
     }
 
       return BottomSheetDynamicHeightCardView(
         cardBackgroundColor: appColors.appBgColorJungleGreen,
-        bottomSheetHeight: appDimens.heightFullScreen()/3.9,
+        bottomSheetHeight: appDimens.heightFullScreen()/3.85,
         topLineShow: true,
-        isCenterSheetTitle: true,
         bottomSheetBorderRadius: BorderRadius.only(
           topLeft: Radius.circular(35),
           topRight: Radius.circular(35),
         ),
         sheetTitle: appString.trans(context, appString.logoutConfirmationText),
         sheetTitleStyle: appStyles.logOutBottomSheetSubHeadingTextStyle(
-          fontSize: 18
+          fontSize: 20
         ),
         child: logoutConfirmationOptionButtons()
       );

@@ -14,7 +14,7 @@ class BookmarkButton extends StatefulWidget {
     bool? isFavorite,
     required Function valueChanged,
     Key? key,
-  })  : _iconSize = iconSize ?? 25.0,
+  })  : _iconSize = iconSize ?? 35.0,
         _iconColor = iconColor ?? Color(0xFFD6A266),
         _iconDisabledColor = iconDisabledColor ?? Colors.white,
         _isFavorite = isFavorite ?? false,
@@ -47,9 +47,9 @@ class _BookmarkButtonState extends State<BookmarkButton>
 
     _isFavorite = widget._isFavorite;
     _maxIconSize = (widget._iconSize < 20.0)
-        ? 20.0
+        ? 25.0
         : (widget._iconSize > 100.0)
-        ? 20.0
+        ? 25.0
         : widget._iconSize;
     final double _sizeDifference = _maxIconSize * 0.10;
     _minIconSize = _maxIconSize - _sizeDifference;

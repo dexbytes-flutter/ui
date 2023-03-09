@@ -7,7 +7,14 @@ import 'package:flutter/material.dart';
 import '../widgets/appbar/common_app_bar.dart';
 
 class BookingCancellationScreen extends StatefulWidget {
-  const BookingCancellationScreen({Key? key}) : super(key: key);
+  final String imageUrl;
+  final String locationName;
+
+  const BookingCancellationScreen({
+    Key? key,
+    required this.imageUrl,
+    required this.locationName
+  }) : super(key: key);
 
   @override
   State<BookingCancellationScreen> createState() => _BookingCancellationScreenState();
@@ -43,7 +50,8 @@ class _BookingCancellationScreenState extends State<BookingCancellationScreen> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
                   child: CachedNetworkImage(
-                    imageUrl: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQQ9j9GWnKtl9xJjLvEPREdCFlkLjl2XKmMdQKOAnnyLmCO_Moo",
+                    // imageUrl: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQQ9j9GWnKtl9xJjLvEPREdCFlkLjl2XKmMdQKOAnnyLmCO_Moo",
+                    imageUrl: widget.imageUrl,
                     fit: BoxFit.cover,
                     height: 130,
                     width: 130,
@@ -53,11 +61,12 @@ class _BookingCancellationScreenState extends State<BookingCancellationScreen> {
             ),
             SizedBox(height: 15,),
             Center(
-              child: Text("Borobudur \nTemple",
+              child: Text(widget.locationName,
                 textAlign: TextAlign.center,
-                style: appStyles.commonTitleStyle(),
+                style: appStyles.commonTitleStyle(fontSize: 25),
               ),
             ),
+            SizedBox(height: 8,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -107,7 +116,7 @@ class _BookingCancellationScreenState extends State<BookingCancellationScreen> {
                 )
               ],
             ),
-            SizedBox(height: 38,),
+            SizedBox(height: 50,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

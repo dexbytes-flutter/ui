@@ -198,9 +198,8 @@ class _SignInScreenState extends State<SignInScreen> {
             ),
           ),
           CommonAppBar(
-            leftIconMargin: EdgeInsets.only(top: 22, left: 20),
+            leftIconMargin: EdgeInsets.only(top: 22,),
             isHideRightIcon: true,
-            title: "Bali Indonesia",
           ),
           /*Positioned(
             top: 250,

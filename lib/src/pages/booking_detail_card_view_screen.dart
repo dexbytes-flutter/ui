@@ -9,13 +9,22 @@ import 'package:flutter/material.dart';
 import 'booking_cancellation_screen.dart';
 import 'faq_screen.dart';
 
-class BookingDetailCardViewScreen extends StatelessWidget {
-  final bool isBookMarked;
+class BookingDetailCardViewScreen extends StatefulWidget {
+  final bool? isBookMarked;
+  final String? imageUrl;
+  final String locationName;
   const BookingDetailCardViewScreen({
     Key? key,
-    this.isBookMarked = false
+    this.isBookMarked = false,
+    this.imageUrl,
+    required this.locationName
   }) : super(key: key);
 
+  @override
+  State<BookingDetailCardViewScreen> createState() => _BookingDetailCardViewScreenState();
+}
+
+class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScreen> {
   @override
   Widget build(BuildContext context) {
 
@@ -36,7 +45,8 @@ class BookingDetailCardViewScreen extends StatelessWidget {
             blendMode: BlendMode.dstIn,
             child: ClipRRect(
               child: CachedNetworkImage(
-                imageUrl: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQQ9j9GWnKtl9xJjLvEPREdCFlkLjl2XKmMdQKOAnnyLmCO_Moo",
+                // imageUrl: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQQ9j9GWnKtl9xJjLvEPREdCFlkLjl2XKmMdQKOAnnyLmCO_Moo",
+                imageUrl: widget.imageUrl!,
                 fit: BoxFit.cover,
                 height: appDimens.heightFullScreen()/1.8,
                 width: appDimens.widthFullScreen(),
@@ -47,7 +57,7 @@ class BookingDetailCardViewScreen extends StatelessWidget {
             top: 110,
               child: Center(
                 child: Container(
-                  padding: EdgeInsets.all(10).copyWith(left: 20,right: 20),
+                  padding: EdgeInsets.all(8).copyWith(left: 18,right: 18),
                   decoration: BoxDecoration(
                       color: appColors.buttonBgColor.withOpacity(0.20),
                       borderRadius: BorderRadius.circular(12)
@@ -68,7 +78,7 @@ class BookingDetailCardViewScreen extends StatelessWidget {
           ),
           Positioned(
             top: 160,
-            child: Text("Borobudur \nTemple",
+            child: Text(widget.locationName,
             softWrap: true,
             textAlign: TextAlign.center,
             style: appStyles.commonTitleStyle(
@@ -105,8 +115,8 @@ class BookingDetailCardViewScreen extends StatelessWidget {
           Positioned(
             top: 300,
               child: Text(appString.trans(context, appString.bookingDetailsText),
-              style: appStyles.commonTitleStyle(fontSize: 18,
-              fontWeight: FontWeight.w500,texColor: appColors.buttonBgColor
+              style: appStyles.commonTitleStyle(fontSize: 15,
+              fontWeight: FontWeight.w600,texColor: appColors.buttonBgColor
               ),
               )
           ),
@@ -167,7 +177,10 @@ class BookingDetailCardViewScreen extends StatelessWidget {
           onTap: (){
             Navigator.push(
               context,
-              SlideRightRoute(widget: BookingCancellationScreen()),
+              SlideRightRoute(widget: BookingCancellationScreen(
+                imageUrl: widget.imageUrl!,
+                locationName: widget.locationName,
+              )),
             );
           },
           child: Container(
@@ -293,11 +306,9 @@ class BookingDetailCardViewScreen extends StatelessWidget {
         isSingleChildScrollViewNeed: false,isFixedDeviceHeight: false,
         contextCurrentView: context,
         appBar: CommonAppBar(
-          leftIconMargin: EdgeInsets.only(left: 20),
           isHideRightIcon: false,
           isShowTitle: false,
-          appBarRowMargin: EdgeInsets.only(top: 20),
-          isBookMarked: isBookMarked,
+          isBookMarked: widget.isBookMarked,
         ),
         containChild: Column(
           mainAxisAlignment: MainAxisAlignment.start,

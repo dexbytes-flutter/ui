@@ -19,7 +19,6 @@ class BottomSheetDynamicHeightCardView extends StatelessWidget {
   final EdgeInsetsGeometry? bottomSheetMargin;
   final EdgeInsetsGeometry? sheetTitlePadding;
   final double? bottomSheetHeight;
-  final bool? isCenterSheetTitle;
   final BorderRadiusGeometry? bottomSheetBorderRadius;
 
   BottomSheetDynamicHeightCardView(
@@ -40,7 +39,6 @@ class BottomSheetDynamicHeightCardView extends StatelessWidget {
       this.bottomSheetMargin,
       this.sheetTitlePadding,
       this.bottomSheetHeight,
-      this.isCenterSheetTitle,
         this.bottomSheetBorderRadius
       })
       : super(key: key);
@@ -91,13 +89,7 @@ class BottomSheetDynamicHeightCardView extends StatelessWidget {
                   ),
                 ],
               ),
-              isCenterSheetTitle!
-                  ? Center(child: Padding(
-                    padding: sheetTitlePadding ??
-                    EdgeInsets.only(top: 10),
-                    child: Text("$sheetTitle", style: sheetTitleStyle),
-                  ))
-                  : Padding(
+                 Padding(
                       padding: sheetTitlePadding ??
                           EdgeInsets.only(left: 20.0, right: 20, top: 10),
                       child: Text("$sheetTitle", style: sheetTitleStyle),

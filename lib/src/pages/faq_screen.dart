@@ -45,21 +45,21 @@ class _FaqScreenState extends State<FaqScreen> {
       contextCurrentView: context,
       appBarHeight: 56,
       appBar: CommonAppBar(
-        leftIconMargin: EdgeInsets.only(top: 15,left: 20),
-        isHideRightIcon: false,
-        isShowTitle: true,
-        isShowTitleWithIcon: false,
-        title: "FAQ",
-        textAndRightIconMargin: EdgeInsets.zero,
-        appBarTitleTextStyle: appStyles.commonAppBarTextTextStyle(fontSize: 18),
+        isHideRightIcon: true,
       ),
       containChild: Container(
         child: Stack(
           children: [
             Column(
-                mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20,top: 30),
+                    child: Text(appString.trans(context, appString.faqButtonText),
+                        style: appStyles.commonTitleStyle(fontSize: 30)),
+                  ),
+                  SizedBox(height: 15,),
                   blackIconTiles(),
                 ]
             ),
@@ -84,7 +84,7 @@ class _FaqScreenState extends State<FaqScreen> {
         return Container(
             margin: const EdgeInsets.only(left: 15,right: 15,top: 12,),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: appColors.appBgColor2,
               borderRadius:BorderRadius.circular(12),
               boxShadow: [
                 BoxShadow(

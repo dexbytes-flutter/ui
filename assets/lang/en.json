@@ -190,6 +190,12 @@
   "closeButtonText" : "Close",
   "logoutConfirmationText" : "Are you sure you want to logout?",
   "yesButtonText" : "Yes",
-  "noButtonText" : "No"
-
+  "noButtonText" : "No",
+  "yourBookmarkTitleText" : "Your Bookmark",
+  "bookmarkScreenCenterEmptyText" : "No Bookmarks",
+  "aboutPlaceTitleText": "About place",
+  "readMoreText" : "...Read More",
+  "showLessText" : "show less",
+  "ratingAndReview" : "Rating and Review",
+  "viewAllText" : "View All"
 }

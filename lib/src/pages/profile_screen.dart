@@ -35,7 +35,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               widget: PaymentMethodScreen()),
         );*/
         Navigator.push(
-          context,
+          MainAppBloc.getDashboardContext,
           SlideRightRoute(
               widget: BookListTileScreen()),
         );
@@ -90,7 +90,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     // Profile list tiles view
     profileListTileView(){
       return Container(
-        margin: EdgeInsets.zero,
+        margin: EdgeInsets.only(top: 30),
         child: ListView.builder(
             itemCount: profileTileList.length,
             shrinkWrap: true,
@@ -119,7 +119,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               margin: EdgeInsets.only(left: 20,right: 20,),
               isHideBackIcon: true,
             ),
-            SizedBox(height: 30,),
+            SizedBox(height: 20,),
             profileListTileView()
           ],
         )

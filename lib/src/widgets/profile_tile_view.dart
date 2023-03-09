@@ -20,7 +20,7 @@ class ProfileTileView extends StatelessWidget {
         this.listCallBack?.call(index);
       },
       child: Container(
-        margin: EdgeInsets.only(left: 20,right: 20,bottom: 20),
+        // margin: EdgeInsets.all(20),
         height: 50,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
@@ -49,7 +49,7 @@ class ProfileTileView extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 8),
+              padding: const EdgeInsets.only(top: 5,left: 20,right: 20),
               child: SizedBox(
                 child:Divider(
                   color: appColors.appBgColor1.withOpacity(0.15),

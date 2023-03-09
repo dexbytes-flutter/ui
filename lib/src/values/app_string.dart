@@ -278,6 +278,14 @@ class AppString {
   String logoutConfirmationText = 'logoutConfirmationText';
   String yesButtonText = 'yesButtonText';
   String noButtonText = 'noButtonText';
+  String yourBookmarkTitleText = 'yourBookmarkTitleText';
+  String bookmarkScreenCenterEmptyText = 'bookmarkScreenCenterEmptyText';
+  String aboutPlaceTitleText = 'aboutPlaceTitleText';
+  String readMoreText = 'readMoreText';
+  String showLessText = 'showLessText';
+  String ratingAndReview = 'ratingAndReview';
+  String viewAllText = 'viewAllText';
+
 
 }
 

@@ -53,7 +53,7 @@ class HomeScreenAppBar extends StatelessWidget {
                   SizedBox(height: 5,),
                   Row(
                     children: [
-                      Container(
+                      isHideBackIcon!?Container(
                         decoration: BoxDecoration(
                             border: Border.all(color: appColors.white),
                             borderRadius: BorderRadius.circular(3)
@@ -67,8 +67,8 @@ class HomeScreenAppBar extends StatelessWidget {
                             width: 10,
                           ),
                         ),
-                      ),
-                      SizedBox(width: 5,),
+                      ):Container(),
+                      SizedBox(width: isHideBackIcon!? 5 : 0,),
                       Text(isHideBackIcon! ? "Jakarta Indonesia" : "Evelyn",
                       style: appStyles.commonTitleStyle(fontSize: isHideBackIcon! ? 10 : 15,
                       texColor: isHideBackIcon! ? appColors.textColor : appColors.textNormalColor

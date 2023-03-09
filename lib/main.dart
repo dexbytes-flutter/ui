@@ -25,6 +25,7 @@ import 'package:base_flutter_app/src/config/routes.dart';
 import 'src/pages/booking_cancellation_screen.dart';
 import 'src/pages/booking_detail_card_view_screen.dart';
 import 'src/pages/dashboard_screen.dart';
+import 'src/pages/destination_card_detailed_view_screen.dart';
 import 'src/pages/login_screen.dart';
 import 'src/pages/otp_verification_page.dart';
 import 'src/pages/profile_screen.dart';
@@ -292,7 +293,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
 
     //If profile set done by user
     // if (widget.isOneTimeProfileSetUpDone) {
-    return const DashBoardPage();
+    return const DestinationDetailedCardView();
     //SignInPage();
     // }
     //If set up not done by user than redirect to selected screen
