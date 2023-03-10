@@ -1,19 +1,37 @@
+import 'package:base_flutter_app/src/all_file_import/app_providers_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
+import 'package:base_flutter_app/src/model/filter_choice_chip_model.dart';
+import 'package:base_flutter_app/src/model/gallery_list_view_model.dart';
+import 'package:base_flutter_app/src/pages/all_gallery_images_screen.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
+import 'package:base_flutter_app/src/widgets/comment_list_view.dart';
+import 'package:base_flutter_app/src/widgets/common_choice_chip_widget.dart';
+import 'package:base_flutter_app/src/widgets/full_view_image_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:readmore/readmore.dart';
 
+import '../all_file_import/app_utils_files_link.dart';
+import 'review_view_all_screen.dart';
+
 class DestinationDetailedCardView extends StatefulWidget {
-  const DestinationDetailedCardView({Key? key}) : super(key: key);
+  final String detailImageUrl;
+  const DestinationDetailedCardView({
+    Key? key,
+    required this.detailImageUrl
+  }) : super(key: key);
 
   @override
   State<DestinationDetailedCardView> createState() => _DestinationDetailedCardViewState();
 }
 
 class _DestinationDetailedCardViewState extends State<DestinationDetailedCardView> {
+
+  String imageUrl = "";
+
   @override
   Widget build(BuildContext context) {
 
@@ -25,7 +43,7 @@ class _DestinationDetailedCardViewState extends State<DestinationDetailedCardVie
           ShaderMask(
             shaderCallback: (bound) => LinearGradient(
               colors: [
-                appColors.white,
+                appColors.black,
                 appColors.appTransColor,
               ],
               begin: Alignment.topCenter,
@@ -37,14 +55,14 @@ class _DestinationDetailedCardViewState extends State<DestinationDetailedCardVie
                 imageUrl: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQQ9j9GWnKtl9xJjLvEPREdCFlkLjl2XKmMdQKOAnnyLmCO_Moo",
                 // imageUrl: widget.imageUrl!,
                 fit: BoxFit.cover,
-                height: appDimens.heightFullScreen()/1.65,
+                height: appDimens.heightFullScreen()/1.45,
                 width: appDimens.widthFullScreen(),
               ),
             ),
           ),
           Positioned(
             left: 20,
-              bottom: 70,
+              bottom: 140,
               child: Container(
                 padding: EdgeInsets.all(8).copyWith(left: 18,right: 18),
                 decoration: BoxDecoration(
@@ -64,30 +82,19 @@ class _DestinationDetailedCardViewState extends State<DestinationDetailedCardVie
                 ),
               )
           ),
-        ],
-      );
-    }
-
-
-    //Bottom detail view
-    bottomDetailView(){
-      return Container(
-        height: appDimens.heightFullScreen(),
-        child: Stack(
-          children: [
-            Positioned(
-              left: 20,
-              bottom: 240,
-              child: Text("Borobudur \nTemple",
-                softWrap: true,
-                textAlign: TextAlign.left,
-                style: appStyles.commonTitleStyle(
-                    fontSize: 35,fontWeight: FontWeight.w900
-                ),),
-            ),
-            Positioned(
-              left: 20,
-            bottom: 210,
+          Positioned(
+            left: 20,
+            bottom: 45,
+            child: Text("Borobudur \nTemple",
+              softWrap: true,
+              textAlign: TextAlign.left,
+              style: appStyles.commonTitleStyle(
+                  fontSize: 35,fontWeight: FontWeight.w900
+              ),),
+          ),
+          Positioned(
+            left: 20,
+            bottom: 15,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -113,55 +120,163 @@ class _DestinationDetailedCardViewState extends State<DestinationDetailedCardVie
               ],
             ),
           ),
-            Positioned(
-              left: 20,
-              bottom: 160,
-                child:  Text(appString.trans(context, appString.aboutPlaceTitleText),
+        ],
+      );
+    }
+    // Rating choice chip
+    ratingView(){
+      return Wrap(
+        spacing: 10.0,
+        runSpacing: -5,
+        children: <Widget>[
+          ChoiceChipWidget(
+            choiceChipWidgetPadding: EdgeInsets.all(5).copyWith(top: 0,bottom: 0),
+            reportList: ratingChoiceChipDataList,
+            isAvatar: true,
+            choiceChipRadius: 15,
+          ),
+        ],
+      );
+
+      /*Container(
+        height: 40,
+        child: ListView.builder(
+          itemCount: recentSearchTextList.length,
+          scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
+          physics: ClampingScrollPhysics(),
+          itemBuilder: (context, index){
+            return RecentSearchListView(
+              recentSearchText: recentSearchTextList[index].recentSearchText,
+              margin: EdgeInsets.only(left: 20),
+            );
+          },
+        ),
+      );*/
+    }
+
+
+    //Gallery list view
+    galleryListView(){
+      return Container(
+        height: 80,
+        child: ListView.builder(
+          itemCount: 6,
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context,index){
+            return GestureDetector(
+              onTap: (){
+                setState(() {
+                  imageUrl =galleryImageList[index].imageUrl;
+                });
+                Navigator.push(
+                  context,
+                  BottomUpTransition(
+                      widget: FullPhotoView(galleryZoomImageUrl: imageUrl)),
+                );
+              },
+              child: Container(
+                margin: EdgeInsets.only(right: 10),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: CachedNetworkImage(
+                    imageUrl: galleryImageList[index].imageUrl,
+                    fit: BoxFit.cover,
+                    height: 80,
+                    width: 80,
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      );
+    }
+
+    //Bottom detail view
+    bottomDetailView(){
+      return Padding(
+        padding: const EdgeInsets.only(left: 20,right: 20,bottom: 56),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(appString.trans(context, appString.aboutPlaceTitleText),
+              softWrap: true,
+              textAlign: TextAlign.left,
+              style: appStyles.commonTitleStyle(
+                  fontSize: 15,fontWeight: FontWeight.w500,
+              ),),
+            SizedBox(height: 15,),
+            ReadMoreText(
+              "The Borobudur Temple Compounds is one of the greatest Buddhist monuments in the world, and was built in the 8th and 9th centuries AD during the reign of the Syailendra Dynasty. The monument is located in the Kedu Valley, in the southern part of Central Java, at the centre of the island of Java, Indonesia.",
+              trimLines: 3,
+              preDataTextStyle: appStyles.commonSubTitleTextStyle(fontSize: 14),
+              style: appStyles.commonSubTitleTextStyle(fontSize: 14),
+              colorClickableText: appColors.buttonBgColor,
+              trimMode: TrimMode.Line,
+              trimCollapsedText: appString.trans(context, appString.readMoreText),
+              trimExpandedText: appString.trans(context, appString.showLessText),
+            ),
+            SizedBox(height: 15,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(appString.trans(context, appString.ratingAndReview),
                   softWrap: true,
                   textAlign: TextAlign.left,
                   style: appStyles.commonTitleStyle(
-                      fontSize: 15,fontWeight: FontWeight.w500,
+                    fontSize: 15,fontWeight: FontWeight.w500,
                   ),),
-            ),
-            Positioned(
-              left: 20,
-              right: 20,
-              bottom: 100,
-              child: Container(
-                width: appDimens.widthFullScreen(),
-                child: ReadMoreText(
-                  "The Borobudur Temple Compounds is one of the greatest Buddhist monuments in the world, and was built in the 8th and 9th centuries AD during the reign of the Syailendra Dynasty. The monument is located in the Kedu Valley, in the southern part of Central Java, at the centre of the island of Java, Indonesia.",
-                  trimLines: 3,
-                  preDataTextStyle: appStyles.commonSubTitleTextStyle(fontSize: 13),
-                  style: appStyles.commonSubTitleTextStyle(fontSize: 13),
-                  colorClickableText: appColors.buttonBgColor,
-                  trimMode: TrimMode.Line,
-                  trimCollapsedText: appString.trans(context, appString.readMoreText),
-                  trimExpandedText: appString.trans(context, appString.showLessText),
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, SlideRightRoute(
+                      widget: ReviewViewAllScreen(),
+                    )
+                    );
+                  },
+                  child: Text(appString.trans(context, appString.viewAllText),
+                    softWrap: true,
+                    textAlign: TextAlign.left,
+                    style: appStyles.commonTitleStyle(
+                      fontSize: 15,fontWeight: FontWeight.w500,
+                    ),),
                 ),
-              ),
+              ],
             ),
-            Positioned(
-              left: 20,
-              bottom: 65,
-              child:  Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(appString.trans(context, appString.ratingAndReview),
+            SizedBox(height: 15,),
+            ratingView(),
+            SizedBox(height: 15,),
+            CommentsListView(),
+            SizedBox(height: 15,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(appString.trans(context, appString.galleryTitleText),
+                  softWrap: true,
+                  textAlign: TextAlign.left,
+                  style: appStyles.commonTitleStyle(
+                    fontSize: 15,fontWeight: FontWeight.w500,
+                  ),),
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context, SlideRightRoute(
+                      widget: AllGalleryImagesScreen(),
+                    )
+                    );
+                  },
+                  child: Text(appString.trans(context, appString.viewAllText),
                     softWrap: true,
                     textAlign: TextAlign.left,
                     style: appStyles.commonTitleStyle(
                       fontSize: 15,fontWeight: FontWeight.w500,
                     ),),
-                  Text(appString.trans(context, appString.viewAllText),
-                    softWrap: true,
-                    textAlign: TextAlign.left,
-                    style: appStyles.commonTitleStyle(
-                      fontSize: 15,fontWeight: FontWeight.w500,
-                    ),),
-                ],
-              ),
+                ),
+              ],
             ),
+            SizedBox(height: 15,),
+            galleryListView(),
+            SizedBox(height: 15,),
           ],
         ),
       );
@@ -171,20 +286,57 @@ class _DestinationDetailedCardViewState extends State<DestinationDetailedCardVie
         appBarHeight: 56,
         isOverLayStatusBar: true,
         isOverLayAppBar: true,
-        isSingleChildScrollViewNeed: false,
+        isSingleChildScrollViewNeed: true,
         isFixedDeviceHeight: false,
         contextCurrentView: context,
         appBar: CommonAppBar(
           isHideRightIcon: false,
-          isShowTitle: false,
         ),
-        containChild: Stack(
-          // crossAxisAlignment: CrossAxisAlignment.start,
+        containChild: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             backgroundImageStackView(),
-            bottomDetailView()
+            SizedBox(height: 20,),
+            bottomDetailView(),
+            SizedBox(height: 50,)
           ],
-        )
+        ),
+      bottomMenuView: Align(
+        alignment: Alignment.bottomLeft,
+        child: Container(
+          color: appColors.appBgColorJungleGreen,
+          padding: const EdgeInsets.only(left: 20,right: 20,bottom: 10,top: 5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text("\$", style: appStyles.commonTitleStyle(fontSize: 22,fontWeight: FontWeight.w400),),
+                  SizedBox(width: 5,),
+                  Text("120", style: appStyles.commonTitleStyle(fontSize: 30,fontWeight: FontWeight.w500),),
+                  Text(appString.trans(context, appString.perDayText),
+                  style: appStyles.commonSubTitleTextStyle(fontSize: 10),
+                  ),
+                ],
+              ),
+              Container(
+                height: 55,
+                width: 150,
+                child: CommonButton(
+                  buttonName: appString.trans(context, appString.bookNowButtonText),
+                  buttonHeight: 50,
+                  buttonBorderRadius: 22,
+                  isBottomMarginRequired: false,
+                  textStyle: appStyles.buttonNameStyle(),
+                  backCallback: () {
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

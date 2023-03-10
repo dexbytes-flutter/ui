@@ -285,6 +285,10 @@ class AppString {
   String showLessText = 'showLessText';
   String ratingAndReview = 'ratingAndReview';
   String viewAllText = 'viewAllText';
+  String perDayText = 'perDayText';
+  String bookNowButtonText = 'bookNowButtonText';
+  String galleryTitleText = 'galleryTitleText';
+  String allReviewTitleText = 'allReviewTitleText';
 
 
 }

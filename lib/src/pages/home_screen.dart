@@ -9,6 +9,7 @@ import 'package:base_flutter_app/src/widgets/home_page_common_image.dart';
 import 'package:flutter/material.dart';
 
 import '../all_file_import/app_providers_files_link.dart';
+import 'destination_card_detailed_view_screen.dart';
 import 'search_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -21,8 +22,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   int selectedIndex = 0;
-
-
+  String imageUrl = "";
 
   @override
   void initState() {
@@ -116,17 +116,29 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: EdgeInsets.zero,
           itemCount: verticalTitleSubTitleList.length,
           itemBuilder: (context,index){
-            return Container(
-              margin: EdgeInsets.only(right: 15),
-                child: HomepageCommonImage(
-                  imageUrl: verticalTitleSubTitleList[index].imageUrl,
-                  selectedIndex: homeVerticalList[selectedIndex].id,
-                  title: verticalTitleSubTitleList[index].title,
-                  subTitle: verticalTitleSubTitleList[index].subTitle,
-                  countryTitle: verticalTitleSubTitleList[index].countryTitle,
-                  isHorizontalViewCard: false,
-                  isBookmarked: verticalTitleSubTitleList[index].isBookmarked,
-                )
+            return GestureDetector(
+              onTap: (){
+                setState(() {
+                  imageUrl = verticalTitleSubTitleList[selectedIndex].imageUrl;
+                });
+                Navigator.push(
+                  context,
+                  SlideRightRoute(
+                      widget: DestinationDetailedCardView(detailImageUrl: imageUrl)),
+                );
+              },
+              child: Container(
+                margin: EdgeInsets.only(right: 15),
+                  child: HomepageCommonImage(
+                    imageUrl: verticalTitleSubTitleList[index].imageUrl,
+                    selectedIndex: homeVerticalList[selectedIndex].id,
+                    title: verticalTitleSubTitleList[index].title,
+                    subTitle: verticalTitleSubTitleList[index].subTitle,
+                    countryTitle: verticalTitleSubTitleList[index].countryTitle,
+                    isHorizontalViewCard: false,
+                    isBookmarked: verticalTitleSubTitleList[index].isBookmarked,
+                  )
+              ),
             );
           },
         ),

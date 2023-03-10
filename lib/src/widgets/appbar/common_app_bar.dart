@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 class CommonAppBar extends StatelessWidget {
   final bool? isHideLeftIcon;
   final bool? isHideRightIcon;
-  final bool? isShowTitle;
   final String title;
   final Color? appBarColor;
   final EdgeInsetsGeometry? leftIconMargin;
@@ -18,7 +17,6 @@ class CommonAppBar extends StatelessWidget {
   const CommonAppBar(
       {Key? key,
       this.isHideLeftIcon = false,
-      this.isShowTitle,
       this.title = "",
       this.appBarColor,
       this.leftIconMargin,
@@ -65,61 +63,6 @@ class CommonAppBar extends StatelessWidget {
                 ),
         ],
       ),
-
-      // Stack(
-      //   children: [
-      //     isHideLeftIcon ? Container() :
-      //     GestureDetector(
-      //       onTap: (){
-      //         Navigator.of(context).pop();
-      //         FocusScope.of(context).unfocus();
-      //       },
-      //       child: Container(
-      //         margin: leftIconMargin??EdgeInsets.zero,
-      //         child: iconApps.iconImage(imageUrl: iconApps.leftArrow,
-      //             iconSize: Size(28,28),
-      //             imageColor: appColors.textNormalColor,
-      //         ),
-      //       ),
-      //     ),
-      //     Container(
-      //       margin: textAndRightIconMargin ?? EdgeInsets.zero,
-      //       child: isHideRightIcon
-      //           ? Container()
-      //           : Row(
-      //           mainAxisAlignment: isShowTitle!? MainAxisAlignment.center : MainAxisAlignment.end,
-      //           crossAxisAlignment: CrossAxisAlignment.center,
-      //           children:[
-      //             isShowTitle!
-      //                 ? isShowTitleWithIcon!
-      //                 ? iconApps.iconImage(imageUrl: iconApps.locationIcon,
-      //                 iconSize: Size(20,20),
-      //                 imageColor: appColors.appBarTextColor)
-      //                 : Container()
-      //                 : Padding(
-      //                   padding: const EdgeInsets.only(bottom: 30,right: 20),
-      //                   child: BookmarkButton(
-      //               isFavorite: isBookMarked,
-      //               iconDisabledColor: appColors.appBgColorLeanWhite.withOpacity(0.40),
-      //               valueChanged: (_isFavorite) {
-      //                   print('Is Favorite : $_isFavorite');
-      //               },
-      //             ),
-      //             ),
-      //             SizedBox(width: isShowTitle! ? 5 : 0,),
-      //             isShowTitle!
-      //                 ? Center(
-      //                 child:
-      //                 Text(title,
-      //                     style: appBarTitleTextStyle ?? appStyles.commonAppBarTextTextStyle()
-      //                 )
-      //             )
-      //                 : Container(),
-      //           ]
-      //       ),
-      //     ),
-      //   ],
-      // ),
     );
   }
 }

@@ -307,7 +307,6 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
         contextCurrentView: context,
         appBar: CommonAppBar(
           isHideRightIcon: false,
-          isShowTitle: false,
           isBookMarked: widget.isBookMarked,
         ),
         containChild: Column(

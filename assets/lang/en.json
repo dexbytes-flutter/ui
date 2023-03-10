@@ -197,5 +197,9 @@
   "readMoreText" : "...Read More",
   "showLessText" : "show less",
   "ratingAndReview" : "Rating and Review",
-  "viewAllText" : "View All"
+  "viewAllText" : "View All",
+  "perDayText" : "/Day",
+  "bookNowButtonText" : "Book Now",
+  "galleryTitleText" : "Gallery",
+  "allReviewTitleText" : "All Review"
 }

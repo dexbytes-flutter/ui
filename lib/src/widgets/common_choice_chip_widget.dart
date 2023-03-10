@@ -5,10 +5,14 @@ import 'package:flutter/material.dart';
 class ChoiceChipWidget extends StatefulWidget {
   final List<String> reportList;
   final bool? isAvatar;
+  final EdgeInsetsGeometry? choiceChipWidgetPadding;
+  final double choiceChipRadius;
 
   ChoiceChipWidget({
     required this.reportList,
-    this.isAvatar
+    this.isAvatar,
+    this.choiceChipWidgetPadding,
+    this.choiceChipRadius = 12
   });
 
   @override
@@ -51,17 +55,19 @@ class _ChoiceChipWidgetState extends State<ChoiceChipWidget> {
   _buildChoiceListWithAvatar() {
     List<Widget> choices = [];
     widget.reportList.forEach((item) {
-      choices.add(Container(
+      choices.add(
+          Container(
         child: ChoiceChip(
           avatar: iconApps.iconImage(
               imageUrl: iconApps.starIcon,
               iconSize: Size(10, 10)
           ),
+          padding: widget.choiceChipWidgetPadding ?? EdgeInsets.zero,
           label: Text(item),
           labelStyle: appStyles.commonSubTitleTextStyle(fontSize: 12.5,
               texColor: selectedChoice == item ? appColors.buttonBgColor : appColors.textColor),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(12),
+            borderRadius: BorderRadius.all(Radius.circular(widget.choiceChipRadius),
             ),
             side: BorderSide(
               color:  appColors.appBgColor2,

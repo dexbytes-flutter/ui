@@ -293,7 +293,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
 
     //If profile set done by user
     // if (widget.isOneTimeProfileSetUpDone) {
-    return const DestinationDetailedCardView();
+    return const HomeScreen();
     //SignInPage();
     // }
     //If set up not done by user than redirect to selected screen

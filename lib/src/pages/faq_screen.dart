@@ -8,12 +8,12 @@ import '../widgets/common_expansion_tile_widget.dart';
 
 class FaqScreen extends StatefulWidget {
   final String userName;
-  final String profileImgUrl;
+  final String galleryZoomImageUrl;
   final Function(dynamic)? onImageCallBack;
 
   const FaqScreen({ Key ?key,
     this.userName = "Mohit Panchal",
-    this.profileImgUrl = "https://static.toiimg.com/thumb/msid-86203836,imgsize-29194,width-800,height-600,resizemode-75/86203836.jpg",
+    this.galleryZoomImageUrl = "https://static.toiimg.com/thumb/msid-86203836,imgsize-29194,width-800,height-600,resizemode-75/86203836.jpg",
     this.onImageCallBack
   }) : super(key: key);
 
