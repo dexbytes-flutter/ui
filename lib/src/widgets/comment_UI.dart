@@ -1,5 +1,7 @@
+import 'package:base_flutter_app/src/all_file_import/app_utils_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
+import 'package:base_flutter_app/src/widgets/full_view_image_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -136,23 +138,45 @@ class CommentsUI extends StatelessWidget {
         uploadImageUrl1 != ""
             ? Row(
               children: [
-                ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                      child: CachedNetworkImage(
-                        imageUrl: uploadImageUrl1,
-                        fit: BoxFit.cover,
-                        height: 50,
-                        width: 50,
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      SlideRightRoute(
+                          widget: FullPhotoView(galleryZoomImageUrl: uploadImageUrl1
+                          )
                       ),
+                    );
+                  },
+                  child: ClipRRect(
+                        borderRadius: BorderRadius.circular(12),
+                        child: CachedNetworkImage(
+                          imageUrl: uploadImageUrl1,
+                          fit: BoxFit.cover,
+                          height: 50,
+                          width: 50,
+                        ),
+                  ),
                 ),
                 SizedBox(width: 10,),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: CachedNetworkImage(
-                    imageUrl: uploadImageUrl2,
-                    fit: BoxFit.cover,
-                    height: 50,
-                    width: 50,
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      SlideRightRoute(
+                          widget: FullPhotoView(galleryZoomImageUrl: uploadImageUrl2
+                          )
+                      ),
+                    );
+                  },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: CachedNetworkImage(
+                      imageUrl: uploadImageUrl2,
+                      fit: BoxFit.cover,
+                      height: 50,
+                      width: 50,
+                    ),
                   ),
                 ),
               ],

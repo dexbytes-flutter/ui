@@ -15,13 +15,15 @@ import 'package:flutter/services.dart';
 import 'package:readmore/readmore.dart';
 
 import '../all_file_import/app_utils_files_link.dart';
+import '../model/detail_card_vertical_list_image_model.dart';
+import '../widgets/image_list_with_item_count_on_stack.dart';
 import 'review_view_all_screen.dart';
 
 class DestinationDetailedCardView extends StatefulWidget {
-  final String detailImageUrl;
-  const DestinationDetailedCardView({
+  late String detailImageUrl;
+  DestinationDetailedCardView({
     Key? key,
-    required this.detailImageUrl
+    this.detailImageUrl = "",
   }) : super(key: key);
 
   @override
@@ -31,9 +33,48 @@ class DestinationDetailedCardView extends StatefulWidget {
 class _DestinationDetailedCardViewState extends State<DestinationDetailedCardView> {
 
   String imageUrl = "";
+  int itemCount = 4;
+  int lastVisibleIndex = 0;
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+
+    // Right images list
+    rightImagesList(){
+      return Container(
+        // height: 100,
+        width: 55,
+        child: ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: itemCount,
+              itemBuilder: (contex,index){
+                lastVisibleIndex = index + 1;
+                return Container(
+                  margin: EdgeInsets.only(top: 10),
+                  child: ImageListWithItemCountOnStack(
+                    imageUrl: detailScreenRightVerticalImageList[index].imageUrl,
+                    imageHeight: 55,
+                    imageWidth: 55,
+                    widgetList: detailScreenRightVerticalImageList.length,
+                    totalCount: itemCount,
+                    showTotalCount: true,
+                    lastVisibleIndex: lastVisibleIndex,
+                    selectedIndex: selectedIndex,
+                    currentIndex: index,
+                    onTapCallBack: (){
+                      setState(() {
+                        selectedIndex = index;
+                        widget.detailImageUrl = detailScreenRightVerticalImageList[index].imageUrl;
+                      });
+                    },
+                  ),
+                );
+              },
+        ),
+      );
+    }
 
     // Background image in stack
     backgroundImageStackView(){
@@ -52,8 +93,8 @@ class _DestinationDetailedCardViewState extends State<DestinationDetailedCardVie
             blendMode: BlendMode.dstIn,
             child: ClipRRect(
               child: CachedNetworkImage(
-                imageUrl: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQQ9j9GWnKtl9xJjLvEPREdCFlkLjl2XKmMdQKOAnnyLmCO_Moo",
-                // imageUrl: widget.imageUrl!,
+                // imageUrl: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQQ9j9GWnKtl9xJjLvEPREdCFlkLjl2XKmMdQKOAnnyLmCO_Moo",
+                imageUrl: widget.detailImageUrl!,
                 fit: BoxFit.cover,
                 height: appDimens.heightFullScreen()/1.45,
                 width: appDimens.widthFullScreen(),
@@ -120,9 +161,15 @@ class _DestinationDetailedCardViewState extends State<DestinationDetailedCardVie
               ],
             ),
           ),
+          Positioned(
+            right: 20,
+              bottom: 15,
+              child: rightImagesList()
+          )
         ],
       );
     }
+
     // Rating choice chip
     ratingView(){
       return Wrap(
@@ -155,7 +202,6 @@ class _DestinationDetailedCardViewState extends State<DestinationDetailedCardVie
       );*/
     }
 
-
     //Gallery list view
     galleryListView(){
       return Container(
@@ -168,7 +214,7 @@ class _DestinationDetailedCardViewState extends State<DestinationDetailedCardVie
             return GestureDetector(
               onTap: (){
                 setState(() {
-                  imageUrl =galleryImageList[index].imageUrl;
+                  imageUrl = galleryImageList[index].imageUrl;
                 });
                 Navigator.push(
                   context,

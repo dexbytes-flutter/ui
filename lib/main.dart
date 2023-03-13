@@ -22,6 +22,7 @@ import 'package:base_flutter_app/src/helper/local_constant.dart';
 import 'package:base_flutter_app/src/helper/shared_preferencesFile.dart';
 import 'package:provider/provider.dart';
 import 'package:base_flutter_app/src/config/routes.dart';
+import 'src/pages/all_gallery_images_screen.dart';
 import 'src/pages/booking_cancellation_screen.dart';
 import 'src/pages/booking_detail_card_view_screen.dart';
 import 'src/pages/dashboard_screen.dart';

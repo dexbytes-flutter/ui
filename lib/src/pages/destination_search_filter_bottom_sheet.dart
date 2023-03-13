@@ -6,6 +6,7 @@ import 'package:base_flutter_app/src/pages/search_screen.dart';
 import 'package:base_flutter_app/src/widgets/bottom_sheet_dynamic_height_card.dart';
 import 'package:base_flutter_app/src/widgets/common_choice_chip_widget.dart';
 import 'package:base_flutter_app/src/widgets/drop_down_widget.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:intl/intl.dart';
@@ -14,6 +15,7 @@ import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 import '../all_file_import/app_providers_files_link.dart';
 import '../all_file_import/app_utils_files_link.dart';
+import '../widgets/drop_down_widget2.dart';
 
 class DestinationSearchFilterBottomSheet extends StatefulWidget {
   const DestinationSearchFilterBottomSheet({Key? key}) : super(key: key);
@@ -31,17 +33,19 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
   int selectedIndex = 0;
   bool isVerticalViewSearchResult = false;
 
-  List<dynamic> countryNameList = [];
-  List<dynamic> cityNameList = [];
-  List<dynamic> city = [];
+  String selectedCountry = ""; // to display the selected country
+  // Country list
+  List<Map<String,dynamic>> countries = [
+    {"id" : 1, "name" : "India"},
+    {"id" : 2, "name" : "UAE"},
+    {"id" : 3, "name" : "Indonesia"}
+  ];
+  List<Map<String,dynamic>> countryList = []; // to store the country list as a drop down list
 
-  String? countryId;
-  String? cityId;
-  // String? choosenValue;
 
-  String countryValue = "";
-  String cityValue = "";
-
+  String selectedCity = ""; // to display the selected city on the basis of county
+  List<Map<String,dynamic>> cityList = []; // to store the sorted city list according to country as a drop down list
+  List<Map<String, dynamic>> cityNameList = []; // on selection of country, all cities will be added here dynamically
 
   RangeValues values = const RangeValues(150, 400);
   RangeLabels labels = const RangeLabels("100", "1000");
@@ -50,39 +54,37 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
   void initState() {
     // TODO: implement initState
     super.initState();
-    this.countryNameList.add({"id":1,"name" : "India", });
-    this.countryNameList.add({"id":2,"name" : "UAE", });
-
-    this.countryNameList = [
-      {"id": 1, "Name" : "India", "ParentId" : 1},
-      {"id": 2, "Name" : "UAE", "ParentId" : 2},
-    ];
-
-    this.cityNameList = [
-      {"ID": 1, "Name" : "Delhi", "ParentId" : "India"},
-      {"ID": 2, "Name" : "Indore", "ParentId" : "India"},
-      {"ID": 3, "Name" : "Abu Dhabi", "ParentId" : "UAE"},
-      {"ID": 4, "Name" : "Dubai", "ParentId" : "UAE"},
+    countryList = countries;
+    cityNameList = [
+      {"id": 1, "name" : "Delhi", "ParentId" : 1},
+      {"id": 2, "name" : "Indore", "ParentId" : 1},
+      {"id": 3, "name" : "Abu Dhabi", "ParentId" : 2},
+      {"id": 4, "name" : "Dubai", "ParentId" : 2},
+      {"id": 5, "name" : "Jakarta", "ParentId" : 3},
+      {"id": 6, "name" : "Medan", "ParentId" : 3},
     ];
   }
-  final countryList = ["India","UAE",];
-  final cityList = ["Delhi","Indore",];
 
-  DropdownMenuItem<String> buildMenuItem(String item)  {
-    return DropdownMenuItem(
-        value:item,
-        child: Text(
-          item,
-          style: appStyles.commonTitleStyle(fontSize: 14,
-            fontWeight: FontWeight.w500, texColor: appColors.textColor,)
-        )
-    );}
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
 
     AppDimens appDimens = AppDimens();
     appDimens.appDimensFind(context: context);
+
+    DropdownMenuItem<String> buildMenuItem(Map map)
+    => DropdownMenuItem(
+        value: map["id"].toString(),
+        child: Text(
+          map["name"],
+          style: appStyles.commonSubTitleTextStyle(fontSize: 11,fontWeight: FontWeight.w500),
+        )
+    );
     
     // Filter search result view option card
     Widget filterSearchResultViewOption(){
@@ -276,39 +278,84 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
         ),*//*
       );
     }*/
-
+    // locationDropDownView()
     Widget category = Container(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Flexible(
-            child: DropDownDataPicker(
-              hint: appString.trans(context, appString.countryDropDownHintText),
+          Container(
+            height: 35,
+            margin: EdgeInsets.only(right: 10),
+            child: CustomDropDownWidget(
+              dropDownContainerDecorationColor: appColors.appBgColor2.withOpacity(0.45),
+              dropDownContainerDecorationBorderColor: appColors.appTransColor,
+                dropDownContainerDecorationBorderRadius: 12,
+              dropDownHintText: Text(appString.trans(context, appString.countryDropDownHintText),
+              style: appStyles.commonSubTitleTextStyle(fontSize: 11,fontWeight: FontWeight.w500),
+              ),
+              iconStyleData: IconStyleData(
+                icon: Icon(Icons.keyboard_arrow_down),
+                iconDisabledColor: appColors.grey,
+                iconEnabledColor: appColors.white,
+              ),
+              dropdownStyleData: DropdownStyleData(
+                  elevation: 0,
+                  offset: Offset(0, -2),
+                  decoration: BoxDecoration(
+                      color: appColors.appBgColorJungleGreen,
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(15),
+                        bottomRight: Radius.circular(15),
+                      )
+                  )
+              ),
+              selectedCountry: selectedCountry,
               itemList: countryList.map(buildMenuItem).toList(),
-              onChangedValue: (onChangedVal){
+              onValueChangeCallBack: (value){
                 setState(() {
-                  this.countryId = onChangedVal!;
-                  this.city = cityNameList.where(
-                          (cityItem) => cityItem["ParentId"].toString() == onChangedVal.toString()).toList();
-                  this.cityId = null;
+                  selectedCountry = value!;
+                  print(selectedCountry);
+                  cityList = cityNameList.where(
+                          (cityItem) => cityItem["ParentId"].toString() == value.toString()).toList();
+                  selectedCity = "";
                 });
               },
-              choosenValue: countryId,
             ),
           ),
-          SizedBox(width: 10,),
-          Flexible(
-            child: DropDownDataPicker(
-              hint: appString.trans(context, appString.cityDropDownHintText) ,
+          Container(
+            height: 35,
+            child: CustomDropDownWidget(
+              dropDownContainerDecorationColor: appColors.appBgColor2.withOpacity(0.45),
+              dropDownContainerDecorationBorderColor: appColors.appTransColor,
+              dropDownContainerDecorationBorderRadius: 12,
+                iconStyleData: IconStyleData(
+                  icon: Icon(Icons.keyboard_arrow_down),
+                  iconDisabledColor: appColors.grey,
+                  iconEnabledColor: appColors.white,
+                ),
+              dropdownStyleData: DropdownStyleData(
+                  elevation: 0,
+                  offset: Offset(0, -2),
+                  decoration: BoxDecoration(
+                      color: appColors.appBgColorJungleGreen,
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(15),
+                        bottomRight: Radius.circular(15),
+                      )
+                  )
+              ),
+              dropDownHintText: Text(appString.trans(context, appString.cityDropDownHintText),
+                style: appStyles.commonSubTitleTextStyle(fontSize: 11,fontWeight: FontWeight.w500),
+              ),
+              selectedCountry: selectedCity,
               itemList: cityList.map(buildMenuItem).toList(),
-              onChangedValue: (onChangedVal){
+              onValueChangeCallBack: (value){
                 setState(() {
-                  this.cityId = onChangedVal!;
+                  selectedCity = value!;
                 });
               },
-              choosenValue: cityId,
             ),
-          )
+          ),
         ],
       ),
     );
