@@ -289,6 +289,11 @@ class AppString {
   String bookNowButtonText = 'bookNowButtonText';
   String galleryTitleText = 'galleryTitleText';
   String allReviewTitleText = 'allReviewTitleText';
+  String createBookingTitleText = 'createBookingTitleText';
+  String dateTitleText = 'dateTitleText';
+  String totalText = 'totalText';
+  String okButtonText = 'okButtonText';
+  String cancelText = 'cancelText';
 
 
 }

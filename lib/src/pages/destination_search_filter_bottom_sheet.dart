@@ -141,145 +141,7 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
       );
     }
     // Location drop down
-    /*Widget locationDropDownView(){
-      return Container(
-          child: Builder(
-            builder: (BuildContext context) {
-              return Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Container(
-                    height: 38,
-                    width: 135,
-                    padding: EdgeInsets.only(left: 5,right: 5),
-                    decoration: BoxDecoration(
-                      color: appColors.grey.withOpacity(0.05),
-                      borderRadius: BorderRadius.circular(12)
-                    ),
-                    child: FormHelper.dropDownWidget(
-                        context,
-                        "Country",
-                        this.countryId,
-                        this.countryNameList,
-                            (onChangedVal){
-                          setState(() {
-                            this.countryId = onChangedVal;
-                            this.city = cityNameList.where(
-                                    (cityItem) => cityItem["ParentId"].toString() == onChangedVal.toString()
-                            ).toList();
-                            this.cityId = null;
-                          });
-                        },
-                            (onValidateVal){
-                          if(onValidateVal == null){
-                            // return "Please select country";
-                          }
-                          return null;
-                        },
-                        borderColor: appColors.appTransColor,
-                        borderFocusColor: appColors.appTransColor,
-                        hintColor: appColors.white,
-                        textColor: appColors.textColor,
-                        hintFontSize: 11.5,
-                        borderRadius: 10,
-                        borderWidth: 0,
-                        paddingLeft: 15,
-                        paddingRight: 15,
-                        paddingTop: 5,
-                        paddingBottom: 5
-                    ),
-                  ),
-                  SizedBox(width: 10,),
-                  Container(
-                    height: 38,
-                    width: 135,
-                    padding: EdgeInsets.only(left: 5,right: 5),
-                    decoration: BoxDecoration(
-                        color: appColors.grey.withOpacity(0.05),
-                        borderRadius: BorderRadius.circular(12)
-                    ),
-                    child:  FormHelper.dropDownWidget(
-                        context,
-                        "City",
-                        this.cityId,
-                        this.city,
-                            (onChangedVal){
-                          setState(() {
-                            this.cityId = onChangedVal;
-                          });
-                        },
-                            (onValidateVal){
-                          return null;
-                        },
-                        borderColor: appColors.appTransColor,
-                        borderFocusColor: appColors.appTransColor,
-                        hintColor: appColors.textColor,
-                        textColor: appColors.textColor,
-                        hintFontSize: 11.5,
-                        borderRadius: 10,
-                        optionValue: "ID",
-                        optionLabel: "Name",
-                        paddingLeft: 0,
-                        paddingRight: 0,
-                        paddingTop: 5,
-                        paddingBottom: 5
-                    ),
-                  )
-                ],
-              );
-            },
-
-          )
-
-        *//*Column(
-            children: [
-              FormHelper.dropDownWidget(
-                  context,
-                  "Country",
-                  this.countryId,
-                  this.countryNameList,
-                  (onChangedVal){
-                    this.countryId = onChangedVal;
-                    this.city = cityNameList.where(
-                            (cityItem) => cityItem["ParentId"].toString() == onChangedVal.toString()
-                    ).toList();
-                    this.cityId = null;
-                    },
-                  (onValidateVal){
-                    if(onValidateVal == null){
-                      return "Please select country";
-                    }
-                    return null;
-                  },
-                borderColor: appColors.buttonBgColor,
-                borderFocusColor: appColors.appThemeColor,
-                borderRadius: 10,
-                paddingLeft: 0,
-                paddingRight: 60
-              ),
-              FormHelper.dropDownWidget(
-                  context,
-                  "City",
-                  this.cityId,
-                  this.city,
-                  (onChangedVal){
-                    this.cityId = onChangedVal;
-                  },
-                  (onValidateVal){
-                  return null;
-                  },
-                borderColor: appColors.buttonBgColor,
-                borderFocusColor: appColors.appThemeColor,
-                borderRadius: 10,
-                optionValue: "ID",
-                optionLabel: "Name",
-              )
-            ]
-        ),*//*
-      );
-    }*/
-    // locationDropDownView()
-    Widget category = Container(
+    Widget locationDropDownView = Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -488,8 +350,7 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
               style: appStyles.commonSubTitleTextStyle(fontSize: 15),
             ),
             SizedBox(height: 10,),
-            // locationDropDownView(),
-            category,
+            locationDropDownView,
             SizedBox(height: 25,),
             Text(appString.trans(context, appString.priceTitleText),
               style: appStyles.commonSubTitleTextStyle(fontSize: 15),

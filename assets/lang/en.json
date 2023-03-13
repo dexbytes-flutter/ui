@@ -201,5 +201,10 @@
   "perDayText" : "/Day",
   "bookNowButtonText" : "Book Now",
   "galleryTitleText" : "Gallery",
-  "allReviewTitleText" : "All Review"
+  "allReviewTitleText" : "All Review",
+  "createBookingTitleText" : "Create Booking",
+  "dateTitleText" : "Date",
+  "totalText" : "Total",
+  "okButtonText" : "Ok",
+  "cancelText" : "Cancel"
 }
