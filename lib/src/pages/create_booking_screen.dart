@@ -4,6 +4,7 @@ import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart'
 import 'package:base_flutter_app/src/model/create_booking_type_model.dart';
 import 'package:base_flutter_app/src/model/filter_choice_chip_model.dart';
 import 'package:base_flutter_app/src/pages/dashboard_screen.dart';
+import 'package:base_flutter_app/src/pages/select_payment_screen.dart';
 import 'package:base_flutter_app/src/widgets/common_choice_chip_widget.dart';
 import 'package:base_flutter_app/src/widgets/date_picker_widget.dart';
 import 'package:flutter/material.dart';
@@ -137,8 +138,8 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
               Text(
                 "\$ 360.0",
                 style: appStyles.commonSubTitleTextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500, texColor: appColors.white
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600, texColor: appColors.white
                 ),
               ),
             ],
@@ -146,10 +147,10 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
         );
       }
 
-      // Common button
+      // Next button
       nextButton(){
         return CommonButton(
-          buttonName: appString.trans(context, appString.loginText),
+          buttonName: appString.trans(context, appString.nextSmall),
           buttonHeight: 50,
           buttonBorderRadius: 18,
           isBottomMarginRequired: false,
@@ -157,7 +158,7 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
           backCallback: () {
             Navigator.push(
               context,
-              SlideRightRoute(widget: DashBoardPage()),
+              SlideRightRoute(widget: SelectPaymentScreen()),
             );
           },
         );
@@ -174,7 +175,7 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
           isHideRightIcon: true,
         ),
         containChild: Padding(
-          padding: const EdgeInsets.only(left: 20, top: 5, right: 20),
+          padding: const EdgeInsets.only(left: 20, top: 10, right: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -232,7 +233,7 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
       bottomMenuView: Align(
         alignment: Alignment.bottomCenter,
           child: Padding(
-            padding: const EdgeInsets.only(bottom: 20,left: 20,right: 20),
+            padding: const EdgeInsets.only(bottom: 25,left: 20,right: 20),
             child: nextButton(),
           )
       ),

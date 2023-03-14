@@ -43,6 +43,8 @@ class IconApps {
   String rightAngleArrowIcon = 'assets/images/right_angle_arrow_icon.svg';
   String calendarIcon = 'assets/images/calendar_icon.svg';
   String deleteIcon = 'assets/images/delete_icon.svg';
+  String addCardIcon = 'assets/images/add_card_icon.svg';
+  String masterCardIcon = "assets/images/mastercard_icon.svg";
 
   iconImage(
       {required String imageUrl,

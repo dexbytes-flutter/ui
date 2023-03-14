@@ -295,6 +295,10 @@ class AppString {
   String okButtonText = 'okButtonText';
   String cancelText = 'cancelText';
   String personLabelText = 'personLabelText';
+  String selectPaymentTitleText = 'selectPaymentTitleText';
+  String balancePaymentCardText = 'balancePaymentCardText';
+  String cvvText = 'cvvText';
+  String confirmBookingButtonText = 'confirmBookingButtonText';
 
 
 }

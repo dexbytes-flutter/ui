@@ -32,6 +32,7 @@ import 'src/pages/login_screen.dart';
 import 'src/pages/otp_verification_page.dart';
 import 'src/pages/profile_screen.dart';
 import 'src/pages/registration_screen.dart';
+import 'src/pages/select_payment_screen.dart';
 import 'src/pages/terms_of_services_screen.dart';
 import 'src/pages/test_drop_down.dart';
 import 'src/widgets/common_choice_chip_widget.dart';
@@ -295,7 +296,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
 
     //If profile set done by user
     // if (widget.isOneTimeProfileSetUpDone) {
-    return const CreateBookingScreen();
+    return const SelectPaymentScreen();
     //SignInPage();
     // }
     //If set up not done by user than redirect to selected screen

@@ -207,5 +207,9 @@
   "totalText" : "Total",
   "okButtonText" : "Ok",
   "cancelText" : "Cancel",
-  "personLabelText" : "person"
+  "personLabelText" : "person",
+  "selectPaymentTitleText" : "Select Payment",
+  "balancePaymentCardText" : "Balance",
+  "cvvText" : "CVV",
+  "confirmBookingButtonText" : "Confirm Booking"
 }
