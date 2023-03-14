@@ -206,5 +206,6 @@
   "dateTitleText" : "Date",
   "totalText" : "Total",
   "okButtonText" : "Ok",
-  "cancelText" : "Cancel"
+  "cancelText" : "Cancel",
+  "personLabelText" : "person"
 }

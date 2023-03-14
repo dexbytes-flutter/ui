@@ -1,10 +1,16 @@
+import 'package:base_flutter_app/src/all_file_import/app_utils_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
+import 'package:base_flutter_app/src/model/create_booking_type_model.dart';
+import 'package:base_flutter_app/src/model/filter_choice_chip_model.dart';
+import 'package:base_flutter_app/src/pages/dashboard_screen.dart';
+import 'package:base_flutter_app/src/widgets/common_choice_chip_widget.dart';
 import 'package:base_flutter_app/src/widgets/date_picker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
 import '../widgets/appbar/common_app_bar.dart';
+import '../widgets/custom_slider_widget.dart';
 
 class CreateBookingScreen extends StatefulWidget {
   const CreateBookingScreen({Key? key}) : super(key: key);
@@ -16,12 +22,12 @@ class CreateBookingScreen extends StatefulWidget {
 class _CreateBookingScreenState extends State<CreateBookingScreen> {
   DateTime? startDateCheck;
   DateTime? endDateCheck;
-  int _value = 6;
+  int _value = 3;
 
   @override
   Widget build(BuildContext context) {
-    // Date drop down view
-    dateDropDown() {
+      // Date drop down view
+      dateDropDown() {
       return Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -56,54 +62,38 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
       );
     }
 
-    // Person range slider
-    personRangSlider() {
+      // Person range slider
+      personRangSlider() {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          /*Slider(
-              value: _value.toDouble(),
-              min: 1.0,
-              max: 25.0,
-              divisions: 10,
-              activeColor: appColors.buttonBgColor,
-              inactiveColor: appColors.textColor,
-              label: "$_value ${appString.trans(context, appString.personText)}",
-              onChanged: (double newValue) {
-                setState(() {
-                  _value = newValue.round();
-                });
-              },
-              semanticFormatterCallback: (double newValue) {
-                return '${newValue.round()} dollars';
-              }),*/
-
-          SfSlider(
+          CustomSlider(
+            inActiveTrackColor: appColors.textColor,
+            activeTrackColor: appColors.buttonBgColor,
+            trackHeight: 2.5,
+            max: 25,
             min: 1,
-            max: 25.0,
-            value: _value,
-            interval: 10,
-            showTicks: false,
-            enableTooltip: true,
-            activeColor: appColors.buttonBgColor,
-            inactiveColor: appColors.textColor,
-            onChanged: (newValue){
+            value: _value.toDouble(),
+            divisions: 20,
+            onValueChangeCallback: (value){
               setState(() {
-                _value = newValue.round();
+                _value = value.round();
               });
             },
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("1 person",
+              Text("1 ${appString.trans(context, appString.personLabelText)}",
                   style:appStyles.commonSubTitleTextStyle(
                     fontSize: 11.5 ,
                     fontWeight: FontWeight.w500,
                     texColor:appColors.grey.withOpacity(0.80),
                   )
               ),
-              Text("25 person",
+              Text("25 ${appString.trans(context, appString.personLabelText)}",
                   style:appStyles.commonSubTitleTextStyle(
                     fontSize: 11.5 ,
                     fontWeight: FontWeight.w500,
@@ -115,6 +105,63 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
         ],
       );
     }
+
+      // Type view
+      typeView(){
+        return Wrap(
+          spacing: 10.0,
+          runSpacing: -5,
+          children: <Widget>[
+            ChoiceChipWidget(
+              reportList: bookingTypeList,
+              isAvatar: false,
+            ),
+          ],
+        );
+      }
+
+      // Total text
+      totalAmountView(){
+        return Padding(
+          padding: const EdgeInsets.only(top: 95),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                appString.trans(context, appString.totalText),
+                style: appStyles.commonSubTitleTextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              Text(
+                "\$ 360.0",
+                style: appStyles.commonSubTitleTextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500, texColor: appColors.white
+                ),
+              ),
+            ],
+          ),
+        );
+      }
+
+      // Common button
+      nextButton(){
+        return CommonButton(
+          buttonName: appString.trans(context, appString.loginText),
+          buttonHeight: 50,
+          buttonBorderRadius: 18,
+          isBottomMarginRequired: false,
+          textStyle: appStyles.buttonNameStyle(),
+          backCallback: () {
+            Navigator.push(
+              context,
+              SlideRightRoute(widget: DashBoardPage()),
+            );
+          },
+        );
+      }
 
     return ContainerFirst(
         appBarHeight: 56,
@@ -159,7 +206,7 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
                     texColor: appColors.white),
               ),
               SizedBox(
-                height: 10,
+                height: 25,
               ),
               personRangSlider(),
               SizedBox(
@@ -175,18 +222,20 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
               SizedBox(
                 height: 15,
               ),
-              SizedBox(
-                height: 30,
-              ),
-              Text(
-                appString.trans(context, appString.totalText),
-                style: appStyles.commonSubTitleTextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
+              typeView(),
+              totalAmountView(),
+              // SizedBox(height: 20,),
+              // nextButton()
             ],
           ),
-        ));
+        ),
+      bottomMenuView: Align(
+        alignment: Alignment.bottomCenter,
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 20,left: 20,right: 20),
+            child: nextButton(),
+          )
+      ),
+    );
   }
 }

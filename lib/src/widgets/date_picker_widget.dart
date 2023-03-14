@@ -120,8 +120,8 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
         inputKeyboardType: InputKeyboardTypeWithError.text,
         textInputAction: TextInputAction.next,
         hintText: widget.hintText?? appString.trans(context, appString.dateTitleText),
-        hintStyle: appStyles.commonTitleStyle(fontSize: 12,texColor: appColors.textColor,fontWeight: FontWeight.w400),
-        textStyle: appStyles.commonTitleStyle(fontWeight: FontWeight.w500,fontSize: 12,
+        hintStyle: appStyles.commonTitleStyle(fontSize: 14,texColor: appColors.textColor,fontWeight: FontWeight.w400),
+        textStyle: appStyles.commonTitleStyle(fontWeight: FontWeight.w500,fontSize: 14,
             texColor: appColors.white ),
         contentPadding: EdgeInsets.only(left: 20,right: 20),
         inputFieldSuffixIcon: IconButton(

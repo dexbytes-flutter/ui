@@ -294,6 +294,7 @@ class AppString {
   String totalText = 'totalText';
   String okButtonText = 'okButtonText';
   String cancelText = 'cancelText';
+  String personLabelText = 'personLabelText';
 
 
 }
