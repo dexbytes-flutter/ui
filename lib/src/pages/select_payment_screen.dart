@@ -7,6 +7,8 @@ import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:base_flutter_app/src/widgets/common_payment_card_widget.dart';
 import 'package:flutter/material.dart';
 
+import 'booking_success_screen.dart';
+
 class SelectPaymentScreen extends StatefulWidget {
   const SelectPaymentScreen({Key? key}) : super(key: key);
 
@@ -15,6 +17,10 @@ class SelectPaymentScreen extends StatefulWidget {
 }
 
 class _SelectPaymentScreenState extends State<SelectPaymentScreen> {
+
+  bool isCardSelected = false;
+  int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
 
@@ -48,15 +54,26 @@ class _SelectPaymentScreenState extends State<SelectPaymentScreen> {
         physics: NeverScrollableScrollPhysics(),
         itemCount: paymentCardDetailList.length,
         itemBuilder: (context,index){
-          return Container(
-            margin: EdgeInsets.only(bottom: 15),
-              child: CustomPaymentCardView(
-                balanceAmount: paymentCardDetailList[index].balanceAmount,
-                nameOnCard: paymentCardDetailList[index].nameOnCard,
-                ccvNumber: paymentCardDetailList[index].ccvNumber,
-                cardNumber: paymentCardDetailList[index].cardNumber,
-                cardTypeLogo: paymentCardDetailList[index].cardTypeLogo,
-              )
+          return GestureDetector(
+            onTap: (){
+              setState(() {
+                selectedIndex = index;
+                isCardSelected = true;
+              });
+            },
+            child: Container(
+                margin: EdgeInsets.only(bottom: 15),
+                child: CustomPaymentCardView(
+                  balanceAmount: paymentCardDetailList[index].balanceAmount,
+                  nameOnCard: paymentCardDetailList[index].nameOnCard,
+                  ccvNumber: paymentCardDetailList[index].ccvNumber,
+                  cardNumber: paymentCardDetailList[index].cardNumber,
+                  cardTypeLogo: paymentCardDetailList[index].cardTypeLogo,
+                  paymentCardSelect: isCardSelected,
+                  selectedIndex: selectedIndex,
+                  index: index,
+                )
+            ),
           );
         },
       );
@@ -100,10 +117,12 @@ class _SelectPaymentScreenState extends State<SelectPaymentScreen> {
             isBottomMarginRequired: false,
             textStyle: appStyles.buttonNameStyle(),
             backCallback: () {
-              Navigator.push(
-                context,
-                SlideRightRoute(widget: SelectPaymentScreen()),
-              );
+              if(isCardSelected){
+                Navigator.push(
+                  context,
+                  SlideRightRoute(widget: BookingSuccessfulScreen()),
+                );
+              }
             },
           )
         ],
@@ -111,29 +130,29 @@ class _SelectPaymentScreenState extends State<SelectPaymentScreen> {
     }
 
     return ContainerFirst(
-        appBarHeight: 56,
-        isOverLayStatusBar: true,
-        isOverLayAppBar: false,
-        isSingleChildScrollViewNeed: true,
-        isFixedDeviceHeight: false,
-        contextCurrentView: context,
-        appBar: CommonAppBar(
-          isHideRightIcon: true,
+      appBarHeight: 56,
+      isOverLayStatusBar: true,
+      isOverLayAppBar: false,
+      isSingleChildScrollViewNeed: true,
+      isFixedDeviceHeight: false,
+      contextCurrentView: context,
+      appBar: CommonAppBar(
+        isHideRightIcon: true,
+      ),
+      containChild: Padding(
+        padding: const EdgeInsets.only(left: 20,right: 20,top: 10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            screenTitleText(),
+            SizedBox(height: 25,),
+            paymentCardView(),
+            SizedBox(height: 50,),
+            bottomButtonView()
+          ],
         ),
-        containChild: Padding(
-          padding: const EdgeInsets.only(left: 20,right: 20,top: 10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              screenTitleText(),
-              SizedBox(height: 25,),
-              paymentCardView(),
-              SizedBox(height: 50,),
-              bottomButtonView()
-            ],
-          ),
-        ),
+      ),
     );
   }
 }

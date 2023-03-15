@@ -299,6 +299,9 @@ class AppString {
   String balancePaymentCardText = 'balancePaymentCardText';
   String cvvText = 'cvvText';
   String confirmBookingButtonText = 'confirmBookingButtonText';
+  String bookingSuccessTitleText = 'bookingSuccessTitleText';
+  String bookingSuccessSubTitleText = 'bookingSuccessSubTitleText';
+  String exploreHomeButtonText = 'exploreHomeButtonText';
 
 
 }

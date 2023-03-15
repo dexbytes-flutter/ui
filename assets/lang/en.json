@@ -81,7 +81,7 @@
   "continueBtnT" : "Continue",
   "continuetext" : "continue",
   "byTappingText" : "By tapping \"Continue\" you are agree to the ",
- "termsOfServices" : " Terms of Services",
+  "termsOfServices" : " Terms of Services",
   "contactManagement" : "Contact management on auto pilot",
   "signUpToday" : "Sign Up Today",
   "noPaymentRequired" : "No payment or credit card required",
@@ -93,10 +93,10 @@
   "resendCode" : "Resend a new code",
   "needHelp" : "Need help ? ",
   "contactUs" : "Contact Us",
-   "step2Of2" : "Step 2 of 2",
+  "step2Of2" : "Step 2 of 2",
 
-   "enterYourName"   :"Enter your name",
-   "headingFirstName": "headingFirstName",
+  "enterYourName"   :"Enter your name",
+  "headingFirstName": "headingFirstName",
   "headingLastName" : "headingLastName",
 
   "howManyContactText" :"How many work contacts do you have?",
@@ -111,10 +111,10 @@
   "hiNickText" : "Hi , Nick",
   "setUpYours" : "Set up your account",
   "step1Of3" : " 1 of 3",
-   "importContact" : "Select where you want to import contacts from ",
+  "importContact" : "Select where you want to import contacts from ",
   "skip" : "Skip",
   "nextBtn" : "Next",
-"phoneNumber" : "phoneNumber",
+  "phoneNumber" : "phoneNumber",
   "correctPhone" : "correctPhone",
   "enterCorrectPassword" : "Please correct enter password",
   "enterPassword1" : "Please enter password",
@@ -211,5 +211,8 @@
   "selectPaymentTitleText" : "Select Payment",
   "balancePaymentCardText" : "Balance",
   "cvvText" : "CVV",
-  "confirmBookingButtonText" : "Confirm Booking"
+  "confirmBookingButtonText" : "Confirm Booking",
+  "bookingSuccessTitleText" : "Booking Success !",
+  "bookingSuccessSubTitleText" : "You have successfully created your booking.",
+  "exploreHomeButtonText" : "Explore Home"
 }

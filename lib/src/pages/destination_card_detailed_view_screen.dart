@@ -5,6 +5,7 @@ import 'package:base_flutter_app/src/image_res/iconApp.dart';
 import 'package:base_flutter_app/src/model/filter_choice_chip_model.dart';
 import 'package:base_flutter_app/src/model/gallery_list_view_model.dart';
 import 'package:base_flutter_app/src/pages/all_gallery_images_screen.dart';
+import 'package:base_flutter_app/src/pages/create_booking_screen.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:base_flutter_app/src/widgets/comment_list_view.dart';
 import 'package:base_flutter_app/src/widgets/common_choice_chip_widget.dart';
@@ -376,6 +377,11 @@ class _DestinationDetailedCardViewState extends State<DestinationDetailedCardVie
                   isBottomMarginRequired: false,
                   textStyle: appStyles.buttonNameStyle(),
                   backCallback: () {
+                    Navigator.push(context,
+                    SlideRightRoute(
+                      widget: CreateBookingScreen()
+                    )
+                    );
                   },
                 ),
               ),

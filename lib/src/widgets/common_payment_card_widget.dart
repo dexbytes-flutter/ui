@@ -8,6 +8,9 @@ class CustomPaymentCardView extends StatelessWidget {
   final String ccvNumber;
   final int cardNumber;
   final String cardTypeLogo;
+  final bool paymentCardSelect;
+  final int selectedIndex;
+  final int index;
 
   const CustomPaymentCardView(
       {Key? key,
@@ -15,8 +18,11 @@ class CustomPaymentCardView extends StatelessWidget {
         required this.nameOnCard,
         required this.ccvNumber,
         required this.cardNumber,
-        required this.cardTypeLogo
-       })
+        required this.cardTypeLogo,
+        required this.paymentCardSelect,
+        required this.selectedIndex,
+        required this.index
+      })
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -25,39 +31,41 @@ class CustomPaymentCardView extends StatelessWidget {
     appDimens.appDimensFind(context: context);
 
     return Container(
-      height: appDimens.heightFullScreen()/4.35,
+      height: appDimens.heightFullScreen()/4.32,
       width: appDimens.widthFullScreen(),
       padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: appColors.appBgColor2
+          borderRadius: BorderRadius.circular(20),
+          color: appColors.appBgColor2,
+          border: Border.all(color: index == selectedIndex ? appColors.buttonBgColor : appColors.appTransColor,
+              width: index == selectedIndex ? 2 : 0)
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(appString.trans(context, appString.balancePaymentCardText),
-          style: appStyles.commonSubTitleTextStyle(fontSize: 14,texColor: appColors.buttonBgColor,
-            fontWeight: FontWeight.w500),
+            style: appStyles.commonSubTitleTextStyle(fontSize: 14,texColor: appColors.buttonBgColor,
+                fontWeight: FontWeight.w500),
           ),
           SizedBox(height: 5,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-            Text("\$ $balanceAmount",
-              style: appStyles.commonTitleStyle(fontSize: 24,fontWeight: FontWeight.w500,
-              ),),
+              Text("\$ $balanceAmount",
+                style: appStyles.commonTitleStyle(fontSize: 24,fontWeight: FontWeight.w500,
+                ),),
               iconApps.iconImage(
                   imageUrl: cardTypeLogo,
-                iconSize: Size(35, 35)
+                  iconSize: Size(35, 35)
               )
-          ],),
+            ],),
           SizedBox(height: 30,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(nameOnCard,style: appStyles.commonSubTitleTextStyle(
-                fontSize: 11, fontWeight: FontWeight.w500
+                  fontSize: 11, fontWeight: FontWeight.w500
               ),
               ),
               Text(appString.trans(context, appString.cvvText),style: appStyles.commonSubTitleTextStyle(
@@ -73,7 +81,7 @@ class CustomPaymentCardView extends StatelessWidget {
               Text("•••• •••• •••• $cardNumber",
                 textAlign: TextAlign.center,
                 style: appStyles.commonSubTitleTextStyle(
-                  fontWeight: FontWeight.w600,fontSize: 14
+                    fontWeight: FontWeight.w600,fontSize: 14
                 ),),
               Text(ccvNumber,style: appStyles.commonSubTitleTextStyle(
                   fontWeight: FontWeight.w600,fontSize: 14
