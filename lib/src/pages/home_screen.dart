@@ -89,10 +89,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   selectedIndex = index;
                 });
               },
-              child: CommonVerticalList(
-                listTitle: homeVerticalList[index].listTitle,
-                index: index,
-                selectedIndex: selectedIndex,
+              child: RotatedBox(
+                quarterTurns: -1,
+                child: CommonVerticalList(
+                  listTitle: homeVerticalList[index].listTitle,
+                  index: index,
+                  selectedIndex: selectedIndex,
+                  isHorizontalList: false,
+                ),
               ),
             );
           },

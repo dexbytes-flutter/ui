@@ -23,6 +23,7 @@ class HomepageCommonImage extends StatelessWidget {
   final int? numberOfDestination;
   final String? destinationText;
   final String? placeSubTitle;
+  final bool? isCityAndDestinationListView;
   HomepageCommonImage({
     Key? key,
     this.imageUrl,
@@ -41,13 +42,15 @@ class HomepageCommonImage extends StatelessWidget {
     this.destinationText,
     this.placeSubTitle,
     required this.placeFlag,
+    this.isCityAndDestinationListView
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
     Widget ratingView(){
-      return Container(
+      return rating != null
+          ? Container(
         padding: EdgeInsets.all(10).copyWith(left: 20,right: 20),
         decoration: BoxDecoration(
           color: appColors.buttonBgColor.withOpacity(0.20),
@@ -64,7 +67,8 @@ class HomepageCommonImage extends StatelessWidget {
             style: appStyles.commonSubTitleTextStyle(texColor: appColors.buttonBgColor,fontWeight: FontWeight.w500,fontSize: 15),)
           ],
         ),
-      );
+      )
+          : Container();
     }
 
     Widget placeTitleView(){
@@ -197,7 +201,7 @@ class HomepageCommonImage extends StatelessWidget {
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
           child: Container(
-              // height: 50,
+              height: 30,
               // width: 100,
               padding: EdgeInsets.only(left: 20,right: 20).copyWith(top: 2,bottom: 2),
               decoration: BoxDecoration(
@@ -213,7 +217,7 @@ class HomepageCommonImage extends StatelessWidget {
                     child: iconApps.iconImage(
                         imageUrl: iconApps.rightArrow,
                         imageColor: appColors.buttonBgColor,
-                        iconSize: Size(20, 25)
+                        iconSize: Size(20,20)
                     )
                 ),
               )
@@ -254,7 +258,7 @@ class HomepageCommonImage extends StatelessWidget {
               top: 25,
                 right: 25,
                 // child: selectedIndex == 0 || isHorizontalViewCard!
-                child: selectedIndex == 0
+                child: isBookmarked
                     ? BookmarkButton(
                   isFavorite: isBookmarked,
                   iconDisabledColor: appColors.appBgColorLeanWhite.withOpacity(0.40),

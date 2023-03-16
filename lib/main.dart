@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
+import 'package:base_flutter_app/src/pages/city_detail_screen.dart';
 import 'package:base_flutter_app/src/pages/home_screen.dart';
 import 'package:base_flutter_app/src/pages/reset_password_screen.dart';
 import 'package:base_flutter_app/src/pages/search_screen.dart';
@@ -290,8 +291,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
     return /*!widget.isOneTimeProfileSetUpDone
         ? CreateAccount()
         : */
-      const BookmarkScreen();
-
+      const HomeScreen();
   }
 
   //Redirect to another screen if already loggedIn
@@ -301,7 +301,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
 
     //If profile set done by user
     // if (widget.isOneTimeProfileSetUpDone) {
-    return const BookmarkScreen();
+    return const CityDetailScreen();
     //SignInPage();
     // }
     //If set up not done by user than redirect to selected screen

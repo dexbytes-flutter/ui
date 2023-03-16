@@ -214,5 +214,6 @@
   "confirmBookingButtonText" : "Confirm Booking",
   "bookingSuccessTitleText" : "Booking Success !",
   "bookingSuccessSubTitleText" : "You have successfully created your booking.",
-  "exploreHomeButtonText" : "Explore Home"
+  "exploreHomeButtonText" : "Explore Home",
+  "exploreBeautyDestinationText" : "Explore beauty \ndestination in"
 }

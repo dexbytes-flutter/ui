@@ -302,6 +302,7 @@ class AppString {
   String bookingSuccessTitleText = 'bookingSuccessTitleText';
   String bookingSuccessSubTitleText = 'bookingSuccessSubTitleText';
   String exploreHomeButtonText = 'exploreHomeButtonText';
+  String exploreBeautyDestinationText = 'exploreBeautyDestinationText';
 
 
 }
