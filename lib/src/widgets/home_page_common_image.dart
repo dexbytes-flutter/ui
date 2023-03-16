@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
 import 'package:base_flutter_app/src/widgets/bookmark_button_icon.dart';
@@ -6,23 +8,39 @@ import 'package:flutter/material.dart';
 
 class HomepageCommonImage extends StatelessWidget {
   final String? imageUrl;
-  final String? title;
+  final String? placeTitle;
   final String? subTitle;
   final String? countryTitle;
   late final int? selectedIndex;
   final bool? isHorizontalViewCard;
   final bool isBookmarked;
   final Function? onButtonClickCallback;
+  final double? rating;
+  final String placeFlag;
+  final double? imageHeight;
+  final double? imageWidth;
+  final String? recommendationType;
+  final int? numberOfDestination;
+  final String? destinationText;
+  final String? placeSubTitle;
   HomepageCommonImage({
     Key? key,
     this.imageUrl,
-    this.title,
+    this.placeTitle,
     this.subTitle,
     this.countryTitle,
     this.selectedIndex,
     this.isHorizontalViewCard,
     this.isBookmarked = false,
-    this.onButtonClickCallback
+    this.onButtonClickCallback,
+    this.rating,
+    this.imageHeight,
+    this.imageWidth,
+    this.recommendationType,
+    this.numberOfDestination,
+    this.destinationText,
+    this.placeSubTitle,
+    required this.placeFlag,
   }) : super(key: key);
 
   @override
@@ -42,12 +60,13 @@ class HomepageCommonImage extends StatelessWidget {
                 iconSize: Size(14, 14)
             ),
             SizedBox(width: 5,),
-            Text("4.9",
+            Text("${rating!}",
             style: appStyles.commonSubTitleTextStyle(texColor: appColors.buttonBgColor,fontWeight: FontWeight.w500,fontSize: 15),)
           ],
         ),
       );
     }
+
     Widget placeTitleView(){
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,6 +83,7 @@ class HomepageCommonImage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                   child: CachedNetworkImage(
                     imageUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
+                    // imageUrl: placeFlag!,
                     fit: BoxFit.cover,
                     height: 20,
                     width: 20,
@@ -71,8 +91,10 @@ class HomepageCommonImage extends StatelessWidget {
                 ),
               ) : Container(),
               SizedBox(width: selectedIndex == 1 ? 10 : 0,),
-              Text(title!,
-                style: appStyles.commonTitleStyle(fontSize: selectedIndex == 0 ? 32 : 20),
+              Text(placeTitle!,
+                style: appStyles.commonTitleStyle(fontSize: selectedIndex == 0 ? 25 : selectedIndex == 2 ? 25 : 20,
+                fontWeight: FontWeight.w900
+                ),
               ),
           ],),
           SizedBox(height: selectedIndex == 1? 8 : selectedIndex == 0? 10:15,),
@@ -107,36 +129,59 @@ class HomepageCommonImage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  selectedIndex == 0 || isHorizontalViewCard!
+                  placeFlag.isNotEmpty
                       ? Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: appColors.white),
-                        borderRadius: BorderRadius.circular(8)
+                        borderRadius: BorderRadius.circular(5)
                     ),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(5),
                       child: CachedNetworkImage(
-                        imageUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
+                        // imageUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
+                        imageUrl: placeFlag,
                         fit: BoxFit.cover,
-                        height: 20,
-                        width: 20,
+                        height: 10,
+                        width: 10,
                       ),
                     ),
                   )
-                      : iconApps.iconImage(
+                      : /*Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: appColors.white),
+                        borderRadius: BorderRadius.circular(5)
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(5),
+                      child: CachedNetworkImage(
+                        imageUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
+                        // imageUrl: placeFlag!,
+                        fit: BoxFit.cover,
+                        height: 12,
+                        width: 12,
+                      ),
+                    ),
+                  )*/
+                  iconApps.iconImage(
                       imageUrl: iconApps.islandIcon,
                       iconSize: Size(20, 20),
                       imageColor: appColors.white
                   ),
                   SizedBox(width: selectedIndex != 0 || isHorizontalViewCard!? 10 : 5,),
-                  Text(subTitle!,
-                  style: appStyles.commonSubTitleTextStyle(fontSize: 14,texColor: appColors.white),
+                  Text(placeSubTitle!,
+                  style: appStyles.commonSubTitleTextStyle(fontSize: 12,),
                   ),
                   SizedBox(width: 2,),
-                  Text( selectedIndex != 0
-                      ? isHorizontalViewCard! ? "" : appString.trans(context, appString.destinationText)
-                      : "",
-                    style: appStyles.commonSubTitleTextStyle(fontSize: 13),
+                  Row(
+                    children: [
+                      Text(selectedIndex != 0 && placeSubTitle == "" ? "${numberOfDestination!}+ " : "",
+                          style: appStyles.commonSubTitleTextStyle(fontSize: 13,texColor: appColors.white)
+                      ),
+                      Text( selectedIndex != 0
+                          ? destinationText! : "",
+                        style: appStyles.commonSubTitleTextStyle(fontSize: 13),
+                      ),
+                    ],
                   ),
                 ],
               )
@@ -147,27 +192,33 @@ class HomepageCommonImage extends StatelessWidget {
     }
 
     bottomButton(){
-      return Container(
-          // height: 50,
-          // width: 100,
-          padding: EdgeInsets.only(left: 20,right: 20).copyWith(top: 2,bottom: 2),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: appColors.buttonBgColor.withOpacity(0.50)
+      return ClipRRect(
+        borderRadius: BorderRadius.all(Radius.circular(15)),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+          child: Container(
+              // height: 50,
+              // width: 100,
+              padding: EdgeInsets.only(left: 20,right: 20).copyWith(top: 2,bottom: 2),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: appColors.buttonBgColor.withOpacity(0.30)
+              ),
+              child: InkWell(
+                onTap: (){
+                  onButtonClickCallback?.call();
+                },
+                child: Container(
+                    padding: EdgeInsets.all(12),
+                    child: iconApps.iconImage(
+                        imageUrl: iconApps.rightArrow,
+                        imageColor: appColors.buttonBgColor,
+                        iconSize: Size(20, 25)
+                    )
+                ),
+              )
           ),
-          child: InkWell(
-            onTap: (){
-              onButtonClickCallback?.call();
-            },
-            child: Container(
-                padding: EdgeInsets.all(12),
-                child: iconApps.iconImage(
-                    imageUrl: iconApps.rightArrow,
-                    imageColor: appColors.buttonBgColor,
-                    iconSize: Size(20, 25)
-                )
-            ),
-          )
+        ),
       );
     }
 
@@ -188,20 +239,22 @@ class HomepageCommonImage extends StatelessWidget {
                 child: CachedNetworkImage(
                   imageUrl: imageUrl!,
                   fit:BoxFit.cover,
-                  width: appDimens.widthFullScreen()/1.42,
-                  height: appDimens.heightFullScreen()/1.5,
+                  width: imageWidth ?? appDimens.widthFullScreen()/1.42,
+                  height: imageHeight ?? appDimens.heightFullScreen()/1.5,
                 ),
               ),
             ),
             Positioned(
               left: 25,
                 top: 25,
-                child: selectedIndex == 0 || isHorizontalViewCard!? ratingView():Container()
+                // child: selectedIndex == 0 || isHorizontalViewCard!? ratingView():Container()
+                child: selectedIndex == 0? ratingView() : Container()
             ),
             Positioned(
               top: 25,
                 right: 25,
-                child: selectedIndex == 0 || isHorizontalViewCard!
+                // child: selectedIndex == 0 || isHorizontalViewCard!
+                child: selectedIndex == 0
                     ? BookmarkButton(
                   isFavorite: isBookmarked,
                   iconDisabledColor: appColors.appBgColorLeanWhite.withOpacity(0.40),
@@ -209,24 +262,18 @@ class HomepageCommonImage extends StatelessWidget {
                     print('Is Favorite : $_isFavorite');
                   },
                 )
-                /*iconApps.iconImage(
-                imageUrl: isHorizontalViewCard!? iconApps.bookmarkIcon : iconApps.bookmarkIconFilled,
-                iconSize: Size(25, 35),
-                  imageColor: isHorizontalViewCard! ? appColors.buttonBgColor.withOpacity(0.50): appColors.buttonBgColor.withOpacity(0.70)
-              )*/: Container()
+                    : Container()
+
             ),
             Positioned(
-              bottom: selectedIndex != 1 || isHorizontalViewCard!? 225 : 185,
+              bottom: selectedIndex != 0 ? selectedIndex == 2 ? 215 : 175: 195,
                 left: 25,
-                child: Text(
-                  selectedIndex == 1 ||isHorizontalViewCard!
-                      ? appString.trans(context, appString.topRecommendedImageText)
-                      : appString.trans(context, appString.recommendedImageText),
-                  style: appStyles.commonSubTitleTextStyle(fontSize: 13),
+                child: Text(recommendationType!,
+                  style: appStyles.commonSubTitleTextStyle(fontSize: 12),
                 )
             ),
             Positioned(
-              bottom: selectedIndex == 0 || isHorizontalViewCard!? 115 : 125,
+              bottom: selectedIndex != 0 ? 115 : 110,
                 left: selectedIndex == 0 ? 24 : 25,
                 child: placeTitleView()
             ),

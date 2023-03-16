@@ -132,11 +132,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: HomepageCommonImage(
                     imageUrl: verticalTitleSubTitleList[index].imageUrl,
                     selectedIndex: homeVerticalList[selectedIndex].id,
-                    title: verticalTitleSubTitleList[index].title,
-                    subTitle: verticalTitleSubTitleList[index].subTitle,
+                    placeTitle: verticalTitleSubTitleList[index].title,
+                    placeSubTitle: verticalTitleSubTitleList[index].placeSubTitle,
                     countryTitle: verticalTitleSubTitleList[index].countryTitle,
                     isHorizontalViewCard: false,
                     isBookmarked: verticalTitleSubTitleList[index].isBookmarked,
+                    rating: 4.5,
+                    recommendationType: verticalTitleSubTitleList[index].recommendationType,
+                    numberOfDestination: verticalTitleSubTitleList[index].numberOfDestination,
+                    destinationText: verticalTitleSubTitleList[index].destinationText,
+                    placeFlag: verticalTitleSubTitleList[index].flagUrl,
                     onButtonClickCallback: (){
                       setState(() {
                         imageUrl = verticalTitleSubTitleList[selectedIndex].imageUrl;

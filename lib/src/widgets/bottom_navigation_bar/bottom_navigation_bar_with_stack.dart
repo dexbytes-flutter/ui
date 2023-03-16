@@ -1,3 +1,4 @@
+import 'package:base_flutter_app/src/pages/bookmark_empty_screen.dart';
 import 'package:base_flutter_app/src/pages/bookmark_screen.dart';
 import 'package:base_flutter_app/src/pages/explore_screen.dart';
 import 'package:base_flutter_app/src/pages/home_screen.dart';

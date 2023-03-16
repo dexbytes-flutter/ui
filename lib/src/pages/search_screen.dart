@@ -241,11 +241,13 @@ class _SearchScreenState extends State<SearchScreen> {
                 margin: EdgeInsets.only(right: 15),
                 child: HomepageCommonImage(
                   imageUrl: searchScreenImageList[index].imageUrl,
-                  title: searchScreenImageList[index].title,
+                  placeTitle: searchScreenImageList[index].title,
                   subTitle: searchScreenImageList[index].subTitle,
                   countryTitle: searchScreenImageList[index].countryTitle,
                   isHorizontalViewCard: true,
                   isBookmarked: searchScreenImageList[index].isBookmarked ?? true,
+                  recommendationType: '',
+                  placeFlag: searchScreenImageList[index].imageUrl,
                 )
             );
           },
