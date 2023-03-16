@@ -1,3 +1,4 @@
+import 'package:base_flutter_app/src/all_file_import/app_providers_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_utils_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
@@ -30,17 +31,23 @@ class _SelectPaymentScreenState extends State<SelectPaymentScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Text(appString.trans(context, appString.selectPaymentTitleText),
-              textAlign: TextAlign.left,
-              style: appStyles.commonTitleStyle()),
+          Expanded(
+            child: Text(appString.trans(context, appString.selectPaymentTitleText),
+                softWrap: true,
+                textAlign: TextAlign.left,
+                style: appStyles.commonTitleStyle(fontSize: 45)),
+          ),
           GestureDetector(
             onTap: (){
 
             },
-            child: iconApps.iconImage(
-                imageUrl: "assets/images/add_card_icon.svg",
-                iconSize: Size(25, 25),
-                imageColor: appColors.buttonBgColor
+            child: Padding(
+              padding: EdgeInsets.only(bottom: 5),
+              child: iconApps.iconImage(
+                  imageUrl: "assets/images/add_card_icon.svg",
+                  iconSize: Size(25, 25),
+                  imageColor: appColors.buttonBgColor
+              ),
             ),
           )
         ],
@@ -51,7 +58,7 @@ class _SelectPaymentScreenState extends State<SelectPaymentScreen> {
     paymentCardView(){
       return ListView.builder(
         shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
+        physics: ClampingScrollPhysics(),
         itemCount: paymentCardDetailList.length,
         itemBuilder: (context,index){
           return GestureDetector(
@@ -81,32 +88,35 @@ class _SelectPaymentScreenState extends State<SelectPaymentScreen> {
 
     // Total text
     totalAmountView(){
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            appString.trans(context, appString.totalText),
-            style: appStyles.commonSubTitleTextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w500,
+      return Padding(
+        padding: const EdgeInsets.only(bottom: 50),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              appString.trans(context, appString.totalText),
+              style: appStyles.commonSubTitleTextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+              ),
             ),
-          ),
-          Text(
-            "\$ 360.0",
-            style: appStyles.commonSubTitleTextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w600, texColor: appColors.white
+            Text(
+              "\$ 360.0",
+              style: appStyles.commonSubTitleTextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600, texColor: appColors.white
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       );
     }
 
     // bottom view
-    bottomButtonView(){
+    /*bottomButtonView(){
       return Column(
         children: [
-          totalAmountView(),
+
           SizedBox(
             height: 20,
           ),
@@ -127,7 +137,7 @@ class _SelectPaymentScreenState extends State<SelectPaymentScreen> {
           )
         ],
       );
-    }
+    }*/
 
     return ContainerFirst(
       appBarHeight: 56,
@@ -146,12 +156,36 @@ class _SelectPaymentScreenState extends State<SelectPaymentScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             screenTitleText(),
-            SizedBox(height: 25,),
+            // SizedBox(height: 25,),
             paymentCardView(),
-            SizedBox(height: 50,),
-            bottomButtonView()
+            SizedBox(height: 20,),
+            totalAmountView(),
+            SizedBox(height: 45,),
+            // bottomButtonView()
           ],
         ),
+      ),
+      bottomMenuView: Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            color: appColors.appBgColorJungleGreen,
+            padding: const EdgeInsets.only(bottom: 20,left: 20,right: 20),
+            child: CommonButton(
+              buttonName: appString.trans(context, appString.confirmBookingButtonText),
+              buttonHeight: 50,
+              buttonBorderRadius: 18,
+              isBottomMarginRequired: false,
+              textStyle: appStyles.buttonNameStyle(),
+              backCallback: () {
+                if(isCardSelected){
+                  Navigator.push(
+                    context,
+                    SlideRightRoute(widget: BookingSuccessfulScreen()),
+                  );
+                }
+              },
+            ),
+          )
       ),
     );
   }

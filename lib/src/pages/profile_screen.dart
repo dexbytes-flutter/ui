@@ -109,16 +109,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
 
     return ContainerFirst(
-        appBarHeight: -1,
+        appBarHeight: 56,
         isOverLayStatusBar: false,
         isSingleChildScrollViewNeed: false,
         contextCurrentView: context,
+        appBar: HomeScreenAppBar(
+          margin: EdgeInsets.only(left: 20,right: 20,top: 2),
+          isHideBackIcon: true,
+        ),
         containChild: Column(
           children: [
-            HomeScreenAppBar(
-              margin: EdgeInsets.only(left: 20,right: 20,),
-              isHideBackIcon: true,
-            ),
             SizedBox(height: 20,),
             profileListTileView()
           ],

@@ -197,10 +197,6 @@ class _SignInScreenState extends State<SignInScreen> {
               fit: BoxFit.cover,
             ),
           ),
-          CommonAppBar(
-            leftIconMargin: EdgeInsets.only(top: 22,),
-            isHideRightIcon: true,
-          ),
           /*Positioned(
             top: 250,
             left: 20,
@@ -231,12 +227,12 @@ class _SignInScreenState extends State<SignInScreen> {
                   hintStyle: appStyles.textFieldHintTextTextStyle(),
                   contentPadding: EdgeInsets.all(10).copyWith(top: 18),
                   prefixIcon: Padding(
-                    padding: EdgeInsets.all(15),
-                    child: iconApps.iconImage(
-                        imageUrl: iconApps.emailIcon,
-                        iconSize: Size(8, 10),
-                        imageColor: appColors.buttonBgColor),
-                  ),
+                     padding:EdgeInsets.all(8).copyWith(top: 11),
+                     child: iconApps.iconImage(
+                      imageUrl: iconApps.emailIcon,
+                      iconSize: Size(5, 5),
+                      imageColor: appColors.buttonBgColor),
+                   ),
                   enabledBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
                         color: appColors.appBgColor1.withOpacity(0.30),
@@ -417,45 +413,30 @@ class _SignInScreenState extends State<SignInScreen> {
                     decoration: BoxDecoration(
                         color: appColors.appBgColor2.withOpacity(0.70),
                         borderRadius: BorderRadius.circular(20)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        iconApps.iconImage(
-                            imageUrl: iconApps.appleLogo,
-                            iconSize: Size(20, 20),
-                            imageColor: appColors.textColor),
-                      ],
-                    ),
+                    child: iconApps.iconImage(
+                        imageUrl: iconApps.appleLogo,
+                        iconSize: Size(20, 20),
+                        imageColor: appColors.textColor),
                   ),
                   Container(
                     padding: EdgeInsets.all(15).copyWith(left: 30, right: 30),
                     decoration: BoxDecoration(
                         color: appColors.appBgColor2.withOpacity(0.70),
                         borderRadius: BorderRadius.circular(20)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        iconApps.iconImage(
-                            imageUrl: iconApps.googleIcon,
-                            iconSize: Size(20, 20),
-                            imageColor: appColors.iconColor1),
-                      ],
-                    ),
+                    child: iconApps.iconImage(
+                        imageUrl: iconApps.googleIcon,
+                        iconSize: Size(20, 20),
+                        imageColor: appColors.iconColor1),
                   ),
                   Container(
-                    padding: EdgeInsets.all(15).copyWith(left: 30, right: 30),
+                    padding: EdgeInsets.all(13).copyWith(left: 30, right: 30),
                     decoration: BoxDecoration(
                         color: appColors.appBgColor2.withOpacity(0.70),
                         borderRadius: BorderRadius.circular(20)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        iconApps.iconImage(
-                            imageUrl: iconApps.facebookIcon,
-                            iconSize: Size(25, 25),
-                            imageColor: appColors.iconColor1),
-                      ],
-                    ),
+                    child: iconApps.iconImage(
+                        imageUrl: iconApps.facebookIcon,
+                        iconSize: Size(25, 25),
+                        imageColor: appColors.iconColor1),
                   ),
                 ],
               ),
@@ -498,11 +479,13 @@ class _SignInScreenState extends State<SignInScreen> {
     }
 
     return ContainerFirst(
-      appBarHeight: -1,
+      appBarHeight: 56,
       isOverLayStatusBar: true,
-      appBackgroundColor: appColors.appBgColorJungleGreen,
-      statusBarColor: Colors.white,
+      isOverLayAppBar: true,
       isSingleChildScrollViewNeed: false,
+      appBar: CommonAppBar(
+        isHideRightIcon: true,
+      ),
       contextCurrentView: context,
       containChild: ShaderMask(
         shaderCallback: (bound) => LinearGradient(

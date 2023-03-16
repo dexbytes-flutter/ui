@@ -1,7 +1,9 @@
+import 'package:base_flutter_app/src/all_file_import/app_providers_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_utils_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
+import 'package:base_flutter_app/src/pages/dashboard_screen.dart';
 import 'package:base_flutter_app/src/pages/home_screen.dart';
 import 'package:base_flutter_app/src/widgets/appbar/common_app_bar.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -145,7 +147,7 @@ class _BookingSuccessfulScreenState extends State<BookingSuccessfulScreen> {
               Navigator.push(
                   context,
                   SlideRightRoute(
-                      widget: HomeScreen()
+                      widget: DashBoardPage()
                   )
               );
             },

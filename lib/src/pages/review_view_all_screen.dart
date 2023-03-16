@@ -52,7 +52,7 @@ class _ReviewViewAllScreenState extends State<ReviewViewAllScreen> {
 
     return ContainerFirst(
         appBarHeight: 56,
-        isOverLayStatusBar: false,
+        isOverLayStatusBar: true,
         isOverLayAppBar: false,
         isSingleChildScrollViewNeed: true,
         isFixedDeviceHeight: false,
@@ -64,7 +64,7 @@ class _ReviewViewAllScreenState extends State<ReviewViewAllScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 20,top: 30),
+              padding: const EdgeInsets.only(left: 20,top: 10),
               child: Text(appString.trans(context, appString.allReviewTitleText),
                   style: appStyles.commonTitleStyle(fontSize: 30)),
             ),

@@ -152,31 +152,29 @@ class _BottomNavigatorWithStackState extends State<BottomNavigatorWithStack> {
     bool isDarkMode = brightness == Brightness.dark;
 
     return IntrinsicHeight(
-      child: Material(
-        elevation: 0,
-        // color:!isDarkMode?appColors.bottomMenuColor1:appColors.bottomMenuColor2,
-        color: appColors.appBgColorJungleGreen,
-        child: Container(
-          color:!isDarkMode?appColors.bottomMenuColor1:appColors.bottomMenuColor2,
-          child: BottomNavigationBar(
-            items: menuItem,
-            elevation: elevation,
-            type: bottomMenuType == 0
-                ? BottomNavigationBarType.fixed
-                : BottomNavigationBarType.fixed,
-            backgroundColor: appColors.appBgColorJungleGreen,
-            // fixedColor: backgroundColor,
-            currentIndex: selectedIndex,
-            selectedIconTheme: IconThemeData(color: activeIconColor),
-            // selectedItemColor: !isDarkMode? Color(0xFF022964): appColors.appBgColorLeanWhite, /*activeIconColor*/
-            selectedItemColor: appColors.appBgColorLeanWhite, /*activeIconColor*/
-            unselectedItemColor: deActiveIconColor,
-            selectedLabelStyle: activeMenuTextStyle,
-            unselectedLabelStyle: deActiveMenuTextStyle,
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            onTap: _onItemTapped,
-          ),
+      child: Container(
+        decoration: BoxDecoration(
+            color: appColors.bottomMenuColor1,
+          border: Border(top: BorderSide(width: 0.05,color: Colors.grey.shade800))
+        ),
+        child: BottomNavigationBar(
+          items: menuItem,
+          elevation: elevation,
+          type: bottomMenuType == 0
+              ? BottomNavigationBarType.fixed
+              : BottomNavigationBarType.fixed,
+          backgroundColor: appColors.appBgColorJungleGreen,
+          // fixedColor: backgroundColor,
+          currentIndex: selectedIndex,
+          selectedIconTheme: IconThemeData(color: activeIconColor),
+          // selectedItemColor: !isDarkMode? Color(0xFF022964): appColors.appBgColorLeanWhite, /*activeIconColor*/
+          selectedItemColor: appColors.appBgColorLeanWhite, /*activeIconColor*/
+          unselectedItemColor: deActiveIconColor,
+          selectedLabelStyle: activeMenuTextStyle,
+          unselectedLabelStyle: deActiveMenuTextStyle,
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          onTap: _onItemTapped,
         ),
       ),
     );

@@ -76,7 +76,7 @@ class _CustomSliderState extends State<CustomSlider> {
           thumbShape: customImage != null
               ? SliderThumbImage(customImage!)
               : const RoundSliderThumbShape(
-            enabledThumbRadius: 5,disabledThumbRadius: 5,
+            enabledThumbRadius: 8,disabledThumbRadius: 8,
             pressedElevation: 0
           )),
       child: Slider(

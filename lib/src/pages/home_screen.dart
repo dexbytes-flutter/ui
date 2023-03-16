@@ -20,7 +20,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   int selectedIndex = 0;
   String imageUrl = "";
 
@@ -36,46 +35,45 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     AppDimens appDimens = AppDimens();
     appDimens.appDimensFind(context: context);
 
-
     // Title text and search icon
-    Widget titleText(){
+    Widget titleText() {
       return Padding(
-        padding: const EdgeInsets.only(left: 20,right: 20,top: 8),
-        child: GestureDetector(
-          onTap: (){
-            Navigator.push(
-              MainAppBloc.getDashboardContext,
-              SlideRightRoute(widget: SearchScreen(
-                isFilterApplied: false,
-                isVerticalViewSearchResult: false,
-              )
-              ),
-            );
-          },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(appString.trans(context, appString.recommendationText),
-              style: appStyles.commonTitleStyle(fontSize: 18,texColor: appColors.buttonBgColor),
-              ),
-              iconApps.iconImage(
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 8),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              appString.trans(context, appString.recommendationText),
+              style: appStyles.commonTitleStyle(
+                  fontSize: 18, texColor: appColors.buttonBgColor),
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  MainAppBloc.getDashboardContext,
+                  SlideRightRoute(
+                      widget: SearchScreen(
+                    isFilterApplied: false,
+                    isVerticalViewSearchResult: false,
+                  )),
+                );
+              },
+              child: iconApps.iconImage(
                   imageUrl: iconApps.searchIcon,
                   imageColor: appColors.buttonBgColor,
-                  iconSize: Size(22, 22)
-              ),
-            ],
-          ),
+                  iconSize: Size(22, 22)),
+            )
+          ],
         ),
       );
     }
 
     // Vertical title list
-    Widget verticalTitleList(){
+    Widget verticalTitleList() {
       return Container(
         width: 58,
         // color: Colors.yellow,
@@ -84,9 +82,9 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: EdgeInsets.zero,
           physics: ClampingScrollPhysics(),
           itemCount: homeVerticalList.length,
-          itemBuilder: (context,index){
+          itemBuilder: (context, index) {
             return GestureDetector(
-              onTap: (){
+              onTap: () {
                 setState(() {
                   selectedIndex = index;
                 });
@@ -103,11 +101,12 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     // Center image list
-    Widget listView(){
-      List<VerticalTitleSublistList> verticalTitleSubTitleList = homeVerticalList[selectedIndex].verticalTitleSubTitleList;
+    Widget listView() {
+      List<VerticalTitleSublistList> verticalTitleSubTitleList =
+          homeVerticalList[selectedIndex].verticalTitleSubTitleList;
       return Container(
-        width: appDimens.widthFullScreen()/1.22,
-        height: appDimens.heightFullScreen()/1.52,
+        width: appDimens.widthFullScreen() / 1.195,
+        height: appDimens.heightFullScreen() / 1.52,
         margin: EdgeInsets.only(top: 10),
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
@@ -115,20 +114,21 @@ class _HomeScreenState extends State<HomeScreen> {
           physics: ClampingScrollPhysics(),
           padding: EdgeInsets.zero,
           itemCount: verticalTitleSubTitleList.length,
-          itemBuilder: (context,index){
+          itemBuilder: (context, index) {
             return GestureDetector(
-              onTap: (){
+              onTap: () {
                 setState(() {
                   imageUrl = verticalTitleSubTitleList[selectedIndex].imageUrl;
                 });
                 Navigator.push(
-                  context,
+                  MainAppBloc.getDashboardContext,
                   SlideRightRoute(
-                      widget: DestinationDetailedCardView(detailImageUrl: imageUrl)),
+                      widget: DestinationDetailedCardView(
+                          detailImageUrl: imageUrl)),
                 );
               },
               child: Container(
-                margin: EdgeInsets.only(right: 15),
+                  margin: EdgeInsets.only(right: 15),
                   child: HomepageCommonImage(
                     imageUrl: verticalTitleSubTitleList[index].imageUrl,
                     selectedIndex: homeVerticalList[selectedIndex].id,
@@ -137,8 +137,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     countryTitle: verticalTitleSubTitleList[index].countryTitle,
                     isHorizontalViewCard: false,
                     isBookmarked: verticalTitleSubTitleList[index].isBookmarked,
-                  )
-              ),
+                    onButtonClickCallback: (){
+                      setState(() {
+                        imageUrl = verticalTitleSubTitleList[selectedIndex].imageUrl;
+                      });
+                      Navigator.push(
+                        MainAppBloc.getDashboardContext,
+                        SlideRightRoute(
+                            widget: DestinationDetailedCardView(
+                                detailImageUrl: imageUrl)),
+                      );
+                    },
+                  )),
             );
           },
         ),
@@ -146,14 +156,11 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     //Center view
-    Widget homeCenterView(){
+    Widget homeCenterView() {
       return Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          verticalTitleList(),
-          listView()
-        ],
+        children: [verticalTitleList(), listView()],
       );
     }
 
@@ -163,7 +170,10 @@ class _HomeScreenState extends State<HomeScreen> {
         isSingleChildScrollViewNeed: false,
         contextCurrentView: context,
         appBar: HomeScreenAppBar(
-          margin: EdgeInsets.only(left: 20,right: 20,),
+          margin: EdgeInsets.only(
+            left: 20,
+            right: 20,
+          ),
           isHideBackIcon: false,
         ),
         containChild: Column(
@@ -172,7 +182,10 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             titleText(),
             Padding(
-              padding: const EdgeInsets.only(top: 5, left: 20,),
+              padding: const EdgeInsets.only(
+                top: 5,
+                left: 20,
+              ),
               child: SizedBox(
                 child: Divider(
                   color: appColors.appBgColor1.withOpacity(0.15),
@@ -183,7 +196,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             homeCenterView()
           ],
-        )
-    );
+        ));
   }
 }

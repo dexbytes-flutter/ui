@@ -33,7 +33,7 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
-              width: 160,
+              width: 155,
               child: DatePickerWidget(
                 hintText: appString.trans(context, appString.startDateText),
                 selectedValue: (value) {
@@ -48,7 +48,7 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
             width: 10,
           ),
           Container(
-              width: 160,
+              width: 155,
               child: DatePickerWidget(
                 hintText: appString.trans(context, appString.endDateText),
                 selectedValue: (value) {
@@ -123,27 +123,24 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
 
       // Total text
       totalAmountView(){
-        return Padding(
-          padding: const EdgeInsets.only(top: 95),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                appString.trans(context, appString.totalText),
-                style: appStyles.commonSubTitleTextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                ),
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              appString.trans(context, appString.totalText),
+              style: appStyles.commonSubTitleTextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
               ),
-              Text(
-                "\$ 360.0",
-                style: appStyles.commonSubTitleTextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600, texColor: appColors.white
-                ),
+            ),
+            Text(
+              "\$ 360.0",
+              style: appStyles.commonSubTitleTextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w600, texColor: appColors.white
               ),
-            ],
-          ),
+            ),
+          ],
         );
       }
 
@@ -224,6 +221,7 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
                 height: 15,
               ),
               typeView(),
+              SizedBox(height: 50,),
               totalAmountView(),
               // SizedBox(height: 20,),
               // nextButton()
@@ -232,8 +230,8 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
         ),
       bottomMenuView: Align(
         alignment: Alignment.bottomCenter,
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 25,left: 20,right: 20),
+          child: Container(
+            padding: const EdgeInsets.only(bottom: 30,left: 20,right: 20),
             child: nextButton(),
           )
       ),

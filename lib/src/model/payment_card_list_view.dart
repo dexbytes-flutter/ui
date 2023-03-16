@@ -28,6 +28,21 @@ final List<PaymentCardListViewModel> paymentCardDetailList = [
       nameOnCard: "Yona Angelina",
       ccvNumber: "05/23",
       cardNumber: 7423,
-    cardTypeLogo: "assets/images/mastercard_icon.svg"
+      cardTypeLogo: "assets/images/mastercard_icon.svg"
   ),
+  /*
+  PaymentCardListViewModel(
+      balanceAmount: "54,620",
+      nameOnCard: "Yona Angelina",
+      ccvNumber: "05/23",
+      cardNumber: 7423,
+      cardTypeLogo: "assets/images/mastercard_icon.svg"
+  ),
+  PaymentCardListViewModel(
+      balanceAmount: "54,620",
+      nameOnCard: "Yona Angelina",
+      ccvNumber: "05/23",
+      cardNumber: 7423,
+      cardTypeLogo: "assets/images/mastercard_icon.svg"
+  ),*/
 ];

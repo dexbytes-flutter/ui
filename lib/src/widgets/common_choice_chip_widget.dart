@@ -7,12 +7,14 @@ class ChoiceChipWidget extends StatefulWidget {
   final bool? isAvatar;
   final EdgeInsetsGeometry? choiceChipWidgetPadding;
   final double choiceChipRadius;
+  final int? selectedIndex;
 
   ChoiceChipWidget({
     required this.reportList,
     this.isAvatar,
     this.choiceChipWidgetPadding,
-    this.choiceChipRadius = 12
+    this.choiceChipRadius = 12,
+    this.selectedIndex,
   });
 
   @override
@@ -21,7 +23,7 @@ class ChoiceChipWidget extends StatefulWidget {
 
 class _ChoiceChipWidgetState extends State<ChoiceChipWidget> {
 
-  String selectedChoice = "";
+  String selectedChoice = "All";
 
   _buildChoiceList() {
     List<Widget> choices = [];
@@ -70,15 +72,15 @@ class _ChoiceChipWidgetState extends State<ChoiceChipWidget> {
             borderRadius: BorderRadius.all(Radius.circular(widget.choiceChipRadius),
             ),
             side: BorderSide(
-              color:  appColors.appBgColor2,
+              color: appColors.appBgColor2,
               width: selectedChoice == item ? 0 : 1.5
             )
           ),
           labelPadding: EdgeInsets.only(right: 10),
-          backgroundColor: appColors.appBgColorJungleGreen,
-          selectedColor: appColors.appBgColor2,
+          backgroundColor: selectedChoice == item ? appColors.appBgColor2 : appColors.appBgColorJungleGreen,
+          selectedColor: selectedChoice == item ? appColors.appBgColor2 : appColors.appBgColor2,
           selected: selectedChoice == item,
-          onSelected: (selected) {
+          onSelected:  (selected) {
             setState(() {
               selectedChoice = item;
             });

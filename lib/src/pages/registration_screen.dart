@@ -348,10 +348,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   hintStyle: appStyles.textFieldHintTextTextStyle(),
                   contentPadding: EdgeInsets.all(10).copyWith(top: 18),
                   prefixIcon: Padding(
-                    padding: EdgeInsets.all(15),
+                    padding:EdgeInsets.all(8).copyWith(top: 11),
                     child: iconApps.iconImage(
                         imageUrl: iconApps.emailIcon,
-                        iconSize: Size(8, 10),
+                        iconSize: Size(5, 5),
                         imageColor: appColors.buttonBgColor),
                   ),
                   enabledBorder: UnderlineInputBorder(

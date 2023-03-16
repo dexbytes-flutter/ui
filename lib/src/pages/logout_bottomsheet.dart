@@ -50,7 +50,7 @@ class _LogOutBottomSheetScreenState extends State<LogOutBottomSheetScreen> {
         children: [
           Container(
             margin: EdgeInsets.only(left: 20,top: 20),
-            width: 160,
+            width: 150,
             child: CommonButton(
               buttonName: appString.trans(context, appString.noButtonText),
               buttonHeight: 50,
@@ -65,7 +65,7 @@ class _LogOutBottomSheetScreenState extends State<LogOutBottomSheetScreen> {
           SizedBox(width: 15,),
           Container(
             margin: EdgeInsets.only(right: 20,top: 25),
-            width: 160,
+            width: 150,
             child: CommonButton(
               buttonName: appString.trans(context, appString.yesButtonText),
               buttonHeight: 50,

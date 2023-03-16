@@ -19,31 +19,8 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
 
     // Title text and search icon
     Widget titleText(){
-      return GestureDetector(
-        onTap: (){
-          Navigator.push(
-            MainAppBloc.getDashboardContext,
-            SlideRightRoute(widget: SearchScreen(
-              isFilterApplied: false,
-              isVerticalViewSearchResult: false,
-            )
-            ),
-          );
-        },
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(appString.trans(context, appString.yourBookmarkTitleText),
-              style: appStyles.commonTitleStyle(fontSize: 25,texColor: appColors.buttonBgColor),
-            ),
-            iconApps.iconImage(
-                imageUrl: iconApps.searchIcon,
-                imageColor: appColors.buttonBgColor,
-                iconSize: Size(22, 22)
-            ),
-          ],
-        ),
+      return Text(appString.trans(context, appString.yourBookmarkTitleText),
+        style: appStyles.commonTitleStyle(fontSize: 25,texColor: appColors.buttonBgColor),
       );
     }
 
@@ -56,7 +33,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
           children: [
             Text(appString.trans(context, appString.bookmarkScreenCenterEmptyText),
               textAlign: TextAlign.left,
-              style: appStyles.commonTitleStyle(fontSize: 40),
+              style: appStyles.commonSubTitleTextStyle(),
             ),
           ],
         ),

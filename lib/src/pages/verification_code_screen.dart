@@ -100,38 +100,6 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
           ));
     }
 
-
-    // Background Image widget
-    Widget backgroundImage() {
-      return Stack(
-        children: [
-          ShaderMask(
-            shaderCallback: (rectangle) => LinearGradient(
-              colors: [
-                appColors.appTransColor,
-                appColors.appBgColorJungleGreen
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ).createShader(Rect.fromLTRB(0, 0, rectangle.width, rectangle.height)),
-            blendMode: BlendMode.darken,
-            child: CachedNetworkImage(
-              height: appDimens.heightFullScreen() / 3.15,
-              width: appDimens.widthFullScreen(),
-              imageUrl:
-              "https://www.plataran.com/wp-content/uploads/2020/04/plataran-bimonthly-may-june-2019-lr-15_0ztqu.jpg",
-              fit: BoxFit.fill,
-            ),
-          ),
-          CommonAppBar(
-            leftIconMargin: EdgeInsets.only(top: 22, left: 20),
-            isHideRightIcon: true,
-            title: "Bali Indonesia",
-          ),
-        ],
-      );
-    }
-
     // Resend Text widget
     Widget didNotReceivedCode(){
       return RichText(
@@ -162,40 +130,10 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
       );
     }
 
-    // Terms and conditions
-    Widget termsAndConditions(){
-      return RichText(
-        text: TextSpan(
-            text: appString.trans(context, appString.byRegisteringYouAreAgreeText),
-            style: appStyles.alreadyHaveAccountTextStyle(),
-            children: <InlineSpan>[
-              WidgetSpan(
-                  child: SizedBox(
-                    width: 5,
-                  )),
-              TextSpan(
-                recognizer: TapGestureRecognizer()
-                  ..onTap = () {
-                    Navigator.push(
-                      context,
-                      SlideRightRoute(widget: TermsOfServicesScreen()),
-                    );
-                  },
-                text:
-                appString.trans(context, appString.termsOfServices),
-                style: appStyles.alreadyHaveAccountTextStyle(
-                    texColor: appColors.buttonBgColor,
-                    fontSize: 14.5,
-                    fontWeight: FontWeight.w700),
-              )
-            ]),
-      );
-    }
 
     return ContainerFirst(
       appBarHeight: 56,
       isOverLayStatusBar: true,
-      statusBarColor: Colors.white,
       isSingleChildScrollViewNeed: false,
       contextCurrentView: context,
       appBar: CommonAppBar(
@@ -237,16 +175,6 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
                       context,
                       SlideRightRoute(widget: ResetPasswordScreen()),
                     );
-                    /*if(isSignInScreen){
-                        sharedPreferencesFile.saveBool(isUserLoggedInC, true);
-                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
-                          return DashboardScreen();
-                        }), (route) => false);
-                      } else{
-                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
-                          return DashboardScreen();
-                        }), (route) => false);
-                      }*/
                   });
                 }else{
                   setState(() {

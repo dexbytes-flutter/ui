@@ -31,14 +31,14 @@ class CustomPaymentCardView extends StatelessWidget {
     appDimens.appDimensFind(context: context);
 
     return Container(
-      height: appDimens.heightFullScreen()/4.32,
+      height: appDimens.heightFullScreen()/4,
       width: appDimens.widthFullScreen(),
       padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: appColors.appBgColor2,
-          border: Border.all(color: index == selectedIndex ? appColors.buttonBgColor : appColors.appTransColor,
-              width: index == selectedIndex ? 2 : 0)
+          border: Border.all(color: index == selectedIndex ? paymentCardSelect == false ? appColors.appTransColor : appColors.buttonBgColor : appColors.appTransColor,
+             )
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

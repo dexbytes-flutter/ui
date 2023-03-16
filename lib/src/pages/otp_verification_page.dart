@@ -130,28 +130,30 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
       return Stack(
         children: [
           ShaderMask(
-            shaderCallback: (rectangle) => LinearGradient(
+            shaderCallback: (bound) => LinearGradient(
               colors: [
+                appColors.white,
                 appColors.appTransColor,
-                appColors.appBgColorJungleGreen
               ],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-            ).createShader(Rect.fromLTRB(0, 0, rectangle.width, rectangle.height)),
-            blendMode: BlendMode.darken,
+            ).createShader(bound),
+            blendMode: BlendMode.dstIn,
             child: CachedNetworkImage(
-              height: appDimens.heightFullScreen() / 3.15,
+              height: appDimens.heightFullScreen() / 2.35,
               width: appDimens.widthFullScreen(),
               imageUrl:
               "https://www.plataran.com/wp-content/uploads/2020/04/plataran-bimonthly-may-june-2019-lr-15_0ztqu.jpg",
               fit: BoxFit.fill,
             ),
           ),
-          CommonAppBar(
-            leftIconMargin: EdgeInsets.only(top: 22, left: 20),
-            isHideRightIcon: true,
-            title: "Bali Indonesia",
-          ),
+          Positioned(
+            left: 20,right: 20,
+            bottom: 0,
+            child: Text(appString.trans(context, appString.verifyYourIdentityText),
+              style: appStyles.commonTitleStyle(fontSize: 30)
+            ),
+          )
         ],
       );
     }
@@ -189,6 +191,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     // Terms and conditions
     Widget termsAndConditions(){
       return RichText(
+        textAlign: TextAlign.center,
         text: TextSpan(
             text: appString.trans(context, appString.byRegisteringYouAreAgreeText),
             style: appStyles.alreadyHaveAccountTextStyle(),
@@ -218,97 +221,86 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
 
     // Center view widget
     Widget bottomView() {
-      return Container(
-        color: appColors.appBgColorJungleGreen,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20,right: 20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(appString.trans(context, appString.verifyYourIdentityText),
-                  style: appStyles.commonTitleStyle(fontSize: 30)),
-              SizedBox(height: 15,),
-              Text(appString.trans(context, appString.verificationSubTitleText),
-                  style: appStyles.alreadyHaveAccountTextStyle(fontSize: 15)),
-              SizedBox(height: 5,),
-              Text("johndoe@gmail.com",
-                  style: appStyles.alreadyHaveAccountTextStyle(fontSize: 15)
+      return Padding(
+        padding: const EdgeInsets.only(left: 20,right: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 20,),
+            Text(appString.trans(context, appString.verificationSubTitleText),
+                style: appStyles.alreadyHaveAccountTextStyle(fontSize: 15)),
+            SizedBox(height: 5,),
+            Text("johndoe@gmail.com",
+                style: appStyles.alreadyHaveAccountTextStyle(fontSize: 15)
+            ),
+            SizedBox(height: 10,),
+            verificationCode(),
+            otpErrorMsg,
+            SizedBox(height: 5,),
+            Center(child: didNotReceivedCode()),
+            SizedBox(height: 35,),
+            Container(
+              child: CommonButton(
+                buttonName: appString.trans(context, appString.verificationText),
+                buttonHeight: 50,
+                buttonBorderRadius: 18,
+                isBottomMarginRequired: false,
+                textStyle: appStyles.buttonNameStyle(),
+                backCallback: () {
+                  if (verificationCodeStr != '' && verificationCodeStr.trim().length == otpLength) {
+                    setState(() {
+                      errorMessage = '';
+                      Navigator.push(
+                        context,
+                        SlideRightRoute(widget: SignInScreen()),
+                      );
+                      /*if(isSignInScreen){
+                        sharedPreferencesFile.saveBool(isUserLoggedInC, true);
+                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
+                          return DashboardScreen();
+                        }), (route) => false);
+                      } else{
+                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
+                          return DashboardScreen();
+                        }), (route) => false);
+                      }*/
+                    });
+                  }else{
+                    setState(() {
+                      if( verificationCodeStr == '')
+                        errorMessage = appString.trans(context, appString.pleaseEnterOtp);
+                      else
+                        errorMessage = appString.trans(context, appString.pleaseEnterCorrectOtp);
+                    });
+                  }
+                },
               ),
-              SizedBox(height: 10,),
-              verificationCode(),
-              otpErrorMsg,
-              SizedBox(height: 5,),
-              Center(child: didNotReceivedCode()),
-              SizedBox(height: 35,),
-              Container(
-                child: CommonButton(
-                  buttonName: appString.trans(context, appString.verificationText),
-                  buttonHeight: 50,
-                  buttonBorderRadius: 18,
-                  isBottomMarginRequired: false,
-                  textStyle: appStyles.buttonNameStyle(),
-                  backCallback: () {
-                    if (verificationCodeStr != '' && verificationCodeStr.trim().length == otpLength) {
-                      setState(() {
-                        errorMessage = '';
-                        Navigator.push(
-                          context,
-                          SlideRightRoute(widget: SignInScreen()),
-                        );
-                        /*if(isSignInScreen){
-                          sharedPreferencesFile.saveBool(isUserLoggedInC, true);
-                          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
-                            return DashboardScreen();
-                          }), (route) => false);
-                        } else{
-                          Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
-                            return DashboardScreen();
-                          }), (route) => false);
-                        }*/
-                      });
-                    }else{
-                      setState(() {
-                        if( verificationCodeStr == '')
-                          errorMessage = appString.trans(context, appString.pleaseEnterOtp);
-                        else
-                          errorMessage = appString.trans(context, appString.pleaseEnterCorrectOtp);
-                      });
-                    }
-                  },
-                ),
-              ),
-              SizedBox(height: 20,),
-              termsAndConditions(),
-              SizedBox(height: 20,),
-            ],
-          ),
+            ),
+            SizedBox(height: 20,),
+            termsAndConditions(),
+            SizedBox(height: 20,),
+          ],
         ),
       );
     }
 
     return ContainerFirst(
-      appBarHeight: -1,
+      appBarHeight: 56,
       isOverLayStatusBar: true,
-      statusBarColor: Colors.white,
+      isOverLayAppBar: true,
       isSingleChildScrollViewNeed: false,
       contextCurrentView: context,
-      containChild: ShaderMask(
-        shaderCallback: (bound) => LinearGradient(
-          colors: [
-            appColors.appTransColor.withOpacity(0.20),
-            appColors.appBgColorJungleGreen.withOpacity(0.60)
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ).createShader(bound),
-        blendMode: BlendMode.darken,
-        child: Column(
-          children: [
-            backgroundImage(),
-            bottomView()
-          ],
-        ),
+      appBar:  CommonAppBar(
+        isHideRightIcon: true,
+      ),
+      containChild: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          backgroundImage(),
+          bottomView()
+          // bottomView()
+        ],
       ),
     );
   }

@@ -173,6 +173,8 @@ class _DestinationDetailedCardViewState extends State<DestinationDetailedCardVie
 
     // Rating choice chip
     ratingView(){
+      int defaultItemIndex = ratingChoiceChipDataList.indexOf("All");
+      print(defaultItemIndex);
       return Wrap(
         spacing: 10.0,
         runSpacing: -5,
@@ -182,7 +184,9 @@ class _DestinationDetailedCardViewState extends State<DestinationDetailedCardVie
             reportList: ratingChoiceChipDataList,
             isAvatar: true,
             choiceChipRadius: 15,
+            selectedIndex: defaultItemIndex,
           ),
+          
         ],
       );
 
@@ -377,7 +381,7 @@ class _DestinationDetailedCardViewState extends State<DestinationDetailedCardVie
                   isBottomMarginRequired: false,
                   textStyle: appStyles.buttonNameStyle(),
                   backCallback: () {
-                    Navigator.push(context,
+                    Navigator.push(MainAppBloc.getDashboardContext,
                     SlideRightRoute(
                       widget: CreateBookingScreen()
                     )

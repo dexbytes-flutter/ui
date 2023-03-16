@@ -4,6 +4,7 @@ import 'package:base_flutter_app/src/pages/home_screen.dart';
 import 'package:base_flutter_app/src/pages/reset_password_screen.dart';
 import 'package:base_flutter_app/src/pages/search_screen.dart';
 import 'package:base_flutter_app/src/pages/tutorials_screen.dart';
+import 'package:base_flutter_app/src/pages/verification_code_screen.dart';
 import 'package:base_flutter_app/src/widgets/slider_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -25,6 +26,7 @@ import 'package:base_flutter_app/src/config/routes.dart';
 import 'src/pages/all_gallery_images_screen.dart';
 import 'src/pages/booking_cancellation_screen.dart';
 import 'src/pages/booking_detail_card_view_screen.dart';
+import 'src/pages/booking_success_screen.dart';
 import 'src/pages/create_booking_screen.dart';
 import 'src/pages/dashboard_screen.dart';
 import 'src/pages/destination_card_detailed_view_screen.dart';
@@ -32,6 +34,7 @@ import 'src/pages/login_screen.dart';
 import 'src/pages/otp_verification_page.dart';
 import 'src/pages/profile_screen.dart';
 import 'src/pages/registration_screen.dart';
+import 'src/pages/review_view_all_screen.dart';
 import 'src/pages/select_payment_screen.dart';
 import 'src/pages/terms_of_services_screen.dart';
 import 'src/pages/test_drop_down.dart';
@@ -285,7 +288,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
     return /*!widget.isOneTimeProfileSetUpDone
         ? CreateAccount()
         : */
-      const TutorialScreen();
+      const SignInScreen();
 
   }
 
@@ -296,7 +299,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
 
     //If profile set done by user
     // if (widget.isOneTimeProfileSetUpDone) {
-    return const HomeScreen();
+    return const SignInScreen();
     //SignInPage();
     // }
     //If set up not done by user than redirect to selected screen

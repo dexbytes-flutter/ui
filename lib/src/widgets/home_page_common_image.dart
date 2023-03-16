@@ -12,6 +12,7 @@ class HomepageCommonImage extends StatelessWidget {
   late final int? selectedIndex;
   final bool? isHorizontalViewCard;
   final bool isBookmarked;
+  final Function? onButtonClickCallback;
   HomepageCommonImage({
     Key? key,
     this.imageUrl,
@@ -20,7 +21,8 @@ class HomepageCommonImage extends StatelessWidget {
     this.countryTitle,
     this.selectedIndex,
     this.isHorizontalViewCard,
-    this.isBookmarked = false
+    this.isBookmarked = false,
+    this.onButtonClickCallback
   }) : super(key: key);
 
   @override
@@ -68,9 +70,9 @@ class HomepageCommonImage extends StatelessWidget {
                   ),
                 ),
               ) : Container(),
-              SizedBox(width: selectedIndex == 1? 10 : 0,),
+              SizedBox(width: selectedIndex == 1 ? 10 : 0,),
               Text(title!,
-                style: appStyles.commonTitleStyle(fontSize: 32),
+                style: appStyles.commonTitleStyle(fontSize: selectedIndex == 0 ? 32 : 20),
               ),
           ],),
           SizedBox(height: selectedIndex == 1? 8 : selectedIndex == 0? 10:15,),
@@ -155,6 +157,7 @@ class HomepageCommonImage extends StatelessWidget {
           ),
           child: InkWell(
             onTap: (){
+              onButtonClickCallback?.call();
             },
             child: Container(
                 padding: EdgeInsets.all(12),
@@ -213,7 +216,7 @@ class HomepageCommonImage extends StatelessWidget {
               )*/: Container()
             ),
             Positioned(
-              bottom: selectedIndex != 1 || isHorizontalViewCard!? 230 : 185,
+              bottom: selectedIndex != 1 || isHorizontalViewCard!? 225 : 185,
                 left: 25,
                 child: Text(
                   selectedIndex == 1 ||isHorizontalViewCard!
@@ -223,8 +226,8 @@ class HomepageCommonImage extends StatelessWidget {
                 )
             ),
             Positioned(
-              bottom: selectedIndex == 1 || isHorizontalViewCard!?115:120,
-                left: selectedIndex == 0? 24 : 25,
+              bottom: selectedIndex == 0 || isHorizontalViewCard!? 115 : 125,
+                left: selectedIndex == 0 ? 24 : 25,
                 child: placeTitleView()
             ),
             Positioned(
