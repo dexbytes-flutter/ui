@@ -182,7 +182,7 @@ class _SignInScreenState extends State<SignInScreen> {
           ShaderMask(
             shaderCallback: (bound) => LinearGradient(
               colors: [
-                appColors.appTransColor.withOpacity(0.10),
+                appColors.appTransColor,
                 appColors.appBgColorJungleGreen
               ],
               begin: Alignment.topCenter,
@@ -190,19 +190,20 @@ class _SignInScreenState extends State<SignInScreen> {
             ).createShader(bound),
             blendMode: BlendMode.darken,
             child: CachedNetworkImage(
-              height: appDimens.heightFullScreen() / 3.5,
+              height: appDimens.heightFullScreen() / 2.15,
               width: appDimens.widthFullScreen(),
               imageUrl:
                   "https://img.freepik.com/free-photo/beautiful-scenery-emerald-lake-yoho-national-park-british-columbia-canada_181624-6877.jpg?w=2000",
               fit: BoxFit.cover,
             ),
           ),
-          /*Positioned(
-            top: 250,
+          Positioned(
+            bottom: 0,
             left: 20,
+            right: 20,
             child: Text(appString.trans(context, appString.loginText),
                 style: appStyles.registerTextTextStyle()),
-          ),*/
+          ),
         ],
       );
     }
@@ -211,12 +212,12 @@ class _SignInScreenState extends State<SignInScreen> {
     Widget bottomView() {
       return Container(
         color: appColors.appBgColorJungleGreen,
-        padding: EdgeInsets.only(top: 15,left: 20,right: 20),
+        padding: EdgeInsets.only(left: 20,right: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(appString.trans(context, appString.loginText),
-                style: appStyles.registerTextTextStyle()),
+            /*Text(appString.trans(context, appString.loginText),
+                style: appStyles.registerTextTextStyle()),*/
             SizedBox(height: 15,),
             // Email field
             Container(
@@ -487,22 +488,11 @@ class _SignInScreenState extends State<SignInScreen> {
         isHideRightIcon: true,
       ),
       contextCurrentView: context,
-      containChild: ShaderMask(
-        shaderCallback: (bound) => LinearGradient(
-          colors: [
-            appColors.appTransColor.withOpacity(0.30),
-            appColors.appBgColorJungleGreen.withOpacity(0.30)
-          ],
-          begin: Alignment.center,
-          end: Alignment.bottomCenter,
-        ).createShader(bound),
-        blendMode: BlendMode.darken,
-        child: Column(
-          children: [
-            backgroundImage(),
-            bottomView()
-          ],
-        ),
+      containChild: Column(
+        children: [
+          backgroundImage(),
+          bottomView()
+        ],
       ),
     );
   }

@@ -22,7 +22,9 @@ final List<HomeScreenVerticalTitleModel> homeVerticalList = [
             imageUrl: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQQ9j9GWnKtl9xJjLvEPREdCFlkLjl2XKmMdQKOAnnyLmCO_Moo",
           isBookmarked: true,
           recommendationType: "Recommended",
-            flagUrl: 'https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png'
+            flagUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
+          destinationText: "",
+          rating: 4.5
         ),
         VerticalTitleSublistList(
           placeName: "Borobudur \nTemple",
@@ -30,7 +32,9 @@ final List<HomeScreenVerticalTitleModel> homeVerticalList = [
           imageUrl: "https://i.pinimg.com/736x/47/2f/c7/472fc7febc30f37886bc3cec4f07f66d.jpg",
             isBookmarked: false,
             recommendationType: "Recommended",
-            flagUrl: 'https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png'
+            flagUrl: 'https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png',
+            destinationText: "",
+            rating: 4.5
         ),
         VerticalTitleSublistList(
           placeName: "Borobudur \nTemple",
@@ -38,7 +42,9 @@ final List<HomeScreenVerticalTitleModel> homeVerticalList = [
           imageUrl: "https://images.pexels.com/photos/3348363/pexels-photo-3348363.jpeg?cs=srgb&dl=pexels-max-ravier-3348363.jpg&fm=jpg",
             isBookmarked: false,
             recommendationType: "Recommended",
-            flagUrl: 'https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png'
+            flagUrl: 'https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png',
+            destinationText: "",
+            rating: 4.5
         ),
       ]
   ),
@@ -54,7 +60,8 @@ final List<HomeScreenVerticalTitleModel> homeVerticalList = [
             recommendationType: "Top Recommended",
           destinationText: "Destination",
           numberOfDestination: 100,
-            flagUrl: ''
+            flagUrl: 'https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png',
+          rating: null
         ),
         VerticalTitleSublistList(
           placeName: "Indonesia",
@@ -64,7 +71,8 @@ final List<HomeScreenVerticalTitleModel> homeVerticalList = [
             recommendationType: "Top Recommended",
             destinationText: "Destination",
             numberOfDestination: 100,
-            flagUrl: ''
+            flagUrl: 'https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png',
+          rating: null
         ),
         VerticalTitleSublistList(
           placeName: "Indonesia",
@@ -74,7 +82,8 @@ final List<HomeScreenVerticalTitleModel> homeVerticalList = [
             recommendationType: "Top Recommended",
             destinationText: "Destination",
             numberOfDestination: 100,
-            flagUrl: ''
+            flagUrl: 'https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png',
+          rating: null
         ),
     ]
   ),
@@ -84,33 +93,36 @@ final List<HomeScreenVerticalTitleModel> homeVerticalList = [
     verticalTitleSubTitleList: [
       VerticalTitleSublistList(
         placeName: "Aragua",
-        placeSubTitle: "",
+        placeSubTitle: "Venezuela",
         imageUrl: "https://i.pinimg.com/originals/0c/ca/11/0cca112aaf106f312cece45cba34be54.jpg",
           isBookmarked: false,
           recommendationType: "Recommended",
         numberOfDestination: 15,
         destinationText: "Destination",
-          flagUrl: ''
+          flagUrl: 'https://cdn.britannica.com/04/4904-004-EBEFDE35/Flag-Venezuela.jpg',
+          rating: null
       ),
       VerticalTitleSublistList(
         placeName: "Aragua",
-        placeSubTitle: "",
+        placeSubTitle: "Venezuela",
         imageUrl: "https://static.toiimg.com/thumb/msid-48807408,width=1200,height=900/48807408.jpg",
           isBookmarked: false,
           recommendationType: "Recommended",
           numberOfDestination: 15,
           destinationText: "Destination",
-          flagUrl: ''
+          flagUrl: 'https://cdn.britannica.com/04/4904-004-EBEFDE35/Flag-Venezuela.jpg',
+          rating: null
       ),
       VerticalTitleSublistList(
         placeName: "Aragua",
-        placeSubTitle: "",
+        placeSubTitle: "Venezuela",
         imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1tjnAhpatgtaQeOl3xWbWtk2TrED_nbVcjw&usqp=CAU",
           isBookmarked: false,
           recommendationType: "Recommended",
           numberOfDestination: 15,
           destinationText: "Destination",
-          flagUrl: ''
+          flagUrl: 'https://cdn.britannica.com/04/4904-004-EBEFDE35/Flag-Venezuela.jpg',
+          rating: null
       ),
     ]
   ),
@@ -127,7 +139,7 @@ class VerticalTitleSublistList{
   final String? flagUrl;
   final int? numberOfDestination;
   final String? destinationText;
-
+  final bool? isVerticalCardListView;
 
   VerticalTitleSublistList({
     required this.imageUrl,
@@ -139,87 +151,95 @@ class VerticalTitleSublistList{
     required this.flagUrl,
     this.numberOfDestination,
     this.destinationText,
+    this.isVerticalCardListView
   });
 }
 
 // Search screen recommended list data
 final List<VerticalTitleSublistList> searchScreenImageList = [
     VerticalTitleSublistList(
-        imageUrl: "https://i.pinimg.com/originals/0c/ca/11/0cca112aaf106f312cece45cba34be54.jpg",
+        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/1/10/Zion_angels_landing_view.jpg",
         rating: 4.9,
-        isBookmarked: false,
-        recommendationType: "Recommended",
-        placeName : "Blausee \nNature park",
-        placeSubTitle: "Indonesia",
-      flagUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
-      numberOfDestination: 100,
-      destinationText: "Destination"
+        isBookmarked: true,
+        recommendationType: "Top Recommended",
+        placeName : "Zion \nNature park",
+        placeSubTitle: "Springdale US",
+        flagUrl: "https://cdn.britannica.com/33/4833-004-828A9A84/Flag-United-States-of-America.jpg",
+        numberOfDestination: 100,
+        destinationText: "",
+      isVerticalCardListView: true
     ),
     VerticalTitleSublistList(
         imageUrl: "https://i.pinimg.com/originals/0c/ca/11/0cca112aaf106f312cece45cba34be54.jpg",
         rating: 4.9,
-        isBookmarked: false,
+        isBookmarked: true,
         recommendationType: "Recommended",
         placeName : "Blausee \nNature park",
         placeSubTitle: "Indonesia",
         flagUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
         numberOfDestination: 100,
-        destinationText: "Destination"
+        destinationText: "",
+        isVerticalCardListView: true
     ),
     VerticalTitleSublistList(
         imageUrl: "https://i.pinimg.com/originals/0c/ca/11/0cca112aaf106f312cece45cba34be54.jpg",
         rating: 4.9,
-        isBookmarked: false,
+        isBookmarked: true,
         recommendationType: "Recommended",
         placeName : "Blausee \nNature park",
         placeSubTitle: "Indonesia",
         flagUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
         numberOfDestination: 100,
-        destinationText: "Destination"
+        destinationText: "",
+        isVerticalCardListView: true
     ),
     VerticalTitleSublistList(
         imageUrl: "https://i.pinimg.com/originals/0c/ca/11/0cca112aaf106f312cece45cba34be54.jpg",
         rating: 4.9,
-        isBookmarked: false,
+        isBookmarked: true,
         recommendationType: "Recommended",
         placeName : "Blausee \nNature park",
         placeSubTitle: "Indonesia",
         flagUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
         numberOfDestination: 100,
-        destinationText: "Destination"
+        destinationText: "",
+        isVerticalCardListView: true
     ),
     VerticalTitleSublistList(
         imageUrl: "https://i.pinimg.com/originals/0c/ca/11/0cca112aaf106f312cece45cba34be54.jpg",
         rating: 4.9,
-        isBookmarked: false,
+        isBookmarked: true,
         recommendationType: "Recommended",
         placeName : "Blausee \nNature park",
         placeSubTitle: "Indonesia",
         flagUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
         numberOfDestination: 100,
-        destinationText: "Destination"
+        destinationText: "",
+        isVerticalCardListView: true
     ),
     VerticalTitleSublistList(
         imageUrl: "https://i.pinimg.com/originals/0c/ca/11/0cca112aaf106f312cece45cba34be54.jpg",
         rating: 4.9,
-        isBookmarked: false,
+        isBookmarked: true,
         recommendationType: "Recommended",
         placeName : "Blausee \nNature park",
         placeSubTitle: "Indonesia",
         flagUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
         numberOfDestination: 100,
-        destinationText: "Destination"
+        destinationText: "",
+        isVerticalCardListView: true
     ),
     VerticalTitleSublistList(
         imageUrl: "https://i.pinimg.com/originals/0c/ca/11/0cca112aaf106f312cece45cba34be54.jpg",
         rating: 4.9,
-      isBookmarked: false,
-      recommendationType: "Recommended",
+        isBookmarked: true,
+        recommendationType: "Recommended",
       placeName : "Blausee \nNature park",
       placeSubTitle: "Indonesia",
       flagUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
       numberOfDestination: 100,
-      destinationText: "Destination"
+      destinationText: "",
+        isVerticalCardListView: true
     ),
 ];
 

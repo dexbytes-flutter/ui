@@ -291,7 +291,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
     return /*!widget.isOneTimeProfileSetUpDone
         ? CreateAccount()
         : */
-      const HomeScreen();
+      const DashBoardPage();
   }
 
   //Redirect to another screen if already loggedIn

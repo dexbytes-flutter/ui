@@ -45,7 +45,6 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
             blendMode: BlendMode.dstIn,
             child: ClipRRect(
               child: CachedNetworkImage(
-                // imageUrl: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQQ9j9GWnKtl9xJjLvEPREdCFlkLjl2XKmMdQKOAnnyLmCO_Moo",
                 imageUrl: widget.imageUrl!,
                 fit: BoxFit.cover,
                 height: appDimens.heightFullScreen()/1.8,
@@ -54,7 +53,7 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
             ),
           ),
           Positioned(
-            top: 110,
+            bottom: 200,
               child: Center(
                 child: Container(
                   padding: EdgeInsets.all(8).copyWith(left: 18,right: 18),
@@ -77,6 +76,50 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
               )
           ),
           Positioned(
+            bottom: 105,
+            child: Text(widget.locationName,
+              softWrap: true,
+              textAlign: TextAlign.center,
+              style: appStyles.commonTitleStyle(
+                  fontSize: 35
+              ),),
+          ),
+          Positioned(
+            bottom: 80,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: appColors.white),
+                      borderRadius: BorderRadius.circular(5)
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(5),
+                    child: CachedNetworkImage(
+                      imageUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
+                      fit: BoxFit.cover,
+                      height: 12,
+                      width: 12,
+                    ),
+                  ),
+                ),
+                SizedBox(width: 10,),
+                Text("Magelang, Indonesia",
+                  style: appStyles.commonSubTitleTextStyle(fontSize: 11),
+                )
+              ],
+            ),
+          ),
+          Positioned(
+              bottom: 25,
+              child: Text(appString.trans(context, appString.bookingDetailsText),
+                style: appStyles.commonTitleStyle(fontSize: 15,
+                    fontWeight: FontWeight.w600,texColor: appColors.buttonBgColor
+                ),
+              )
+          ),
+        /*  Positioned(
             top: 160,
             child: Text(widget.locationName,
             softWrap: true,
@@ -136,7 +179,7 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
                   style: appStyles.commonTitleStyle( fontSize: 15,
                       fontWeight: FontWeight.w500, texColor: appColors.white),),
               ],),
-          ),
+          ),*/
         ],
       );
     }
@@ -208,6 +251,29 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
           padding: const EdgeInsets.only(left: 20,right: 20),
           child: Column(
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(appString.trans(context, appString.startDateText),
+                    style: appStyles.commonTitleStyle( fontSize: 15,
+                        fontWeight: FontWeight.w500, texColor: appColors.textColor),
+                  ),
+                  Text("July 21 2021",
+                    style: appStyles.commonTitleStyle( fontSize: 15,
+                        fontWeight: FontWeight.w500, texColor: appColors.white),),
+                ],),
+              Padding(
+              padding: const EdgeInsets.only(top: 5),
+              child: SizedBox(
+                child: Divider(
+                  color: appColors.appBgColor1.withOpacity(0.15),
+                  height: 5,
+                  thickness: 1,
+                ),
+              ),
+            ),
+              SizedBox(height: 15,),
               Column(
                children: [
                  Row(
@@ -314,16 +380,6 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             backgroundImageStackView(),
-            Padding(
-              padding: const EdgeInsets.only(top: 5, left: 20,right: 20),
-              child: SizedBox(
-                child: Divider(
-                  color: appColors.appBgColor1.withOpacity(0.15),
-                  height: 5,
-                  thickness: 1,
-                ),
-              ),
-            ),
             SizedBox(height: 15,),
             bottomTitleRows(),
           ],

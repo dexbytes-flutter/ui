@@ -19,11 +19,11 @@ import '../all_file_import/app_values_files_link.dart';
 import '../widgets/title_text.dart';
 
 class SearchScreen extends StatefulWidget {
-  final bool? isFilterApplied;
+  final bool? isVerticalImageCardView;
   final bool? isVerticalViewSearchResult;
   const SearchScreen({
     Key? key,
-    this.isFilterApplied,
+    this.isVerticalImageCardView,
     this.isVerticalViewSearchResult
   }) : super(key: key);
 
@@ -160,28 +160,28 @@ class _SearchScreenState extends State<SearchScreen> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            widget.isFilterApplied!
+            widget.isVerticalImageCardView!
                 ? Row(
               children: [
                 Text(appString.trans(context, appString.foundText),
-                  style: appStyles.commonSubTitleTextStyle(fontWeight: FontWeight.w500,
-                      fontSize: 15),
+                  style: appStyles.commonSubTitleTextStyle(fontWeight: FontWeight.w800,
+                      texColor: appColors.white, fontSize: 15),
                 ),
                 SizedBox(width: 3,),
                 Text("90+",
-                  style: appStyles.commonSubTitleTextStyle(fontWeight: FontWeight.w500,
-                      fontSize: 15),
+                  style: appStyles.commonSubTitleTextStyle(fontWeight: FontWeight.w800,
+                      texColor: appColors.white, fontSize: 15),
                 ),
                 SizedBox(width: 3,),
                 Text(appString.trans(context, appString.destinationText),
-                  style: appStyles.commonSubTitleTextStyle(fontWeight: FontWeight.w500,
-                      fontSize: 15),
+                  style: appStyles.commonSubTitleTextStyle(fontWeight: FontWeight.w800,
+                      texColor: appColors.white, fontSize: 15),
                 ),
               ],
             )
                 : Text(appString.trans(context, appString.topRecentSearchText),
-              style: appStyles.commonSubTitleTextStyle(fontWeight: FontWeight.w500,
-                  fontSize: 15),
+              style: appStyles.commonSubTitleTextStyle(fontWeight: FontWeight.w800,
+                  texColor: appColors.white, fontSize: 15),
             ),
             GestureDetector(
               onTap: (){
@@ -202,17 +202,17 @@ class _SearchScreenState extends State<SearchScreen> {
                 padding: EdgeInsets.all(8).copyWith(left: 15,right: 15),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: widget.isFilterApplied!
+                  border: Border.all(color: widget.isVerticalImageCardView!
                       ? appColors.appBgColor1.withOpacity(0.20)
                       : appColors.appTransColor,
-                      width: widget.isFilterApplied!? 1.5 : 0),
-                    color: widget.isFilterApplied!
+                      width: widget.isVerticalImageCardView!? 1.5 : 0),
+                    color: widget.isVerticalImageCardView!
                         ? appColors.appBgColor2
                         : appColors.buttonBgColor,
                 ),
                 child: iconApps.iconImage(
                     imageUrl: iconApps.filterIcon,
-                    imageColor: widget.isFilterApplied!
+                    imageColor: widget.isVerticalImageCardView!
                         ? appColors.buttonBgColor
                         : appColors.black,
                     iconSize: Size(20, 20)),
@@ -225,7 +225,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
     // Center view
     Widget centerView() {
-      return widget.isFilterApplied!
+      return widget.isVerticalImageCardView!
           ? Container(
         width: appDimens.widthFullScreen(),
         height: appDimens.heightFullScreen()/1.58,
@@ -241,13 +241,16 @@ class _SearchScreenState extends State<SearchScreen> {
                 margin: EdgeInsets.only(right: 15),
                 child: HomepageCommonImage(
                   imageUrl: searchScreenImageList[index].imageUrl,
-                  placeTitle: searchScreenImageList[index].title,
-                  subTitle: searchScreenImageList[index].subTitle,
-                  countryTitle: searchScreenImageList[index].countryTitle,
+                  placeTitle: searchScreenImageList[index].placeName,
+                  placeSubTitle: searchScreenImageList[index].placeSubTitle,
                   isHorizontalViewCard: true,
-                  isBookmarked: searchScreenImageList[index].isBookmarked ?? true,
-                  recommendationType: '',
-                  placeFlag: searchScreenImageList[index].imageUrl,
+                  rating: searchScreenImageList[index].rating,
+                  isBookmarked: searchScreenImageList[index].isBookmarked,
+                  recommendationType: searchScreenImageList[index].recommendationType,
+                  placeFlag: searchScreenImageList[index].flagUrl,
+                  destinationText: searchScreenImageList[index].destinationText,
+                  numberOfDestination: searchScreenImageList[index].numberOfDestination,
+                  isVerticalCardListView: true,
                 )
             );
           },
@@ -261,7 +264,7 @@ class _SearchScreenState extends State<SearchScreen> {
           children: [
             Container(
               width: appDimens.widthFullScreen(),
-              height: appDimens.heightFullScreen() / 3.8,
+              height: appDimens.heightFullScreen() / 5,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
@@ -272,15 +275,15 @@ class _SearchScreenState extends State<SearchScreen> {
                   return Container(
                       margin: EdgeInsets.only(right: 15),
                       child: SearchScreenCommonImage(
+                        placeTitle: searchScreenImageList[index].placeName,
+                        placeSubTitle: searchScreenImageList[index].placeSubTitle,
                         imageUrl: searchScreenImageList[index].imageUrl,
-                        title: searchScreenImageList[index].title,
-                        subTitle: searchScreenImageList[index].subTitle,
-                        countryTitle: searchScreenImageList[index].countryTitle,
                         imageWidth: appDimens.widthFullScreen()/1.25 ,
                         isBookmarked: searchScreenImageList[index].isBookmarked,
                         isStaticCalenderIcon: false,
                         bookingStatus: "",
-                        recommendationStatus: "",
+                        placeFlag: searchScreenImageList[index].flagUrl,
+                        recommendationType: searchScreenImageList[index].recommendationType,
                       ));
                 },
               ),
@@ -297,22 +300,22 @@ class _SearchScreenState extends State<SearchScreen> {
         child: ListView.builder(
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
-          // physics: ClampingScrollPhysics(),
-          padding: EdgeInsets.only(left: 20,right: 20,bottom: 210),
+          physics: ClampingScrollPhysics(),
+          padding: EdgeInsets.only(left: 20,right: 20,bottom: 255),
           itemCount: searchScreenImageList.length,
           itemBuilder: (context, index) {
             return Container(
-              height: appDimens.heightFullScreen()/3.8,
+              height: appDimens.heightFullScreen()/4.58,
                 margin: EdgeInsets.only(bottom: 15),
                 child: SearchScreenCommonImage(
                   imageUrl: searchScreenImageList[index].imageUrl,
-                  title: searchScreenImageList[index].title,
-                  subTitle: searchScreenImageList[index].subTitle,
-                  countryTitle: searchScreenImageList[index].countryTitle,
-                  imageHeight: appDimens.heightFullScreen()/3.8,
+                  placeSubTitle: searchScreenImageList[index].placeSubTitle,
+                  placeTitle: searchScreenImageList[index].placeName,
+                  imageHeight: appDimens.heightFullScreen()/4.58,
                   imageWidth: appDimens.widthFullScreen()/1.10,
                   isStaticCalenderIcon: false,
-                  recommendationStatus: "",
+                  recommendationType: searchScreenImageList[index].recommendationType,
+                  placeFlag: searchScreenImageList[index].flagUrl,
                 ));
           },
         ),
@@ -335,20 +338,20 @@ class _SearchScreenState extends State<SearchScreen> {
             topSearchField(),
             titleWithFilterOption(),
             SizedBox(height: 20,),
-            widget.isFilterApplied!?
+            widget.isVerticalImageCardView!?
             Container() : recentSearchTexts(),
-            SizedBox(height: widget.isFilterApplied!? 0 : 20,),
-            widget.isFilterApplied!?
+            SizedBox(height: widget.isVerticalImageCardView!? 0 : 20,),
+            widget.isVerticalImageCardView!?
             Container() : Padding(
               padding: const EdgeInsets.only(left: 20,right: 20),
               child: TitleText(
                 text: appString.trans(context, appString.recommendedForYouTex),
-                style: appStyles.commonTitleStyle(fontSize: 15,texColor: appColors.textColor,
-                    fontWeight: FontWeight.w500
+                style: appStyles.commonTitleStyle(fontSize: 15,texColor: appColors.white,
+                    fontWeight: FontWeight.w800
                 ),
               ),
             ),
-            SizedBox(height: widget.isFilterApplied!?0 : 20,),
+            SizedBox(height: widget.isVerticalImageCardView!?0 : 20,),
             widget.isVerticalViewSearchResult!
                 ? verticalFilterView()
                 : centerView(),

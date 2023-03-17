@@ -9,14 +9,12 @@ import 'package:flutter/material.dart';
 class HomepageCommonImage extends StatelessWidget {
   final String? imageUrl;
   final String? placeTitle;
-  final String? subTitle;
-  final String? countryTitle;
   late final int? selectedIndex;
   final bool? isHorizontalViewCard;
-  final bool isBookmarked;
+  final bool? isBookmarked;
   final Function? onButtonClickCallback;
   final double? rating;
-  final String placeFlag;
+  final String? placeFlag;
   final double? imageHeight;
   final double? imageWidth;
   final String? recommendationType;
@@ -24,15 +22,14 @@ class HomepageCommonImage extends StatelessWidget {
   final String? destinationText;
   final String? placeSubTitle;
   final bool? isCityAndDestinationListView;
+  final bool? isVerticalCardListView;
   HomepageCommonImage({
     Key? key,
     this.imageUrl,
     this.placeTitle,
-    this.subTitle,
-    this.countryTitle,
     this.selectedIndex,
     this.isHorizontalViewCard,
-    this.isBookmarked = false,
+    this.isBookmarked,
     this.onButtonClickCallback,
     this.rating,
     this.imageHeight,
@@ -42,7 +39,8 @@ class HomepageCommonImage extends StatelessWidget {
     this.destinationText,
     this.placeSubTitle,
     required this.placeFlag,
-    this.isCityAndDestinationListView
+    this.isCityAndDestinationListView,
+    this.isVerticalCardListView
   }) : super(key: key);
 
   @override
@@ -74,11 +72,11 @@ class HomepageCommonImage extends StatelessWidget {
     Widget placeTitleView(){
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              selectedIndex == 1? Container(
+              placeSubTitle == ""? Container(
                 decoration: BoxDecoration(
                     border: Border.all(color: appColors.white),
                     borderRadius: BorderRadius.circular(8)
@@ -86,26 +84,26 @@ class HomepageCommonImage extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: CachedNetworkImage(
-                    imageUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
-                    // imageUrl: placeFlag!,
+                    imageUrl: placeFlag!,
                     fit: BoxFit.cover,
                     height: 20,
                     width: 20,
                   ),
                 ),
               ) : Container(),
-              SizedBox(width: selectedIndex == 1 ? 10 : 0,),
+              SizedBox(width: placeSubTitle == "" ? 10 : 0,),
               Text(placeTitle!,
                 style: appStyles.commonTitleStyle(fontSize: selectedIndex == 0 ? 25 : selectedIndex == 2 ? 25 : 20,
-                fontWeight: FontWeight.w900
+                    fontWeight: FontWeight.w900
                 ),
               ),
-          ],),
-          SizedBox(height: selectedIndex == 1? 8 : selectedIndex == 0? 10:15,),
-          selectedIndex == 2
-              ? Row(
+            ],
+          ),
+          SizedBox(height: placeSubTitle != "" ? 8:0),
+          Row(
             children: [
-              Container(
+              placeFlag != "" && placeSubTitle != ""
+                  ? Container(
                 decoration: BoxDecoration(
                     border: Border.all(color: appColors.white),
                     borderRadius: BorderRadius.circular(5)
@@ -113,84 +111,21 @@ class HomepageCommonImage extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(5),
                   child: CachedNetworkImage(
-                    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Flag_of_Venezuela_%281930%E2%80%932006%29.svg/220px-Flag_of_Venezuela_%281930%E2%80%932006%29.svg.png",
+                    imageUrl: placeFlag!,
                     fit: BoxFit.cover,
                     height: 15,
                     width: 15,
                   ),
                 ),
-              ),
-              SizedBox(width: 5,),
-              Text(countryTitle!,
-              style: appStyles.commonSubTitleTextStyle(fontSize: 14,),
-              ),
-            ],
-          )
-              : Container(),
-          SizedBox(height: selectedIndex == 2? 15 : 0,),
-          Row(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  placeFlag.isNotEmpty
-                      ? Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(color: appColors.white),
-                        borderRadius: BorderRadius.circular(5)
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(5),
-                      child: CachedNetworkImage(
-                        // imageUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
-                        imageUrl: placeFlag,
-                        fit: BoxFit.cover,
-                        height: 10,
-                        width: 10,
-                      ),
-                    ),
-                  )
-                      : /*Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(color: appColors.white),
-                        borderRadius: BorderRadius.circular(5)
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(5),
-                      child: CachedNetworkImage(
-                        imageUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
-                        // imageUrl: placeFlag!,
-                        fit: BoxFit.cover,
-                        height: 12,
-                        width: 12,
-                      ),
-                    ),
-                  )*/
-                  iconApps.iconImage(
-                      imageUrl: iconApps.islandIcon,
-                      iconSize: Size(20, 20),
-                      imageColor: appColors.white
-                  ),
-                  SizedBox(width: selectedIndex != 0 || isHorizontalViewCard!? 10 : 5,),
-                  Text(placeSubTitle!,
-                  style: appStyles.commonSubTitleTextStyle(fontSize: 12,),
-                  ),
-                  SizedBox(width: 2,),
-                  Row(
-                    children: [
-                      Text(selectedIndex != 0 && placeSubTitle == "" ? "${numberOfDestination!}+ " : "",
-                          style: appStyles.commonSubTitleTextStyle(fontSize: 13,texColor: appColors.white)
-                      ),
-                      Text( selectedIndex != 0
-                          ? destinationText! : "",
-                        style: appStyles.commonSubTitleTextStyle(fontSize: 13),
-                      ),
-                    ],
-                  ),
-                ],
               )
+                  : Container(),
+              SizedBox(width: placeFlag != ""? 5 : 0,),
+              Text(placeSubTitle!,
+                style: appStyles.commonSubTitleTextStyle(fontSize: 11,),
+              ),
             ],
-          )
+          ),
+          SizedBox(height: selectedIndex == 2? 15 : 0,),
         ],
       );
     }
@@ -201,11 +136,11 @@ class HomepageCommonImage extends StatelessWidget {
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
           child: Container(
-              height: 30,
+              // height: 30,
               // width: 100,
-              padding: EdgeInsets.only(left: 20,right: 20).copyWith(top: 2,bottom: 2),
+              padding: EdgeInsets.only(left: 15,right: 15),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(12),
                   color: appColors.buttonBgColor.withOpacity(0.30)
               ),
               child: InkWell(
@@ -249,17 +184,16 @@ class HomepageCommonImage extends StatelessWidget {
               ),
             ),
             Positioned(
-              left: 25,
+                left: 25,
                 top: 25,
-                // child: selectedIndex == 0 || isHorizontalViewCard!? ratingView():Container()
-                child: selectedIndex == 0? ratingView() : Container()
+                child: rating != null ? ratingView() : Container()
             ),
             Positioned(
-              top: 25,
+                top: 25,
                 right: 25,
-                // child: selectedIndex == 0 || isHorizontalViewCard!
-                child: isBookmarked
+                child: isBookmarked!
                     ? BookmarkButton(
+                  iconSize: 35,
                   isFavorite: isBookmarked,
                   iconDisabledColor: appColors.appBgColorLeanWhite.withOpacity(0.40),
                   valueChanged: (_isFavorite) {
@@ -270,19 +204,40 @@ class HomepageCommonImage extends StatelessWidget {
 
             ),
             Positioned(
-              bottom: selectedIndex != 0 ? selectedIndex == 2 ? 215 : 175: 195,
+                bottom: placeSubTitle != "" ? 195 : 180,
                 left: 25,
                 child: Text(recommendationType!,
-                  style: appStyles.commonSubTitleTextStyle(fontSize: 12),
+                  style: appStyles.commonSubTitleTextStyle(fontSize: 11),
                 )
             ),
             Positioned(
-              bottom: selectedIndex != 0 ? 115 : 110,
+                bottom: placeSubTitle != "" ? destinationText != "" ? 125 : isVerticalCardListView! ? 118 : 110 : 132,
                 left: selectedIndex == 0 ? 24 : 25,
                 child: placeTitleView()
             ),
             Positioned(
-              right: 25,
+              bottom: placeSubTitle != ""  ? 110 : 115,
+              left: selectedIndex == 0 ? 24 : 25,
+                child: destinationText != "" ? Row(
+                  children: [
+                    iconApps.iconImage(
+                        imageUrl: iconApps.islandIcon,
+                        iconSize: Size(20, 20),
+                        imageColor: appColors.white
+                    ),
+                    SizedBox(width: selectedIndex != 0 || isHorizontalViewCard!? 10 : 5,),
+                    Text(selectedIndex != 0 && destinationText != "" ? "${numberOfDestination!}+ " : "",
+                        style: appStyles.commonSubTitleTextStyle(fontSize: 11,texColor: appColors.white)
+                    ),
+                    Text( selectedIndex != 0
+                        ? destinationText! : "",
+                      style: appStyles.commonSubTitleTextStyle(fontSize: 11),
+                    ),
+                  ],
+                ) : Container(),
+            ),
+            Positioned(
+                right: 25,
                 bottom: 25,
                 child: bottomButton()
             )

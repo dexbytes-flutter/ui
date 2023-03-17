@@ -381,7 +381,7 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
                 Navigator.push(
                   context,
                   SlideRightRoute(widget: SearchScreen(
-                    isFilterApplied: true,
+                    isVerticalImageCardView: true,
                     isVerticalViewSearchResult: isVerticalViewSearchResult,
                   )
                   ),

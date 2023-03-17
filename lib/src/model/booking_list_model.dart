@@ -22,7 +22,7 @@ class BookingListModel{
 
 final List<BookingListModel> bookingListPlaceImagesList = [
   BookingListModel(
-      title: "Kuta Beach",
+      title: "Kuta \nBeach",
       subTitle: "July 23,2023 - July 26,2023",
       countryTitle: "venezuela",
       imageUrl: "https://sweetrip.id/wp-content/uploads/2022/01/malik.aslm_247713446_2187324401408301_4130051218010471559_n-1024x818.jpg",

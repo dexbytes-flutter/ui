@@ -63,8 +63,6 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                   child: HomepageCommonImage(
                     imageUrl: bookmarkList[index].imageUrl,
                     placeTitle: bookmarkList[index].placeTitle,
-                    subTitle: bookmarkList[index].placeSubTitle,
-                    // countryTitle: bookmarkList[index].placeTitle,
                     isHorizontalViewCard: false,
                     rating: bookmarkList[index].rating,
                     isBookmarked: bookmarkList[index].isBookMarked,
@@ -74,6 +72,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                     numberOfDestination: 1,
                     destinationText: "",
                     placeSubTitle: bookmarkList[index].placeSubTitle,
+                    isVerticalCardListView: false,
                     onButtonClickCallback: (){
                       setState(() {
                         // imageUrl = verticalTitleSubTitleList[selectedIndex].imageUrl;

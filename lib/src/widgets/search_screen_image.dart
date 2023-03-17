@@ -6,31 +6,42 @@ import 'package:flutter/material.dart';
 
 class SearchScreenCommonImage extends StatelessWidget {
   final String? imageUrl;
-  final String? title;
-  final String? subTitle;
+  final String? placeTitle;
   final String? countryTitle;
   late final int? selectedIndex;
+  final bool? isHorizontalViewCard;
+  final bool? isBookmarked;
+  final Function? onButtonClickCallback;
+  final double? rating;
+  final String? placeFlag;
   final double? imageHeight;
   final double? imageWidth;
-  final bool? isBookmarked;
-  final String? subTitleFlagIcon;
+  final String? recommendationType;
+  final int? numberOfDestination;
+  final String? destinationText;
+  final String? placeSubTitle;
+  final bool? isCityAndDestinationListView;
   final bool? isStaticCalenderIcon;
   final String? bookingStatus;
-  final String? recommendationStatus;
   SearchScreenCommonImage({
     Key? key,
     this.imageUrl,
-    this.title,
-    this.subTitle,
+    this.placeTitle,
     this.countryTitle,
     this.selectedIndex,
+    this.isHorizontalViewCard,
+    this.isBookmarked,
+    this.onButtonClickCallback,
+    this.rating, this.placeFlag,
     this.imageHeight,
     this.imageWidth,
-    this.isBookmarked,
-    this.subTitleFlagIcon,
+    this.recommendationType,
+    this.numberOfDestination,
+    this.destinationText,
+    this.placeSubTitle,
+    this.isCityAndDestinationListView,
     this.isStaticCalenderIcon,
     this.bookingStatus,
-    this.recommendationStatus
   }) : super(key: key);
 
   @override
@@ -61,13 +72,13 @@ class SearchScreenCommonImage extends StatelessWidget {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(recommendationStatus!,
+          Text(recommendationType!,
             style: appStyles.commonTitleStyle(fontSize: 11, fontWeight: FontWeight.w400,
                 texColor: appColors.textColor
             ),
           ),
           SizedBox(height: 5,),
-          Text(title!,
+          Text(placeTitle!,
             style: appStyles.commonTitleStyle(fontSize: 20),
           ),
           SizedBox(height: 8 ),
@@ -90,7 +101,7 @@ class SearchScreenCommonImage extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(3),
                       child: CachedNetworkImage(
-                        imageUrl: subTitleFlagIcon ?? "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
+                        imageUrl: placeFlag ?? "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
                         fit: BoxFit.cover,
                         height: 10,
                         width: 10,
@@ -98,8 +109,8 @@ class SearchScreenCommonImage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(width:  5,),
-                  Text(subTitle!,
-                    style: appStyles.commonSubTitleTextStyle(fontSize: isStaticCalenderIcon!? 11 : 14,
+                  Text(placeSubTitle!,
+                    style: appStyles.commonSubTitleTextStyle(fontSize: placeFlag! != ""? 11 : 14,
                         texColor: isStaticCalenderIcon!? appColors.textColor : appColors.white
                     ),
                   ),

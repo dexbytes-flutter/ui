@@ -84,15 +84,17 @@ class _BookListTileScreenState extends State<BookListTileScreen> {
                   },
                   child: SearchScreenCommonImage(
                     imageUrl: bookingListPlaceImagesList[index].imageUrl,
-                    title: bookingListPlaceImagesList[index].title,
-                    subTitle: bookingListPlaceImagesList[index].subTitle,
+                    placeTitle: bookingListPlaceImagesList[index].title,
+                    placeSubTitle: bookingListPlaceImagesList[index].subTitle,
                     countryTitle: bookingListPlaceImagesList[index].countryTitle,
                     isStaticCalenderIcon: true,
                     isBookmarked: bookingListPlaceImagesList[index].isBookmarked,
                     bookingStatus: bookingListPlaceImagesList[index].bookingStatus,
-                    recommendationStatus: bookingListPlaceImagesList[index].recommendation,
+                    recommendationType: bookingListPlaceImagesList[index].recommendation,
                     imageHeight: appDimens.heightFullScreen()/4,
                     imageWidth: appDimens.widthFullScreen()/1.10,
+                    placeFlag: "",
+
                   ),
                 ));
           },

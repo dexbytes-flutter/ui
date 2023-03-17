@@ -243,27 +243,31 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         children: [
           ShaderMask(
             shaderCallback: (bound) =>LinearGradient(
-              colors: [appColors.appTransColor.withOpacity(0.15),appColors.appBgColorJungleGreen],
+              colors: [
+                appColors.appBgColorJungleGreen,
+                appColors.appTransColor,
+              ],
               begin:Alignment.topCenter,
               end: Alignment.bottomCenter,
             ).createShader(bound),
-            blendMode: BlendMode.darken,
+            blendMode: BlendMode.dstIn,
             child: CachedNetworkImage(
-              height: appDimens.heightFullScreen()/3.48,
+              height: appDimens.heightFullScreen()/2.60,
               width: appDimens.widthFullScreen(),
               imageUrl: "http://lh3.ggpht.com/-LBkmHsPl3XU/TmMb5-qgdiI/AAAAAAAAQHA/eu3yiXNXKPU/rice-terraces-8%25255B2%25255D.jpg?imgmax=800",
               // imageUrl: "https://cdn.pixabay.com/photo/2016/11/14/02/51/rice-plantation-1822444__340.jpg",
               fit:BoxFit.fill,
             ),
           ),
-          CommonAppBar(
+          /*CommonAppBar(
             leftIconMargin: EdgeInsets.only(top: 22,left: 20),
             isHideRightIcon: true,
             title: "Bali Indonesia",
-          ),
+          ),*/
           Positioned(
-            top: 150,
+            bottom: 15,
             left: 20,
+            right: 20,
             child: Text(appString.trans(context, appString.registerText),
                 style: appStyles.registerTextTextStyle(fontWeight: FontWeight.w700)
             ),
@@ -564,24 +568,19 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     }
 
     return ContainerFirst(
-      appBarHeight: -1,
+      appBarHeight: 56,
       isOverLayStatusBar: true,
-      statusBarColor: Colors.white,
+      isOverLayAppBar: true,
+      appBar: CommonAppBar(
+        isHideRightIcon: true,
+      ),
       contextCurrentView: context,
       isSingleChildScrollViewNeed: false,
-      containChild: ShaderMask(
-        shaderCallback: (bound) =>LinearGradient(
-          colors: [appColors.appTransColor.withOpacity(0.30),appColors.appBgColorJungleGreen.withOpacity(0.30)],
-          begin:Alignment.center,
-          end: Alignment.bottomCenter,
-        ).createShader(bound),
-        blendMode: BlendMode.darken,
-        child: Column(
-          children: [
-            backgroundImage(),
-            bottomView(),
-          ],
-        ),
+      containChild: Column(
+        children: [
+          backgroundImage(),
+          bottomView(),
+        ],
       ),
     );
   }

@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   MainAppBloc.getDashboardContext,
                   SlideRightRoute(
                       widget: SearchScreen(
-                    isFilterApplied: false,
+                        isVerticalImageCardView: false,
                     isVerticalViewSearchResult: false,
                   )),
                 );
@@ -136,16 +136,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: HomepageCommonImage(
                     imageUrl: verticalTitleSubTitleList[index].imageUrl,
                     selectedIndex: homeVerticalList[selectedIndex].id,
-                    placeTitle: verticalTitleSubTitleList[index].title,
+                    placeTitle: verticalTitleSubTitleList[index].placeName,
                     placeSubTitle: verticalTitleSubTitleList[index].placeSubTitle,
-                    countryTitle: verticalTitleSubTitleList[index].countryTitle,
                     isHorizontalViewCard: false,
                     isBookmarked: verticalTitleSubTitleList[index].isBookmarked,
-                    rating: 4.5,
+                    rating: verticalTitleSubTitleList[index].rating,
                     recommendationType: verticalTitleSubTitleList[index].recommendationType,
                     numberOfDestination: verticalTitleSubTitleList[index].numberOfDestination,
                     destinationText: verticalTitleSubTitleList[index].destinationText,
                     placeFlag: verticalTitleSubTitleList[index].flagUrl,
+                    isVerticalCardListView: false,
                     onButtonClickCallback: (){
                       setState(() {
                         imageUrl = verticalTitleSubTitleList[selectedIndex].imageUrl;
