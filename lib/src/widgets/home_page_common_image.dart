@@ -23,6 +23,7 @@ class HomepageCommonImage extends StatelessWidget {
   final String? placeSubTitle;
   final bool? isCityAndDestinationListView;
   final bool? isVerticalCardListView;
+  final bool? isCityDetail;
   HomepageCommonImage({
     Key? key,
     this.imageUrl,
@@ -40,7 +41,8 @@ class HomepageCommonImage extends StatelessWidget {
     this.placeSubTitle,
     required this.placeFlag,
     this.isCityAndDestinationListView,
-    this.isVerticalCardListView
+    this.isVerticalCardListView,
+    this.isCityDetail
   }) : super(key: key);
 
   @override
@@ -49,10 +51,10 @@ class HomepageCommonImage extends StatelessWidget {
     Widget ratingView(){
       return rating != null
           ? Container(
-        padding: EdgeInsets.all(10).copyWith(left: 20,right: 20),
+        padding: isCityAndDestinationListView! ? EdgeInsets.all(8).copyWith(left: 14,right: 14) : EdgeInsets.all(10).copyWith(left: 20,right: 20),
         decoration: BoxDecoration(
           color: appColors.buttonBgColor.withOpacity(0.20),
-          borderRadius: BorderRadius.circular(12)
+          borderRadius: BorderRadius.circular(isCityAndDestinationListView! ? 10: 12)
         ),
         child: Row(
           children: [
@@ -62,7 +64,8 @@ class HomepageCommonImage extends StatelessWidget {
             ),
             SizedBox(width: 5,),
             Text("${rating!}",
-            style: appStyles.commonSubTitleTextStyle(texColor: appColors.buttonBgColor,fontWeight: FontWeight.w500,fontSize: 15),)
+            style: appStyles.commonSubTitleTextStyle(texColor: isCityAndDestinationListView! ? appColors.white : appColors.buttonBgColor,
+                fontWeight: FontWeight.w500,fontSize: isCityAndDestinationListView! ? 12:15),)
           ],
         ),
       )
@@ -193,7 +196,7 @@ class HomepageCommonImage extends StatelessWidget {
                 right: 25,
                 child: isBookmarked!
                     ? BookmarkButton(
-                  iconSize: 35,
+                  iconSize: isCityAndDestinationListView! ? 25 : 35,
                   isFavorite: isBookmarked,
                   iconDisabledColor: appColors.appBgColorLeanWhite.withOpacity(0.40),
                   valueChanged: (_isFavorite) {
@@ -204,21 +207,24 @@ class HomepageCommonImage extends StatelessWidget {
 
             ),
             Positioned(
-                bottom: placeSubTitle != "" ? 195 : 180,
+                bottom: placeSubTitle != "" ? isCityDetail! ? 180 : 195 : 180,
                 left: 25,
                 child: Text(recommendationType!,
                   style: appStyles.commonSubTitleTextStyle(fontSize: 11),
                 )
             ),
             Positioned(
-                bottom: placeSubTitle != "" ? destinationText != "" ? 125 : isVerticalCardListView! ? 118 : 110 : 132,
+                bottom: placeSubTitle != "" ? destinationText != "" ? isCityDetail! ? 120 : 125 : isVerticalCardListView! ? 118 : 110 : 132,
                 left: selectedIndex == 0 ? 24 : 25,
                 child: placeTitleView()
             ),
             Positioned(
-              bottom: placeSubTitle != ""  ? 110 : 115,
+              // bottom: placeSubTitle != "" ? 110 : destinationText != "" ? 80 : 115,
+              bottom: placeSubTitle != "" ? isCityDetail! ? 85 : 110 : 115,
               left: selectedIndex == 0 ? 24 : 25,
-                child: destinationText != "" ? Row(
+                child: destinationText != "" || isCityAndDestinationListView!
+                    ? placeSubTitle != ""
+                    ? Row(
                   children: [
                     iconApps.iconImage(
                         imageUrl: iconApps.islandIcon,
@@ -226,15 +232,17 @@ class HomepageCommonImage extends StatelessWidget {
                         imageColor: appColors.white
                     ),
                     SizedBox(width: selectedIndex != 0 || isHorizontalViewCard!? 10 : 5,),
-                    Text(selectedIndex != 0 && destinationText != "" ? "${numberOfDestination!}+ " : "",
+                    Text(selectedIndex != 0 && destinationText != "" || isCityDetail! ? "${numberOfDestination!}+ " : "",
                         style: appStyles.commonSubTitleTextStyle(fontSize: 11,texColor: appColors.white)
                     ),
-                    Text( selectedIndex != 0
+                    Text( selectedIndex != 0 || isCityDetail!
                         ? destinationText! : "",
                       style: appStyles.commonSubTitleTextStyle(fontSize: 11),
                     ),
                   ],
-                ) : Container(),
+                )
+                    : Container()
+                    : Container(),
             ),
             Positioned(
                 right: 25,

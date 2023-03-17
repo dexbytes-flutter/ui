@@ -215,5 +215,6 @@
   "bookingSuccessTitleText" : "Booking Success !",
   "bookingSuccessSubTitleText" : "You have successfully created your booking.",
   "exploreHomeButtonText" : "Explore Home",
-  "exploreBeautyDestinationText" : "Explore beauty \ndestination in"
+  "exploreBeautyDestinationText" : "Explore beauty \ndestination in",
+  "topRecommendedCityTitleText" : "Top Recommended City"
 }

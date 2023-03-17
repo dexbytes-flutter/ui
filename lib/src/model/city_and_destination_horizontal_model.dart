@@ -22,41 +22,45 @@ final List<CityAndDestinationHorizontalModel> cityAndDestinationHorizontalList =
     cityAndDestinationSubList: [
       CityAndDestinationCardViewModel(
         imageUrl: "https://i2.wp.com/westpapuadaily.com/wp-content/uploads/2021/10/1057953_720.jpg?resize=678%2C509&ssl=1",
-        isBookmarked: false,
+        isBookmarked: true,
         placeName: "Bali",
         recommendationType: "Top Recommended",
         placeSubTitle: "Indonesia",
         numberOfDestination: 80,
         destinationText: "Destination",
+        rating: 4.9,
         flagUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
       ),
       CityAndDestinationCardViewModel(
         imageUrl: "https://i2.wp.com/westpapuadaily.com/wp-content/uploads/2021/10/1057953_720.jpg?resize=678%2C509&ssl=1",
-        isBookmarked: false,
+        isBookmarked: true,
         placeName: "Bali",
         recommendationType: "Top Recommended",
         placeSubTitle: "Indonesia",
         numberOfDestination: 80,
         destinationText: "Destination",
+        rating: 4.9,
         flagUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
       ),
       CityAndDestinationCardViewModel(
         imageUrl: "https://i2.wp.com/westpapuadaily.com/wp-content/uploads/2021/10/1057953_720.jpg?resize=678%2C509&ssl=1",
-        isBookmarked: false,
+        isBookmarked: true,
         placeName: "Bali",
         recommendationType: "Top Recommended",
         placeSubTitle: "Indonesia",
         numberOfDestination: 80,
+        rating: 4.9,
         destinationText: "Destination",
         flagUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
       ),
       CityAndDestinationCardViewModel(
         imageUrl: "https://i2.wp.com/westpapuadaily.com/wp-content/uploads/2021/10/1057953_720.jpg?resize=678%2C509&ssl=1",
-        isBookmarked: false,
+        isBookmarked: true,
         placeName: "Bali",
         recommendationType: "Top Recommended",
         placeSubTitle: "Indonesia",
         numberOfDestination: 80,
+        rating: 4.9,
         destinationText: "Destination",
         flagUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
       ),
@@ -70,37 +74,41 @@ final List<CityAndDestinationHorizontalModel> cityAndDestinationHorizontalList =
     cityAndDestinationSubList: [
       CityAndDestinationCardViewModel(
         imageUrl: "https://i2.wp.com/westpapuadaily.com/wp-content/uploads/2021/10/1057953_720.jpg?resize=678%2C509&ssl=1",
-        isBookmarked: false,
+        isBookmarked: true,
         placeName: "Bali",
         recommendationType: "Top Recommended",
         placeSubTitle: "Indonesia",
         numberOfDestination: 80,
         destinationText: "Destination",
+        rating: 4.9,
         flagUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
       ),
       CityAndDestinationCardViewModel(
         imageUrl: "https://i2.wp.com/westpapuadaily.com/wp-content/uploads/2021/10/1057953_720.jpg?resize=678%2C509&ssl=1",
-        isBookmarked: false,
+        isBookmarked: true,
         placeName: "Bali",
         recommendationType: "Top Recommended",
         placeSubTitle: "Indonesia",
         numberOfDestination: 80,
+        rating: 4.9,
         destinationText: "Destination",
         flagUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
       ),
       CityAndDestinationCardViewModel(
         imageUrl: "https://i2.wp.com/westpapuadaily.com/wp-content/uploads/2021/10/1057953_720.jpg?resize=678%2C509&ssl=1",
-        isBookmarked: false,
+        isBookmarked: true,
         placeName: "Bali",
         recommendationType: "Top Recommended",
         placeSubTitle: "Indonesia",
         numberOfDestination: 80,
+        rating: 4.9,
         destinationText: "Destination",
         flagUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
       ),
       CityAndDestinationCardViewModel(
         imageUrl: "https://i2.wp.com/westpapuadaily.com/wp-content/uploads/2021/10/1057953_720.jpg?resize=678%2C509&ssl=1",
-        isBookmarked: false,
+        isBookmarked: true,
+        rating: 4.9,
         placeName: "Bali",
         recommendationType: "Top Recommended",
         placeSubTitle: "Indonesia",
@@ -114,25 +122,27 @@ final List<CityAndDestinationHorizontalModel> cityAndDestinationHorizontalList =
 
 class CityAndDestinationCardViewModel{
   final String imageUrl;
-  final bool isBookmarked;
+  final double? rating;
+  final bool? isBookmarked;
   final String? recommendationType;
-  final int? numberOfDestination;
-  final String? destinationText;
   final String? placeName;
   final String? placeSubTitle;
-  final String flagUrl;
-  final double? rating;
+  final String? flagUrl;
+  final int? numberOfDestination;
+  final String? destinationText;
+  final bool? isVerticalCardListView;
 
   CityAndDestinationCardViewModel({
   required this.imageUrl,
-  required this.isBookmarked,
+  this.rating,
+  this.isBookmarked,
   this.recommendationType,
+  this.placeName,
+  this.placeSubTitle,
+  this.flagUrl,
   this.numberOfDestination,
   this.destinationText,
-    this.placeName,
-  this.placeSubTitle,
-  required this.flagUrl,
-    this.rating,
+  this.isVerticalCardListView,
   });
 }
 
@@ -146,7 +156,7 @@ final List<CityAndDestinationCardViewModel> cityAndDestinationViewList = [
       numberOfDestination: 80,
       destinationText: "Destination",
       flagUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
-    rating: null
+    rating: null,
   ),
   CityAndDestinationCardViewModel(
     imageUrl: "https://i2.wp.com/westpapuadaily.com/wp-content/uploads/2021/10/1057953_720.jpg?resize=678%2C509&ssl=1",

@@ -73,6 +73,8 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                     destinationText: "",
                     placeSubTitle: bookmarkList[index].placeSubTitle,
                     isVerticalCardListView: false,
+                    isCityAndDestinationListView: false,
+                    isCityDetail: false,
                     onButtonClickCallback: (){
                       setState(() {
                         // imageUrl = verticalTitleSubTitleList[selectedIndex].imageUrl;

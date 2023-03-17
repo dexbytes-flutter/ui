@@ -3,6 +3,7 @@ import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart'
 import 'package:base_flutter_app/src/all_file_import/app_widget_files_link.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
 import 'package:base_flutter_app/src/model/home_screen_verticle_title_list.dart';
+import 'package:base_flutter_app/src/pages/city_detail_screen.dart';
 import 'package:base_flutter_app/src/widgets/appbar/home_screen_app_bar.dart';
 import 'package:base_flutter_app/src/widgets/common_vertical_list.dart';
 import 'package:base_flutter_app/src/widgets/home_page_common_image.dart';
@@ -124,12 +125,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 setState(() {
                   imageUrl = verticalTitleSubTitleList[selectedIndex].imageUrl;
                 });
-                Navigator.push(
-                  MainAppBloc.getDashboardContext,
-                  SlideRightRoute(
-                      widget: DestinationDetailedCardView(
-                          detailImageUrl: imageUrl)),
-                );
+                if(selectedIndex == 0){
+                  Navigator.push(
+                    MainAppBloc.getDashboardContext,
+                    SlideRightRoute(
+                        widget: DestinationDetailedCardView(
+                            detailImageUrl: imageUrl)),
+                  );
+                }else{
+                  Navigator.push(
+                    MainAppBloc.getDashboardContext,
+                    SlideRightRoute(
+                        widget: CityDetailScreen()
+                    ),
+                  );
+                }
               },
               child: Container(
                   margin: EdgeInsets.only(right: 15),
@@ -146,6 +156,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     destinationText: verticalTitleSubTitleList[index].destinationText,
                     placeFlag: verticalTitleSubTitleList[index].flagUrl,
                     isVerticalCardListView: false,
+                    isCityAndDestinationListView: false,
+                    isCityDetail: false,
                     onButtonClickCallback: (){
                       setState(() {
                         imageUrl = verticalTitleSubTitleList[selectedIndex].imageUrl;

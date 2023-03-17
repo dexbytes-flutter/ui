@@ -49,7 +49,7 @@ class _CityDetailScreenState extends State<CityDetailScreen> {
           ),
           Positioned(
             bottom: 140,
-            child: Text("Top Recommended City",
+            child: Text(appString.trans(context, appString.topRecommendedCityTitleText),
                 style: appStyles.commonSubTitleTextStyle(fontSize: 11, fontWeight: FontWeight.w900)
             ),
           ),
@@ -196,6 +196,7 @@ class _CityDetailScreenState extends State<CityDetailScreen> {
                     placeFlag: cityAndDestinationSubList[index].flagUrl,
                     isCityAndDestinationListView: true,
                     imageWidth: appDimens.widthFullScreen()/1.75,
+                    isCityDetail: true,
                     onButtonClickCallback: (){
                       setState(() {
                         // imageUrl = verticalTitleSubTitleList[selectedIndex].imageUrl;
