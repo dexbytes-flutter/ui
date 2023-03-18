@@ -20,7 +20,7 @@ class SearchScreenCommonImage extends StatelessWidget {
   final int? numberOfDestination;
   final String? destinationText;
   final String? placeSubTitle;
-  final bool? isCityAndDestinationListView;
+  final bool? isCityScreen;
   final bool? isStaticCalenderIcon;
   final String? bookingStatus;
   SearchScreenCommonImage({
@@ -39,7 +39,7 @@ class SearchScreenCommonImage extends StatelessWidget {
     this.numberOfDestination,
     this.destinationText,
     this.placeSubTitle,
-    this.isCityAndDestinationListView,
+    this.isCityScreen,
     this.isStaticCalenderIcon,
     this.bookingStatus,
   }) : super(key: key);

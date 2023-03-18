@@ -159,7 +159,7 @@ class _CityDetailScreenState extends State<CityDetailScreen> {
           cityAndDestinationHorizontalList[selectedIndex].cityAndDestinationSubList;
       return Container(
         width: appDimens.widthFullScreen(),
-        height: appDimens.heightFullScreen() / 2.38,
+        height: appDimens.heightFullScreen() / 2.28,
         margin: EdgeInsets.only(top: 10),
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
@@ -188,13 +188,14 @@ class _CityDetailScreenState extends State<CityDetailScreen> {
                     placeTitle: cityAndDestinationSubList[index].placeName,
                     placeSubTitle: cityAndDestinationSubList[index].placeSubTitle,
                     isHorizontalViewCard: false,
-                    isBookmarked: cityAndDestinationSubList[index].isBookmarked,
+                    isVerticalCardListView: false,
+                    isBookmarked: cityAndDestinationSubList[selectedIndex].isBookmarked,
                     rating: cityAndDestinationSubList[index].rating,
                     recommendationType: cityAndDestinationSubList[index].recommendationType,
                     numberOfDestination: cityAndDestinationSubList[index].numberOfDestination,
                     destinationText: cityAndDestinationSubList[index].destinationText,
                     placeFlag: cityAndDestinationSubList[index].flagUrl,
-                    isCityAndDestinationListView: true,
+                    isCityScreen: false,
                     imageWidth: appDimens.widthFullScreen()/1.75,
                     isCityDetail: true,
                     onButtonClickCallback: (){

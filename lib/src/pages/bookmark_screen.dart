@@ -73,7 +73,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                     destinationText: "",
                     placeSubTitle: bookmarkList[index].placeSubTitle,
                     isVerticalCardListView: false,
-                    isCityAndDestinationListView: false,
+                    isCityScreen: false,
                     isCityDetail: false,
                     onButtonClickCallback: (){
                       setState(() {

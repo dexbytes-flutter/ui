@@ -156,7 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     destinationText: verticalTitleSubTitleList[index].destinationText,
                     placeFlag: verticalTitleSubTitleList[index].flagUrl,
                     isVerticalCardListView: false,
-                    isCityAndDestinationListView: false,
+                    isCityScreen: false,
                     isCityDetail: false,
                     onButtonClickCallback: (){
                       setState(() {
