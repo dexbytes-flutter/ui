@@ -78,6 +78,7 @@ class _SelectPaymentScreenState extends State<SelectPaymentScreen> {
                   cardTypeLogo: paymentCardDetailList[index].cardTypeLogo,
                   paymentCardSelect: isCardSelected,
                   selectedIndex: selectedIndex,
+                  logoColor: paymentCardDetailList[index].logoColor,
                   index: index,
                 )
             ),
@@ -88,60 +89,30 @@ class _SelectPaymentScreenState extends State<SelectPaymentScreen> {
 
     // Total text
     totalAmountView(){
-      return Padding(
-        padding: const EdgeInsets.only(bottom: 50),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              appString.trans(context, appString.totalText),
-              style: appStyles.commonSubTitleTextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w500,
-              ),
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            appString.trans(context, appString.totalText),
+            style: appStyles.commonSubTitleTextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w500,
             ),
-            Text(
-              "\$ 360.0",
-              style: appStyles.commonSubTitleTextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600, texColor: appColors.white
-              ),
+          ),
+          Text(
+            "\$ 360.0",
+            style: appStyles.commonSubTitleTextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w600, texColor: appColors.white
             ),
-          ],
-        ),
+          ),
+        ],
       );
     }
 
-    // bottom view
-    /*bottomButtonView(){
-      return Column(
-        children: [
-
-          SizedBox(
-            height: 20,
-          ),
-          CommonButton(
-            buttonName: appString.trans(context, appString.confirmBookingButtonText),
-            buttonHeight: 50,
-            buttonBorderRadius: 18,
-            isBottomMarginRequired: false,
-            textStyle: appStyles.buttonNameStyle(),
-            backCallback: () {
-              if(isCardSelected){
-                Navigator.push(
-                  context,
-                  SlideRightRoute(widget: BookingSuccessfulScreen()),
-                );
-              }
-            },
-          )
-        ],
-      );
-    }*/
-
     return ContainerFirst(
       appBarHeight: 56,
-      isOverLayStatusBar: true,
+      isOverLayStatusBar: false,
       isOverLayAppBar: false,
       isSingleChildScrollViewNeed: true,
       isFixedDeviceHeight: false,
@@ -150,40 +121,45 @@ class _SelectPaymentScreenState extends State<SelectPaymentScreen> {
         isHideRightIcon: true,
       ),
       containChild: Padding(
-        padding: const EdgeInsets.only(left: 20,right: 20,top: 10),
+        padding: const EdgeInsets.only(left: 20,right: 20,),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             screenTitleText(),
-            // SizedBox(height: 25,),
             paymentCardView(),
             SizedBox(height: 20,),
-            totalAmountView(),
-            SizedBox(height: 45,),
-            // bottomButtonView()
           ],
         ),
       ),
       bottomMenuView: Align(
           alignment: Alignment.bottomCenter,
           child: Container(
+            height: appDimens.heightFullScreen()/6.5,
+            width: appDimens.widthFullScreen(),
             color: appColors.appBgColorJungleGreen,
             padding: const EdgeInsets.only(bottom: 20,left: 20,right: 20),
-            child: CommonButton(
-              buttonName: appString.trans(context, appString.confirmBookingButtonText),
-              buttonHeight: 50,
-              buttonBorderRadius: 18,
-              isBottomMarginRequired: false,
-              textStyle: appStyles.buttonNameStyle(),
-              backCallback: () {
-                if(isCardSelected){
-                  Navigator.push(
-                    context,
-                    SlideRightRoute(widget: BookingSuccessfulScreen()),
-                  );
-                }
-              },
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                totalAmountView(),
+                SizedBox(height: 20,),
+                CommonButton(
+                  buttonName: appString.trans(context, appString.confirmBookingButtonText),
+                  buttonHeight: 50,
+                  buttonBorderRadius: 18,
+                  isBottomMarginRequired: false,
+                  textStyle: appStyles.buttonNameStyle(),
+                  backCallback: () {
+                    if(isCardSelected){
+                      Navigator.push(
+                        context,
+                        SlideRightRoute(widget: BookingSuccessfulScreen()),
+                      );
+                    }
+                  },
+                ),
+              ],
             ),
           )
       ),

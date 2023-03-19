@@ -68,10 +68,10 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
               child: child!,
               data: ThemeData().copyWith(
                   colorScheme: ColorScheme.dark(
-                      primary: appColors.buttonColor2,
+                      primary: appColors.appBgColorJungleGreen,
                       onSurface: appColors.black,
                       onPrimary: appColors.white,
-                      surface: appColors.buttonColor2,
+                      surface: appColors.appBgColorJungleGreen,
                       brightness: Brightness.light
                   ),
                   dialogBackgroundColor: appColors.white
@@ -123,7 +123,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
         hintStyle: appStyles.commonTitleStyle(fontSize: 14,texColor: appColors.textColor,fontWeight: FontWeight.w400),
         textStyle: appStyles.commonTitleStyle(fontWeight: FontWeight.w500,fontSize: 14,
             texColor: appColors.white ),
-        contentPadding: EdgeInsets.only(left: 20,right: 20),
+        contentPadding: EdgeInsets.only(left: 20),
         inputFieldSuffixIcon: IconButton(
           icon: Icon(
             Icons.keyboard_arrow_down,

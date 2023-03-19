@@ -1,5 +1,6 @@
 import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart';
 import 'package:base_flutter_app/src/image_res/iconApp.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CustomPaymentCardView extends StatelessWidget {
@@ -11,6 +12,7 @@ class CustomPaymentCardView extends StatelessWidget {
   final bool paymentCardSelect;
   final int selectedIndex;
   final int index;
+  final Color? logoColor;
 
   const CustomPaymentCardView(
       {Key? key,
@@ -21,7 +23,8 @@ class CustomPaymentCardView extends StatelessWidget {
         required this.cardTypeLogo,
         required this.paymentCardSelect,
         required this.selectedIndex,
-        required this.index
+        required this.index,
+        this.logoColor
       })
       : super(key: key);
   @override
@@ -31,7 +34,7 @@ class CustomPaymentCardView extends StatelessWidget {
     appDimens.appDimensFind(context: context);
 
     return Container(
-      height: appDimens.heightFullScreen()/4,
+      height: appDimens.heightFullScreen()/5.2,
       width: appDimens.widthFullScreen(),
       padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
@@ -44,23 +47,25 @@ class CustomPaymentCardView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(appString.trans(context, appString.balancePaymentCardText),
-            style: appStyles.commonSubTitleTextStyle(fontSize: 14,texColor: appColors.buttonBgColor,
-                fontWeight: FontWeight.w500),
+            style: appStyles.commonSubTitleTextStyle(fontSize: 11,texColor: appColors.buttonBgColor,
+                fontWeight: FontWeight.w700),
           ),
-          SizedBox(height: 5,),
+          SizedBox(height: 2,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text("\$ $balanceAmount",
-                style: appStyles.commonTitleStyle(fontSize: 24,fontWeight: FontWeight.w500,
+                style: appStyles.commonTitleStyle(fontSize: 20,fontWeight: FontWeight.w500,
                 ),),
-              iconApps.iconImage(
-                  imageUrl: cardTypeLogo,
-                  iconSize: Size(35, 35)
+              CachedNetworkImage(
+                imageUrl: cardTypeLogo,
+                height: 30,
+                width: 30,
+                color: logoColor != null? appColors.white : null,
               )
             ],),
-          SizedBox(height: 30,),
+          SizedBox(height: 35,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
