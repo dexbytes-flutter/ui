@@ -129,7 +129,6 @@ class _TermsOfServicesScreenState extends State<TermsOfServicesScreen> {
         isSingleChildScrollViewNeed: true,
         contextCurrentView: context,
         appBar: CommonAppBar(
-          leftIconMargin: EdgeInsets.only(top: 22, left: 20),
           isHideRightIcon: true,
         ),
         containChild: Column(

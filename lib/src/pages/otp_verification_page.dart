@@ -140,7 +140,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
             ).createShader(bound),
             blendMode: BlendMode.dstIn,
             child: CachedNetworkImage(
-              height: appDimens.heightFullScreen() / 2.35,
+              height: appDimens.heightFullScreen() / 1.8,
               width: appDimens.widthFullScreen(),
               imageUrl:
               "https://www.plataran.com/wp-content/uploads/2020/04/plataran-bimonthly-may-june-2019-lr-15_0ztqu.jpg",
@@ -286,12 +286,13 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     }
 
     return ContainerFirst(
-      appBarHeight: 56,
+      appBarHeight: 85,
       isOverLayStatusBar: true,
       isOverLayAppBar: true,
       isSingleChildScrollViewNeed: false,
       contextCurrentView: context,
       appBar:  CommonAppBar(
+        appBarRowMargin: EdgeInsets.only(top: 50,left: 20,right: 20),
         isHideRightIcon: true,
       ),
       containChild: Column(

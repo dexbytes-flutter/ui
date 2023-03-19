@@ -6,32 +6,23 @@ import 'package:flutter/material.dart';
 class CommonAppBar extends StatelessWidget {
   final bool? isHideLeftIcon;
   final bool? isHideRightIcon;
-  final String title;
   final Color? appBarColor;
-  final EdgeInsetsGeometry? leftIconMargin;
-  final EdgeInsetsGeometry? textAndRightIconMargin;
   final bool? isBookMarked;
   final EdgeInsetsGeometry? appBarRowMargin;
-  final bool? isShowTitleWithIcon;
-  final TextStyle? appBarTitleTextStyle;
   const CommonAppBar(
       {Key? key,
       this.isHideLeftIcon = false,
-      this.title = "",
       this.appBarColor,
-      this.leftIconMargin,
-      this.textAndRightIconMargin,
       this.isHideRightIcon = false,
       this.isBookMarked,
       this.appBarRowMargin,
-      this.isShowTitleWithIcon,
-      this.appBarTitleTextStyle})
+      })
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+      margin: appBarRowMargin ?? EdgeInsets.symmetric(horizontal: 20,vertical: 5),
       color: Colors.transparent,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,7 +34,6 @@ class CommonAppBar extends StatelessWidget {
               FocusScope.of(context).unfocus();
             },
             child: Container(
-              margin: leftIconMargin ?? EdgeInsets.zero,
               child: iconApps.iconImage(
                 imageUrl: iconApps.leftArrow,
                 iconSize: Size(28, 28),

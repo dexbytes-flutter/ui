@@ -480,13 +480,10 @@ class _SignInScreenState extends State<SignInScreen> {
     }
 
     return ContainerFirst(
-      appBarHeight: 56,
+      appBarHeight: -1,
       isOverLayStatusBar: true,
       isOverLayAppBar: true,
       isSingleChildScrollViewNeed: false,
-      appBar: CommonAppBar(
-        isHideRightIcon: true,
-      ),
       contextCurrentView: context,
       containChild: Column(
         children: [

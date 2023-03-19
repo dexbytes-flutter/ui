@@ -132,19 +132,21 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
 
 
     return ContainerFirst(
-      appBarHeight: 56,
+      appBarHeight: 85,
       isOverLayStatusBar: true,
       isSingleChildScrollViewNeed: false,
       contextCurrentView: context,
       appBar: CommonAppBar(
+        appBarRowMargin: EdgeInsets.only(top: 50,left: 20,right: 20),
         isHideRightIcon: true,
       ),
       containChild: Container(
-        margin: const EdgeInsets.only(left: 20,right: 20,top: 30),
+        margin: const EdgeInsets.only(left: 20,right: 20,),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(height: 30,),
             Text(appString.trans(context, appString.verifyYourIdentityText),
                 style: appStyles.commonTitleStyle(fontSize: 30)),
             SizedBox(height: 15,),
@@ -159,34 +161,39 @@ class _VerificationCodeScreenState extends State<VerificationCodeScreen> {
             otpErrorMsg,
             SizedBox(height: 5,),
             Center(child: didNotReceivedCode()),
-            SizedBox(height: 230,),
-            CommonButton(
-              buttonName: appString.trans(context, appString.verificationText),
-              buttonHeight: 50,
-              buttonBorderRadius: 18,
-              isBottomMarginRequired: false,
-              textStyle: appStyles.buttonNameStyle(),
-              backCallback: () {
-                if (verificationCodeStr != '' && verificationCodeStr.trim().length == otpLength) {
-                  setState(() {
-                    errorMessage = '';
-                    Navigator.of(context).pop();
-                    Navigator.push(
-                      context,
-                      SlideRightRoute(widget: ResetPasswordScreen()),
-                    );
-                  });
-                }else{
-                  setState(() {
-                    if( verificationCodeStr == '')
-                      errorMessage = appString.trans(context, appString.pleaseEnterOtp);
-                    else
-                      errorMessage = appString.trans(context, appString.pleaseEnterCorrectOtp);
-                  });
-                }
-              },
-            ),
           ],
+        ),
+      ),
+      bottomMenuView: Align(
+        alignment: Alignment.bottomCenter,
+        child: Padding(
+          padding: const EdgeInsets.only(bottom: 20,left: 20,right: 20),
+          child: CommonButton(
+            buttonName: appString.trans(context, appString.verificationText),
+            buttonHeight: 50,
+            buttonBorderRadius: 18,
+            isBottomMarginRequired: false,
+            textStyle: appStyles.buttonNameStyle(),
+            backCallback: () {
+              if (verificationCodeStr != '' && verificationCodeStr.trim().length == otpLength) {
+                setState(() {
+                  errorMessage = '';
+                  Navigator.of(context).pop();
+                  Navigator.push(
+                    context,
+                    SlideRightRoute(widget: ResetPasswordScreen()),
+                  );
+                });
+              }else{
+                setState(() {
+                  if( verificationCodeStr == '')
+                    errorMessage = appString.trans(context, appString.pleaseEnterOtp);
+                  else
+                    errorMessage = appString.trans(context, appString.pleaseEnterCorrectOtp);
+                });
+              }
+            },
+          ),
         ),
       ),
     );

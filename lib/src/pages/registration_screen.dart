@@ -568,10 +568,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     }
 
     return ContainerFirst(
-      appBarHeight: 56,
+      appBarHeight: 85,
       isOverLayStatusBar: true,
       isOverLayAppBar: true,
       appBar: CommonAppBar(
+        appBarRowMargin: EdgeInsets.only(top: 50,left: 20,right: 20),
         isHideRightIcon: true,
       ),
       contextCurrentView: context,

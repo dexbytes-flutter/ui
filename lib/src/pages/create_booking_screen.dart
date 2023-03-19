@@ -21,13 +21,45 @@ class CreateBookingScreen extends StatefulWidget {
 }
 
 class _CreateBookingScreenState extends State<CreateBookingScreen> {
-  DateTime? startDateCheck;
-  DateTime? endDateCheck;
+
+  bool isStartDateSelected = false;
+  DateTime? newDate;
+
+  @override
+  void initState() {
+    controllers['startDateController'] = TextEditingController();
+    controllers['endDateController'] = TextEditingController();
+    super.initState();
+  }
+
+@override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    controllers['startDateController']?.dispose();
+    controllers['endDateController']?.dispose();
+  }
   int _value = 3;
+
+  Map<String, TextEditingController> controllers = {
+    'startDateController': new TextEditingController(),
+    'endDateController': new TextEditingController(),
+  };
+
+  Map<String, FocusNode> focusNodes = {
+    'startDateController': new FocusNode(),
+    'endDateController': new FocusNode(),
+  };
+
+  Map<String, String> errorMessages = {
+    'startDateController': "",
+    'endDateController': "",
+  };
 
   @override
   Widget build(BuildContext context) {
-      // Date drop down view
+
+    // Date drop down view
       dateDropDown() {
       return Row(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -35,13 +67,28 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
           Container(
               width: 155,
               child: DatePickerWidget(
+                controllerT: controllers['startDateController'],
+                focusNode: focusNodes['startDateController'],
+                errorMessages: errorMessages['startDateController']?.toString()??'',
                 hintText: appString.trans(context, appString.startDateText),
+                isStartDateSelected: true,
                 selectedValue: (value) {
                   print("value $value");
-                  setState(() {
-                    startDateCheck = value;
-                  });
-                  print("value $startDateCheck");
+                    if(controllers['startDateController']!.text != ""){
+                      setState(() {
+                        isStartDateSelected = true;
+                        controllers['endDateController'] = controllers['startDateController']!;
+                        // endDate = value;
+                      });
+                    } else{
+                      setState(() {
+                        isStartDateSelected = false;
+                        controllers['startDateController']!.clear();
+                        // endDate = value;
+                      });
+                    }
+
+                  // print("value $startDate");
                 },
               )),
           SizedBox(
@@ -50,13 +97,21 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
           Container(
               width: 155,
               child: DatePickerWidget(
+                controllerT: controllers['endDateController'],
+                focusNode: focusNodes['endDateController'],
+                errorMessages: errorMessages['endDateController']?.toString()??'',
                 hintText: appString.trans(context, appString.endDateText),
+                isStartDateSelected: isStartDateSelected,
                 selectedValue: (value) {
-                  print("value $value");
+                if(controllers['endDateController']!.text == ""){
                   setState(() {
-                    endDateCheck = value;
                   });
-                  print("value $endDateCheck");
+                } else{
+
+                }
+                print("value $value");
+
+                  // print("value $endDate");
                 },
               )),
         ],
@@ -144,26 +199,9 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
         );
       }
 
-      // Next button
-      nextButton(){
-        return CommonButton(
-          buttonName: appString.trans(context, appString.nextSmall),
-          buttonHeight: 50,
-          buttonBorderRadius: 18,
-          isBottomMarginRequired: false,
-          textStyle: appStyles.buttonNameStyle(),
-          backCallback: () {
-            Navigator.push(
-              context,
-              SlideRightRoute(widget: SelectPaymentScreen()),
-            );
-          },
-        );
-      }
-
     return ContainerFirst(
         appBarHeight: 56,
-        isOverLayStatusBar: true,
+        isOverLayStatusBar: false,
         isOverLayAppBar: false,
         isSingleChildScrollViewNeed: true,
         isFixedDeviceHeight: false,
@@ -172,7 +210,7 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
           isHideRightIcon: true,
         ),
         containChild: Padding(
-          padding: const EdgeInsets.only(left: 20, top: 10, right: 20),
+          padding: const EdgeInsets.only(left: 20,right: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -222,17 +260,37 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
               ),
               typeView(),
               SizedBox(height: 50,),
-              totalAmountView(),
-              // SizedBox(height: 20,),
-              // nextButton()
             ],
           ),
         ),
       bottomMenuView: Align(
-        alignment: Alignment.bottomCenter,
+          alignment: Alignment.bottomCenter,
           child: Container(
-            padding: const EdgeInsets.only(bottom: 30,left: 20,right: 20),
-            child: nextButton(),
+            height: appDimens.heightFullScreen()/6.5,
+            width: appDimens.widthFullScreen(),
+            color: appColors.appBgColorJungleGreen,
+            padding: const EdgeInsets.only(bottom: 20,left: 20,right: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                totalAmountView(),
+                SizedBox(height: 20,),
+                // Next button
+                CommonButton(
+                  buttonName: appString.trans(context, appString.nextSmall),
+                  buttonHeight: 50,
+                  buttonBorderRadius: 18,
+                  isBottomMarginRequired: false,
+                  textStyle: appStyles.buttonNameStyle(),
+                  backCallback: () {
+                    Navigator.push(
+                      context,
+                      SlideRightRoute(widget: SelectPaymentScreen()),
+                    );
+                  },
+                ),
+              ],
+            ),
           )
       ),
     );

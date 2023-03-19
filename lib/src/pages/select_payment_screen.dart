@@ -69,7 +69,7 @@ class _SelectPaymentScreenState extends State<SelectPaymentScreen> {
               });
             },
             child: Container(
-                margin: EdgeInsets.only(bottom: 15),
+                margin: EdgeInsets.only(bottom: 20),
                 child: CustomPaymentCardView(
                   balanceAmount: paymentCardDetailList[index].balanceAmount,
                   nameOnCard: paymentCardDetailList[index].nameOnCard,

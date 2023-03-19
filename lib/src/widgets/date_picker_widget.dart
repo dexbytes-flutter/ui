@@ -4,15 +4,32 @@ import 'package:base_flutter_app/src/image_res/iconApp.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-
 class DatePickerWidget extends StatefulWidget {
   final double errorHeight;
   final bool isShowMonthName;
   final String? hintText;
   final Widget? child;
   final Function? selectedValue;
+  final FocusNode? focusNode;
+  final String? errorMessages;
+  final TextEditingController? controllerT;
+  final bool? isStartDateSelected;
+  final Color? datePickerFieldIconColor;
 
-  const DatePickerWidget({Key? key, this.isShowMonthName = false, this.errorHeight = 20, this.child, this.hintText, this.selectedValue}) : super(key: key);
+  const DatePickerWidget({
+    Key? key, this.isShowMonthName = false,
+    this.errorHeight = 20,
+    this.child,
+    this.hintText,
+    this.selectedValue,
+    this.focusNode,
+    this.controllerT,
+    this.errorMessages,
+    this.isStartDateSelected,
+    this.datePickerFieldIconColor
+  }) : super(key: key);
+
+
   @override
   _DatePickerWidgetState createState() => _DatePickerWidgetState();
 }
@@ -23,7 +40,7 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
   String getText() {
     // ignore: unnecessary_null_comparison
     if (date == null) {
-      return 'Select Date of Birth';
+      return 'Select start date';
     } else {
       return widget.isShowMonthName
           ? DateFormat('dd MMMM, yyyy').format(date)
@@ -33,19 +50,6 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
     }
   }
 
-  Map<String, TextEditingController> controllers = {
-    'dateOfBirth': new TextEditingController(),
-  };
-
-  Map<String, FocusNode> focusNodes = {
-
-    'dateOfBirth': new FocusNode(),
-  };
-
-  Map<String, String> errorMessages = {
-
-    'dateOfBirth': "",
-  };
 
 
   void pickDate(BuildContext context) async {
@@ -80,12 +84,27 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
         }
     );
 
-    if (newDate == null) return controllers['dateOfBirth']?.clear();
+     if (newDate == null){
+       /*setState(() {
+         date = newDate!;
+         widget.controllerT!.text = getText().toString();
+         widget.selectedValue!.call(date);
+       });*/
+       return widget.controllerT!.clear();
+     } else{
+       setState(() {
+         date = newDate;
+         widget.controllerT!.text = getText().toString();
+         widget.selectedValue!.call(date);
+       });
+     }
+
+   /* if (newDate == null) return controllers['dateTextFieldController']?.clear();
     setState(() {
       date = newDate;
-      controllers['dateOfBirth']?.text = getText().toString();
+      controllers['dateTextFieldController']?.text = getText().toString();
       widget.selectedValue!.call(date);
-    });
+    });*/
     // setState(() => date = newDate
     // );
   }
@@ -96,15 +115,15 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
     return InkWell(
       onTap: ()
       {
-        pickDate(context);
-        print(controllers['dateOfBirth']?.text);
+        if(widget.isStartDateSelected!) pickDate(context);
+        // print(controllers['dateTextFieldController']?.text);
 
       },
       child: CommonTextFieldWithError(
-        focusNode: focusNodes['dateOfBirth'],
+        focusNode: widget.focusNode!,
         isShowBottomErrorMsg: true,
-        errorMessages: errorMessages['dateOfBirth']?.toString()??'',
-        controllerT: controllers['dateOfBirth'],
+        errorMessages: widget.errorMessages ?? '',
+        controllerT: widget.controllerT,
         borderRadius: 12,
         inputHeight: 35,
         autoFocus: true,
@@ -127,17 +146,17 @@ class _DatePickerWidgetState extends State<DatePickerWidget> {
         inputFieldSuffixIcon: IconButton(
           icon: Icon(
             Icons.keyboard_arrow_down,
-                color: appColors.white,
+                color: widget.isStartDateSelected!? appColors.white : appColors.iconColorGrey,
           ),
           // icon: Icon(CupertinoIcons.calendar_today),
           onPressed: (){},
         ),
         onTextChange: (value) {
+
           // _checkName(value, 'address', onchange: true);
         },
         onEndEditing: (value) {
-          // _checkName(value, 'dateOfBirth');
-          FocusScope.of(context).requestFocus(focusNodes['dateOfBirth']);
+          // _checkName(value, 'dateTextFieldController');
         },
       ),
     );

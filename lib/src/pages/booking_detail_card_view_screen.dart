@@ -366,12 +366,13 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
       }
 
     return ContainerFirst(
-        appBarHeight: 56,
+        appBarHeight: 85,
         isOverLayStatusBar: true,
         isOverLayAppBar: true,
         isSingleChildScrollViewNeed: false,isFixedDeviceHeight: false,
         contextCurrentView: context,
         appBar: CommonAppBar(
+          appBarRowMargin: EdgeInsets.only(top: 52,left: 20,right: 20),
           isHideRightIcon: false,
           isBookMarked: widget.isBookMarked,
         ),

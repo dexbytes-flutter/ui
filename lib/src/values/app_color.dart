@@ -182,6 +182,7 @@ class AppColors {
 
   Color circleColor = const Color(0xFF003071);
   Color iconColor = const Color(0xFF726344);
+  Color iconColorGrey = const Color(0xFF757575);
   Color iconColor1 = const Color(0xFFAEABA0);
   Color BoxBtextorderColor = const Color(0xFFE5E5E5);
 

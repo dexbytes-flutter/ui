@@ -317,48 +317,52 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 },
               ),
             ),
-            SizedBox(height: 195,),
-            Container(
-              child: CommonButton(
-                buttonName: appString.trans(context, appString.updatePasswordButtonText),
-                buttonHeight: 50,
-                buttonBorderRadius: 18,
-                isBottomMarginRequired: false,
-                textStyle: appStyles.buttonNameStyle(),
-                backCallback: () {
-                  if (_validateFields(isButtonClicked: true)) {
-                    // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
-                    //   return OtpVerificationScreen(
-                    //     isSignUpScreen: this.isSignUpScreen,
-                    //   );
-                    // }), (route) => false);
-                    Navigator.push(
-                      context,
-                      SlideRightRoute(widget: SignInScreen()),
-                    );
-                  }
-                },
-              ),
-            ),
+
           ],
         ),
       );
     }
 
     return ContainerFirst(
-        appBarHeight: 56,
+        appBarHeight: 85,
         isOverLayStatusBar: true,
-        statusBarColor: Colors.white,
         isSingleChildScrollViewNeed: false,
         contextCurrentView: context,
         appBar: CommonAppBar(
+          appBarRowMargin: EdgeInsets.only(top: 50,left: 20,right: 20),
           isHideRightIcon: true,
         ),
         containChild: Column(
           children: [
             screenTitle(),
           ],
-        )
+        ),
+      bottomMenuView: Align(
+        alignment: Alignment.bottomCenter,
+        child: Container(
+          padding: EdgeInsets.only(bottom: 20,right: 20,left: 20),
+          child: CommonButton(
+            buttonName: appString.trans(context, appString.updatePasswordButtonText),
+            buttonHeight: 50,
+            buttonBorderRadius: 18,
+            isBottomMarginRequired: false,
+            textStyle: appStyles.buttonNameStyle(),
+            backCallback: () {
+              if (_validateFields(isButtonClicked: true)) {
+                // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
+                //   return OtpVerificationScreen(
+                //     isSignUpScreen: this.isSignUpScreen,
+                //   );
+                // }), (route) => false);
+                Navigator.push(
+                  context,
+                  SlideRightRoute(widget: SignInScreen()),
+                );
+              }
+            },
+          ),
+        ),
+      ),
     );
   }
 }
