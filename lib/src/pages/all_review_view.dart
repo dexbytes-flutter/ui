@@ -6,15 +6,15 @@ import 'package:flutter/material.dart';
 
 import '../widgets/appbar/common_app_bar.dart';
 
-class ReviewViewAllScreen extends StatefulWidget {
+class AllReviewScreen extends StatefulWidget {
 
-  const ReviewViewAllScreen({Key? key}) : super(key: key);
+  const AllReviewScreen({Key? key}) : super(key: key);
 
   @override
-  State<ReviewViewAllScreen> createState() => _ReviewViewAllScreenState();
+  State<AllReviewScreen> createState() => _AllReviewScreenState();
 }
 
-class _ReviewViewAllScreenState extends State<ReviewViewAllScreen> {
+class _AllReviewScreenState extends State<AllReviewScreen> {
 
   bool isMore = true;
 
