@@ -71,30 +71,30 @@ class _BookListTileScreenState extends State<BookListTileScreen> {
                 child: GestureDetector(
                   onTap: (){
                     setState(() {
-                      imageUrl = bookingListPlaceImagesList[index].imageUrl;
-                      isBookMarked = bookingListPlaceImagesList[index].isBookmarked;
-                      locationName = bookingListPlaceImagesList[index].title;
+
                     });
                     Navigator.push(context, SlideRightRoute(
                       widget: BookingDetailCardViewScreen(
-                        isBookMarked: isBookMarked,
-                        imageUrl: imageUrl,
-                        locationName: locationName,
+                        isBookMarked: bookingListPlaceImagesList[index].isBookmarked,
+                        imageUrl: bookingListPlaceImagesList[index].imageUrl,
+                        locationName: bookingListPlaceImagesList[index].placeName,
+                        placeSubTitle: bookingListPlaceImagesList[index].placeSubTitle,
+                        placeFlag: bookingListPlaceImagesList[index].placeSubTitleFlagIcon,
+                        date: bookingListPlaceImagesList[index].bookingDate,
+                        rating: bookingListPlaceImagesList[index].rating,
                       )
                     ));
                   },
                   child: SearchScreenCommonImage(
                     imageUrl: bookingListPlaceImagesList[index].imageUrl,
-                    placeTitle: bookingListPlaceImagesList[index].title,
-                    placeSubTitle: bookingListPlaceImagesList[index].subTitle,
-                    countryTitle: bookingListPlaceImagesList[index].countryTitle,
+                    placeTitle: bookingListPlaceImagesList[index].placeName,
+                    placeSubTitle: bookingListPlaceImagesList[index].bookingDate,
                     isStaticCalenderIcon: true,
+                    rating: bookingListPlaceImagesList[index].rating,
                     isBookmarked: bookingListPlaceImagesList[index].isBookmarked,
                     bookingStatus: bookingListPlaceImagesList[index].bookingStatus,
                     recommendationType: bookingListPlaceImagesList[index].recommendation,
-                    imageHeight: appDimens.heightFullScreen()/4,
-                    imageWidth: appDimens.widthFullScreen()/1.10,
-                    placeFlag: "",
+                    placeFlag: bookingListPlaceImagesList[index].placeSubTitleFlagIcon,
 
                   ),
                 ));

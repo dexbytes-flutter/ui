@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 class SearchScreenCommonImage extends StatelessWidget {
   final String? imageUrl;
   final String? placeTitle;
-  final String? countryTitle;
   late final int? selectedIndex;
   final bool? isHorizontalViewCard;
   final bool? isBookmarked;
@@ -27,7 +26,6 @@ class SearchScreenCommonImage extends StatelessWidget {
     Key? key,
     this.imageUrl,
     this.placeTitle,
-    this.countryTitle,
     this.selectedIndex,
     this.isHorizontalViewCard,
     this.isBookmarked,
@@ -61,7 +59,7 @@ class SearchScreenCommonImage extends StatelessWidget {
                 iconSize: Size(10, 10)
             ),
             SizedBox(width: 5,),
-            Text("4.9",
+            Text("$rating",
               style: appStyles.commonSubTitleTextStyle(texColor: appColors.buttonBgColor,fontWeight: FontWeight.w500,fontSize: 10),)
           ],
         ),

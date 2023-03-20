@@ -13,11 +13,19 @@ class BookingDetailCardViewScreen extends StatefulWidget {
   final bool? isBookMarked;
   final String? imageUrl;
   final String locationName;
+  final String placeSubTitle;
+  final String placeFlag;
+  final String date;
+  final double rating;
   const BookingDetailCardViewScreen({
     Key? key,
     this.isBookMarked = false,
     this.imageUrl,
-    required this.locationName
+    required this.locationName,
+    required this.placeSubTitle,
+    required this.placeFlag,
+    required this.date,
+    required this.rating
   }) : super(key: key);
 
   @override
@@ -68,7 +76,7 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
                           iconSize: Size(14, 14)
                       ),
                       SizedBox(width: 5,),
-                      Text("4.9",
+                      Text("${widget.rating}",
                         style: appStyles.commonSubTitleTextStyle(texColor: appColors.buttonBgColor,fontWeight: FontWeight.w500,fontSize: 15),)
                     ],
                   ),
@@ -97,7 +105,8 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(5),
                     child: CachedNetworkImage(
-                      imageUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
+                      // imageUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
+                      imageUrl: widget.placeFlag,
                       fit: BoxFit.cover,
                       height: 12,
                       width: 12,
@@ -105,7 +114,7 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
                   ),
                 ),
                 SizedBox(width: 10,),
-                Text("Magelang, Indonesia",
+                Text(widget.placeSubTitle,
                   style: appStyles.commonSubTitleTextStyle(fontSize: 11),
                 )
               ],
@@ -119,67 +128,6 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
                 ),
               )
           ),
-        /*  Positioned(
-            top: 160,
-            child: Text(widget.locationName,
-            softWrap: true,
-            textAlign: TextAlign.center,
-            style: appStyles.commonTitleStyle(
-              fontSize: 35
-            ),),
-          ),
-          Positioned(
-            top: 255,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: appColors.white),
-                      borderRadius: BorderRadius.circular(5)
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(5),
-                    child: CachedNetworkImage(
-                      imageUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
-                      fit: BoxFit.cover,
-                      height: 12,
-                      width: 12,
-                    ),
-                  ),
-                ),
-                SizedBox(width: 10,),
-                Text("Magelang, Indonesia",
-                style: appStyles.commonSubTitleTextStyle(fontSize: 11),
-                )
-              ],
-            ),
-          ),
-          Positioned(
-            top: 300,
-              child: Text(appString.trans(context, appString.bookingDetailsText),
-              style: appStyles.commonTitleStyle(fontSize: 15,
-              fontWeight: FontWeight.w600,texColor: appColors.buttonBgColor
-              ),
-              )
-          ),
-          Positioned(
-            bottom: 10,
-            left: 20,
-            right: 20,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(appString.trans(context, appString.startDateText),
-                  style: appStyles.commonTitleStyle( fontSize: 15,
-                      fontWeight: FontWeight.w500, texColor: appColors.textColor),
-                ),
-                Text("July 21 2021",
-                  style: appStyles.commonTitleStyle( fontSize: 15,
-                      fontWeight: FontWeight.w500, texColor: appColors.white),),
-              ],),
-          ),*/
         ],
       );
     }
@@ -223,6 +171,9 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
               SlideRightRoute(widget: BookingCancellationScreen(
                 imageUrl: widget.imageUrl!,
                 locationName: widget.locationName,
+                placeFlag: widget.placeFlag,
+                date: widget.date,
+                placeSubTitle: widget.placeSubTitle,
               )),
             );
           },

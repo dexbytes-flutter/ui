@@ -11,11 +11,17 @@ import 'book_list_tile_screen.dart';
 class BookingCancellationScreen extends StatefulWidget {
   final String imageUrl;
   final String locationName;
+  final String placeSubTitle;
+  final String placeFlag;
+  final String date;
 
   const BookingCancellationScreen({
     Key? key,
     required this.imageUrl,
-    required this.locationName
+    required this.locationName,
+    required this.placeFlag,
+    required this.date,
+    required this.placeSubTitle
   }) : super(key: key);
 
   @override
@@ -43,7 +49,6 @@ class _BookingCancellationScreenState extends State<BookingCancellationScreen> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(100),
                 child: CachedNetworkImage(
-                  // imageUrl: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQQ9j9GWnKtl9xJjLvEPREdCFlkLjl2XKmMdQKOAnnyLmCO_Moo",
                   imageUrl: widget.imageUrl,
                   fit: BoxFit.cover,
                   height: 130,
@@ -74,7 +79,8 @@ class _BookingCancellationScreenState extends State<BookingCancellationScreen> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(5),
                       child: CachedNetworkImage(
-                        imageUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
+                        // imageUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
+                        imageUrl: widget.placeFlag,
                         fit: BoxFit.cover,
                         height: 12,
                         width: 12,
@@ -82,7 +88,7 @@ class _BookingCancellationScreenState extends State<BookingCancellationScreen> {
                     ),
                   ),
                   SizedBox(width: 5,),
-                  Text("Indonesia",
+                  Text(widget.placeSubTitle,
                     style: appStyles.commonSubTitleTextStyle(fontSize: 11,fontWeight: FontWeight.w500),
                   )
                 ],
@@ -104,7 +110,7 @@ class _BookingCancellationScreenState extends State<BookingCancellationScreen> {
                   iconSize: Size(12, 15)
               ),
               SizedBox(width: 5,),
-              Text("July 21 2023",
+              Text(widget.date,
               style: appStyles.commonSubTitleTextStyle(fontSize: 11,fontWeight: FontWeight.w600),
               )
             ],
