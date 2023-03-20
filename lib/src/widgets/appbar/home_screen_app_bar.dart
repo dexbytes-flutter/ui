@@ -28,7 +28,7 @@ class HomeScreenAppBar extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                padding: EdgeInsets.all(isHideBackIcon! ? 15: 10),
+                padding: EdgeInsets.all(isHideBackIcon! ? 12: 10),
                 decoration: BoxDecoration(
                   color: appColors.appBgColorLeanWhite,
                   borderRadius: BorderRadius.circular(isHideBackIcon! ? 20 : 15)

@@ -119,7 +119,7 @@ class _BookingCancellationScreenState extends State<BookingCancellationScreen> {
         isSingleChildScrollViewNeed: false,
         contextCurrentView: context,
         appBar: CommonAppBar(
-          appBarRowMargin: EdgeInsets.only(top: 50,left: 20, right: 20),
+          appBarRowMargin: EdgeInsets.only(top: 35,left: 20, right: 20),
           isHideRightIcon: true,
         ),
         containChild: Padding(
@@ -133,7 +133,7 @@ class _BookingCancellationScreenState extends State<BookingCancellationScreen> {
               SizedBox(height: 15,),
               Text(appString.trans(context, appString.bookingCancellationSubTitleText),
                   style: appStyles.commonSubTitleTextStyle(fontSize: 15)),
-              SizedBox(height: appDimens.heightFullScreen()/6.5,),
+              SizedBox(height: 50),
               centerView()
             ],
           ),

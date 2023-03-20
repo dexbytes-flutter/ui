@@ -109,7 +109,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
 
     return ContainerFirst(
-        appBarHeight: 56,
+        appBarHeight: 65,
         isOverLayStatusBar: false,
         isSingleChildScrollViewNeed: false,
         contextCurrentView: context,

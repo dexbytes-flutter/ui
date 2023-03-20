@@ -355,7 +355,7 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
         isSingleChildScrollViewNeed: false,isFixedDeviceHeight: false,
         contextCurrentView: context,
         appBar: CommonAppBar(
-          appBarRowMargin: EdgeInsets.only(top: 52,left: 20,right: 20),
+          appBarRowMargin: EdgeInsets.only(top: 35,left: 20,right: 20),
           isHideRightIcon: false,
           isBookMarked: widget.isBookMarked,
         ),
