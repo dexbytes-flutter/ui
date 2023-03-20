@@ -209,21 +209,22 @@ class HomepageCommonImage extends StatelessWidget {
 
             ),
             Positioned(
-                bottom: placeSubTitle != "" ? isCityDetail! ? selectedIndex == 1 ? 145 : 180 : 180 : 160,
+                // bottom: placeSubTitle != "" ? isCityDetail! ? selectedIndex == 3 ? 145 : 180 : 180 : 160,
+                bottom: destinationText == "" ? selectedIndex == 1? 150 : 192 : placeSubTitle != "" && destinationText != ""? 185 : 158,
                 left: 25,
                 child: Text(recommendationType!,
                   style: appStyles.commonSubTitleTextStyle(fontSize: 11),
                 )
             ),
             Positioned(
-                bottom: placeSubTitle != "" ? destinationText != "" ? isCityDetail! ? 120 : 105 : isVerticalCardListView! ? 118 : 90 : 110,
+                bottom: placeSubTitle != "" ? destinationText != "" ? 125 : isVerticalCardListView! ? 118 : 90 : 110,
                 left: selectedIndex == 0 ? 24 : 25,
                 child: placeTitleView()
             ),
             Positioned(
-              bottom: placeSubTitle != "" ? isCityDetail! ? 85 : 90 : 90,
+              bottom: placeSubTitle != "" && destinationText != ""? 90 : 90,
               left: selectedIndex == 0 ? 24 : 25,
-                child: destinationText != "" || isCityScreen!
+                child: placeSubTitle == "" || destinationText != ""
                     ? Row(
                   children: [
                     iconApps.iconImage(
@@ -231,11 +232,11 @@ class HomepageCommonImage extends StatelessWidget {
                         iconSize: Size(20, 20),
                         imageColor: appColors.white
                     ),
-                    SizedBox(width: selectedIndex != 0 || isHorizontalViewCard!? 10 : 5,),
-                    Text(selectedIndex != 0 && destinationText != "" || isCityDetail! ? "${numberOfDestination!}+ " : "",
+                    SizedBox(width: placeSubTitle == "" || destinationText != "" || isHorizontalViewCard!? 10 : 5,),
+                    Text(placeSubTitle == "" || destinationText != "" ? "${numberOfDestination!}+ " : "",
                         style: appStyles.commonSubTitleTextStyle(fontSize: 11,texColor: appColors.white)
                     ),
-                    Text( selectedIndex != 0 || isCityDetail!
+                    Text( placeSubTitle == "" || destinationText != ""
                         ? destinationText! : "",
                       style: appStyles.commonSubTitleTextStyle(fontSize: 11),
                     ),

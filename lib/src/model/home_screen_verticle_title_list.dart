@@ -14,7 +14,7 @@ final List<HomeScreenVerticalTitleModel> homeVerticalList = [
 
   HomeScreenVerticalTitleModel(
       listTitle: "Destination",
-      id: 0,
+      id: 2,
       verticalTitleSubTitleList: [
         VerticalTitleSublistList(
             placeName: "Borobudur \nTemple",
@@ -24,7 +24,8 @@ final List<HomeScreenVerticalTitleModel> homeVerticalList = [
           recommendationType: "Recommended",
             flagUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
           destinationText: "",
-          rating: 4.5
+          rating: 4.5,
+          bookingDate: "July 21 2021"
         ),
         VerticalTitleSublistList(
           placeName: "Borobudur \nTemple",
@@ -34,7 +35,8 @@ final List<HomeScreenVerticalTitleModel> homeVerticalList = [
             recommendationType: "Recommended",
             flagUrl: 'https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png',
             destinationText: "",
-            rating: 4.5
+            rating: 4.5,
+            bookingDate: "Aug 25 2021"
         ),
         VerticalTitleSublistList(
           placeName: "Borobudur \nTemple",
@@ -44,7 +46,8 @@ final List<HomeScreenVerticalTitleModel> homeVerticalList = [
             recommendationType: "Recommended",
             flagUrl: 'https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png',
             destinationText: "",
-            rating: 4.5
+            rating: 4.5,
+            bookingDate: "Aug 28 2021"
         ),
       ]
   ),
@@ -61,7 +64,8 @@ final List<HomeScreenVerticalTitleModel> homeVerticalList = [
           destinationText: "Destination",
           numberOfDestination: 100,
             flagUrl: 'https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png',
-          rating: null
+          rating: null,
+            bookingDate: "Sep 15 2021"
         ),
         VerticalTitleSublistList(
           placeName: "Indonesia",
@@ -72,7 +76,8 @@ final List<HomeScreenVerticalTitleModel> homeVerticalList = [
             destinationText: "Destination",
             numberOfDestination: 100,
             flagUrl: 'https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png',
-          rating: null
+          rating: null,
+            bookingDate: "Sep 18 2021"
         ),
         VerticalTitleSublistList(
           placeName: "Indonesia",
@@ -83,13 +88,14 @@ final List<HomeScreenVerticalTitleModel> homeVerticalList = [
             destinationText: "Destination",
             numberOfDestination: 100,
             flagUrl: 'https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png',
-          rating: null
+          rating: null,
+            bookingDate: "Sep 19 2021"
         ),
     ]
   ),
   HomeScreenVerticalTitleModel(
     listTitle: "Cities",
-    id: 2,
+    id: 0,
     verticalTitleSubTitleList: [
       VerticalTitleSublistList(
         placeName: "Aragua",
@@ -100,7 +106,8 @@ final List<HomeScreenVerticalTitleModel> homeVerticalList = [
         numberOfDestination: 15,
         destinationText: "Destination",
           flagUrl: 'https://cdn.britannica.com/04/4904-004-EBEFDE35/Flag-Venezuela.jpg',
-          rating: null
+          rating: null,
+          bookingDate: "Sep 15 2021"
       ),
       VerticalTitleSublistList(
         placeName: "Aragua",
@@ -111,7 +118,8 @@ final List<HomeScreenVerticalTitleModel> homeVerticalList = [
           numberOfDestination: 15,
           destinationText: "Destination",
           flagUrl: 'https://cdn.britannica.com/04/4904-004-EBEFDE35/Flag-Venezuela.jpg',
-          rating: null
+          rating: null,
+          bookingDate: "Sep 15 2021"
       ),
       VerticalTitleSublistList(
         placeName: "Aragua",
@@ -122,7 +130,8 @@ final List<HomeScreenVerticalTitleModel> homeVerticalList = [
           numberOfDestination: 15,
           destinationText: "Destination",
           flagUrl: 'https://cdn.britannica.com/04/4904-004-EBEFDE35/Flag-Venezuela.jpg',
-          rating: null
+          rating: null,
+          bookingDate: "Sep 15 2021"
       ),
     ]
   ),
@@ -140,6 +149,7 @@ class VerticalTitleSublistList{
   final int? numberOfDestination;
   final String? destinationText;
   final bool? isVerticalCardListView;
+  final String? bookingDate;
 
   VerticalTitleSublistList({
     required this.imageUrl,
@@ -151,7 +161,8 @@ class VerticalTitleSublistList{
     required this.flagUrl,
     this.numberOfDestination,
     this.destinationText,
-    this.isVerticalCardListView
+    this.isVerticalCardListView,
+    this.bookingDate,
   });
 }
 

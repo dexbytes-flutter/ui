@@ -11,7 +11,31 @@ import '../model/city_and_destination_horizontal_model.dart';
 import '../widgets/appbar/common_app_bar.dart';
 
 class CityDetailScreen extends StatefulWidget {
-  const CityDetailScreen({Key? key}) : super(key: key);
+  final String? imageUrl;
+  final String? recommendationType;
+  final String? placeFlag;
+  final String? placeName;
+  final String? placeSubTitle;
+  final int? numberOfDestinations;
+  final String? destinationText;
+  final String? date;
+  final int? placeCategoryTitleIndex;
+  final bool? isBookmarked;
+  final double? rating;
+  const CityDetailScreen({
+    Key? key,
+    this.imageUrl,
+    this.recommendationType,
+    this.placeFlag,
+    this.placeName,
+    this.placeSubTitle,
+    this.numberOfDestinations,
+    this.destinationText,
+    this.date,
+    this.placeCategoryTitleIndex,
+    this.isBookmarked,
+    this.rating
+  }) : super(key: key);
 
   @override
   State<CityDetailScreen> createState() => _CityDetailScreenState();
@@ -42,8 +66,8 @@ class _CityDetailScreenState extends State<CityDetailScreen> {
             child: CachedNetworkImage(
               height: appDimens.heightFullScreen() / 2.10,
               width: appDimens.widthFullScreen(),
-              imageUrl:
-              "https://www.plataran.com/wp-content/uploads/2020/04/plataran-bimonthly-may-june-2019-lr-15_0ztqu.jpg",
+              imageUrl: widget.imageUrl!,
+              // "https://www.plataran.com/wp-content/uploads/2020/04/plataran-bimonthly-may-june-2019-lr-15_0ztqu.jpg",
               fit: BoxFit.fill,
             ),
           ),
@@ -55,7 +79,7 @@ class _CityDetailScreenState extends State<CityDetailScreen> {
           ),
           Positioned(
           bottom: 100,
-            child: Text("Bali",
+            child: Text(widget.placeName!,
                 style: appStyles.commonTitleStyle(fontSize: 30, fontWeight: FontWeight.w900)
             ),
           ),
@@ -75,7 +99,8 @@ class _CityDetailScreenState extends State<CityDetailScreen> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(3),
                           child: CachedNetworkImage(
-                            imageUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
+                            // imageUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
+                            imageUrl: widget.placeFlag!,
                             fit: BoxFit.cover,
                             height: 10,
                             width: 10,
@@ -83,7 +108,7 @@ class _CityDetailScreenState extends State<CityDetailScreen> {
                         ),
                       ),
                       SizedBox(width: 5,),
-                      Text("Indonesia",
+                      Text(widget.placeSubTitle!,
                         style: appStyles.commonSubTitleTextStyle(fontSize: 11,fontWeight: FontWeight.w500),
                       )
                     ],
@@ -105,7 +130,7 @@ class _CityDetailScreenState extends State<CityDetailScreen> {
                       imageColor: appColors.white
                   ),
                   SizedBox(width: 5,),
-                  Text("July 21 2023",
+                  Text(widget.date!,
                     style: appStyles.commonSubTitleTextStyle(fontSize: 11,fontWeight: FontWeight.w600),
                   )
                 ],
@@ -113,7 +138,7 @@ class _CityDetailScreenState extends State<CityDetailScreen> {
           ),
           Positioned(
             bottom: 30,
-              child: Text(appString.trans(context, appString.exploreBeautyDestinationText),
+              child: Text("${appString.trans(context, appString.exploreBeautyDestinationText)} ${widget.placeName!}",
                 softWrap: true, textAlign: TextAlign.center,
                 style: appStyles.commonSubTitleTextStyle(fontSize: 11)
               )
@@ -182,7 +207,37 @@ class _CityDetailScreenState extends State<CityDetailScreen> {
               },
               child: Container(
                   margin: EdgeInsets.only(left: 20),
-                  child: HomepageCommonImage(
+                  child:
+                  /*HomepageCommonImage(
+                    imageUrl: widget.imageUrl,
+                    selectedIndex: widget.placeCategoryTitleIndex,
+                    placeTitle: widget.placeName,
+                    placeSubTitle: widget.placeSubTitle,
+                    isHorizontalViewCard: false,
+                    isVerticalCardListView: false,
+                    isBookmarked: widget.isBookmarked,
+                    rating: widget.rating,
+                    recommendationType: widget.recommendationType,
+                    numberOfDestination: widget.numberOfDestinations,
+                    destinationText: widget.destinationText,
+                    placeFlag: widget.placeFlag,
+                    isCityScreen: false,
+                    imageWidth: appDimens.widthFullScreen()/1.75,
+                    isCityDetail: true,
+                    onButtonClickCallback: (){
+                      setState(() {
+                        // imageUrl = verticalTitleSubTitleList[selectedIndex].imageUrl;
+                      });
+                      *//*Navigator.push(
+                        MainAppBloc.getDashboardContext,
+                        SlideRightRoute(
+                            widget: DestinationDetailedCardView(
+                                detailImageUrl: imageUrl)),
+                      );*//*
+                    },
+                  )*/
+
+                  HomepageCommonImage(
                     imageUrl: cityAndDestinationSubList[index].imageUrl,
                     selectedIndex: cityAndDestinationHorizontalList[selectedIndex].listTitleId,
                     placeTitle: cityAndDestinationSubList[index].placeName,
@@ -209,7 +264,9 @@ class _CityDetailScreenState extends State<CityDetailScreen> {
                                 detailImageUrl: imageUrl)),
                       );*/
                     },
-                  )),
+                  )
+
+              ),
             );
           },
         ),

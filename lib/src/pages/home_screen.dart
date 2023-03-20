@@ -122,21 +122,55 @@ class _HomeScreenState extends State<HomeScreen> {
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
-                setState(() {
-                  imageUrl = verticalTitleSubTitleList[selectedIndex].imageUrl;
-                });
-                if(selectedIndex == 0){
+                if(homeVerticalList[selectedIndex].id == 2){
                   Navigator.push(
                     MainAppBloc.getDashboardContext,
                     SlideRightRoute(
                         widget: DestinationDetailedCardView(
-                            detailImageUrl: imageUrl)),
+                            detailImageUrl: verticalTitleSubTitleList[index].imageUrl,
+                            placeName: verticalTitleSubTitleList[index].placeName,
+                            placeFlag: verticalTitleSubTitleList[index].flagUrl,
+                            placeSubTitle: verticalTitleSubTitleList[index].placeSubTitle,
+                            bookingDate: verticalTitleSubTitleList[index].bookingDate,
+                        )
+                    ),
                   );
-                }else{
+                }else if(homeVerticalList[selectedIndex].id == 1){
                   Navigator.push(
                     MainAppBloc.getDashboardContext,
                     SlideRightRoute(
-                        widget: CityDetailScreen()
+                        widget: CityDetailScreen(
+                        imageUrl: verticalTitleSubTitleList[index].imageUrl,
+                          placeCategoryTitleIndex: homeVerticalList[selectedIndex].id,
+                          recommendationType: verticalTitleSubTitleList[index].recommendationType,
+                          placeFlag: verticalTitleSubTitleList[index].flagUrl,
+                          placeName: verticalTitleSubTitleList[index].placeName,
+                          placeSubTitle: verticalTitleSubTitleList[index].placeSubTitle,
+                          numberOfDestinations: verticalTitleSubTitleList[index].numberOfDestination,
+                          destinationText: verticalTitleSubTitleList[index].destinationText,
+                          date: verticalTitleSubTitleList[index].bookingDate,
+                          isBookmarked: verticalTitleSubTitleList[index].isBookmarked,
+                          rating: verticalTitleSubTitleList[index].rating,
+                        )
+                    ),
+                  );
+                } else{
+                  Navigator.push(
+                    MainAppBloc.getDashboardContext,
+                    SlideRightRoute(
+                        widget: CityDetailScreen(
+                            placeCategoryTitleIndex: homeVerticalList[selectedIndex].id,
+                            imageUrl: verticalTitleSubTitleList[index].imageUrl,
+                        recommendationType: verticalTitleSubTitleList[index].recommendationType,
+                        placeFlag: verticalTitleSubTitleList[index].flagUrl,
+                        placeName: verticalTitleSubTitleList[index].placeName,
+                        placeSubTitle: verticalTitleSubTitleList[index].placeSubTitle,
+                        numberOfDestinations: verticalTitleSubTitleList[index].numberOfDestination,
+                        destinationText: verticalTitleSubTitleList[index].destinationText,
+                        date: verticalTitleSubTitleList[index].bookingDate,
+                        isBookmarked: verticalTitleSubTitleList[index].isBookmarked,
+                        rating: verticalTitleSubTitleList[index].rating,
+                        )
                     ),
                   );
                 }
@@ -166,7 +200,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         MainAppBloc.getDashboardContext,
                         SlideRightRoute(
                             widget: DestinationDetailedCardView(
-                                detailImageUrl: imageUrl)),
+                                detailImageUrl: imageUrl,
+                              placeName: verticalTitleSubTitleList[index].placeName,
+                              placeFlag: verticalTitleSubTitleList[index].flagUrl,
+                              placeSubTitle: verticalTitleSubTitleList[index].placeSubTitle,
+                              bookingDate: verticalTitleSubTitleList[index].bookingDate,
+                            )
+                        ),
                       );
                     },
                   )),

@@ -10,7 +10,19 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class BookingSuccessfulScreen extends StatefulWidget {
-  const BookingSuccessfulScreen({Key? key}) : super(key: key);
+  final String? detailImageUrl;
+  final String? placeFlag;
+  final String? placeName;
+  final String? placeSubTitle;
+  final String? bookingDate;
+  const BookingSuccessfulScreen({
+    Key? key,
+    this.detailImageUrl,
+    this.placeFlag,
+    this.placeName,
+    this.placeSubTitle,
+    this.bookingDate
+  }) : super(key: key);
 
   @override
   State<BookingSuccessfulScreen> createState() => _BookingSuccessfulScreenState();
@@ -39,8 +51,8 @@ class _BookingSuccessfulScreenState extends State<BookingSuccessfulScreen> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(100),
                 child: CachedNetworkImage(
-                  imageUrl: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQQ9j9GWnKtl9xJjLvEPREdCFlkLjl2XKmMdQKOAnnyLmCO_Moo",
-                  // imageUrl: widget.imageUrl,
+                  // imageUrl: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQQ9j9GWnKtl9xJjLvEPREdCFlkLjl2XKmMdQKOAnnyLmCO_Moo",
+                  imageUrl: widget.detailImageUrl!,
                   fit: BoxFit.cover,
                   height: 130,
                   width: 130,
@@ -50,7 +62,7 @@ class _BookingSuccessfulScreenState extends State<BookingSuccessfulScreen> {
           ),
           SizedBox(height: 15,),
           Center(
-            child: Text("Borobudur \n Temple",
+            child: Text(widget.placeName!,
               textAlign: TextAlign.center,
               style: appStyles.commonTitleStyle(fontSize: 25),
             ),
@@ -70,7 +82,8 @@ class _BookingSuccessfulScreenState extends State<BookingSuccessfulScreen> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(5),
                       child: CachedNetworkImage(
-                        imageUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
+                        // imageUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
+                        imageUrl: widget.placeFlag!,
                         fit: BoxFit.cover,
                         height: 12,
                         width: 12,
@@ -78,7 +91,7 @@ class _BookingSuccessfulScreenState extends State<BookingSuccessfulScreen> {
                     ),
                   ),
                   SizedBox(width: 5,),
-                  Text("Indonesia",
+                  Text(widget.placeSubTitle!,
                     style: appStyles.commonSubTitleTextStyle(fontSize: 11,fontWeight: FontWeight.w500),
                   )
                 ],
@@ -100,7 +113,7 @@ class _BookingSuccessfulScreenState extends State<BookingSuccessfulScreen> {
                   iconSize: Size(12, 15)
               ),
               SizedBox(width: 5,),
-              Text("July 21 2023",
+              Text(widget.bookingDate!,
                 style: appStyles.commonSubTitleTextStyle(fontSize: 11,fontWeight: FontWeight.w600),
               )
             ],

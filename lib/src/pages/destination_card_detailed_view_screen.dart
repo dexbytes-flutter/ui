@@ -22,9 +22,17 @@ import 'all_review_view.dart';
 
 class DestinationDetailedCardView extends StatefulWidget {
   late String detailImageUrl;
+  final String? placeFlag;
+  final String? placeName;
+  final String? placeSubTitle;
+  final String? bookingDate;
   DestinationDetailedCardView({
     Key? key,
     this.detailImageUrl = "",
+    this.placeFlag,
+    this.placeName,
+    this.placeSubTitle,
+    this.bookingDate,
   }) : super(key: key);
 
   @override
@@ -95,7 +103,7 @@ class _DestinationDetailedCardViewState extends State<DestinationDetailedCardVie
             child: ClipRRect(
               child: CachedNetworkImage(
                 // imageUrl: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQQ9j9GWnKtl9xJjLvEPREdCFlkLjl2XKmMdQKOAnnyLmCO_Moo",
-                imageUrl: widget.detailImageUrl!,
+                imageUrl: widget.detailImageUrl,
                 fit: BoxFit.cover,
                 height: appDimens.heightFullScreen()/1.45,
                 width: appDimens.widthFullScreen(),
@@ -387,7 +395,13 @@ class _DestinationDetailedCardViewState extends State<DestinationDetailedCardVie
                   backCallback: () {
                     Navigator.push(MainAppBloc.getDashboardContext,
                     SlideRightRoute(
-                      widget: CreateBookingScreen()
+                      widget: CreateBookingScreen(
+                        detailImageUrl: widget.detailImageUrl,
+                        placeName: widget.placeName,
+                        placeSubTitle: widget.placeSubTitle,
+                        placeFlag: widget.placeFlag,
+                        bookingDate: widget.bookingDate,
+                      )
                     )
                     );
                   },

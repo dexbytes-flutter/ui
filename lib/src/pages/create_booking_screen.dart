@@ -14,7 +14,19 @@ import '../widgets/appbar/common_app_bar.dart';
 import '../widgets/custom_slider_widget.dart';
 
 class CreateBookingScreen extends StatefulWidget {
-  const CreateBookingScreen({Key? key}) : super(key: key);
+  final String? detailImageUrl;
+  final String? placeFlag;
+  final String? placeName;
+  final String? placeSubTitle;
+  final String? bookingDate;
+  const CreateBookingScreen({
+    Key? key,
+    this.detailImageUrl,
+    this.placeFlag,
+    this.placeName,
+    this.placeSubTitle,
+    this.bookingDate
+  }) : super(key: key);
 
   @override
   State<CreateBookingScreen> createState() => _CreateBookingScreenState();
@@ -285,7 +297,13 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
                   backCallback: () {
                     Navigator.push(
                       context,
-                      SlideRightRoute(widget: SelectPaymentScreen()),
+                      SlideRightRoute(widget: SelectPaymentScreen(
+                        detailImageUrl: widget.detailImageUrl,
+                        placeName: widget.placeName,
+                        placeFlag: widget.placeFlag,
+                        placeSubTitle: widget.placeSubTitle,
+                        bookingDate: widget.bookingDate,
+                      )),
                     );
                   },
                 ),

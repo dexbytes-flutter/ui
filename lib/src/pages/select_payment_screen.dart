@@ -11,7 +11,19 @@ import 'package:flutter/material.dart';
 import 'booking_success_screen.dart';
 
 class SelectPaymentScreen extends StatefulWidget {
-  const SelectPaymentScreen({Key? key}) : super(key: key);
+  final String? detailImageUrl;
+  final String? placeFlag;
+  final String? placeName;
+  final String? placeSubTitle;
+  final String? bookingDate;
+  const SelectPaymentScreen({
+    Key? key,
+    this.detailImageUrl,
+    this.placeFlag,
+    this.placeName,
+    this.placeSubTitle,
+    this.bookingDate
+  }) : super(key: key);
 
   @override
   State<SelectPaymentScreen> createState() => _SelectPaymentScreenState();
@@ -154,7 +166,13 @@ class _SelectPaymentScreenState extends State<SelectPaymentScreen> {
                     if(isCardSelected){
                       Navigator.push(
                         context,
-                        SlideRightRoute(widget: BookingSuccessfulScreen()),
+                        SlideRightRoute(widget: BookingSuccessfulScreen(
+                          detailImageUrl: widget.detailImageUrl,
+                          placeName: widget.placeName,
+                          placeFlag: widget.placeFlag,
+                          placeSubTitle: widget.placeSubTitle,
+                          bookingDate: widget.bookingDate,
+                        )),
                       );
                     }
                   },

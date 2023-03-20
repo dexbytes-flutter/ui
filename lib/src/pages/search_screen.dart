@@ -251,6 +251,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   destinationText: searchScreenImageList[index].destinationText,
                   numberOfDestination: searchScreenImageList[index].numberOfDestination,
                   isVerticalCardListView: true,
+                  isCityDetail: false,
                 )
             );
           },
