@@ -147,7 +147,7 @@ class _SelectPaymentScreenState extends State<SelectPaymentScreen> {
       bottomMenuView: Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            height: appDimens.heightFullScreen()/6.5,
+            height: 115,
             width: appDimens.widthFullScreen(),
             color: appColors.appBgColorJungleGreen,
             padding: const EdgeInsets.only(bottom: 20,left: 20,right: 20),

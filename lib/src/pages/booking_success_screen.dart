@@ -144,7 +144,7 @@ class _BookingSuccessfulScreenState extends State<BookingSuccessfulScreen> {
             SizedBox(height: 15,),
             Text(appString.trans(context, appString.bookingSuccessSubTitleText),
                 style: appStyles.commonSubTitleTextStyle(fontSize: 15)),
-            SizedBox(height: appDimens.heightFullScreen()/6.5,),
+            SizedBox(height: 45,),
             centerView()
             // screenTitle()
           ],

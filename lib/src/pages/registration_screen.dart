@@ -252,7 +252,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             ).createShader(bound),
             blendMode: BlendMode.dstIn,
             child: CachedNetworkImage(
-              height: appDimens.heightFullScreen()/2.60,
+              height: appDimens.heightFullScreen()/3.2,
               width: appDimens.widthFullScreen(),
               imageUrl: "http://lh3.ggpht.com/-LBkmHsPl3XU/TmMb5-qgdiI/AAAAAAAAQHA/eu3yiXNXKPU/rice-terraces-8%25255B2%25255D.jpg?imgmax=800",
               // imageUrl: "https://cdn.pixabay.com/photo/2016/11/14/02/51/rice-plantation-1822444__340.jpg",
@@ -572,7 +572,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       isOverLayStatusBar: true,
       isOverLayAppBar: true,
       appBar: CommonAppBar(
-        appBarRowMargin: EdgeInsets.only(top: 50,left: 20,right: 20),
+        appBarRowMargin: EdgeInsets.only(top: 35,left: 20,right: 20),
         isHideRightIcon: true,
       ),
       contextCurrentView: context,

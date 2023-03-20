@@ -34,7 +34,8 @@ class CustomPaymentCardView extends StatelessWidget {
     appDimens.appDimensFind(context: context);
 
     return Container(
-      height: appDimens.heightFullScreen()/5.25,
+      // height: appDimens.heightFullScreen()/4.5,
+      height: 155,
       width: appDimens.widthFullScreen(),
       padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
@@ -65,7 +66,7 @@ class CustomPaymentCardView extends StatelessWidget {
                 color: logoColor != null? appColors.white : null,
               )
             ],),
-          SizedBox(height: 45,),
+          SizedBox(height: 35,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

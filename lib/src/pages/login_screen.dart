@@ -190,7 +190,7 @@ class _SignInScreenState extends State<SignInScreen> {
             ).createShader(bound),
             blendMode: BlendMode.darken,
             child: CachedNetworkImage(
-              height: appDimens.heightFullScreen() / 2.15,
+              height: appDimens.heightFullScreen() / 2.58,
               width: appDimens.widthFullScreen(),
               imageUrl:
                   "https://img.freepik.com/free-photo/beautiful-scenery-emerald-lake-yoho-national-park-british-columbia-canada_181624-6877.jpg?w=2000",
@@ -488,7 +488,7 @@ class _SignInScreenState extends State<SignInScreen> {
       containChild: Column(
         children: [
           backgroundImage(),
-          bottomView()
+          bottomView(),
         ],
       ),
     );

@@ -49,7 +49,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
           children: [
             Container(
               width: appDimens.widthFullScreen(),
-              height: appDimens.heightFullScreen() / 5,
+              // height: appDimens.heightFullScreen() / 4,
+              height: 160,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
@@ -94,7 +95,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
               child: Text(""),
             ),
             Positioned(
-                bottom: 210,
+                bottom: appDimens.heightFullScreen()/3.6,
+                // bottom: 245,
                 child:  bottomCardView()
             )
           ],

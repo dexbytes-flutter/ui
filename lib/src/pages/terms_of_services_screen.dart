@@ -21,7 +21,7 @@ class _TermsOfServicesScreenState extends State<TermsOfServicesScreen> {
     // Top view
     Widget topView(){
       return Container(
-        margin: EdgeInsets.only(top: 25,left: 20),
+        margin: EdgeInsets.only(left: 20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -122,20 +122,19 @@ class _TermsOfServicesScreenState extends State<TermsOfServicesScreen> {
     }
 
     return ContainerFirst(
-        appBarHeight: 56,
+        appBarHeight: 85,
         isOverLayStatusBar: true,
-        appBackgroundColor: appColors.appBgColorJungleGreen,
-        statusBarColor: Colors.white,
         isSingleChildScrollViewNeed: true,
         contextCurrentView: context,
         appBar: CommonAppBar(
+          appBarRowMargin: EdgeInsets.only(top: 35,left: 20,right: 20),
           isHideRightIcon: true,
         ),
         containChild: Column(
           children: [
             topView(),
             Padding(
-              padding: const EdgeInsets.only(top: 35, left: 20,right: 20),
+              padding: const EdgeInsets.only(top: 15, left: 20,right: 20),
               child: SizedBox(
                 child:Divider(
                   color: appColors.appBgColor1.withOpacity(0.30),

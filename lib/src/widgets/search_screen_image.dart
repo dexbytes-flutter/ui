@@ -110,7 +110,7 @@ class SearchScreenCommonImage extends StatelessWidget {
                   ),
                   SizedBox(width:  5,),
                   Text(placeSubTitle!,
-                    style: appStyles.commonSubTitleTextStyle(fontSize: placeFlag! != ""? 11 : 14,
+                    style: appStyles.commonSubTitleTextStyle(fontSize: placeFlag! != ""? 11 : 11,
                         texColor: isStaticCalenderIcon!? appColors.textColor : appColors.white
                     ),
                   ),

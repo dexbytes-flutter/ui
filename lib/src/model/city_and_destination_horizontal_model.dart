@@ -21,7 +21,7 @@ final List<CityAndDestinationHorizontalModel> cityAndDestinationHorizontalList =
     isCityAndDestinationList: true,
     cityAndDestinationSubList: [
       CityAndDestinationCardViewModel(
-        imageUrl: "https://i2.wp.com/westpapuadaily.com/wp-content/uploads/2021/10/1057953_720.jpg?resize=678%2C509&ssl=1",
+        imageUrl: "https://www.plataran.com/wp-content/uploads/2020/04/plataran-bimonthly-may-june-2019-lr-15_0ztqu.jpg",
         isBookmarked: false,
         placeName: "Bali",
         recommendationType: "Top Recommended",
@@ -32,12 +32,12 @@ final List<CityAndDestinationHorizontalModel> cityAndDestinationHorizontalList =
         flagUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
       ),
       CityAndDestinationCardViewModel(
-        imageUrl: "https://i2.wp.com/westpapuadaily.com/wp-content/uploads/2021/10/1057953_720.jpg?resize=678%2C509&ssl=1",
+        imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyh6fCxYcLIsj7yH-NpIAamM5WHT7Zw6m1JZF1ScPCiI9nxW8sXhGay8123mmXAZpSTX0&usqp=CAU",
         isBookmarked: false,
-        placeName: "Bali",
+        placeName: "Jogja",
         recommendationType: "Top Recommended",
         placeSubTitle: "Indonesia",
-        numberOfDestination: 80,
+        numberOfDestination: 50,
         destinationText: "Destination",
         rating: null,
         flagUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
@@ -73,9 +73,9 @@ final List<CityAndDestinationHorizontalModel> cityAndDestinationHorizontalList =
     isCityAndDestinationList: true,
     cityAndDestinationSubList: [
       CityAndDestinationCardViewModel(
-        imageUrl: "https://i2.wp.com/westpapuadaily.com/wp-content/uploads/2021/10/1057953_720.jpg?resize=678%2C509&ssl=1",
+        imageUrl: "https://i0.wp.com/seekingsunrises.com/wp-content/uploads/2021/07/Komodo-Island-Tour.jpg?fit=1020%2C652&ssl=1",
         isBookmarked: true,
-        placeName: "Bali",
+        placeName: "Komodo Island",
         recommendationType: "Top Recommended",
         placeSubTitle: "Indonesia",
         numberOfDestination: 80,
@@ -84,9 +84,9 @@ final List<CityAndDestinationHorizontalModel> cityAndDestinationHorizontalList =
         flagUrl: "https://cdn.pixabay.com/photo/2012/04/10/23/01/indonesia-26817__480.png",
       ),
       CityAndDestinationCardViewModel(
-        imageUrl: "https://i2.wp.com/westpapuadaily.com/wp-content/uploads/2021/10/1057953_720.jpg?resize=678%2C509&ssl=1",
+        imageUrl: "https://i0.wp.com/seekingsunrises.com/wp-content/uploads/2021/07/Komodo-Island-Tour.jpg?fit=1020%2C652&ssl=1",
         isBookmarked: true,
-        placeName: "Bali",
+        placeName: "Komodo Island",
         recommendationType: "Top Recommended",
         placeSubTitle: "Indonesia",
         numberOfDestination: 80,

@@ -65,7 +65,8 @@ class _BookListTileScreenState extends State<BookListTileScreen> {
           itemCount: bookingListPlaceImagesList.length,
           itemBuilder: (context, index) {
             return Container(
-                height: appDimens.heightFullScreen()/4,
+                height: 170,
+                // height: appDimens.heightFullScreen()/4,
                 margin: EdgeInsets.only(bottom: 15),
                 child: GestureDetector(
                   onTap: (){

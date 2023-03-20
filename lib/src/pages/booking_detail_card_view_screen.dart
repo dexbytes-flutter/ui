@@ -47,7 +47,7 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
               child: CachedNetworkImage(
                 imageUrl: widget.imageUrl!,
                 fit: BoxFit.cover,
-                height: appDimens.heightFullScreen()/1.8,
+                height: appDimens.heightFullScreen()/2,
                 width: appDimens.widthFullScreen(),
               ),
             ),
@@ -264,7 +264,7 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
                         fontWeight: FontWeight.w500, texColor: appColors.white),),
                 ],),
               Padding(
-              padding: const EdgeInsets.only(top: 5),
+              padding: const EdgeInsets.only(top: 12),
               child: SizedBox(
                 child: Divider(
                   color: appColors.appBgColor1.withOpacity(0.15),
@@ -273,7 +273,7 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
                 ),
               ),
             ),
-              SizedBox(height: 15,),
+              SizedBox(height: 12,),
               Column(
                children: [
                  Row(
@@ -291,13 +291,12 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
                  SizedBox(
                    child: Divider(
                      color: appColors.appBgColor1.withOpacity(0.15),
-                     height: 20,
+                     height: 30,
                      thickness: 1,
                    ),
                  ),
                ],
              ),
-              SizedBox(height: 10,),
               Column(
                 children: [
                   Row(
@@ -315,13 +314,12 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
                   SizedBox(
                     child: Divider(
                       color: appColors.appBgColor1.withOpacity(0.15),
-                      height: 20,
+                      height: 30,
                       thickness: 1,
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 10,),
               Column(
                 children: [
                   Row(
@@ -339,27 +337,12 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
                   SizedBox(
                     child: Divider(
                       color: appColors.appBgColor1.withOpacity(0.15),
-                      height: 20,
+                      height: 30,
                       thickness: 1,
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 10,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(appString.trans(context, appString.totalPriceText),
-                    style: appStyles.commonTitleStyle( fontSize: 15,
-                        fontWeight: FontWeight.w500, texColor: appColors.textColor),
-                  ),
-                  Text("\$ 360",
-                    style: appStyles.commonTitleStyle( fontSize: 15,
-                        fontWeight: FontWeight.w500, texColor: appColors.white),)
-                ],),
-              SizedBox(height: 25,),
-              bottomButtonRow()
             ],
           ),
         );
@@ -384,7 +367,32 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
             SizedBox(height: 15,),
             bottomTitleRows(),
           ],
-        )
+        ),
+      bottomMenuView: Align(
+        alignment: Alignment.bottomCenter,
+        child: Container(
+          padding: EdgeInsets.only(left: 20,right: 20,bottom: 20),
+          height: 120,
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(appString.trans(context, appString.totalPriceText),
+                    style: appStyles.commonTitleStyle( fontSize: 15,
+                        fontWeight: FontWeight.w500, texColor: appColors.textColor),
+                  ),
+                  Text("\$ 360",
+                    style: appStyles.commonTitleStyle( fontSize: 15,
+                        fontWeight: FontWeight.w500, texColor: appColors.white),)
+                ],),
+              SizedBox(height: 25,),
+              bottomButtonRow()
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

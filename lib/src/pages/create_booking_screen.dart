@@ -278,7 +278,7 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
       bottomMenuView: Align(
           alignment: Alignment.bottomCenter,
           child: Container(
-            height: appDimens.heightFullScreen()/6.5,
+            height: appDimens.heightFullScreen()/5,
             width: appDimens.widthFullScreen(),
             color: appColors.appBgColorJungleGreen,
             padding: const EdgeInsets.only(bottom: 20,left: 20,right: 20),

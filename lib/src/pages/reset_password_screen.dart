@@ -329,7 +329,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
         isSingleChildScrollViewNeed: false,
         contextCurrentView: context,
         appBar: CommonAppBar(
-          appBarRowMargin: EdgeInsets.only(top: 50,left: 20,right: 20),
+          appBarRowMargin: EdgeInsets.only(top: 35,left: 20,right: 20),
           isHideRightIcon: true,
         ),
         containChild: Column(
