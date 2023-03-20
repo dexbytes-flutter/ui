@@ -216,5 +216,6 @@
   "bookingSuccessSubTitleText" : "You have successfully created your booking.",
   "exploreHomeButtonText" : "Explore Home",
   "exploreBeautyDestinationText" : "Explore beauty \ndestination in",
-  "topRecommendedCityTitleText" : "Top Recommended City"
+  "topRecommendedCityTitleText" : "Top Recommended City",
+  "nearByDestinationTitleText" : "Nearby Destination"
 }

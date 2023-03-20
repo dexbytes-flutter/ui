@@ -18,7 +18,7 @@ import 'package:readmore/readmore.dart';
 import '../all_file_import/app_utils_files_link.dart';
 import '../model/detail_card_vertical_list_image_model.dart';
 import '../widgets/image_list_with_item_count_on_stack.dart';
-import 'review_view_all_screen.dart';
+import 'all_review_view.dart';
 
 class DestinationDetailedCardView extends StatefulWidget {
   late String detailImageUrl;
@@ -224,7 +224,10 @@ class _DestinationDetailedCardViewState extends State<DestinationDetailedCardVie
                 Navigator.push(
                   context,
                   BottomUpTransition(
-                      widget: FullPhotoView(galleryZoomImageUrl: imageUrl)),
+                      widget: FullPhotoView(
+                          galleryZoomImageUrl: imageUrl,
+                      )
+                  ),
                 );
               },
               child: Container(
@@ -282,7 +285,7 @@ class _DestinationDetailedCardViewState extends State<DestinationDetailedCardVie
                 GestureDetector(
                   onTap: (){
                     Navigator.push(context, SlideRightRoute(
-                      widget: ReviewViewAllScreen(),
+                      widget: AllReviewScreen(),
                     )
                     );
                   },

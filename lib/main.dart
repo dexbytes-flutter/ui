@@ -33,11 +33,12 @@ import 'src/pages/bookmark_screen.dart';
 import 'src/pages/create_booking_screen.dart';
 import 'src/pages/dashboard_screen.dart';
 import 'src/pages/destination_card_detailed_view_screen.dart';
+import 'src/pages/explore_screen.dart';
 import 'src/pages/login_screen.dart';
 import 'src/pages/otp_verification_page.dart';
 import 'src/pages/profile_screen.dart';
 import 'src/pages/registration_screen.dart';
-import 'src/pages/review_view_all_screen.dart';
+import 'src/pages/all_review_view.dart';
 import 'src/pages/select_payment_screen.dart';
 import 'src/pages/terms_of_services_screen.dart';
 import 'src/pages/test_drop_down.dart';
@@ -291,7 +292,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
     return /*!widget.isOneTimeProfileSetUpDone
         ? CreateAccount()
         : */
-      const TutorialScreen();
+      const ExploreScreen();
   }
 
   //Redirect to another screen if already loggedIn

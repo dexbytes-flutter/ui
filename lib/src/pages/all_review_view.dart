@@ -51,13 +51,14 @@ class _AllReviewScreenState extends State<AllReviewScreen> {
     }
 
     return ContainerFirst(
-        appBarHeight: 56,
+        appBarHeight: 85,
         isOverLayStatusBar: true,
         isOverLayAppBar: false,
         isSingleChildScrollViewNeed: true,
         isFixedDeviceHeight: false,
         contextCurrentView: context,
         appBar: CommonAppBar(
+          appBarRowMargin: EdgeInsets.only(top: 50,left: 20,right: 20),
           isHideRightIcon: true,
         ),
         containChild: Column(

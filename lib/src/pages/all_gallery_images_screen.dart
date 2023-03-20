@@ -24,49 +24,46 @@ class _AllGalleryImagesScreenState extends State<AllGalleryImagesScreen> {
 
     // Gallery images stagger grid tile list view
     staggerGridTileListView(){
-      return Container(
-        margin: EdgeInsets.only(left: 20,right: 20,),
-        child: GridView.custom(
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          padding: const EdgeInsets.only(bottom: 20),
-          gridDelegate: SliverQuiltedGridDelegate(
-            crossAxisCount: 4,
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
-            repeatPattern: QuiltedGridRepeatPattern.same,
-            pattern: [
-              QuiltedGridTile(2, 4),
-              QuiltedGridTile(3, 2),
-              QuiltedGridTile(4, 2),
-              QuiltedGridTile(4, 2),
-              QuiltedGridTile(3, 2),
-            ],
-          ),
-          childrenDelegate: SliverChildBuilderDelegate(
-                (context, index) => ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: GestureDetector(
-                onTap: (){
-                  setState(() {
-                    imageUrl = galleryImageList[index].imageUrl;
-                  });
-                  Navigator.push(
-                    context,
-                    SlideRightRoute(
-                        widget: FullPhotoView(galleryZoomImageUrl: imageUrl)),
-                  );
-                },
-                child: Container(
-                  child: CachedNetworkImage(
-                    imageUrl: allGalleryImageList[index].imageUrl,
-                    fit: BoxFit.cover,
-                  ),
+      return GridView.custom(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        padding: const EdgeInsets.only(bottom: 20),
+        gridDelegate: SliverQuiltedGridDelegate(
+          crossAxisCount: 4,
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 10,
+          repeatPattern: QuiltedGridRepeatPattern.same,
+          pattern: [
+            QuiltedGridTile(2, 4),
+            QuiltedGridTile(3, 2),
+            QuiltedGridTile(4, 2),
+            QuiltedGridTile(4, 2),
+            QuiltedGridTile(3, 2),
+          ],
+        ),
+        childrenDelegate: SliverChildBuilderDelegate(
+              (context, index) => ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: GestureDetector(
+              onTap: (){
+                setState(() {
+                  imageUrl = galleryImageList[index].imageUrl;
+                });
+                Navigator.push(
+                  context,
+                  SlideRightRoute(
+                      widget: FullPhotoView(galleryZoomImageUrl: imageUrl)),
+                );
+              },
+              child: Container(
+                child: CachedNetworkImage(
+                  imageUrl: allGalleryImageList[index].imageUrl,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
-            childCount: allGalleryImageList.length,
           ),
+          childCount: allGalleryImageList.length,
         ),
       );
     }
@@ -81,17 +78,18 @@ class _AllGalleryImagesScreenState extends State<AllGalleryImagesScreen> {
         appBar: CommonAppBar(
           isHideRightIcon: true,
         ),
-        containChild: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 20,top: 30),
-              child: Text(appString.trans(context, appString.galleryTitleText),
+        containChild: Padding(
+          padding: const EdgeInsets.only(left: 20,right: 20,),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 30,),
+              Text(appString.trans(context, appString.galleryTitleText),
                   style: appStyles.commonTitleStyle(fontSize: 30)),
-            ),
-            SizedBox(height: 20,),
-            staggerGridTileListView(),
-          ],
+              SizedBox(height: 20,),
+              staggerGridTileListView(),
+            ],
+          ),
         )
     );
   }

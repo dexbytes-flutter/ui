@@ -217,13 +217,14 @@ class _CityDetailScreenState extends State<CityDetailScreen> {
     }
 
     return ContainerFirst(
-        appBarHeight: 56,
+        appBarHeight: 85,
         isOverLayStatusBar: true,
         isOverLayAppBar: true,
         isSingleChildScrollViewNeed: false,
         isFixedDeviceHeight: false,
         contextCurrentView: context,
         appBar: CommonAppBar(
+          appBarRowMargin: EdgeInsets.only(top: 50,left: 20,right: 20),
           isHideRightIcon: true,
         ),
         containChild: Column(
