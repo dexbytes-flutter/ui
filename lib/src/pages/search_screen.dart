@@ -267,7 +267,7 @@ class _SearchScreenState extends State<SearchScreen> {
           children: [
             Container(
               width: appDimens.widthFullScreen(),
-              height: appDimens.heightFullScreen() / 5,
+              height: 155,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
@@ -309,13 +309,13 @@ class _SearchScreenState extends State<SearchScreen> {
           itemCount: searchScreenImageList.length,
           itemBuilder: (context, index) {
             return Container(
-              height: appDimens.heightFullScreen()/4.58,
+              height: appDimens.heightFullScreen()/4.35,
                 margin: EdgeInsets.only(bottom: 15),
                 child: SearchScreenCommonImage(
                   imageUrl: searchScreenImageList[index].imageUrl,
                   placeSubTitle: searchScreenImageList[index].placeSubTitle,
                   placeTitle: searchScreenImageList[index].placeName,
-                  imageHeight: appDimens.heightFullScreen()/4.58,
+                  imageHeight: appDimens.heightFullScreen()/4.35,
                   imageWidth: appDimens.widthFullScreen()/1.10,
                   isStaticCalenderIcon: false,
                   rating: searchScreenImageList[index].rating,
