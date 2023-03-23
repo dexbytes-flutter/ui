@@ -72,7 +72,7 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
             height: 35,
             decoration: BoxDecoration(
                 color: appColors.appBgColor2.withOpacity(0.50),
-                borderRadius: BorderRadius.circular(12)),
+                borderRadius: BorderRadius.circular(10)),
             child: TextFormField(
               controller: startDate,
               style: appStyles.commonTitleStyle(fontWeight: FontWeight.w500,fontSize: 14,
@@ -134,7 +134,7 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
             height: 35,
             decoration: BoxDecoration(
                 color: appColors.appBgColor2.withOpacity(0.50),
-                borderRadius: BorderRadius.circular(12)),
+                borderRadius: BorderRadius.circular(10)),
             child: TextFormField(
               style: appStyles.commonTitleStyle(fontWeight: FontWeight.w500,fontSize: 14,
                   texColor: appColors.white ),
