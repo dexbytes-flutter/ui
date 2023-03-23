@@ -68,6 +68,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                         isBookmarked: exploreCardDataList[index].isBookmarked,
                         isStaticCalenderIcon: false,
                         bookingStatus: "",
+                        rating: exploreCardDataList[index].rating,
                         placeFlag: exploreCardDataList[index].flagUrl,
                         recommendationType: exploreCardDataList[index].recommendationType,
                       ));

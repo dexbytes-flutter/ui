@@ -230,6 +230,8 @@ class _HomeScreenState extends State<HomeScreen> {
         isOverLayStatusBar: false,
         isSingleChildScrollViewNeed: false,
         contextCurrentView: context,
+        bottomSafeArea: false,
+        bottomBarSafeAreaColor: appColors.appBgColorJungleGreen,
         appBar: HomeScreenAppBar(
           margin: EdgeInsets.only(
             left: 20,

@@ -25,7 +25,7 @@ class ContainerFirst extends StatelessWidget {
     Key? key,
     required this.contextCurrentView,
     required this.containChild,
-    this.bottomBarSafeAreaColor,
+    this.bottomBarSafeAreaColor = const Color(0xFF1B3232),
     this.appBackgroundColor = const Color(0xFF1B3232),
     this.statusBarColor = const Color(0xFF1B3232),
     this.isFixedDeviceHeight = true,

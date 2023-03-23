@@ -104,10 +104,11 @@ class _DashBoardPage extends State<DashBoardPage>
             return ContainerDashboard(
               // globalScaffoldKey: globalScaffoldKey ,
               // appBackgroundColor: Colors.red,
+                bottomBarSafeAreaColor: appColors.appBgColorJungleGreen,
                 contextCurrentView: context,
                 isOverLayStatusBar: true,
                 statusBarColor: statusBarColorsLocal,
-                appBackgroundColor:!isDarkMode? appColors.white:appColors.appBgColor6,
+                appBackgroundColor: appColors.appBgColorJungleGreen,
                 appBarHeight: -1,
                 bottomMenuHeight: 60,
                 bottomMenuView: BottomNavigatorWithStack(

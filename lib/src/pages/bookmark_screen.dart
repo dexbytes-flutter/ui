@@ -37,7 +37,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
     Widget listView() {
       return Container(
         width: appDimens.widthFullScreen(),
-        height: appDimens.heightFullScreen() / 1.35,
+        height: appDimens.heightFullScreen() / 1.40,
         margin: EdgeInsets.only(top: 10),
         child: ListView.builder(
           scrollDirection: Axis.horizontal,

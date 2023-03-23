@@ -68,8 +68,8 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            width: appDimens.widthFullScreen() / 2.3,
-            height: appDimens.heightFullScreen()/22,
+            width: appDimens.widthFullScreen() / 2.31,
+            height: 35,
             decoration: BoxDecoration(
                 color: appColors.appBgColor2.withOpacity(0.50),
                 borderRadius: BorderRadius.circular(12)),
@@ -78,7 +78,7 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
               style: appStyles.commonTitleStyle(fontWeight: FontWeight.w500,fontSize: 14,
                   texColor: appColors.white ),
               decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(5).copyWith(left: 15,),
+                  contentPadding: EdgeInsets.all(2).copyWith(left: 15,),
                   border: InputBorder.none,
                   hintText: appString.trans(context, appString.startDateText),
                   hintStyle: appStyles.commonTitleStyle(fontSize: 14,texColor: appColors.textColor,fontWeight: FontWeight.w400),
@@ -130,8 +130,8 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
             width: 10,
           ),
           Container(
-            width: appDimens.widthFullScreen() / 2.3,
-            height: appDimens.heightFullScreen()/22,
+            width: appDimens.widthFullScreen() / 2.31,
+            height: 35,
             decoration: BoxDecoration(
                 color: appColors.appBgColor2.withOpacity(0.50),
                 borderRadius: BorderRadius.circular(12)),
@@ -139,7 +139,7 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
               style: appStyles.commonTitleStyle(fontWeight: FontWeight.w500,fontSize: 14,
                   texColor: appColors.white ),
               decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(5).copyWith(left: 15,),
+                  contentPadding: EdgeInsets.all(2).copyWith(left: 15,),
                   border: InputBorder.none,
                   hintText: appString.trans(context, appString.endDateText),
                   hintStyle: appStyles.commonTitleStyle(fontSize: 14,texColor: appColors.textColor,fontWeight: FontWeight.w400),

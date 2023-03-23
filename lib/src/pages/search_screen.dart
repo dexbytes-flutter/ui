@@ -21,10 +21,12 @@ import '../widgets/title_text.dart';
 class SearchScreen extends StatefulWidget {
   final bool? isVerticalImageCardView;
   final bool? isVerticalViewSearchResult;
+  final bool? isBottomSheet;
   const SearchScreen({
     Key? key,
     this.isVerticalImageCardView,
-    this.isVerticalViewSearchResult
+    this.isVerticalViewSearchResult,
+    this.isBottomSheet
   }) : super(key: key);
 
   @override
@@ -283,6 +285,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         isBookmarked: searchScreenImageList[index].isBookmarked,
                         isStaticCalenderIcon: false,
                         bookingStatus: "",
+                        rating: searchScreenImageList[index].rating,
                         placeFlag: searchScreenImageList[index].flagUrl,
                         recommendationType: searchScreenImageList[index].recommendationType,
                       ));
@@ -315,6 +318,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   imageHeight: appDimens.heightFullScreen()/4.58,
                   imageWidth: appDimens.widthFullScreen()/1.10,
                   isStaticCalenderIcon: false,
+                  rating: searchScreenImageList[index].rating,
                   recommendationType: searchScreenImageList[index].recommendationType,
                   placeFlag: searchScreenImageList[index].flagUrl,
                 ));
@@ -357,6 +361,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 ? verticalFilterView()
                 : centerView(),
           ],
-        ));
+        )
+    );
   }
 }

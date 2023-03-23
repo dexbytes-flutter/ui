@@ -43,8 +43,14 @@ class ContainerDashboard extends StatelessWidget {
     Color? bottomBarSafeAreaColor = this.bottomBarSafeAreaColor;
 
     //Set status bar and bottom sef area color
-    statusBarColor ??= appBackgroundColor;
-    bottomBarSafeAreaColor ??= appBackgroundColor;
+    // statusBarColor ??= appBackgroundColor;
+    // bottomBarSafeAreaColor ??= appBackgroundColor;
+    if (statusBarColor == null) {
+      statusBarColor = appBackgroundColor;
+    }
+    if (bottomBarSafeAreaColor == null) {
+      bottomBarSafeAreaColor = appBackgroundColor;
+    }
 
     // Main view return according to Scroll need condition
     Widget returnSubMainView(

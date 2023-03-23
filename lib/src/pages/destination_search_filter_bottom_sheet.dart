@@ -32,6 +32,7 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
   ];
   int selectedIndex = 0;
   bool isVerticalViewSearchResult = false;
+  bool isBottomSheet = true;
 
   String selectedCountry = ""; // to display the selected country
   // Country list
@@ -225,65 +226,61 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
     // Price range slider
     priceRangeSlider(){
       return Container(
-        child: Builder(
-          builder: (context) {
-            return Column(
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.only(top: 10),
+              child: SliderTheme(
+                data: SliderThemeData(
+                  activeTrackColor: appColors.buttonBgColor,
+                  inactiveTrackColor: appColors.textColor.withOpacity(0.40),
+                  thumbColor: appColors.buttonBgColor,
+                  activeTickMarkColor: appColors.appTransColor,
+                  inactiveTickMarkColor: appColors.appBgColor1,
+                  overlayShape: SliderComponentShape.noOverlay,
+                  trackHeight: 3,
+                  trackShape: RoundedRectSliderTrackShape(),
+                  rangeThumbShape: const RoundRangeSliderThumbShape(enabledThumbRadius: 8),
+                ),
+                child: RangeSlider(
+                  onChanged: (value){
+                    setState(() {
+                      values = value;
+                      labels =  RangeLabels(
+                        "\$${values.start.round()}".toString(),
+                        "\$${values.end.round()}".toString(),
+                      );
+                    });
+                  },
+                  values: values,
+                  min: 100,
+                  max: 1000,
+                  labels: labels,
+                  divisions: 20,
+                ),
+              ),
+            ),
+            const SizedBox(height: 10,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  margin: EdgeInsets.only(top: 10),
-                  child: SliderTheme(
-                    data: SliderThemeData(
-                      activeTrackColor: appColors.buttonBgColor,
-                      inactiveTrackColor: appColors.textColor.withOpacity(0.40),
-                      thumbColor: appColors.buttonBgColor,
-                      activeTickMarkColor: appColors.appTransColor,
-                      inactiveTickMarkColor: appColors.appBgColor1,
-                      overlayShape: SliderComponentShape.noOverlay,
-                      trackHeight: 3,
-                      trackShape: RoundedRectSliderTrackShape(),
-                      rangeThumbShape: const RoundRangeSliderThumbShape(enabledThumbRadius: 8),
-                    ),
-                    child: RangeSlider(
-                      onChanged: (value){
-                        setState(() {
-                          values = value;
-                          labels =  RangeLabels(
-                            "\$${values.start.round()}".toString(),
-                            "\$${values.end.round()}".toString(),
-                          );
-                        });
-                      },
-                      values: values,
-                      min: 100,
-                      max: 1000,
-                      labels: labels,
-                      divisions: 5,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 10,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("\$100",
-                        style:appStyles.commonSubTitleTextStyle(
-                          fontSize: 11.5 ,
-                          fontWeight: FontWeight.w500,
-                          texColor:appColors.textColor.withOpacity(0.30),
-                        )
-                    ),
-                    Text("\$1000",
-                        style:appStyles.commonSubTitleTextStyle(
-                          fontSize: 11.5 ,
-                          fontWeight: FontWeight.w500,
-                          texColor:appColors.textColor.withOpacity(0.30),
-                        )
+                Text("\$100",
+                    style:appStyles.commonSubTitleTextStyle(
+                      fontSize: 11.5 ,
+                      fontWeight: FontWeight.w500,
+                      texColor:appColors.textColor.withOpacity(0.30),
                     )
-                  ],
                 ),
+                Text("\$1000",
+                    style:appStyles.commonSubTitleTextStyle(
+                      fontSize: 11.5 ,
+                      fontWeight: FontWeight.w500,
+                      texColor:appColors.textColor.withOpacity(0.30),
+                    )
+                )
               ],
-            );
-          }
+            ),
+          ],
         ),
       );
     }
@@ -377,7 +374,7 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
               isBottomMarginRequired: false,
               textStyle: appStyles.buttonNameStyle(),
               backCallback: (){
-                Navigator.of(context).pop();
+                Navigator.pop(context);
                 Navigator.push(
                   context,
                   SlideRightRoute(widget: SearchScreen(
