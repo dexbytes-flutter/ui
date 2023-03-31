@@ -17,27 +17,30 @@ class BookingDetailCardViewScreen extends StatefulWidget {
   final String placeFlag;
   final String date;
   final double rating;
-  const BookingDetailCardViewScreen({
-    Key? key,
-    this.isBookMarked = false,
-    this.imageUrl,
-    required this.locationName,
-    required this.placeSubTitle,
-    required this.placeFlag,
-    required this.date,
-    required this.rating
-  }) : super(key: key);
+  final String? bookingStatus;
+  const BookingDetailCardViewScreen(
+      {Key? key,
+      this.isBookMarked = false,
+      this.imageUrl,
+      required this.locationName,
+      required this.placeSubTitle,
+      required this.placeFlag,
+      required this.date,
+      required this.rating,
+      this.bookingStatus})
+      : super(key: key);
 
   @override
-  State<BookingDetailCardViewScreen> createState() => _BookingDetailCardViewScreenState();
+  State<BookingDetailCardViewScreen> createState() =>
+      _BookingDetailCardViewScreenState();
 }
 
-class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScreen> {
+class _BookingDetailCardViewScreenState
+    extends State<BookingDetailCardViewScreen> {
   @override
   Widget build(BuildContext context) {
-
     // Background image in stack
-    backgroundImageStackView(){
+    backgroundImageStackView() {
       return Stack(
         alignment: Alignment.center,
         children: [
@@ -55,42 +58,45 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
               child: CachedNetworkImage(
                 imageUrl: widget.imageUrl!,
                 fit: BoxFit.cover,
-                height: appDimens.heightFullScreen()/2,
+                height: appDimens.heightFullScreen() / 2,
                 width: appDimens.widthFullScreen(),
               ),
             ),
           ),
           Positioned(
-            bottom: 200,
+              bottom: 200,
               child: Center(
                 child: Container(
-                  padding: EdgeInsets.all(8).copyWith(left: 18,right: 18),
+                  padding: EdgeInsets.all(8).copyWith(left: 18, right: 18),
                   decoration: BoxDecoration(
                       color: appColors.buttonBgColor.withOpacity(0.20),
-                      borderRadius: BorderRadius.circular(12)
-                  ),
+                      borderRadius: BorderRadius.circular(12)),
                   child: Row(
                     children: [
                       iconApps.iconImage(
-                          imageUrl: iconApps.starIcon,
-                          iconSize: Size(14, 14)
+                          imageUrl: iconApps.starIcon, iconSize: Size(14, 14)),
+                      SizedBox(
+                        width: 5,
                       ),
-                      SizedBox(width: 5,),
-                      Text("${widget.rating}",
-                        style: appStyles.commonSubTitleTextStyle(texColor: appColors.buttonBgColor,fontWeight: FontWeight.w500,fontSize: 15),)
+                      Text(
+                        "${widget.rating}",
+                        style: appStyles.commonSubTitleTextStyle(
+                            texColor: appColors.buttonBgColor,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15),
+                      )
                     ],
                   ),
                 ),
-              )
-          ),
+              )),
           Positioned(
             bottom: 105,
-            child: Text(widget.locationName,
+            child: Text(
+              widget.locationName,
               softWrap: true,
               textAlign: TextAlign.center,
-              style: appStyles.commonTitleStyle(
-                  fontSize: 35
-              ),),
+              style: appStyles.commonTitleStyle(fontSize: 35),
+            ),
           ),
           Positioned(
             bottom: 80,
@@ -100,8 +106,7 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
                 Container(
                   decoration: BoxDecoration(
                       border: Border.all(color: appColors.white),
-                      borderRadius: BorderRadius.circular(5)
-                  ),
+                      borderRadius: BorderRadius.circular(5)),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(5),
                     child: CachedNetworkImage(
@@ -113,8 +118,11 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
                     ),
                   ),
                 ),
-                SizedBox(width: 10,),
-                Text(widget.placeSubTitle,
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  widget.placeSubTitle,
                   style: appStyles.commonSubTitleTextStyle(fontSize: 11),
                 )
               ],
@@ -122,99 +130,44 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
           ),
           Positioned(
               bottom: 25,
-              child: Text(appString.trans(context, appString.bookingDetailsText),
-                style: appStyles.commonTitleStyle(fontSize: 15,
-                    fontWeight: FontWeight.w600,texColor: appColors.buttonBgColor
-                ),
-              )
-          ),
+              child: Text(
+                appString.trans(context, appString.bookingDetailsText),
+                style: appStyles.commonTitleStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                    texColor: appColors.buttonBgColor),
+              )),
         ],
       );
     }
 
-    // Bottom buttons
-    bottomButtonRow(){
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-        Container(
-          width: 270,
-          child: CommonButton(
-            buttonName: appString.trans(context, appString.faqButtonText),
-            buttonHeight: 50,
-            buttonBorderRadius: 18,
-            isBottomMarginRequired: false,
-            textStyle: appStyles.buttonNameStyle(),
-            backCallback: () {
-              /*if (_validateFields(isButtonClicked: true)) {
-                Navigator.push(
-                  context,
-                  SlideRightRoute(widget: DashBoardPage()),
-                );
-                // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
-                //   return OtpVerificationScreen(
-                //     isSignUpScreen: this.isSignUpScreen,
-                //   );
-                // }), (route) => false);
-              }*/
-              Navigator.push(
-                context,
-                SlideRightRoute(widget: FaqScreen()),
-              );
-            },
-          ),
-        ),
-        GestureDetector(
-          onTap: (){
-            Navigator.push(
-              context,
-              SlideRightRoute(widget: BookingCancellationScreen(
-                imageUrl: widget.imageUrl!,
-                locationName: widget.locationName,
-                placeFlag: widget.placeFlag,
-                date: widget.date,
-                placeSubTitle: widget.placeSubTitle,
-              )),
-            );
-          },
-          child: Container(
-            height: 50,
-            width: 50,
-            padding: EdgeInsets.all(15),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(18),
-              color: appColors.appBgColor2
+    // Bottom title rows
+    bottomTitleRows() {
+      return Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  appString.trans(context, appString.startDateText),
+                  style: appStyles.commonTitleStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      texColor: appColors.textColor),
+                ),
+                Text(
+                  "July 21 2021",
+                  style: appStyles.commonTitleStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      texColor: appColors.white),
+                ),
+              ],
             ),
-            child: iconApps.iconImage(
-                imageUrl: iconApps.deleteIcon,
-              iconSize: Size(20, 20),
-              imageColor: appColors.white
-            ),
-          ),
-        )
-      ],
-      );
-    }
-
-      // Bottom title rows
-      bottomTitleRows(){
-        return Padding(
-          padding: const EdgeInsets.only(left: 20,right: 20),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(appString.trans(context, appString.startDateText),
-                    style: appStyles.commonTitleStyle( fontSize: 15,
-                        fontWeight: FontWeight.w500, texColor: appColors.textColor),
-                  ),
-                  Text("July 21 2021",
-                    style: appStyles.commonTitleStyle( fontSize: 15,
-                        fontWeight: FontWeight.w500, texColor: appColors.white),),
-                ],),
-              Padding(
+            Padding(
               padding: const EdgeInsets.only(top: 12),
               child: SizedBox(
                 child: Divider(
@@ -224,125 +177,235 @@ class _BookingDetailCardViewScreenState extends State<BookingDetailCardViewScree
                 ),
               ),
             ),
-              SizedBox(height: 12,),
-              Column(
-               children: [
-                 Row(
-                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   crossAxisAlignment: CrossAxisAlignment.center,
-                   children: [
-                     Text(appString.trans(context, appString.endDateText),
-                       style: appStyles.commonTitleStyle( fontSize: 15,
-                           fontWeight: FontWeight.w500, texColor: appColors.textColor),
-                     ),
-                     Text("July 25 2021",
-                       style: appStyles.commonTitleStyle( fontSize: 15,
-                           fontWeight: FontWeight.w500, texColor: appColors.white),)
-                   ],),
-                 SizedBox(
-                   child: Divider(
-                     color: appColors.appBgColor1.withOpacity(0.15),
-                     height: 30,
-                     thickness: 1,
-                   ),
-                 ),
-               ],
-             ),
-              Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(appString.trans(context, appString.personText),
-                        style: appStyles.commonTitleStyle( fontSize: 15,
-                            fontWeight: FontWeight.w500, texColor: appColors.textColor),
-                      ),
-                      Text("3 Person",
-                        style: appStyles.commonTitleStyle( fontSize: 15,
-                            fontWeight: FontWeight.w500, texColor: appColors.white),)
-                    ],),
-                  SizedBox(
-                    child: Divider(
-                      color: appColors.appBgColor1.withOpacity(0.15),
-                      height: 30,
-                      thickness: 1,
+            SizedBox(
+              height: 12,
+            ),
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      appString.trans(context, appString.endDateText),
+                      style: appStyles.commonTitleStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          texColor: appColors.textColor),
                     ),
+                    Text(
+                      "July 25 2021",
+                      style: appStyles.commonTitleStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          texColor: appColors.white),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  child: Divider(
+                    color: appColors.appBgColor1.withOpacity(0.15),
+                    height: 30,
+                    thickness: 1,
                   ),
-                ],
-              ),
-              Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(appString.trans(context, appString.typeText),
-                        style: appStyles.commonTitleStyle( fontSize: 15,
-                            fontWeight: FontWeight.w500, texColor: appColors.textColor),
-                      ),
-                      Text("Normal",
-                        style: appStyles.commonTitleStyle( fontSize: 15,
-                            fontWeight: FontWeight.w500, texColor: appColors.white),)
-                    ],),
-                  SizedBox(
-                    child: Divider(
-                      color: appColors.appBgColor1.withOpacity(0.15),
-                      height: 30,
-                      thickness: 1,
+                ),
+              ],
+            ),
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      appString.trans(context, appString.personText),
+                      style: appStyles.commonTitleStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          texColor: appColors.textColor),
                     ),
+                    Text(
+                      "3 Person",
+                      style: appStyles.commonTitleStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          texColor: appColors.white),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  child: Divider(
+                    color: appColors.appBgColor1.withOpacity(0.15),
+                    height: 30,
+                    thickness: 1,
                   ),
-                ],
-              ),
-            ],
-          ),
-        );
-      }
-
-    return ContainerFirst(
-        appBarHeight: 85,
-        isOverLayStatusBar: true,
-        isOverLayAppBar: true,
-        isSingleChildScrollViewNeed: false,isFixedDeviceHeight: false,
-        contextCurrentView: context,
-        appBar: CommonAppBar(
-          appBarRowMargin: EdgeInsets.only(top: 35,left: 20,right: 20),
-          isHideRightIcon: false,
-          isBookMarked: widget.isBookMarked,
-        ),
-        containChild: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            backgroundImageStackView(),
-            SizedBox(height: 15,),
-            bottomTitleRows(),
+                ),
+              ],
+            ),
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      appString.trans(context, appString.typeText),
+                      style: appStyles.commonTitleStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          texColor: appColors.textColor),
+                    ),
+                    Text(
+                      "Normal",
+                      style: appStyles.commonTitleStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          texColor: appColors.white),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  child: Divider(
+                    color: appColors.appBgColor1.withOpacity(0.15),
+                    height: 30,
+                    thickness: 1,
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
+      );
+    }
+
+    return ContainerFirst(
+      appBarHeight: 85,
+      isOverLayStatusBar: true,
+      isOverLayAppBar: true,
+      isSingleChildScrollViewNeed: false,
+      isFixedDeviceHeight: false,
+      contextCurrentView: context,
+      appBar: CommonAppBar(
+        appBarRowMargin: EdgeInsets.only(top: 35, left: 20, right: 20),
+        isHideRightIcon: false,
+        isBookMarked: widget.isBookMarked,
+      ),
+      containChild: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          backgroundImageStackView(),
+          SizedBox(
+            height: 15,
+          ),
+          bottomTitleRows(),
+        ],
+      ),
       bottomMenuView: Align(
         alignment: Alignment.bottomCenter,
         child: Container(
-          padding: EdgeInsets.only(left: 20,right: 20,bottom: 20),
-          height: 120,
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(appString.trans(context, appString.totalPriceText),
-                    style: appStyles.commonTitleStyle( fontSize: 15,
-                        fontWeight: FontWeight.w500, texColor: appColors.textColor),
-                  ),
-                  Text("\$ 360",
-                    style: appStyles.commonTitleStyle( fontSize: 15,
-                        fontWeight: FontWeight.w500, texColor: appColors.white),)
-                ],),
-              SizedBox(height: 25,),
-              bottomButtonRow()
-            ],
-          ),
-        ),
+            padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+            height: 120,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      appString.trans(context, appString.totalPriceText),
+                      style: appStyles.commonTitleStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          texColor: appColors.textColor),
+                    ),
+                    Text(
+                      "\$ 360",
+                      style: appStyles.commonTitleStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          texColor: appColors.white),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 25,
+                ),
+                Row(
+                  mainAxisAlignment: widget.bookingStatus! == "Cancelled" ||
+                          widget.bookingStatus! == "Finished"
+                      ? MainAxisAlignment.start
+                      : MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Container(
+                        width: widget.bookingStatus! == "Cancelled" ||
+                                widget.bookingStatus! == "Finished"
+                            ? appDimens.widthFullScreen()
+                            : appDimens.widthFullScreen() / 1.5,
+                        padding: widget.bookingStatus! == "Cancelled" ||
+                                widget.bookingStatus! == "Finished"
+                            ? EdgeInsets.zero
+                            : EdgeInsets.only(right: 15),
+                        child: CommonButton(
+                          buttonName:
+                              appString.trans(context, appString.faqButtonText),
+                          buttonHeight: 50,
+                          buttonBorderRadius: 18,
+                          isBottomMarginRequired: false,
+                          textStyle: appStyles.buttonNameStyle(),
+                          backCallback: () {
+                            /*if (_validateFields(isButtonClicked: true)) {
+
+                  // Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (BuildContext context){
+                  //   return OtpVerificationScreen(
+                  //     isSignUpScreen: this.isSignUpScreen,
+                  //   );
+                  // }), (route) => false);
+                }*/
+                            Navigator.push(
+                              context,
+                              SlideRightRoute(widget: FaqScreen()),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    widget.bookingStatus! == "Cancelled" ||
+                            widget.bookingStatus! == "Finished"
+                        ? Container()
+                        : GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                SlideRightRoute(
+                                    widget: BookingCancellationScreen(
+                                  imageUrl: widget.imageUrl!,
+                                  locationName: widget.locationName,
+                                  placeFlag: widget.placeFlag,
+                                  date: widget.date,
+                                  placeSubTitle: widget.placeSubTitle,
+                                )),
+                              );
+                            },
+                            child: Container(
+                              height: 50,
+                              width: 50,
+                              padding: EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(18),
+                                  color: appColors.appBgColor2),
+                              child: iconApps.iconImage(
+                                  imageUrl: iconApps.deleteIcon,
+                                  iconSize: Size(20, 20),
+                                  imageColor: appColors.white),
+                            ),
+                          )
+                  ],
+                )
+              ],
+            )
+            ),
       ),
     );
   }

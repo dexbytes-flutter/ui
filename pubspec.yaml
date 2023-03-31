@@ -70,6 +70,7 @@ dependencies:
   flutter_staggered_grid_view: ^0.6.2
   photo_view: ^0.14.0
   dropdown_button2: ^2.0.0
+  google_maps_flutter: ^2.2.5
 
 
 
@@ -102,6 +103,7 @@ flutter:
     - assets/images/
     - assets/lang/
     - assets/app_theme/
+    - assets/map_styles/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

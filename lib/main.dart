@@ -34,6 +34,7 @@ import 'src/pages/create_booking_screen.dart';
 import 'src/pages/dashboard_screen.dart';
 import 'src/pages/destination_card_detailed_view_screen.dart';
 import 'src/pages/explore_screen.dart';
+import 'src/pages/google_map_screen.dart';
 import 'src/pages/login_screen.dart';
 import 'src/pages/otp_verification_page.dart';
 import 'src/pages/profile_screen.dart';
@@ -292,7 +293,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
     return /*!widget.isOneTimeProfileSetUpDone
         ? CreateAccount()
         : */
-      const TutorialScreen();
+      const DashBoardPage();
   }
 
   //Redirect to another screen if already loggedIn
@@ -302,7 +303,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
 
     //If profile set done by user
     // if (widget.isOneTimeProfileSetUpDone) {
-    return const DashBoardPage();
+    return const GoogleMapScreen();
     //SignInPage();
     // }
     //If set up not done by user than redirect to selected screen

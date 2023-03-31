@@ -5,6 +5,9 @@ import 'package:base_flutter_app/src/model/explore_card_data_model.dart';
 import 'package:base_flutter_app/src/model/home_screen_verticle_title_list.dart';
 import 'package:base_flutter_app/src/widgets/search_screen_image.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+import 'google_map_screen.dart';
 
 class ExploreScreen extends StatefulWidget {
   const ExploreScreen({Key? key}) : super(key: key);
@@ -14,6 +17,20 @@ class ExploreScreen extends StatefulWidget {
 }
 
 class _ExploreScreenState extends State<ExploreScreen> {
+
+  late int selectedIndex;
+  late GoogleMapController mapController;
+  final LatLng _center = const LatLng(45.521563, -122.677433);
+
+  void _onMapCreated(GoogleMapController controller) {
+    mapController = controller;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    this.selectedIndex = 0;
+  }
   @override
   Widget build(BuildContext context) {
     AppDimens appDimens = AppDimens();
@@ -60,17 +77,27 @@ class _ExploreScreenState extends State<ExploreScreen> {
                 itemBuilder: (context, index) {
                   return Container(
                       margin: EdgeInsets.only(right: 15),
-                      child: SearchScreenCommonImage(
-                        placeTitle: exploreCardDataList[index].placeName,
-                        placeSubTitle: exploreCardDataList[index].placeSubTitle,
-                        imageUrl: exploreCardDataList[index].imageUrl,
-                        imageWidth: appDimens.widthFullScreen()/1.25 ,
-                        isBookmarked: exploreCardDataList[index].isBookmarked,
-                        isStaticCalenderIcon: false,
-                        bookingStatus: "",
-                        rating: exploreCardDataList[index].rating,
-                        placeFlag: exploreCardDataList[index].flagUrl,
-                        recommendationType: exploreCardDataList[index].recommendationType,
+                      child: GestureDetector(
+                        onTap: (){
+                          setState(() {
+                            selectedIndex = index;
+                          });
+                        },
+                        child: SearchScreenCommonImage(
+                          placeTitle: exploreCardDataList[index].placeName,
+                          placeSubTitle: exploreCardDataList[index].placeSubTitle,
+                          imageUrl: exploreCardDataList[index].imageUrl,
+                          imageWidth: appDimens.widthFullScreen()/1.25 ,
+                          isBookmarked: exploreCardDataList[index].isBookmarked,
+                          isStaticCalenderIcon: false,
+                          bookingStatus: "",
+                          rating: exploreCardDataList[index].rating,
+                          placeFlag: exploreCardDataList[index].flagUrl,
+                          recommendationType: exploreCardDataList[index].recommendationType,
+                          isExploreScreen: true,
+                          selectedIndex: selectedIndex,
+                          index: index,
+                        ),
                       ));
                 },
               ),
@@ -93,7 +120,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
               height: appDimens.heightFullScreen(),
               width: appDimens.heightFullScreen(),
               color: appColors.appBgColorJungleGreen,
-              child: Text(""),
+              child: GoogleMapScreen(),
             ),
             Positioned(
                 bottom: appDimens.heightFullScreen()/3.6,

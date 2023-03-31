@@ -82,6 +82,7 @@ class _BookListTileScreenState extends State<BookListTileScreen> {
                         placeFlag: bookingListPlaceImagesList[index].placeSubTitleFlagIcon,
                         date: bookingListPlaceImagesList[index].bookingDate,
                         rating: bookingListPlaceImagesList[index].rating,
+                        bookingStatus: bookingListPlaceImagesList[index].bookingStatus,
                       )
                     ));
                   },

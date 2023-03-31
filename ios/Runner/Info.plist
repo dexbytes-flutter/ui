@@ -48,7 +48,7 @@
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Not used</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Not used</string>
+	<string>The app needs location permission</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Not used</string>
 	<key>NSMotionUsageDescription</key>
@@ -57,6 +57,8 @@
 	<string>Photo library is used to select an image in edit profile or add package</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>Not used</string>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
@@ -79,8 +81,6 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>io.flutter.embedded_views_preview</key>
-	<true/>
-	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 </dict>
 </plist>

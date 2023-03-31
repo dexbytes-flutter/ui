@@ -22,6 +22,8 @@ class SearchScreenCommonImage extends StatelessWidget {
   final bool? isCityScreen;
   final bool? isStaticCalenderIcon;
   final String? bookingStatus;
+  final bool? isExploreScreen;
+  final int? index;
   SearchScreenCommonImage({
     Key? key,
     this.imageUrl,
@@ -40,6 +42,8 @@ class SearchScreenCommonImage extends StatelessWidget {
     this.isCityScreen,
     this.isStaticCalenderIcon,
     this.bookingStatus,
+    this.isExploreScreen,
+    this.index
   }) : super(key: key);
 
   @override
@@ -145,25 +149,34 @@ class SearchScreenCommonImage extends StatelessWidget {
 
     return Stack(
       children: [
-        ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(30)),
-          child: ShaderMask(
-            shaderCallback: (bound) => LinearGradient(
-              colors: [
-                appColors.appTransColor.withOpacity(0.40),
-                appColors.appBgColorJungleGreen.withOpacity(0.75)
-              ],
-              begin: Alignment.center,
-              end: Alignment.bottomCenter,
-            ).createShader(bound),
-            blendMode: BlendMode.darken,
-            child: CachedNetworkImage(
-              imageUrl: imageUrl!,
-              fit:BoxFit.cover,
-              height: imageHeight ?? appDimens.heightFullScreen(),
-              width: imageWidth ?? appDimens.widthFullScreen(),
-              // width: appDimens.widthFullScreen()/1.25,
-              // height: appDimens.heightFullScreen()/3.8,
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30),
+            border: isExploreScreen!
+                ? Border.all(color: selectedIndex == index ? appColors.buttonBgColor : appColors.appTransColor,
+                width: selectedIndex == index ? 1 : 0)
+                : Border()
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.all(Radius.circular(30)),
+            child: ShaderMask(
+              shaderCallback: (bound) => LinearGradient(
+                colors: [
+                  appColors.appTransColor.withOpacity(0.40),
+                  appColors.appBgColorJungleGreen.withOpacity(0.75)
+                ],
+                begin: Alignment.center,
+                end: Alignment.bottomCenter,
+              ).createShader(bound),
+              blendMode: BlendMode.darken,
+              child: CachedNetworkImage(
+                imageUrl: imageUrl!,
+                fit:BoxFit.cover,
+                height: imageHeight ?? appDimens.heightFullScreen(),
+                width: imageWidth ?? appDimens.widthFullScreen(),
+                // width: appDimens.widthFullScreen()/1.25,
+                // height: appDimens.heightFullScreen()/3.8,
+              ),
             ),
           ),
         ),
@@ -180,6 +193,7 @@ class SearchScreenCommonImage extends StatelessWidget {
                   padding: EdgeInsets.all(5),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
+                    border: Border.all(color: appColors.buttonBgColor, width: 1),
                     color: bookingStatus! == "Cancelled" ?
                     appColors.red.withOpacity(0.15) : bookingStatus! == "" ? appColors.appTransColor : appColors.green.withOpacity(0.15)
                   ),
