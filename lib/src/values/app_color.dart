@@ -19,6 +19,7 @@ class AppColors {
   Color secondaryText = const Color.fromARGB(255, 114, 114, 114);
   Color grey = const Color.fromARGB(255, 188, 187, 187);
 
+
   //Extra colors
   Color primaryShadeColor1 = const Color(0xFFaccfdc);
   Color primaryShadeColor2 = const Color(0xFF6cc3e3);

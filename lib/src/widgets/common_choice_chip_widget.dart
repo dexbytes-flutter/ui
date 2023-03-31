@@ -7,14 +7,14 @@ class ChoiceChipWidget extends StatefulWidget {
   final bool? isAvatar;
   final EdgeInsetsGeometry? choiceChipWidgetPadding;
   final double choiceChipRadius;
-  final int? selectedIndex;
+  final String selectedChoice;
 
   ChoiceChipWidget({
     required this.reportList,
     this.isAvatar,
     this.choiceChipWidgetPadding,
     this.choiceChipRadius = 12,
-    this.selectedIndex,
+    required this.selectedChoice
   });
 
   @override
@@ -23,7 +23,8 @@ class ChoiceChipWidget extends StatefulWidget {
 
 class _ChoiceChipWidgetState extends State<ChoiceChipWidget> {
 
-  String selectedChoice = "All";
+  late String selectedChoice;
+
 
   _buildChoiceList() {
     List<Widget> choices = [];
@@ -58,37 +59,41 @@ class _ChoiceChipWidgetState extends State<ChoiceChipWidget> {
     List<Widget> choices = [];
     widget.reportList.forEach((item) {
       choices.add(
-          Container(
-        child: ChoiceChip(
-          avatar: iconApps.iconImage(
-              imageUrl: iconApps.starIcon,
-              iconSize: Size(10, 10)
-          ),
-          padding: widget.choiceChipWidgetPadding ?? EdgeInsets.zero,
-          label: Text(item),
-          labelStyle: appStyles.commonSubTitleTextStyle(fontSize: 12.5,
-              texColor: selectedChoice == item ? appColors.buttonBgColor : appColors.textColor),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(widget.choiceChipRadius),
+          ChoiceChip(
+            avatar: iconApps.iconImage(
+                imageUrl: iconApps.starIcon,
+                iconSize: Size(10, 10)
             ),
-            side: BorderSide(
-              color: appColors.appBgColor2,
-              width: selectedChoice == item ? 0 : 1.5
-            )
-          ),
-          labelPadding: EdgeInsets.only(right: 10),
-          backgroundColor: selectedChoice == item ? appColors.appBgColor2 : appColors.appBgColorJungleGreen,
-          selectedColor: selectedChoice == item ? appColors.appBgColor2 : appColors.appBgColor2,
-          selected: selectedChoice == item,
-          onSelected:  (selected) {
-            setState(() {
-              selectedChoice = item;
-            });
-          },
-        ),
-      ));
+            padding: widget.choiceChipWidgetPadding ?? EdgeInsets.zero,
+            label: Text(item),
+            labelStyle: appStyles.commonSubTitleTextStyle(fontSize: 12.5,
+                texColor: selectedChoice == item ? appColors.buttonBgColor : appColors.textColor),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(widget.choiceChipRadius),
+              ),
+              side: BorderSide(
+                color: appColors.appBgColor2,
+                width: selectedChoice == item ? 0 : 1.5
+              )
+            ),
+            labelPadding: EdgeInsets.only(right: 10),
+            backgroundColor: selectedChoice == item ? appColors.appBgColor2 : appColors.appBgColorJungleGreen,
+            selectedColor: selectedChoice == item ? appColors.appBgColor2 : appColors.appBgColor2,
+            selected: selectedChoice == item,
+            onSelected:  (selected) {
+              setState(() {
+                selectedChoice = item;
+              });
+            },
+          ));
     });
     return choices;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    this.selectedChoice = widget.selectedChoice;
   }
 
   @override

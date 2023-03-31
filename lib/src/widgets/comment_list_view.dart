@@ -7,42 +7,96 @@ import '../model/comment_model.dart';
 
 
 class CommentsListView extends StatefulWidget {
-  final Function(dynamic)? commentTypeCallBack;
-
-  CommentsListView({ Key ?key,
-    this.commentTypeCallBack,
-
+  final String selectedChoice;
+  CommentsListView({
+    Key ?key, required this.selectedChoice
   }) : super(key: key);
 
   @override
-  _CommentsListViewState createState() => _CommentsListViewState(commentTypeCallBack);
+  _CommentsListViewState createState() => _CommentsListViewState();
 }
 
 class _CommentsListViewState extends State<CommentsListView> {
-  final Function(dynamic)? commentTypeCallBack;
   bool isMore = true;
   bool isSelected = true;
-
-  _CommentsListViewState(this.commentTypeCallBack);
+  String? selectedChoice;
+  List<CommentsUI> filteredRatingList = [];
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+
+    // Rating filter view
+      switch(widget.selectedChoice) {
+        case "All": {
+          filteredRatingList  = allReviewList.where((item) {
+            return item.rating != 0;
+          }).toList();
+        }
+        break;
+
+        case "5": {
+          filteredRatingList  = allReviewList.where((item) {
+            return item.rating == 5;
+          }).toList();
+        }
+        break;
+
+        case "4": {
+          filteredRatingList  = allReviewList.where((item) {
+            return item.rating == 4;
+          }).toList();
+        }
+        break;
+
+        case "3": {
+          filteredRatingList  = allReviewList.where((item) {
+            return item.rating == 3;
+          }).toList();
+        }
+        break;
+
+        case "2": {
+          filteredRatingList  = allReviewList.where((item) {
+            return item.rating == 2;
+          }).toList();
+        }
+        break;
+
+        case "1": {
+          filteredRatingList  = allReviewList.where((item) {
+            return item.rating == 1;
+          }).toList();
+        }
+        break;
+
+        default: {
+          filteredRatingList  = allReviewList.where((item) {
+            return item.rating != 0;
+          }).toList();
+        }
+        break;
+      }
+
     return ListView.builder(
         physics: NeverScrollableScrollPhysics(),
         padding: EdgeInsets.symmetric(horizontal: 0,vertical: 0),
-        itemCount: reviewList.length,
+        itemCount: filteredRatingList.length,
         shrinkWrap: true,
         itemBuilder: (context, index) {
           return Container(
             margin: EdgeInsets.only(bottom: 25),
             child: CommentsUI(
-              imageUrl: reviewList[index].imageUrl,
-              name: reviewList[index].name,
-              daysAgo:reviewList[index].daysAgo,
-              rating: reviewList[index].rating,
-              review: reviewList[index].review,
-              uploadImageUrl1: reviewList[index].uploadImageUrl1,
-              uploadImageUrl2: reviewList[index].uploadImageUrl2,
+              imageUrl: filteredRatingList[index].imageUrl,
+              name: filteredRatingList[index].name,
+              daysAgo:filteredRatingList[index].daysAgo,
+              rating: filteredRatingList[index].rating,
+              review: filteredRatingList[index].review,
+              uploadImageUrl1: filteredRatingList[index].uploadImageUrl1,
+              uploadImageUrl2: filteredRatingList[index].uploadImageUrl2,
               onPressed: () => print("More Action $index"),
               onTap: () => setState(() {
                 isMore = !isMore;

@@ -45,6 +45,15 @@ class _DestinationDetailedCardViewState extends State<DestinationDetailedCardVie
   int itemCount = 4;
   int lastVisibleIndex = 0;
   int selectedIndex = 0;
+  String selectedChoice = "";
+  late int defaultChoiceIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    this.selectedChoice = ratingChoiceChipDataList.first;
+    defaultChoiceIndex = ratingChoiceChipDataList.indexOf(ratingChoiceChipDataList.first);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -180,39 +189,100 @@ class _DestinationDetailedCardViewState extends State<DestinationDetailedCardVie
     }
 
     // Rating choice chip
-    ratingView(){
-      int defaultItemIndex = ratingChoiceChipDataList.indexOf("All");
-      print(defaultItemIndex);
+    /*ratingView(){
       return Wrap(
         spacing: 10.0,
         runSpacing: -5,
         children: <Widget>[
-          ChoiceChipWidget(
+
+          */
+    /*ChoiceChipWidget(
             choiceChipWidgetPadding: EdgeInsets.all(5).copyWith(top: 0,bottom: 0),
             reportList: ratingChoiceChipDataList,
             isAvatar: true,
             choiceChipRadius: 15,
-            selectedIndex: defaultItemIndex,
-          ),
-          
+            selectedChoice: ratingChoiceChipDataList.first,
+          ),*//*
         ],
       );
+    }*/
 
-      /*Container(
-        height: 40,
-        child: ListView.builder(
-          itemCount: recentSearchTextList.length,
-          scrollDirection: Axis.horizontal,
-          shrinkWrap: true,
-          physics: ClampingScrollPhysics(),
-          itemBuilder: (context, index){
-            return RecentSearchListView(
-              recentSearchText: recentSearchTextList[index].recentSearchText,
-              margin: EdgeInsets.only(left: 20),
-            );
-          },
-        ),
-      );*/
+    ratingView(){
+      return Wrap(
+        spacing: 10.0,
+        runSpacing: -5,
+        children: List.generate(ratingChoiceChipDataList.length, (index) {
+          return ChoiceChip(
+            avatar: iconApps.iconImage(
+                imageUrl: iconApps.starIcon,
+                iconSize: Size(10, 10)
+            ),
+            padding: EdgeInsets.all(5).copyWith(top: 0,bottom: 0),
+            label: Text(ratingChoiceChipDataList[index]),
+            labelStyle: appStyles.commonSubTitleTextStyle(fontSize: 12.5,
+                texColor: defaultChoiceIndex == index ? appColors.buttonBgColor : appColors.textColor),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(15),
+                ),
+                side: BorderSide(
+                    color: appColors.appBgColor2,
+                    width: defaultChoiceIndex == index ? 0 : 1.5
+                )
+            ),
+            labelPadding: EdgeInsets.only(right: 10),
+            backgroundColor: defaultChoiceIndex == index ? appColors.appBgColor2 : appColors.appBgColorJungleGreen,
+            selectedColor: defaultChoiceIndex == index ? appColors.appBgColor2 : appColors.appBgColor2,
+            selected: defaultChoiceIndex == index,
+            onSelected:  (selected) {
+              setState(() {
+                // selectedChoice = item;
+                defaultChoiceIndex = selected ? index : defaultChoiceIndex;
+               selectedChoice = "${ratingChoiceChipDataList[index]}";
+              });
+            },
+          );
+      },
+      )
+      );
+    }
+
+
+    _buildChoiceListWithAvatar() {
+
+
+
+      /*List<Widget> choices = [];
+      ratingChoiceChipDataList.forEach((item) {
+        choices.add(
+            ChoiceChip(
+              avatar: iconApps.iconImage(
+                  imageUrl: iconApps.starIcon,
+                  iconSize: Size(10, 10)
+              ),
+              padding: EdgeInsets.all(5).copyWith(top: 0,bottom: 0),
+              label: Text(item),
+              labelStyle: appStyles.commonSubTitleTextStyle(fontSize: 12.5,
+                  texColor: selectedChoice == item ? appColors.buttonBgColor : appColors.textColor),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(15),
+                  ),
+                  side: BorderSide(
+                      color: appColors.appBgColor2,
+                      width: selectedChoice == item ? 0 : 1.5
+                  )
+              ),
+              labelPadding: EdgeInsets.only(right: 10),
+              backgroundColor: selectedChoice == item ? appColors.appBgColor2 : appColors.appBgColorJungleGreen,
+              selectedColor: selectedChoice == item ? appColors.appBgColor2 : appColors.appBgColor2,
+              selected: selectedChoice == item,
+              onSelected:  (selected) {
+                setState(() {
+                  selectedChoice = item;
+                });
+              },
+            ));
+      });
+      return choices;*/
     }
 
     //Gallery list view
@@ -309,7 +379,9 @@ class _DestinationDetailedCardViewState extends State<DestinationDetailedCardVie
             SizedBox(height: 15,),
             ratingView(),
             SizedBox(height: 15,),
-            CommentsListView(),
+            CommentsListView(
+              selectedChoice: selectedChoice,
+            ),
             SizedBox(height: 15,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

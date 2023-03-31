@@ -253,6 +253,7 @@ class _CreateBookingScreenState extends State<CreateBookingScreen> {
           ChoiceChipWidget(
             reportList: bookingTypeList,
             isAvatar: false,
+            selectedChoice: bookingTypeList.first,
           ),
         ],
       );

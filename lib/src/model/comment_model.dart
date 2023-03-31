@@ -1,7 +1,7 @@
 
 import '../widgets/comment_UI.dart';
 
-final reviewList = [
+/*final reviewList = [
   CommentsUI(
     imageUrl: "https://www.whatsappimages.in/wp-content/uploads/2020/12/Cute-Girl-Images-For-Whatsapp-Dp-Free-Download-9.jpg",
     uploadImageUrl1: "",
@@ -33,7 +33,7 @@ final reviewList = [
     daysAgo: "2 days ago",
   ),
 
-];
+];*/
 
 final allReviewList = [
   CommentsUI(
@@ -41,7 +41,7 @@ final allReviewList = [
     uploadImageUrl1: "",
     uploadImageUrl2: "",
     name: "Amanda Samantha",
-    rating: 4.5,
+    rating: 5,
     review:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     daysAgo: "2 days ago",
@@ -49,7 +49,7 @@ final allReviewList = [
   CommentsUI(
     imageUrl: "http://www.goodmorningimagesdownload.com/wp-content/uploads/2019/08/girls-images-3.jpg",
     name: "Jessica",
-    rating: 4.5,
+    rating: 4,
     review:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     uploadImageUrl1: "https://media-cdn.tripadvisor.com/media/photo-s/0f/e1/ad/7b/borobudur-temple.jpg",
@@ -61,7 +61,7 @@ final allReviewList = [
     uploadImageUrl1: "",
     uploadImageUrl2: "",
     name: "Jonathan",
-    rating: 4.3,
+    rating: 3,
     review:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     daysAgo: "2 days ago",
@@ -71,7 +71,7 @@ final allReviewList = [
     uploadImageUrl1: "",
     uploadImageUrl2: "",
     name: "Alice",
-    rating: 4.2,
+    rating: 2,
     review:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     daysAgo: "3 days ago",
@@ -81,7 +81,17 @@ final allReviewList = [
     uploadImageUrl1: "",
     uploadImageUrl2: "",
     name: "Celia",
-    rating: 4.1,
+    rating: 1,
+    review:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    daysAgo: "4 days ago",
+  ),
+  CommentsUI(
+    imageUrl: "https://img.freepik.com/free-photo/young-woman-with-round-glasses-yellow-sweater_273609-7091.jpg?size=626&ext=jpg&ga=GA1.1.1129104453.1673593075&semt=sph",
+    uploadImageUrl1: "",
+    uploadImageUrl2: "",
+    name: "Celia",
+    rating: 4,
     review:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     daysAgo: "4 days ago",
@@ -91,7 +101,7 @@ final allReviewList = [
     uploadImageUrl1: "",
     uploadImageUrl2: "",
     name: "Andrew Anderson",
-    rating: 4.0,
+    rating: 5,
     review:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     daysAgo: "8 days ago",
@@ -101,7 +111,7 @@ final allReviewList = [
     uploadImageUrl1: "",
     uploadImageUrl2: "",
     name: "Cristine William",
-    rating: 4.6,
+    rating: 5,
     review:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     daysAgo: "10 days ago",

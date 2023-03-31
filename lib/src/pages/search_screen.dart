@@ -133,6 +133,7 @@ class _SearchScreenState extends State<SearchScreen> {
             ChoiceChipWidget(
                 reportList: chipList,
                 isAvatar: false,
+              selectedChoice: chipList.first,
             ),
           ],
         ),

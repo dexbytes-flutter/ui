@@ -4,9 +4,7 @@ import 'package:base_flutter_app/src/all_file_import/app_values_files_link.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class CustomSlider extends StatefulWidget {
-  // final String? assetImage;
-  // final LinearGradient linearGradient;
+class CustomRangeSlider extends StatefulWidget {
   final Color inActiveTrackColor;
   final Color activeTrackColor;
   final double trackHeight;
@@ -16,12 +14,11 @@ class CustomSlider extends StatefulWidget {
   final int? assetImageWidth;
   final int? divisions;
   final Function(double)? onValueChangeCallback;
-  final double? value;
-
-  const CustomSlider({
+  final RangeValues values;
+  final RangeLabels labels;
+  final rangeSliderOnChangeCallback;
+  const CustomRangeSlider({
     Key? key,
-    // this.assetImage,
-    // required this.linearGradient,
     required this.inActiveTrackColor,
     required this.activeTrackColor,
     required this.trackHeight,
@@ -31,18 +28,20 @@ class CustomSlider extends StatefulWidget {
     this.assetImageHeight = 50,
     this.assetImageWidth = 60,
     this.onValueChangeCallback,
-    this.value
+    required this.values,
+    required this.labels,
+    required this.rangeSliderOnChangeCallback
   }) : super(key: key);
 
   @override
-  State<CustomSlider> createState() => _CustomSliderState();
+  State<CustomRangeSlider> createState() => _CustomRangeSliderState();
 }
 
-class _CustomSliderState extends State<CustomSlider> {
+class _CustomRangeSliderState extends State<CustomRangeSlider> {
   // double intValue = 0;
   ui.Image? customImage;
 
- /* Future<ui.Image> load(String asset) async {
+  /* Future<ui.Image> load(String asset) async {
     ByteData data = await rootBundle.load(asset);
     ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
         targetHeight: widget.assetImageHeight,
@@ -65,65 +64,29 @@ class _CustomSliderState extends State<CustomSlider> {
   Widget build(BuildContext context) {
     return SliderTheme(
       data: SliderTheme.of(context).copyWith(
-          inactiveTrackColor: widget.inActiveTrackColor,
           activeTrackColor: widget.activeTrackColor,
-          trackShape: CustomTrackShape(),
-          thumbColor: appColors.buttonBgColor,
-          trackHeight: widget.trackHeight,
+          inactiveTrackColor: widget.inActiveTrackColor,
+          thumbColor: widget.activeTrackColor,
           activeTickMarkColor: widget.activeTrackColor,
+          inactiveTickMarkColor: appColors.appTransColor,
           overlayShape: SliderComponentShape.noOverlay,
-          // overlayColor: Colors.purple.withAlpha(36),
+          trackHeight: widget.trackHeight,
+          rangeThumbShape: const RoundRangeSliderThumbShape(enabledThumbRadius: 10,disabledThumbRadius: 10,pressedElevation: 0),
+          trackShape: CustomTrackShape(),
           overlayColor: appColors.appTransColor,
-          thumbShape: customImage != null
-              ? SliderThumbImage(customImage!)
-              : const RoundSliderThumbShape(
-            enabledThumbRadius: 8,disabledThumbRadius: 8,
-            pressedElevation: 0
+          thumbShape: const RoundSliderThumbShape(
+              enabledThumbRadius: 8,disabledThumbRadius: 8,
+              pressedElevation: 0
           )),
-      child: Slider(
+      child: RangeSlider(
+        onChanged: widget.rangeSliderOnChangeCallback,
+        values: widget.values,
         min: widget.min,
         max: widget.max,
+        labels: widget.labels,
         divisions: widget.divisions,
-        onChanged: widget.onValueChangeCallback,
-        value: widget.value!,
-        label: "${widget.value?.toInt()} ${appString.trans(context, appString.personText)}",
       ),
     );
-  }
-}
-
-class SliderThumbImage extends SliderComponentShape {
-  final ui.Image image;
-
-  SliderThumbImage(this.image);
-  @override
-  Size getPreferredSize(bool isEnabled, bool isDiscrete) {
-    return const Size(0, 0);
-  }
-
-  @override
-  void paint(PaintingContext context, Offset center,
-      {required Animation<double> activationAnimation,
-        required Animation<double> enableAnimation,
-        required bool isDiscrete,
-        required TextPainter labelPainter,
-        required RenderBox parentBox,
-        required SliderThemeData sliderTheme,
-        required TextDirection textDirection,
-        required double value,
-        required double textScaleFactor,
-        required Size sizeWithOverflow}) {
-    var canvas = context.canvas;
-    final picWidth = image.width;
-    final picHeight = image.height;
-
-    Offset picOffset = Offset(
-      (center.dx - (picWidth / 2)),
-      (center.dy - (picHeight / 2)),
-    );
-
-    Paint paint = Paint()..filterQuality = FilterQuality.high;
-    canvas.drawImage(image, picOffset, paint);
   }
 }
 

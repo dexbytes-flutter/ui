@@ -5,6 +5,7 @@ import 'package:base_flutter_app/src/model/filter_choice_chip_model.dart';
 import 'package:base_flutter_app/src/pages/search_screen.dart';
 import 'package:base_flutter_app/src/widgets/bottom_sheet_dynamic_height_card.dart';
 import 'package:base_flutter_app/src/widgets/common_choice_chip_widget.dart';
+import 'package:base_flutter_app/src/widgets/custom_range_slicer.dart';
 import 'package:base_flutter_app/src/widgets/drop_down_widget.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
@@ -193,7 +194,7 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
               dropDownContainerDecorationBorderRadius: 12,
                 iconStyleData: IconStyleData(
                   icon: Icon(Icons.keyboard_arrow_down),
-                  iconDisabledColor: appColors.grey,
+                  iconDisabledColor: appColors.iconColorGrey,
                   iconEnabledColor: appColors.white,
                 ),
               dropdownStyleData: DropdownStyleData(
@@ -208,7 +209,9 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
                   )
               ),
               dropDownHintText: Text(appString.trans(context, appString.cityDropDownHintText),
-                style: appStyles.commonSubTitleTextStyle(fontSize: 11,fontWeight: FontWeight.w500),
+                style: appStyles.commonSubTitleTextStyle(fontSize: 11,fontWeight: FontWeight.w500,
+                texColor: selectedCountry.isNotEmpty ? appColors.textColor : appColors.iconColorGrey
+                ),
               ),
               selectedCountry: selectedCity,
               itemList: cityList.map(buildMenuItem).toList(),
@@ -230,34 +233,24 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
           children: [
             Container(
               margin: EdgeInsets.only(top: 10),
-              child: SliderTheme(
-                data: SliderThemeData(
-                  activeTrackColor: appColors.buttonBgColor,
-                  inactiveTrackColor: appColors.textColor.withOpacity(0.40),
-                  thumbColor: appColors.buttonBgColor,
-                  activeTickMarkColor: appColors.appTransColor,
-                  inactiveTickMarkColor: appColors.appBgColor1,
-                  overlayShape: SliderComponentShape.noOverlay,
-                  trackHeight: 3,
-                  trackShape: RoundedRectSliderTrackShape(),
-                  rangeThumbShape: const RoundRangeSliderThumbShape(enabledThumbRadius: 8),
-                ),
-                child: RangeSlider(
-                  onChanged: (value){
-                    setState(() {
-                      values = value;
-                      labels =  RangeLabels(
-                        "\$${values.start.round()}".toString(),
-                        "\$${values.end.round()}".toString(),
-                      );
-                    });
-                  },
-                  values: values,
-                  min: 100,
-                  max: 1000,
-                  labels: labels,
-                  divisions: 20,
-                ),
+              child: CustomRangeSlider(
+                inActiveTrackColor: appColors.textColor.withOpacity(0.40),
+                activeTrackColor: appColors.buttonBgColor,
+                trackHeight: 2.5,
+                divisions: 20,
+                min: 100,
+                max: 1000,
+                values: values,
+                labels: labels,
+                rangeSliderOnChangeCallback: (value){
+                  setState(() {
+                    values = value;
+                    labels =  RangeLabels(
+                      "\$${values.start.round()}".toString(),
+                      "\$${values.end.round()}".toString(),
+                    );
+                  });
+                },
               ),
             ),
             const SizedBox(height: 10,),
@@ -294,6 +287,7 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
           ChoiceChipWidget(
             reportList: ratingChoiceChipDataList,
             isAvatar: true,
+            selectedChoice: ratingChoiceChipDataList.first,
           ),
         ],
       );
@@ -324,6 +318,7 @@ class _DestinationSearchFilterBottomSheetState extends State<DestinationSearchFi
           ChoiceChipWidget(
             reportList: rangeChoiceChipDataList,
             isAvatar: false,
+            selectedChoice: rangeChoiceChipDataList.first,
           ),
         ],
       );
