@@ -44,6 +44,7 @@ import 'src/pages/select_payment_screen.dart';
 import 'src/pages/terms_of_services_screen.dart';
 import 'src/pages/test_drop_down.dart';
 import 'src/widgets/common_choice_chip_widget.dart';
+import 'src/widgets/custom_carousel_image_slider.dart';
 
 void main() async {
   // if you are using await in main function then add this line
@@ -293,7 +294,7 @@ class _MyAppState extends State<MyAppFlutterMain> {
     return /*!widget.isOneTimeProfileSetUpDone
         ? CreateAccount()
         : */
-      const DashBoardPage();
+      CustomCarouselImageSlider();
   }
 
   //Redirect to another screen if already loggedIn
